@@ -7,6 +7,7 @@
 //
 
 import Fabric
+import Crashlytics
 import UIKit
 
 struct CrashReportingConfiguration: AppLifecycleConfigurable {
@@ -16,7 +17,7 @@ struct CrashReportingConfiguration: AppLifecycleConfigurable {
     }
 
     func onDidLaunch(application: UIApplication, launchOptions: [UIApplicationLaunchOptionsKey: Any]?) {
-//        Fabric.with([Crashlytics.self])
+        Fabric.with([Crashlytics.self])
     }
 
 }

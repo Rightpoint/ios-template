@@ -12,11 +12,9 @@
 		ABC778801DC90B7A00815FB9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABC7787F1DC90B7A00815FB9 /* Assets.xcassets */; };
 		ABC778831DC90B7A00815FB9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABC778811DC90B7A00815FB9 /* LaunchScreen.storyboard */; };
 		ABC7788E1DC90B7A00815FB9 /* PRODUCTNAMETests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC7788D1DC90B7A00815FB9 /* PRODUCTNAMETests.swift */; };
-		ABC7789C1DC91E5B00815FB9 /* TextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC7789B1DC91E5B00815FB9 /* TextStyle.swift */; };
 		ABC778C91DC927C900815FB9 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC778C81DC927C900815FB9 /* Formatters.swift */; };
 		ABC778D41DC92FCD00815FB9 /* APIResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC778D31DC92FCD00815FB9 /* APIResponseSerializer.swift */; };
 		ABC778D61DC931A400815FB9 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC778D51DC931A400815FB9 /* APIError.swift */; };
-		ABC778D81DC9331400815FB9 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC778D71DC9331400815FB9 /* Appearance.swift */; };
 		ABC778DA1DC93E9C00815FB9 /* APIEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC778D91DC93E9C00815FB9 /* APIEndpoint.swift */; };
 		ABC778DD1DC94EE500815FB9 /* Acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = ABC778DC1DC94EE500815FB9 /* Acknowledgements.plist */; };
 		ABC778DF1DC94F0900815FB9 /* BuildType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC778DE1DC94F0900815FB9 /* BuildType.swift */; };
@@ -26,6 +24,10 @@
 		ABC778EA1DC951B900815FB9 /* LoggingConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC778E91DC951B900815FB9 /* LoggingConfiguration.swift */; };
 		ABF84F7F1DC970E8002DB24D /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC778C21DC9252200815FB9 /* APIClient.swift */; };
 		ABF84F811DC97653002DB24D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = ABF84F801DC97653002DB24D /* Localizable.strings */; };
+		ABF84F8C1DC99CFD002DB24D /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF84F8A1DC99CFD002DB24D /* Appearance.swift */; };
+		ABF84F8D1DC99CFD002DB24D /* TextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF84F8B1DC99CFD002DB24D /* TextStyle.swift */; };
+		ABF84F911DC99D33002DB24D /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF84F8F1DC99D33002DB24D /* Localized.swift */; };
+		ABF84F921DC99D33002DB24D /* UIImage+Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF84F901DC99D33002DB24D /* UIImage+Asset.swift */; };
 		C9E4A7A7C8C2DA562B4F5053 /* Pods_PRODUCTNAMETests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F2C2A97F21BF37CEB2498E0 /* Pods_PRODUCTNAMETests.framework */; };
 /* End PBXBuildFile section */
 
@@ -69,7 +71,6 @@
 		ABC778891DC90B7A00815FB9 /* PRODUCTNAMETests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PRODUCTNAMETests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABC7788D1DC90B7A00815FB9 /* PRODUCTNAMETests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PRODUCTNAMETests.swift; sourceTree = "<group>"; };
 		ABC7788F1DC90B7A00815FB9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ABC7789B1DC91E5B00815FB9 /* TextStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextStyle.swift; sourceTree = "<group>"; };
 		ABC778C21DC9252200815FB9 /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		ABC778C81DC927C900815FB9 /* Formatters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
 		ABC778CE1DC92BDF00815FB9 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
@@ -79,7 +80,6 @@
 		ABC778D21DC92CC500815FB9 /* Raizlabs-Account.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Raizlabs-Account.xcconfig"; sourceTree = "<group>"; };
 		ABC778D31DC92FCD00815FB9 /* APIResponseSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIResponseSerializer.swift; sourceTree = "<group>"; };
 		ABC778D51DC931A400815FB9 /* APIError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
-		ABC778D71DC9331400815FB9 /* Appearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
 		ABC778D91DC93E9C00815FB9 /* APIEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIEndpoint.swift; sourceTree = "<group>"; };
 		ABC778DC1DC94EE500815FB9 /* Acknowledgements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Acknowledgements.plist; sourceTree = "<group>"; };
 		ABC778DE1DC94F0900815FB9 /* BuildType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildType.swift; sourceTree = "<group>"; };
@@ -88,6 +88,10 @@
 		ABC778E71DC9503600815FB9 /* InstabugConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstabugConfiguration.swift; sourceTree = "<group>"; };
 		ABC778E91DC951B900815FB9 /* LoggingConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggingConfiguration.swift; sourceTree = "<group>"; };
 		ABF84F801DC97653002DB24D /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		ABF84F8A1DC99CFD002DB24D /* Appearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
+		ABF84F8B1DC99CFD002DB24D /* TextStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextStyle.swift; sourceTree = "<group>"; };
+		ABF84F8F1DC99D33002DB24D /* Localized.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localized.swift; sourceTree = "<group>"; };
+		ABF84F901DC99D33002DB24D /* UIImage+Asset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Asset.swift"; sourceTree = "<group>"; };
 		C7DBD1236E57FBDDF10B2FB0 /* Pods-PRODUCTNAME.develop.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PRODUCTNAME.develop.xcconfig"; path = "Pods/Target Support Files/Pods-PRODUCTNAME/Pods-PRODUCTNAME.develop.xcconfig"; sourceTree = "<group>"; };
 		DCD1E696B5452D855D78934E /* Pods-PRODUCTNAME.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PRODUCTNAME.release.xcconfig"; path = "Pods/Target Support Files/Pods-PRODUCTNAME/Pods-PRODUCTNAME.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -160,9 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				ABC778C51DC9266900815FB9 /* API */,
-				ABC7789A1DC91E4100815FB9 /* Appearance */,
 				ABC778981DC91DFB00815FB9 /* Application */,
-				ABF84F821DC976B4002DB24D /* Generated */,
 				ABC778C41DC9266300815FB9 /* Model */,
 				ABC778991DC91E0D00815FB9 /* Resources */,
 				ABC778C61DC927A600815FB9 /* Utilities */,
@@ -183,6 +185,8 @@
 		ABC778981DC91DFB00815FB9 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				ABF84F8E1DC99D33002DB24D /* Generated */,
+				ABF84F891DC99CFD002DB24D /* Appearance */,
 				ABC778E21DC94F9300815FB9 /* AppLifecycleConfigurable */,
 				ABC778781DC90B7A00815FB9 /* AppDelegate.swift */,
 				ABC778DE1DC94F0900815FB9 /* BuildType.swift */,
@@ -201,15 +205,6 @@
 				ABF84F801DC97653002DB24D /* Localizable.strings */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		ABC7789A1DC91E4100815FB9 /* Appearance */ = {
-			isa = PBXGroup;
-			children = (
-				ABC778D71DC9331400815FB9 /* Appearance.swift */,
-				ABC7789B1DC91E5B00815FB9 /* TextStyle.swift */,
-			);
-			path = Appearance;
 			sourceTree = "<group>";
 		};
 		ABC778C41DC9266300815FB9 /* Model */ = {
@@ -268,11 +263,21 @@
 			path = AppLifecycleConfigurable;
 			sourceTree = "<group>";
 		};
-		ABF84F821DC976B4002DB24D /* Generated */ = {
+		ABF84F891DC99CFD002DB24D /* Appearance */ = {
 			isa = PBXGroup;
 			children = (
+				ABF84F8A1DC99CFD002DB24D /* Appearance.swift */,
+				ABF84F8B1DC99CFD002DB24D /* TextStyle.swift */,
 			);
-			name = Generated;
+			path = Appearance;
+			sourceTree = "<group>";
+		};
+		ABF84F8E1DC99D33002DB24D /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				ABF84F8F1DC99D33002DB24D /* Localized.swift */,
+				ABF84F901DC99D33002DB24D /* UIImage+Asset.swift */,
+			);
 			path = Generated;
 			sourceTree = "<group>";
 		};
@@ -426,7 +431,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run \'pod install\' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		6A1FCEA891F5FEC9C4482DA6 /* [CP] Check Pods Manifest.lock */ = {
@@ -441,7 +446,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run \'pod install\' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		ABC778DB1DC9405700815FB9 /* SwiftLint */ = {
@@ -495,19 +500,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABF84F8D1DC99CFD002DB24D /* TextStyle.swift in Sources */,
 				ABC778EA1DC951B900815FB9 /* LoggingConfiguration.swift in Sources */,
 				ABC778DA1DC93E9C00815FB9 /* APIEndpoint.swift in Sources */,
 				ABC778C91DC927C900815FB9 /* Formatters.swift in Sources */,
 				ABC778E11DC94F4400815FB9 /* AppLifecycleConfigurable.swift in Sources */,
+				ABF84F921DC99D33002DB24D /* UIImage+Asset.swift in Sources */,
+				ABF84F911DC99D33002DB24D /* Localized.swift in Sources */,
 				ABC778E81DC9503600815FB9 /* InstabugConfiguration.swift in Sources */,
-				ABC778D81DC9331400815FB9 /* Appearance.swift in Sources */,
 				ABC778D41DC92FCD00815FB9 /* APIResponseSerializer.swift in Sources */,
 				ABC778DF1DC94F0900815FB9 /* BuildType.swift in Sources */,
 				ABC778E61DC94FFC00815FB9 /* CrashlyticsConfiguration.swift in Sources */,
 				ABF84F7F1DC970E8002DB24D /* APIClient.swift in Sources */,
+				ABF84F8C1DC99CFD002DB24D /* Appearance.swift in Sources */,
 				ABC778791DC90B7A00815FB9 /* AppDelegate.swift in Sources */,
 				ABC778D61DC931A400815FB9 /* APIError.swift in Sources */,
-				ABC7789C1DC91E5B00815FB9 /* TextStyle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

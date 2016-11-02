@@ -67,11 +67,8 @@ platform :ios do
 
   desc "Update Swiftgen"
   lane :swiftgen do
-    SOURCE_DIR="PRODUCTNAME/Resources"
-    DEST_DIR="PRODUCTNAME/Generated"
-
-    sh "cd .. && Pods/SwiftGen/bin/swiftgen strings --enumName Localized --output #{DESTINATION_DIR}/Localized.swift #{SOURCE_DIR}/Localized.strings"
-    sh "cd .. && Pods/SwiftGen/bin/swiftgen images --enumName Asset --output #{DESTINATION_DIR}/UIImage+Asset.swift #{SOURCE_DIR}/Assets.xcassets"
+    sh "cd .. && Pods/SwiftGen/bin/swiftgen strings --template swift3 --enumName Localized --output 'PRODUCTNAME/Application/Generated/Localized.swift' 'PRODUCTNAME/Resources/Localizable.strings'"
+    sh "cd .. && Pods/SwiftGen/bin/swiftgen images --template swift3 --enumName Asset --output PRODUCTNAME/Application/Generated/UIImage+Asset.swift PRODUCTNAME/Resources/Assets.xcassets"
   end
 
   desc "Sync Project and Directory Structure"

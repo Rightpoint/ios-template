@@ -19,6 +19,8 @@ target 'PRODUCTNAMETests' do
   pod 'OHHTTPStubs'
 end
 
+pod 'SwiftGen'
+
 post_install do |installer|
   require 'fileutils'
   FileUtils.cp_r('Pods/Target Support Files/Pods-PRODUCTNAME/Pods-PRODUCTNAME-acknowledgements.plist', 'PRODUCTNAME/Resources/Acknowledgements.plist', :remove_destination => true)

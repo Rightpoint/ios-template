@@ -21,6 +21,7 @@ PODS:
   - OHHTTPStubs/NSURLSession (5.2.1):
     - OHHTTPStubs/Core
   - OHHTTPStubs/OHPathHelpers (5.2.1)
+  - SwiftGen (3.0.0)
   - Swiftilities (0.3.0):
     - Swiftilities/All (= 0.3.0)
   - Swiftilities/All (0.3.0):
@@ -48,6 +49,7 @@ DEPENDENCIES:
   - KeychainAccess
   - Marshal
   - OHHTTPStubs
+  - SwiftGen
   - Swiftilities (from `https://github.com/Raizlabs/Swiftilities.git`, branch `develop`)
 
 EXTERNAL SOURCES:
@@ -76,8 +78,9 @@ SPEC CHECKSUMS:
   KeychainAccess: 017ea25e313a49eda10bb19b0bb0760fb1edfe1a
   Marshal: a3c5c5dbd388112edf3cdabb718f2b4cfe48658a
   OHHTTPStubs: 3a42f25c00563b71355ac73112ba2324e9e6cef4
+  SwiftGen: f679cd0ed4173a5da3b01efd0da23542bf82f6ab
   Swiftilities: 8b85ce6156eaa0afc870d4df87e1ce1434b70ebf
 
-PODFILE CHECKSUM: aebb6e6629ace50295d35482d57c57e40c499567
+PODFILE CHECKSUM: d9748d162668492ea819e8b39520c51fab4087dc
 
-COCOAPODS: 1.1.0.rc.2
+COCOAPODS: 1.1.1

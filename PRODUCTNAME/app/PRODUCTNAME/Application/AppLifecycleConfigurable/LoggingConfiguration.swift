@@ -7,11 +7,12 @@
 //
 
 import UIKit
-//import Swiftilities
+import Swiftilities
 
 struct LoggingConfiguration: AppLifecycleConfigurable {
 
     func onDidLaunch(application: UIApplication, launchOptions: [UIApplicationLaunchOptionsKey: Any]?) {
+        Log.logLevel = .info
     }
 
 }
