@@ -18,7 +18,7 @@
 		ABC778DA1DC93E9C00815FB9 /* APIEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC778D91DC93E9C00815FB9 /* APIEndpoint.swift */; };
 		ABC778DD1DC94EE500815FB9 /* Acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = ABC778DC1DC94EE500815FB9 /* Acknowledgements.plist */; };
 		ABC778DF1DC94F0900815FB9 /* BuildType.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC778DE1DC94F0900815FB9 /* BuildType.swift */; };
-		ABC778E11DC94F4400815FB9 /* AppLifecycleConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC778E01DC94F4400815FB9 /* AppLifecycleConfigurable.swift */; };
+		ABC778E11DC94F4400815FB9 /* AppLifecycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC778E01DC94F4400815FB9 /* AppLifecycle.swift */; };
 		ABC778E61DC94FFC00815FB9 /* CrashlyticsConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC778E51DC94FFC00815FB9 /* CrashlyticsConfiguration.swift */; };
 		ABC778E81DC9503600815FB9 /* InstabugConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC778E71DC9503600815FB9 /* InstabugConfiguration.swift */; };
 		ABC778EA1DC951B900815FB9 /* LoggingConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC778E91DC951B900815FB9 /* LoggingConfiguration.swift */; };
@@ -83,7 +83,7 @@
 		ABC778D91DC93E9C00815FB9 /* APIEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIEndpoint.swift; sourceTree = "<group>"; };
 		ABC778DC1DC94EE500815FB9 /* Acknowledgements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Acknowledgements.plist; sourceTree = "<group>"; };
 		ABC778DE1DC94F0900815FB9 /* BuildType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildType.swift; sourceTree = "<group>"; };
-		ABC778E01DC94F4400815FB9 /* AppLifecycleConfigurable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppLifecycleConfigurable.swift; sourceTree = "<group>"; };
+		ABC778E01DC94F4400815FB9 /* AppLifecycle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppLifecycle.swift; sourceTree = "<group>"; };
 		ABC778E51DC94FFC00815FB9 /* CrashlyticsConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CrashlyticsConfiguration.swift; sourceTree = "<group>"; };
 		ABC778E71DC9503600815FB9 /* InstabugConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstabugConfiguration.swift; sourceTree = "<group>"; };
 		ABC778E91DC951B900815FB9 /* LoggingConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggingConfiguration.swift; sourceTree = "<group>"; };
@@ -185,9 +185,9 @@
 		ABC778981DC91DFB00815FB9 /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				ABF84F8E1DC99D33002DB24D /* Generated */,
+				ABC778E21DC94F9300815FB9 /* AppLifecycle */,
 				ABF84F891DC99CFD002DB24D /* Appearance */,
-				ABC778E21DC94F9300815FB9 /* AppLifecycleConfigurable */,
+				ABF84F8E1DC99D33002DB24D /* Generated */,
 				ABC778781DC90B7A00815FB9 /* AppDelegate.swift */,
 				ABC778DE1DC94F0900815FB9 /* BuildType.swift */,
 			);
@@ -252,15 +252,16 @@
 			path = xcconfig;
 			sourceTree = "<group>";
 		};
-		ABC778E21DC94F9300815FB9 /* AppLifecycleConfigurable */ = {
+		ABC778E21DC94F9300815FB9 /* AppLifecycle */ = {
 			isa = PBXGroup;
 			children = (
-				ABC778E01DC94F4400815FB9 /* AppLifecycleConfigurable.swift */,
+				ABC778E01DC94F4400815FB9 /* AppLifecycle.swift */,
 				ABC778E51DC94FFC00815FB9 /* CrashlyticsConfiguration.swift */,
 				ABC778E71DC9503600815FB9 /* InstabugConfiguration.swift */,
 				ABC778E91DC951B900815FB9 /* LoggingConfiguration.swift */,
 			);
-			path = AppLifecycleConfigurable;
+			name = AppLifecycle;
+			path = AppLifecycle;
 			sourceTree = "<group>";
 		};
 		ABF84F891DC99CFD002DB24D /* Appearance */ = {
@@ -431,7 +432,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run \'pod install\' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		6A1FCEA891F5FEC9C4482DA6 /* [CP] Check Pods Manifest.lock */ = {
@@ -446,7 +447,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run \'pod install\' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		ABC778DB1DC9405700815FB9 /* SwiftLint */ = {
@@ -504,7 +505,7 @@
 				ABC778EA1DC951B900815FB9 /* LoggingConfiguration.swift in Sources */,
 				ABC778DA1DC93E9C00815FB9 /* APIEndpoint.swift in Sources */,
 				ABC778C91DC927C900815FB9 /* Formatters.swift in Sources */,
-				ABC778E11DC94F4400815FB9 /* AppLifecycleConfigurable.swift in Sources */,
+				ABC778E11DC94F4400815FB9 /* AppLifecycle.swift in Sources */,
 				ABF84F921DC99D33002DB24D /* UIImage+Asset.swift in Sources */,
 				ABF84F911DC99D33002DB24D /* Localized.swift in Sources */,
 				ABC778E81DC9503600815FB9 /* InstabugConfiguration.swift in Sources */,

@@ -1,5 +1,5 @@
 //
-//  Appearance.swift
+//  LoggingConfiguration.swift
 //  {{ cookiecutter.project_name }}
 //
 //  Created by {{ cookiecutter.lead_dev }} on 11/1/16.
@@ -7,17 +7,12 @@
 //
 
 import UIKit
+import Swiftilities
 
-struct Appearance {
-    static var shared = Appearance()
+struct LoggingConfiguration: AppLifecycle {
 
-    func style() {
-        // Configure UIAppearance proxies
-    }
-}
-
-extension Appearance: AppLifecycle {
     func onDidLaunch(application: UIApplication, launchOptions: [UIApplicationLaunchOptionsKey: Any]?) {
-        style()
+        Log.logLevel = .info
     }
+
 }

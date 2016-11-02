@@ -1,23 +1,23 @@
 //
-//  Appearance.swift
+//  CrashlyticsConfiguration.swift
 //  {{ cookiecutter.project_name }}
 //
 //  Created by {{ cookiecutter.lead_dev }} on 11/1/16.
 //  Copyright © 2016 {{ cookiecutter.company_name }}. All rights reserved.
 //
 
+import Fabric
+import Crashlytics
 import UIKit
 
-struct Appearance {
-    static var shared = Appearance()
+struct CrashReportingConfiguration: AppLifecycle {
 
-    func style() {
-        // Configure UIAppearance proxies
+    var isEnabled: Bool {
+        return BuildType.active != .debug
     }
-}
 
-extension Appearance: AppLifecycle {
     func onDidLaunch(application: UIApplication, launchOptions: [UIApplicationLaunchOptionsKey: Any]?) {
-        style()
+        Fabric.with([Crashlytics.self])
     }
+
 }
