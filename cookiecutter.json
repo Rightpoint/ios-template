@@ -4,7 +4,7 @@
     "bundle_identifier": "com.{{ cookiecutter.company_name | replace(' ', '-') | lower }}",
     "lead_dev": "Brian King",
     "lead_email": "{{ cookiecutter.lead_dev | replace(' ', '.') | lower }}@raizlabs.com",
-    "hockey_key": "Ask a Tech Lead for the hockey key if needed",
-    "hockey_develop_id": "To create Hockey App ID, run:\ncurl -F \"title={{ cookiecutter.project_name }}\" -F \"bundle_identifier={{ cookiecutter.bundle_identifier }}\" -F \"platform=iOS\" -F \"custom_release_type=Develop\" -H \"X-HockeyAppToken: {{ cookiecutter.hockey_key }}\" https://rink.hockeyapp.net/api/2/apps/new\nCopy and paste the command above or enter DEVELOP_ID_TO_GET_LATER",
-    "hockey_sprint_id": "To create Hockey App ID, run:\ncurl -F \"title={{ cookiecutter.project_name }}\" -F \"bundle_identifier={{ cookiecutter.bundle_identifier }}\" -F \"platform=iOS\" -F \"custom_release_type=Sprint\" -H \"X-HockeyAppToken: {{ cookiecutter.hockey_key }}\" https://rink.hockeyapp.net/api/2/apps/new\nCopy and paste the command above or enter SPRINT_ID_TO_GET_LATER"
+    "hockey_key": "Ask a Tech Lead",
+    "hockey_develop_id": "To create Hockey App ID, run:\n\ncurl -F \"title={{ cookiecutter.project_name }}\" -F \"bundle_identifier={{ cookiecutter.bundle_identifier }}\" -F \"platform=iOS\" -F \"custom_release_type=Develop\" -H \"X-HockeyAppToken: {{ cookiecutter.hockey_key }}\" https://rink.hockeyapp.net/api/2/apps/new\n\nOr enter DEVELOP_ID_TO_GET_LATER",
+    "hockey_sprint_id": "To create Hockey App ID, run:\n\ncurl -F \"title={{ cookiecutter.project_name }}\" -F \"bundle_identifier={{ cookiecutter.bundle_identifier }}\" -F \"platform=iOS\" -F \"custom_release_type=Sprint\" -H \"X-HockeyAppToken: {{ cookiecutter.hockey_key }}\" https://rink.hockeyapp.net/api/2/apps/new\n\nOr enter SPRINT_ID_TO_GET_LATER"
 }
