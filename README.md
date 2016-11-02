@@ -2,11 +2,23 @@
 
 A template for new iOS projects at Raizlabs.
 
-Inspired by [suspenders], [django-template], and [Thoughtbot]
+Inspired by [thoughtbot]/[ios-template]
 
-[suspenders]: https://github.com/thoughtbot/suspenders
-[django-template]: https://github.com/thoughtbot/django-template
-[Thoughtbot]: https://thoughtbot.com/
+[thoughtbot]: https://thoughtbot.com/
+[ios-template]: https://github.com/thoughtbot/ios-template
+
+## What's in the template?
+
+ - [Default Cocoapods][pods]
+ - [Default Fastfile][fastfile] with [curl][hockey] commands to create apps on Hockey
+ - [APIClient Stub][apiclient]
+ - Configuration for [CircleCI]
+
+[pods]: %7B%7B%20cookiecutter.project_name%20%7B%7B/app/Podfile
+[fastfile]: %7B%7B%20cookiecutter.project_name%20%7B%7B/app/fastlane/Fastfile
+[apiclient]: %7B%7B%20cookiecutter.project_name%20%7B%7B/app/%7B%7B%20cookiecutter.project_name%20%7B%7B/API
+[CircleCI]: %7B%7B%20cookiecutter.project_name%20%7B%7B/circle.yml
+[hockey]: cookiecutter.json
 
 ## Usage
 
@@ -15,6 +27,8 @@ Inspired by [suspenders], [django-template], and [Thoughtbot]
 2. Run `cookiecutter gh:raizlabs/ios-template`
 
 [cookiecutter]: http://cookiecutter.readthedocs.org/en/latest/installation.html
+
+
 
 ## Updating Template
 
