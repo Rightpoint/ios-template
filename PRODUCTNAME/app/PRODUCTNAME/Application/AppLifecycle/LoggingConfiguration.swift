@@ -9,7 +9,7 @@
 import UIKit
 import Swiftilities
 
-struct LoggingConfiguration: AppLifecycleConfigurable {
+struct LoggingConfiguration: AppLifecycle {
 
     func onDidLaunch(application: UIApplication, launchOptions: [UIApplicationLaunchOptionsKey: Any]?) {
         Log.logLevel = .info

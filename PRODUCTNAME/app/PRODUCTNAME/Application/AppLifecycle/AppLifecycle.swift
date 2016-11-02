@@ -12,10 +12,10 @@ import UIKit
  *  Objects conforming to this protocol provide some sort of configurable behavior intended for execution
  *  on app launch.
  */
-protocol AppLifecycleConfigurable {
+protocol AppLifecycle {
 
-    /// The build types to which the conforming instance applies.
-    var enabledBuildTypes: [BuildType] { get }
+    /// A check to see if the configuration is enabled.
+    var isEnabled: Bool { get }
 
     /**
      Invoked on UIApplication.applicationDidFinishLaunching to give the conforming instance a chance to execute configuration.
@@ -27,20 +27,10 @@ protocol AppLifecycleConfigurable {
 
 }
 
-extension AppLifecycleConfigurable {
+extension AppLifecycle {
 
-    var enabledBuildTypes: [BuildType] {
-        return [.Debug, .Internal, .Release]
-    }
-
-    /// Whether or not this configurable instance is enabled for the current build type.
     var isEnabled: Bool {
-        for buildType in self.enabledBuildTypes {
-            if buildType.active {
-                return true
-            }
-        }
-        return false
+        return true
     }
 
 }

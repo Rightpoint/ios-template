@@ -16,7 +16,7 @@ struct Appearance {
     }
 }
 
-extension Appearance: AppLifecycleConfigurable {
+extension Appearance: AppLifecycle {
     func onDidLaunch(application: UIApplication, launchOptions: [UIApplicationLaunchOptionsKey: Any]?) {
         style()
     }

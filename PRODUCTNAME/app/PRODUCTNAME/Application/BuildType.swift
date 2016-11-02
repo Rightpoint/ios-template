@@ -13,32 +13,23 @@ import Foundation
 enum BuildType {
 
     /// Debug build (-D DEBUG)
-    case Debug
+    case debug
 
     /// Internal build, configured as release but not for App Store submission (-D RZINTERNAL)
-    case Internal
+    case `internal`
 
     /// App store Release build, no flags
-    case Release
+    case release
 
     /// Whether or not this build type is the active build type.
-    var active: Bool {
-        switch self {
-        case .Debug:
-            #if DEBUG
-                return true
-            #else
-                return false
-            #endif
-        case .Internal:
-            #if RZINTERNAL
-                return true
-            #else
-                return false
-            #endif
-        case .Release:
-            return !BuildType.Debug.active && !BuildType.Internal.active
-        }
+    static var active: BuildType {
+        #if DEBUG
+            return .debug
+        #elseif RZINTERNAL
+            return .internal
+        #else
+            return .release
+        #endif
     }
 
 }

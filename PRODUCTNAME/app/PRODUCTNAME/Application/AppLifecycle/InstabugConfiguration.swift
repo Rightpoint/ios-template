@@ -9,9 +9,10 @@
 import Instabug
 import UIKit
 
-struct InstabugConfiguration: AppLifecycleConfigurable {
-    var enabledBuildTypes: [BuildType] {
-        return [.Internal]
+struct InstabugConfiguration: AppLifecycle {
+
+    var isEnabled: Bool {
+        return BuildType.active == .internal
     }
 
     func onDidLaunch(application: UIApplication, launchOptions: [UIApplicationLaunchOptionsKey: Any]?) {

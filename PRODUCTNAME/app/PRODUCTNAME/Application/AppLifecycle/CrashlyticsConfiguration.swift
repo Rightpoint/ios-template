@@ -10,10 +10,10 @@ import Fabric
 import Crashlytics
 import UIKit
 
-struct CrashReportingConfiguration: AppLifecycleConfigurable {
+struct CrashReportingConfiguration: AppLifecycle {
 
-    var enabledBuildTypes: [BuildType] {
-        return [.Internal, .Release]
+    var isEnabled: Bool {
+        return BuildType.active != .debug
     }
 
     func onDidLaunch(application: UIApplication, launchOptions: [UIApplicationLaunchOptionsKey: Any]?) {

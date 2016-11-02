@@ -13,7 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    let configurations: [AppLifecycleConfigurable] = [
+    let configurations: [AppLifecycle] = [
         LoggingConfiguration(),
         InstabugConfiguration(),
         Appearance.shared,
