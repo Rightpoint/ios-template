@@ -1,0 +1,28 @@
+platform :ios, '9.0'
+use_frameworks!
+inhibit_all_warnings!
+
+target '{{ cookiecutter.project_name }}' do
+  pod 'Instabug'
+  pod 'Crashlytics'
+
+  pod 'Alamofire'
+  pod 'KeychainAccess'
+  pod 'Marshal'
+
+  pod 'BonMot', :git => "https://github.com/Raizlabs/BonMot.git", :branch => 'feature/swift-first'
+  pod 'Anchorage'
+  pod 'Swiftilities', :git => "https://github.com/Raizlabs/Swiftilities.git", :branch => 'develop'
+end
+
+target '{{ cookiecutter.project_name }}Tests' do
+  pod 'OHHTTPStubs'
+end
+
+pod 'SwiftGen'
+
+post_install do |installer|
+  require 'fileutils'
+  FileUtils.cp_r('Pods/Target Support Files/Pods-{{ cookiecutter.project_name }}/Pods-{{ cookiecutter.project_name }}-acknowledgements.plist', '{{ cookiecutter.project_name }}/Resources/Acknowledgements.plist', :remove_destination => true)
+end
+

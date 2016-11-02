@@ -1,8 +1,10 @@
 {
     "project_name": "Project Name",
     "company_name": "Raizlabs",
-    "bundle_identifier": "com.{{ cookiecutter.company_name | replace(' ', '-') | lower }}"
+    "bundle_identifier": "com.{{ cookiecutter.company_name | replace(' ', '-') | lower }}",
     "lead_dev": "Brian King",
     "lead_email": "{{ cookiecutter.lead_dev | replace(' ', '.') | lower }}@raizlabs.com",
-    "hockey_key": ""
+    "hockey_key": "Ask a Tech Lead for the hockey key if needed",
+    "hockey_develop_id": "Run './bin/hockey.sh {{ cookiecutter.hockey_key }} \"{{ cookiecutter.project_name }}\" {{ cookiecutter.bundle_identifier }} Develop', or enter DEVELOP_ID and update later",
+    "hockey_sprint_id": "Run './bin/hockey.sh {{ cookiecutter.hockey_key }} \"{{ cookiecutter.project_name }}\" {{ cookiecutter.bundle_identifier }} Sprint', or enter SPRINT_ID and update later"
 }
