@@ -1,0 +1,4 @@
+app_identifier "ZZAPP_IDENTIFIERZZ" # The bundle identifier of your app
+apple_id "lead.developer@raizlabs.com" # Your Apple email address
+
+team_id "TEAMID"  # Developer Portal Team ID

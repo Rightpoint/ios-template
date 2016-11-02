@@ -1,0 +1,99 @@
+fastlane_version "1.104.0"
+
+default_platform :ios
+
+# Set by build environment
+# FL_HOCKEY_API_TOKEN
+# RZ_KEYCHAIN_PASSWORD
+#ENV['SLACK_URL'] = 'https://hooks.slack.com/services/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'
+
+ENV['RZ_ARTIFACTS'] ||= ENV['CIRCLE_ARTIFACTS'] || './build'
+ENV['RZ_TEST_REPORTS'] ||= ENV['CIRCLE_TEST_REPORTS'] || './build'
+ENV['FASTLANE_XCODE_LIST_TIMEOUT'] = '120'
+ENV['CI_BUILD'] = 'yes'
+ENV['GYM_OUTPUT_NAME'] = 'PRODUCTNAME'
+ENV['FL_HOCKEY_IPA'] = "#{ENV['RZ_ARTIFACTS']}/#{ENV['GYM_OUTPUT_NAME']}.ipa"
+ENV['FL_HOCKEY_NOTIFY'] = '0'
+
+platform :ios do
+
+  before_all do
+    if ENV['RZ_ARTIFACTS'] && ENV['RZ_ARTIFACTS'].length > 0
+      sh 'rm -rf $RZ_ARTIFACTS && mkdir $RZ_ARTIFACTS'
+    end
+    unlock_keychain(path: './Signing/Raizlabs-PRODUCTNAME.keychain', password: ENV['RZ_KEYCHAIN_PASSWORD'] )
+  end
+
+  desc "Runs tests"
+  lane :test do
+    scan(
+      output_types: 'junit',
+      scheme: 'PRODUCTNAME',
+      output_directory: "#{ENV['RZ_TEST_REPORTS']}",
+      buildlog_path: "#{ENV['RZ_ARTIFACTS']}",
+    )
+    if !ENV['CIRCLE_TEST_REPORTS'].nil?
+      # CircleCI requires the "xml" extension for test reporting
+      puts "Fixing JUnit report name"
+      sh "mv #{ENV['RZ_TEST_REPORTS']}/report.junit #{ENV['RZ_TEST_REPORTS']}/report.xml"
+    end
+  end
+
+  desc "Builds and submits a Develop release to Hockey"
+  lane :develop do
+    build("PRODUCTNAME", 'enterprise')
+    # hockey(public_identifier: 'ZZHOCKEY_PUBLIC_IDENTIFIER_DEVELOPZZ')
+    # upload_symbols_to_crashlytics(:api_token => 'ZZCRASHLYTICS_API_TOKEN_DEVELOPZZ')
+    slack(message: "Successfully uploaded build #{build_number} to develop", success: true)
+  end
+
+  desc "Builds and submits a Sprint release to Hockey"
+  lane :sprint do
+    build("PRODUCTNAME", 'enterprise')
+    # hockey(public_identifier: 'ZZHOCKEY_PUBLIC_IDENTIFIER_SPRINTZZ')
+    # upload_symbols_to_crashlytics(:api_token => 'ZZCRASHLYTICS_API_TOKEN_SPRINTZZ')
+    slack(message: "Successfully uploaded build #{build_number} to sprint", success: true)
+  end
+
+  # desc "Builds and submits an App Store release to TestFlight"
+  lane :beta do
+  end
+
+  desc "Builds and submits an App Store release to iTunes Connect"
+  lane :release do
+  end
+
+  # Helpers ----------------------
+
+  desc "Update Swiftgen"
+  lane :swiftgen do
+    SOURCE_DIR="PRODUCTNAME/Resources"
+    DEST_DIR="PRODUCTNAME/Generated"
+
+    sh "cd .. && Pods/SwiftGen/bin/swiftgen strings --enumName Localized --output #{DESTINATION_DIR}/Localized.swift #{SOURCE_DIR}/Localized.strings"
+    sh "cd .. && Pods/SwiftGen/bin/swiftgen images --enumName Asset --output #{DESTINATION_DIR}/UIImage+Asset.swift #{SOURCE_DIR}/Assets.xcassets"
+  end
+
+  desc "Sync Project and Directory Structure"
+  lane :synx do
+    sh "cd .. && synx PRODUCTNAME.xcodeproj"
+  end
+
+  def build(scheme, export_method)
+    gym(
+      output_directory: "#{ENV['RZ_ARTIFACTS']}",
+      output_name: "PRODUCTNAME",
+      export_method: export_method,
+      scheme: scheme,
+      include_bitcode: false,
+      xcargs: "BUILD_NUMBER=#{build_number}",
+      buildlog_path: "#{ENV['RZ_ARTIFACTS']}",
+      use_legacy_build_api: true,
+    )
+  end
+
+  def build_number
+    `git rev-list HEAD --count`.chomp()
+  end
+
+end

@@ -1,0 +1,26 @@
+platform :ios, '9.0'
+use_frameworks!
+inhibit_all_warnings!
+
+target 'PRODUCTNAME' do
+  pod 'Instabug'
+  pod 'Crashlytics'
+
+  pod 'Alamofire'
+  pod 'KeychainAccess'
+  pod 'Marshal'
+
+  pod 'BonMot', :git => "https://github.com/Raizlabs/BonMot.git", :branch => 'feature/swift-first'
+  pod 'Anchorage'
+  pod 'Swiftilities', :git => "https://github.com/Raizlabs/Swiftilities.git", :branch => 'develop'
+end
+
+target 'PRODUCTNAMETests' do
+  pod 'OHHTTPStubs'
+end
+
+post_install do |installer|
+  require 'fileutils'
+  FileUtils.cp_r('Pods/Target Support Files/Pods-PRODUCTNAME/Pods-PRODUCTNAME-acknowledgements.plist', 'PRODUCTNAME/Resources/Acknowledgements.plist', :remove_destination => true)
+end
+

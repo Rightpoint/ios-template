@@ -1,0 +1,12 @@
+//
+//  Global.xcconfig
+//  PRODUCTNAME
+//
+//  Created by Brian King on 11/1/16.
+//  Copyright © 2016 ORGANIZATION. All rights reserved.
+//
+
+// This config file should be included last so the variable expansions work correctly
+
+CODE_SIGN_IDENTITY = $(CODE_SIGN_IDENTITY_$(TARGET_NAME))
+PROVISIONING_PROFILE = $(PROVISIONING_PROFILE_$(TARGET_NAME))

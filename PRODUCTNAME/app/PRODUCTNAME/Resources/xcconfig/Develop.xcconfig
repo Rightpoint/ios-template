@@ -1,0 +1,18 @@
+//
+//  Develop.xcconfig
+//  PRODUCTNAME
+//
+//  Created by Brian King on 11/1/16.
+//  Copyright © 2016 ORGANIZATION. All rights reserved.
+//
+
+#include "PRODUCTNAME/Resources/xcconfig/Raizlabs-Account.xcconfig"
+
+PRODUCT_BUNDLE_IDENTIFIER = com.raizlabs.PRODUCTNAME
+
+OTHER_SWIFT_FLAGS = -D INSTABUG -D RZINTERNAL
+
+CODE_SIGN_IDENTITY_PRODUCTNAME = iPhone Developer
+PROVISIONING_PROFILE_PRODUCTNAME =
+
+#include "PRODUCTNAME/Resources/xcconfig/Global.xcconfig"
