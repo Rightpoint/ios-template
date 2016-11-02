@@ -14,10 +14,10 @@ Inspired by [thoughtbot]/[ios-template]
  - [APIClient Stub][apiclient]
  - Configuration for [CircleCI]
 
-[pods]: %7B%7B%20cookiecutter.project_name%20%7B%7B/app/Podfile
-[fastfile]: %7B%7B%20cookiecutter.project_name%20%7B%7B/app/fastlane/Fastfile
-[apiclient]: %7B%7B%20cookiecutter.project_name%20%7B%7B/app/%7B%7B%20cookiecutter.project_name%20%7B%7B/API
-[CircleCI]: %7B%7B%20cookiecutter.project_name%20%7B%7B/circle.yml
+[pods]: %7B%7B%20cookiecutter.project_name%20%7D%7D/app/Podfile
+[fastfile]: %7B%7B%20cookiecutter.project_name%20%7D%7D/app/fastlane/Fastfile
+[apiclient]: %7B%7B%20cookiecutter.project_name%20%7D%7D/app/%7B%7B%20cookiecutter.project_name%20%7D%7D/API
+[CircleCI]: %7B%7B%20cookiecutter.project_name%20%7D%7D/circle.yml
 [hockey]: cookiecutter.json
 
 ## Usage
