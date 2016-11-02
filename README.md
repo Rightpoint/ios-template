@@ -12,12 +12,15 @@ Inspired by [thoughtbot]/[ios-template]
  - [Default Cocoapods][pods]
  - [Default Fastfile][fastfile] with [curl][hockey] commands to create apps on Hockey
  - [APIClient Stub][apiclient]
+ - Default [swiftlint]
+ - SwiftGen configured for strings and images
  - Configuration for [CircleCI]
 
 [pods]: %7B%7B%20cookiecutter.project_name%20%7D%7D/app/Podfile
 [fastfile]: %7B%7B%20cookiecutter.project_name%20%7D%7D/app/fastlane/Fastfile
 [apiclient]: %7B%7B%20cookiecutter.project_name%20%7D%7D/app/%7B%7B%20cookiecutter.project_name%20%7D%7D/API
 [CircleCI]: %7B%7B%20cookiecutter.project_name%20%7D%7D/circle.yml
+[swiftlint]: %7B%7B%20cookiecutter.project_name%20%7D%7D/app/.swiftlint.yml
 [hockey]: cookiecutter.json
 
 ## Usage
