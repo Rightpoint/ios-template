@@ -1,0 +1,7 @@
+{
+  "project_name": "Project Name",
+  "company_name": "Raizlabs",
+  "bundle_identifier": "com.{{ cookiecutter.company_name | replace(' ', '-') | lower }}"
+  "lead_dev": "Brian King",
+  "lead_email": "{{ cookiecutter.lead_dev | replace(' ', '.') | lower }}@raizlabs.com",
+}
