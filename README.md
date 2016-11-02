@@ -18,4 +18,4 @@ Inspired by [suspenders], [django-template], and [Thoughtbot]
 
 ## Updating Template
 
-Cookie cutter requires a lot of templating that is hard to work with. In particular, the `.xcodeproj` files can not be opened with Xcode. To keep the template easy to update, there's a script `generate_template.sh` which will output some crude shell commands to execute in order to update the template, based on the directory `PRODUCTNAME`. This is a bit meta, but it is very nice to be able to open the project in Xcode.
+Cookie cutter requires a lot of templating that is hard to work with. In particular, files with a variable name in them (`{{ cookiecutter.foo }}`) can not be opened in Xcode. To keep the template easy to update, there's a script `generate_template.sh | sh` which will transform the demo in `PRODUCTNAME` into the template directory. This is a bit meta, but it is very nice to be able to open the project in Xcode in order to maintain the template.

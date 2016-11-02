@@ -1,6 +1,10 @@
 # This is a shell script to transform the PRODUCTNAME directory into a cookie-cutter template
 
-# Copy the tree over
+# Delete files that we don't want to include in the template
+rm -rf PRODUCTNAME/app/Pods
+rm -rf PRODUCTNAME/app/PRODUCTNAME.xcworkspace
+
+#This is the only lookup that is done on filenames
 LOOKUP="PRODUCTNAME"
 EXPANDED="{{ cookiecutter.project_name }}"
 
@@ -17,7 +21,6 @@ for FILE in `find ./PRODUCTNAME -type f` ; do
 done
 
 # Do replacements
-
 function replace {
     for FILE in `find ./PRODUCTNAME -type f` ; do
     NEWFILE=`echo $FILE | sed -e "s/${LOOKUP}/${EXPANDED}/g"`
