@@ -83,14 +83,12 @@ class APIClientTests: XCTestCase {
         var testCount = 0
         stub(condition: pathStartsWith("/oauth/refresh")) { _ in
             oauthCount += 1
-            print("hit refresh")
 
             return OHHTTPStubsResponse(data: Payloads.oauth, statusCode:200, headers:nil)
         }
 
         stub(condition: pathStartsWith("/test")) { _ in
             testCount += 1
-            print("hit test")
             return OHHTTPStubsResponse(data: Payloads.test, statusCode: oauthCount > 0 ? 200 : 401, headers:nil)
         }
 
