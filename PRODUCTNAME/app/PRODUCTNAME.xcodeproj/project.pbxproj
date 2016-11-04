@@ -35,7 +35,7 @@
 		ABF84F9A1DCB70BB002DB24D /* Alamofire+PRODUCTNAME.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF84F991DCB70BB002DB24D /* Alamofire+PRODUCTNAME.swift */; };
 		ABF84F9D1DCBA37A002DB24D /* OAuthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF84F9C1DCBA37A002DB24D /* OAuthTests.swift */; };
 		ABF84FA01DCBAB1B002DB24D /* TestConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF84F9F1DCBAB1B002DB24D /* TestConstants.swift */; };
-		ABF84FA21DCBCB87002DB24D /* Marshal+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF84FA11DCBCB87002DB24D /* Marshal+Date.swift */; };
+		ABF84FA21DCBCB87002DB24D /* Marshal+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF84FA11DCBCB87002DB24D /* Marshal+Utility.swift */; };
 		ABF84FA41DCBCD89002DB24D /* APIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF84FA31DCBCD89002DB24D /* APIClientTests.swift */; };
 		ABF84FA61DCBCEA1002DB24D /* Payloads.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF84FA51DCBCEA1002DB24D /* Payloads.swift */; };
 		ABF84FA81DCBFF84002DB24D /* TestEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF84FA71DCBFF84002DB24D /* TestEndpoint.swift */; };
@@ -112,7 +112,7 @@
 		ABF84F991DCB70BB002DB24D /* Alamofire+PRODUCTNAME.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Alamofire+PRODUCTNAME.swift"; sourceTree = "<group>"; };
 		ABF84F9C1DCBA37A002DB24D /* OAuthTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthTests.swift; sourceTree = "<group>"; };
 		ABF84F9F1DCBAB1B002DB24D /* TestConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestConstants.swift; sourceTree = "<group>"; };
-		ABF84FA11DCBCB87002DB24D /* Marshal+Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Marshal+Date.swift"; sourceTree = "<group>"; };
+		ABF84FA11DCBCB87002DB24D /* Marshal+Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Marshal+Utility.swift"; sourceTree = "<group>"; };
 		ABF84FA31DCBCD89002DB24D /* APIClientTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClientTests.swift; sourceTree = "<group>"; };
 		ABF84FA51DCBCEA1002DB24D /* Payloads.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Payloads.swift; sourceTree = "<group>"; };
 		ABF84FA71DCBFF84002DB24D /* TestEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestEndpoint.swift; sourceTree = "<group>"; };
@@ -265,7 +265,7 @@
 			isa = PBXGroup;
 			children = (
 				ABC778C81DC927C900815FB9 /* Formatters.swift */,
-				ABF84FA11DCBCB87002DB24D /* Marshal+Date.swift */,
+				ABF84FA11DCBCB87002DB24D /* Marshal+Utility.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -558,7 +558,7 @@
 			files = (
 				ABF84F941DCA7F0A002DB24D /* OAuth.swift in Sources */,
 				ABF84F8D1DC99CFD002DB24D /* TextStyle.swift in Sources */,
-				ABF84FA21DCBCB87002DB24D /* Marshal+Date.swift in Sources */,
+				ABF84FA21DCBCB87002DB24D /* Marshal+Utility.swift in Sources */,
 				ABC778EA1DC951B900815FB9 /* LoggingConfiguration.swift in Sources */,
 				ABF84F9A1DCB70BB002DB24D /* Alamofire+PRODUCTNAME.swift in Sources */,
 				ABC778DA1DC93E9C00815FB9 /* APIEndpoint.swift in Sources */,

@@ -1,5 +1,5 @@
 //
-//  Marshal+Date.swift
+//  Marshal+Utility.swift
 //  PRODUCTNAME
 //
 //  Created by Brian King on 11/3/16.
@@ -7,6 +7,7 @@
 //
 
 import Marshal
+import KeychainAccess
 
 extension Date : ValueType {
     public static func value(from object: Any) throws -> Date {
@@ -18,5 +19,24 @@ extension Date : ValueType {
             throw MarshalError.typeMismatch(expected: "ISO8601 date string", actual: dateString)
         }
         return date
+    }
+}
+
+
+
+extension Keychain {
+    public func getObject<T: Unmarshaling>(_ key: String) throws -> T? {
+        guard let data = try getData(key),
+            let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else {
+                return nil
+        }
+        let object = try T.init(object: json)
+        return object
+    }
+
+    public func set<T: Marshaling>(_ value: T, key: String) throws {
+        let json = value.marshaled()
+        let data = try JSONSerialization.data(withJSONObject: json, options: [])
+        try set(data, key: key)
     }
 }

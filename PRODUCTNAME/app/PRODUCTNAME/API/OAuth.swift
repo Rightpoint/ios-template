@@ -8,6 +8,7 @@
 
 import Alamofire
 import Marshal
+import KeychainAccess
 
 /// OAuthClient manages the OAuth requests. It is responsible for:
 /// - the inital login which obtains the refresh token
@@ -15,8 +16,10 @@ import Marshal
 /// - adding authentication token to APIClient requests
 /// - retrying APIClient requests on authorization failures.
 final class OAuthClient {
+    static let credentials = "credentials"
     var clientSecret = BuildType.active.oathClientToken
     var clientID = BuildType.active.oathClientID
+    let keychain: Keychain
 
     struct Credentials {
         var refreshToken: String
@@ -24,7 +27,18 @@ final class OAuthClient {
         var expirationDate: Date
     }
 
-    var credentials: Credentials?
+    var credentials: Credentials? {
+        didSet {
+            if let credentials = credentials {
+                do {
+                    try keychain.set(credentials, key: OAuthClient.credentials)
+                }
+                catch {
+                    print("Unable to persist credentials")
+                }
+            }
+        }
+    }
     fileprivate var authenticatedTriggers: [(Void) -> ()] = []
     fileprivate var authenticationRequest: DataRequest? = nil
     fileprivate let lock = NSLock()
@@ -37,8 +51,15 @@ final class OAuthClient {
     let manager: Alamofire.SessionManager
     init(baseURL: URL = BuildType.active.baseURL, configuration: URLSessionConfiguration = .default) {
         self.baseURL = baseURL
+        self.keychain = Keychain(service: BuildType.active.identifier(suffix: OAuthClient.credentials))
+
         configuration.httpAdditionalHeaders?[APIConstants.accept] = APIConstants.applicationJSON
         self.manager = SessionManager(configuration: configuration)
+
+        do { self.credentials = try keychain.getObject(OAuthClient.credentials)
+        }
+        catch {
+        }
     }
 }
 
@@ -195,5 +216,15 @@ extension OAuthClient.Credentials: Unmarshaling {
         refreshToken = try json.value(for: "refreshToken")
         token = try json.value(for: "token")
         expirationDate = try json.value(for: "expirationDate")
+    }
+}
+
+extension OAuthClient.Credentials: Marshaling {
+    func marshaled() -> [String: Any] {
+        return [
+            "refreshToken": refreshToken,
+            "token": token,
+            "expirationDate": Formatters.ISODateFormatter.string(from: expirationDate),
+        ]
     }
 }
