@@ -50,7 +50,6 @@ extension OAuthClient: RequestAdapter {
     // Add the authorization header to the request. If there are no credentials, let the request through. It will 401 and retry.
     func adapt(_ urlRequest: URLRequest) throws -> URLRequest {
         lock.lock() ; defer { lock.unlock() }
-        print("Adapting")
         var urlRequest = urlRequest
         if let token = credentials?.token {
             urlRequest.allHTTPHeaderFields?[APIConstants.authorization] = "Bearer \(token)"
@@ -70,13 +69,10 @@ extension OAuthClient: RequestRetrier {
             completion(false, 0)
             return
         }
-        print("shouldRetry")
         if authenticationRequest == nil {
-            print("refresh")
             refresh() {_ in }
         }
         authenticatedTriggers.append { [unowned self] in
-            print("trigerRetry")
             completion(self.credentials != nil, 0)
         }
     }
@@ -121,8 +117,6 @@ extension OAuthClient {
         let request = manager.request(baseURL, endpoint: endpoint)
         request.responseJSON { [weak self] response in
             self?.handleOauth(response: response, completion: completion)
-            print("refresh done")
-
         }
         authenticationRequest = request
     }
