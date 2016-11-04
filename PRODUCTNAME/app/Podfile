@@ -13,11 +13,13 @@ target 'PRODUCTNAME' do
   pod 'BonMot', :git => "https://github.com/Raizlabs/BonMot.git", :branch => 'feature/swift-first'
   pod 'Anchorage'
   pod 'Swiftilities', :git => "https://github.com/Raizlabs/Swiftilities.git", :branch => 'develop'
+
+  target 'PRODUCTNAMETests' do
+    pod 'OHHTTPStubs/Swift'
+  end
+
 end
 
-target 'PRODUCTNAMETests' do
-  pod 'OHHTTPStubs'
-end
 
 pod 'SwiftGen'
 

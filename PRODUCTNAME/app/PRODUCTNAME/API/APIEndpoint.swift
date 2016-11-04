@@ -7,19 +7,15 @@
 //
 
 import Alamofire
+import Marshal
 
 protocol APIEndpoint {
 
-    /// The HTTP method to use (e.g. "GET").
-    var method: Alamofire.Method { get }
-
-    /// The endpoint's path, relative to the base URL.
     var path: String { get }
-
-    /// The encoding to use (e.g. "application/json") for any request parameters.
-    var encoding: Alamofire.ParameterEncoding { get }
-
-    /// The parameters to encode
-    var parameters: [String : AnyObject]? { get }
+    var method: HTTPMethod { get }
+    var encoding: ParameterEncoding { get }
+    var requiresAuth: Bool { get }
+    var parameters: JSONObject? { get }
+    var headers: HTTPHeaders { get }
 
 }
