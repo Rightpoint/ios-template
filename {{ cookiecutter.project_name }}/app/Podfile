@@ -13,11 +13,13 @@ target '{{ cookiecutter.project_name }}' do
   pod 'BonMot', :git => "https://github.com/Raizlabs/BonMot.git", :branch => 'feature/swift-first'
   pod 'Anchorage'
   pod 'Swiftilities', :git => "https://github.com/Raizlabs/Swiftilities.git", :branch => 'develop'
+
+  target '{{ cookiecutter.project_name }}Tests' do
+    pod 'OHHTTPStubs/Swift'
+  end
+
 end
 
-target '{{ cookiecutter.project_name }}Tests' do
-  pod 'OHHTTPStubs'
-end
 
 pod 'SwiftGen'
 

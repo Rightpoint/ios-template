@@ -8,6 +8,8 @@
 
 import Foundation
 
-enum APIError {
-    // Specific error cases that are of interest, or encapsulte error data
+enum APIError: Error {
+    case tokenExpired
+    case invalidCredentials
+    case invalidResponse
 }

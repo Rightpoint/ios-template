@@ -38,16 +38,6 @@
                ReferencedContainer = "container:{{ cookiecutter.project_name }}.xcodeproj">
             </BuildableReference>
          </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "ABC778AA1DC924EF00815FB9"
-               BuildableName = "APITests.xctest"
-               BlueprintName = "APITests"
-               ReferencedContainer = "container:{{ cookiecutter.project_name }}.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

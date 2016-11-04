@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		85083D4AEA7B5B726A79F450 /* Pods_{{ cookiecutter.project_name }}.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CD9F2E21AB27A0230007885 /* Pods_{{ cookiecutter.project_name }}.framework */; };
+		959F487642A61EF85C170AF9 /* Pods_{{ cookiecutter.project_name }}_{{ cookiecutter.project_name }}Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 845339F96003195CE76EA042 /* Pods_{{ cookiecutter.project_name }}_{{ cookiecutter.project_name }}Tests.framework */; };
 		ABC778791DC90B7A00815FB9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC778781DC90B7A00815FB9 /* AppDelegate.swift */; };
 		ABC778801DC90B7A00815FB9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABC7787F1DC90B7A00815FB9 /* Assets.xcassets */; };
 		ABC778831DC90B7A00815FB9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABC778811DC90B7A00815FB9 /* LaunchScreen.storyboard */; };
@@ -28,6 +29,16 @@
 		ABF84F8D1DC99CFD002DB24D /* TextStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF84F8B1DC99CFD002DB24D /* TextStyle.swift */; };
 		ABF84F911DC99D33002DB24D /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF84F8F1DC99D33002DB24D /* Localized.swift */; };
 		ABF84F921DC99D33002DB24D /* UIImage+Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF84F901DC99D33002DB24D /* UIImage+Asset.swift */; };
+		ABF84F941DCA7F0A002DB24D /* OAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF84F931DCA7F0A002DB24D /* OAuth.swift */; };
+		ABF84F961DCA89B0002DB24D /* BuildType+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF84F951DCA89B0002DB24D /* BuildType+API.swift */; };
+		ABF84F981DCAB3B9002DB24D /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF84F971DCAB3B9002DB24D /* APIConstants.swift */; };
+		ABF84F9A1DCB70BB002DB24D /* Alamofire+{{ cookiecutter.project_name }}.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF84F991DCB70BB002DB24D /* Alamofire+{{ cookiecutter.project_name }}.swift */; };
+		ABF84F9D1DCBA37A002DB24D /* OAuthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF84F9C1DCBA37A002DB24D /* OAuthTests.swift */; };
+		ABF84FA01DCBAB1B002DB24D /* TestConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF84F9F1DCBAB1B002DB24D /* TestConstants.swift */; };
+		ABF84FA21DCBCB87002DB24D /* Marshal+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF84FA11DCBCB87002DB24D /* Marshal+Date.swift */; };
+		ABF84FA41DCBCD89002DB24D /* APIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF84FA31DCBCD89002DB24D /* APIClientTests.swift */; };
+		ABF84FA61DCBCEA1002DB24D /* Payloads.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF84FA51DCBCEA1002DB24D /* Payloads.swift */; };
+		ABF84FA81DCBFF84002DB24D /* TestEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF84FA71DCBFF84002DB24D /* TestEndpoint.swift */; };
 		C9E4A7A7C8C2DA562B4F5053 /* Pods_{{ cookiecutter.project_name }}Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F2C2A97F21BF37CEB2498E0 /* Pods_{{ cookiecutter.project_name }}Tests.framework */; };
 /* End PBXBuildFile section */
 
@@ -56,10 +67,13 @@
 
 /* Begin PBXFileReference section */
 		0B68FC2C40AE35C100C8E0A5 /* Pods-{{ cookiecutter.project_name }}.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-{{ cookiecutter.project_name }}.debug.xcconfig"; path = "Pods/Target Support Files/Pods-{{ cookiecutter.project_name }}/Pods-{{ cookiecutter.project_name }}.debug.xcconfig"; sourceTree = "<group>"; };
+		17DC86D175CE0686878A3A82 /* Pods-{{ cookiecutter.project_name }}-{{ cookiecutter.project_name }}Tests.sprint.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-{{ cookiecutter.project_name }}-{{ cookiecutter.project_name }}Tests.sprint.xcconfig"; path = "Pods/Target Support Files/Pods-{{ cookiecutter.project_name }}-{{ cookiecutter.project_name }}Tests/Pods-{{ cookiecutter.project_name }}-{{ cookiecutter.project_name }}Tests.sprint.xcconfig"; sourceTree = "<group>"; };
+		18117B6A27EAD54897E61F7E /* Pods-{{ cookiecutter.project_name }}-{{ cookiecutter.project_name }}Tests.develop.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-{{ cookiecutter.project_name }}-{{ cookiecutter.project_name }}Tests.develop.xcconfig"; path = "Pods/Target Support Files/Pods-{{ cookiecutter.project_name }}-{{ cookiecutter.project_name }}Tests/Pods-{{ cookiecutter.project_name }}-{{ cookiecutter.project_name }}Tests.develop.xcconfig"; sourceTree = "<group>"; };
 		29EBF39E7266FDA41A477533 /* Pods-{{ cookiecutter.project_name }}Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-{{ cookiecutter.project_name }}Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-{{ cookiecutter.project_name }}Tests/Pods-{{ cookiecutter.project_name }}Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		678F16A2ED0F9395E247B50F /* Pods-{{ cookiecutter.project_name }}Tests.develop.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-{{ cookiecutter.project_name }}Tests.develop.xcconfig"; path = "Pods/Target Support Files/Pods-{{ cookiecutter.project_name }}Tests/Pods-{{ cookiecutter.project_name }}Tests.develop.xcconfig"; sourceTree = "<group>"; };
 		6A9B67E292488844A2F6D30B /* Pods-{{ cookiecutter.project_name }}Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-{{ cookiecutter.project_name }}Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-{{ cookiecutter.project_name }}Tests/Pods-{{ cookiecutter.project_name }}Tests.release.xcconfig"; sourceTree = "<group>"; };
 		7F2C2A97F21BF37CEB2498E0 /* Pods_{{ cookiecutter.project_name }}Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_{{ cookiecutter.project_name }}Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		845339F96003195CE76EA042 /* Pods_{{ cookiecutter.project_name }}_{{ cookiecutter.project_name }}Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_{{ cookiecutter.project_name }}_{{ cookiecutter.project_name }}Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CD9F2E21AB27A0230007885 /* Pods_{{ cookiecutter.project_name }}.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_{{ cookiecutter.project_name }}.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		93311DA40F63AE5674D438F9 /* Pods-{{ cookiecutter.project_name }}Tests.sprint.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-{{ cookiecutter.project_name }}Tests.sprint.xcconfig"; path = "Pods/Target Support Files/Pods-{{ cookiecutter.project_name }}Tests/Pods-{{ cookiecutter.project_name }}Tests.sprint.xcconfig"; sourceTree = "<group>"; };
 		9E61F9E4F9A440040EE8DCF0 /* Pods-{{ cookiecutter.project_name }}.sprint.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-{{ cookiecutter.project_name }}.sprint.xcconfig"; path = "Pods/Target Support Files/Pods-{{ cookiecutter.project_name }}/Pods-{{ cookiecutter.project_name }}.sprint.xcconfig"; sourceTree = "<group>"; };
@@ -92,6 +106,17 @@
 		ABF84F8B1DC99CFD002DB24D /* TextStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextStyle.swift; sourceTree = "<group>"; };
 		ABF84F8F1DC99D33002DB24D /* Localized.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localized.swift; sourceTree = "<group>"; };
 		ABF84F901DC99D33002DB24D /* UIImage+Asset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Asset.swift"; sourceTree = "<group>"; };
+		ABF84F931DCA7F0A002DB24D /* OAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuth.swift; sourceTree = "<group>"; };
+		ABF84F951DCA89B0002DB24D /* BuildType+API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BuildType+API.swift"; sourceTree = "<group>"; };
+		ABF84F971DCAB3B9002DB24D /* APIConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
+		ABF84F991DCB70BB002DB24D /* Alamofire+{{ cookiecutter.project_name }}.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Alamofire+{{ cookiecutter.project_name }}.swift"; sourceTree = "<group>"; };
+		ABF84F9C1DCBA37A002DB24D /* OAuthTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthTests.swift; sourceTree = "<group>"; };
+		ABF84F9F1DCBAB1B002DB24D /* TestConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestConstants.swift; sourceTree = "<group>"; };
+		ABF84FA11DCBCB87002DB24D /* Marshal+Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Marshal+Date.swift"; sourceTree = "<group>"; };
+		ABF84FA31DCBCD89002DB24D /* APIClientTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClientTests.swift; sourceTree = "<group>"; };
+		ABF84FA51DCBCEA1002DB24D /* Payloads.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Payloads.swift; sourceTree = "<group>"; };
+		ABF84FA71DCBFF84002DB24D /* TestEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestEndpoint.swift; sourceTree = "<group>"; };
+		C3A4171B7E64E228CC7A0DF7 /* Pods-{{ cookiecutter.project_name }}-{{ cookiecutter.project_name }}Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-{{ cookiecutter.project_name }}-{{ cookiecutter.project_name }}Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-{{ cookiecutter.project_name }}-{{ cookiecutter.project_name }}Tests/Pods-{{ cookiecutter.project_name }}-{{ cookiecutter.project_name }}Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		C7DBD1236E57FBDDF10B2FB0 /* Pods-{{ cookiecutter.project_name }}.develop.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-{{ cookiecutter.project_name }}.develop.xcconfig"; path = "Pods/Target Support Files/Pods-{{ cookiecutter.project_name }}/Pods-{{ cookiecutter.project_name }}.develop.xcconfig"; sourceTree = "<group>"; };
 		DCD1E696B5452D855D78934E /* Pods-{{ cookiecutter.project_name }}.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-{{ cookiecutter.project_name }}.release.xcconfig"; path = "Pods/Target Support Files/Pods-{{ cookiecutter.project_name }}/Pods-{{ cookiecutter.project_name }}.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -110,6 +135,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9E4A7A7C8C2DA562B4F5053 /* Pods_{{ cookiecutter.project_name }}Tests.framework in Frameworks */,
+				959F487642A61EF85C170AF9 /* Pods_{{ cookiecutter.project_name }}_{{ cookiecutter.project_name }}Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,6 +153,9 @@
 				9E61F9E4F9A440040EE8DCF0 /* Pods-{{ cookiecutter.project_name }}.sprint.xcconfig */,
 				678F16A2ED0F9395E247B50F /* Pods-{{ cookiecutter.project_name }}Tests.develop.xcconfig */,
 				93311DA40F63AE5674D438F9 /* Pods-{{ cookiecutter.project_name }}Tests.sprint.xcconfig */,
+				C3A4171B7E64E228CC7A0DF7 /* Pods-{{ cookiecutter.project_name }}-{{ cookiecutter.project_name }}Tests.debug.xcconfig */,
+				18117B6A27EAD54897E61F7E /* Pods-{{ cookiecutter.project_name }}-{{ cookiecutter.project_name }}Tests.develop.xcconfig */,
+				17DC86D175CE0686878A3A82 /* Pods-{{ cookiecutter.project_name }}-{{ cookiecutter.project_name }}Tests.sprint.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -136,6 +165,7 @@
 			children = (
 				8CD9F2E21AB27A0230007885 /* Pods_{{ cookiecutter.project_name }}.framework */,
 				7F2C2A97F21BF37CEB2498E0 /* Pods_{{ cookiecutter.project_name }}Tests.framework */,
+				845339F96003195CE76EA042 /* Pods_{{ cookiecutter.project_name }}_{{ cookiecutter.project_name }}Tests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -176,6 +206,8 @@
 		ABC7788C1DC90B7A00815FB9 /* {{ cookiecutter.project_name }}Tests */ = {
 			isa = PBXGroup;
 			children = (
+				ABF84F9E1DCBAB0A002DB24D /* Helpers */,
+				ABF84F9B1DCBA329002DB24D /* OAuth */,
 				ABC7788F1DC90B7A00815FB9 /* Info.plist */,
 				ABC7788D1DC90B7A00815FB9 /* {{ cookiecutter.project_name }}Tests.swift */,
 			);
@@ -217,10 +249,14 @@
 		ABC778C51DC9266900815FB9 /* API */ = {
 			isa = PBXGroup;
 			children = (
-				ABC778C21DC9252200815FB9 /* APIClient.swift */,
+				ABF84F971DCAB3B9002DB24D /* APIConstants.swift */,
 				ABC778D91DC93E9C00815FB9 /* APIEndpoint.swift */,
 				ABC778D51DC931A400815FB9 /* APIError.swift */,
+				ABC778C21DC9252200815FB9 /* APIClient.swift */,
+				ABF84F931DCA7F0A002DB24D /* OAuth.swift */,
 				ABC778D31DC92FCD00815FB9 /* APIResponseSerializer.swift */,
+				ABF84F951DCA89B0002DB24D /* BuildType+API.swift */,
+				ABF84F991DCB70BB002DB24D /* Alamofire+{{ cookiecutter.project_name }}.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -229,6 +265,7 @@
 			isa = PBXGroup;
 			children = (
 				ABC778C81DC927C900815FB9 /* Formatters.swift */,
+				ABF84FA11DCBCB87002DB24D /* Marshal+Date.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -260,7 +297,6 @@
 				ABC778E71DC9503600815FB9 /* InstabugConfiguration.swift */,
 				ABC778E91DC951B900815FB9 /* LoggingConfiguration.swift */,
 			);
-			name = AppLifecycle;
 			path = AppLifecycle;
 			sourceTree = "<group>";
 		};
@@ -280,6 +316,25 @@
 				ABF84F901DC99D33002DB24D /* UIImage+Asset.swift */,
 			);
 			path = Generated;
+			sourceTree = "<group>";
+		};
+		ABF84F9B1DCBA329002DB24D /* OAuth */ = {
+			isa = PBXGroup;
+			children = (
+				ABF84F9C1DCBA37A002DB24D /* OAuthTests.swift */,
+				ABF84FA31DCBCD89002DB24D /* APIClientTests.swift */,
+			);
+			name = OAuth;
+			sourceTree = "<group>";
+		};
+		ABF84F9E1DCBAB0A002DB24D /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				ABF84F9F1DCBAB1B002DB24D /* TestConstants.swift */,
+				ABF84FA51DCBCEA1002DB24D /* Payloads.swift */,
+				ABF84FA71DCBFF84002DB24D /* TestEndpoint.swift */,
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -417,7 +472,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-{{ cookiecutter.project_name }}Tests/Pods-{{ cookiecutter.project_name }}Tests-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-{{ cookiecutter.project_name }}-{{ cookiecutter.project_name }}Tests/Pods-{{ cookiecutter.project_name }}-{{ cookiecutter.project_name }}Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		5BD18785D9BC5E2781EBCD52 /* [CP] Check Pods Manifest.lock */ = {
@@ -432,7 +487,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run \'pod install\' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		6A1FCEA891F5FEC9C4482DA6 /* [CP] Check Pods Manifest.lock */ = {
@@ -447,7 +502,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run \'pod install\' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		ABC778DB1DC9405700815FB9 /* SwiftLint */ = {
@@ -491,7 +546,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-{{ cookiecutter.project_name }}Tests/Pods-{{ cookiecutter.project_name }}Tests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-{{ cookiecutter.project_name }}-{{ cookiecutter.project_name }}Tests/Pods-{{ cookiecutter.project_name }}-{{ cookiecutter.project_name }}Tests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -501,8 +556,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABF84F941DCA7F0A002DB24D /* OAuth.swift in Sources */,
 				ABF84F8D1DC99CFD002DB24D /* TextStyle.swift in Sources */,
+				ABF84FA21DCBCB87002DB24D /* Marshal+Date.swift in Sources */,
 				ABC778EA1DC951B900815FB9 /* LoggingConfiguration.swift in Sources */,
+				ABF84F9A1DCB70BB002DB24D /* Alamofire+{{ cookiecutter.project_name }}.swift in Sources */,
 				ABC778DA1DC93E9C00815FB9 /* APIEndpoint.swift in Sources */,
 				ABC778C91DC927C900815FB9 /* Formatters.swift in Sources */,
 				ABC778E11DC94F4400815FB9 /* AppLifecycle.swift in Sources */,
@@ -512,7 +570,9 @@
 				ABC778D41DC92FCD00815FB9 /* APIResponseSerializer.swift in Sources */,
 				ABC778DF1DC94F0900815FB9 /* BuildType.swift in Sources */,
 				ABC778E61DC94FFC00815FB9 /* CrashlyticsConfiguration.swift in Sources */,
+				ABF84F961DCA89B0002DB24D /* BuildType+API.swift in Sources */,
 				ABF84F7F1DC970E8002DB24D /* APIClient.swift in Sources */,
+				ABF84F981DCAB3B9002DB24D /* APIConstants.swift in Sources */,
 				ABF84F8C1DC99CFD002DB24D /* Appearance.swift in Sources */,
 				ABC778791DC90B7A00815FB9 /* AppDelegate.swift in Sources */,
 				ABC778D61DC931A400815FB9 /* APIError.swift in Sources */,
@@ -524,6 +584,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABC7788E1DC90B7A00815FB9 /* {{ cookiecutter.project_name }}Tests.swift in Sources */,
+				ABF84FA61DCBCEA1002DB24D /* Payloads.swift in Sources */,
+				ABF84FA01DCBAB1B002DB24D /* TestConstants.swift in Sources */,
+				ABF84FA81DCBFF84002DB24D /* TestEndpoint.swift in Sources */,
+				ABF84F9D1DCBA37A002DB24D /* OAuthTests.swift in Sources */,
+				ABF84FA41DCBCD89002DB24D /* APIClientTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -673,7 +738,7 @@
 		};
 		ABC778961DC90B7A00815FB9 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 29EBF39E7266FDA41A477533 /* Pods-{{ cookiecutter.project_name }}Tests.debug.xcconfig */;
+			baseConfigurationReference = C3A4171B7E64E228CC7A0DF7 /* Pods-{{ cookiecutter.project_name }}-{{ cookiecutter.project_name }}Tests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -688,7 +753,7 @@
 		};
 		ABC778971DC90B7A00815FB9 /* Develop */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 678F16A2ED0F9395E247B50F /* Pods-{{ cookiecutter.project_name }}Tests.develop.xcconfig */;
+			baseConfigurationReference = 18117B6A27EAD54897E61F7E /* Pods-{{ cookiecutter.project_name }}-{{ cookiecutter.project_name }}Tests.develop.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -760,7 +825,7 @@
 		};
 		ABC778CC1DC92B6000815FB9 /* Sprint */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 93311DA40F63AE5674D438F9 /* Pods-{{ cookiecutter.project_name }}Tests.sprint.xcconfig */;
+			baseConfigurationReference = 17DC86D175CE0686878A3A82 /* Pods-{{ cookiecutter.project_name }}-{{ cookiecutter.project_name }}Tests.sprint.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";

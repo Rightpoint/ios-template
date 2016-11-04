@@ -7,51 +7,60 @@
 //
 
 import Alamofire
+import Marshal
 
 final class APIClient {
     static var shared = APIClient()
+
     let manager: Alamofire.SessionManager
+    let oauthClient: OAuthClient
+    let baseURL: URL
+    let authorizationToken: String? = nil
 
-    init(configuration: URLSessionConfiguration = .default) {
-        configuration.configureHeadersForAPI()
-        self.manager = SessionManager(configuration: configuration)
-    }
-}
-
-private extension URLSessionConfiguration {
-
-    func configureHeadersForAPI() {
-        var headers = httpAdditionalHeaders ?? [:]
-
-        headers["Accept"] = "application/json"
-
-        httpAdditionalHeaders = headers
+    init(baseURL: URL = BuildType.active.baseURL, configuration: URLSessionConfiguration = .default) {
+        self.baseURL = baseURL
+        self.oauthClient = OAuthClient(baseURL: baseURL, configuration: configuration)
+        configuration.httpAdditionalHeaders?[APIConstants.accept] = APIConstants.applicationJSON
+        manager = SessionManager(configuration: configuration)
+        manager.adapter = oauthClient
+        manager.retrier = oauthClient
     }
 
-}
-
-extension APIClient: RequestAdapter {
-
-    func adapt(_ urlRequest: URLRequest) throws -> URLRequest {
-//        var urlRequest = urlRequest
-
-        // Add authentication headers
-        // Change the hostname
-
-        return urlRequest
-    }
-
-}
-
-extension APIClient: RequestRetrier {
-
-    func should(_ manager: SessionManager, retry request: Request, with error: Error, completion: @escaping RequestRetryCompletion) {
-        guard request.response?.statusCode == 401 else {
-            completion(false, 0)
-            return
+    func request<T: Unmarshaling>(_ endpoint: APIEndpoint, completion: @escaping (T?, Error?) -> Void) {
+        let request = manager.request(baseURL, endpoint: endpoint)
+        let handler = APIObjectResponseSerializer(type: T.self)
+        request.validate { (request, response, data) -> Request.ValidationResult in
+            switch response.statusCode {
+            case 401:
+                return .failure(APIError.tokenExpired)
+            case 400..<Int.max:
+                return .failure(APIError.invalidResponse)
+            default:
+                return .success
+            }
         }
-        // Perform retry and call completion
-        completion(false, 0)
+
+        request.response(responseSerializer: handler) { response in
+            completion(response.result.value, response.result.error)
+        }
     }
 
+    func request<T: Unmarshaling>(_ endpoint: APIEndpoint, completion: @escaping ([T]?, Error?) -> Void) {
+        let request = manager.request(baseURL, endpoint: endpoint)
+        request.validate { (request, response, data) -> Request.ValidationResult in
+            switch response.statusCode {
+            case 401:
+                return .failure(APIError.tokenExpired)
+            case 400..<Int.max:
+                return .failure(APIError.invalidResponse)
+            default:
+                return .success
+            }
+        }
+        let handler = APICollectionResponseSerializer(type: T.self)
+
+        request.response(responseSerializer: handler) { response in
+            completion(response.result.value, response.result.error)
+        }
+    }
 }
