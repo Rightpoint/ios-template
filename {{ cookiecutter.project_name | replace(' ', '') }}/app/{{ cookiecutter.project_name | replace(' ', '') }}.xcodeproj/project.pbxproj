@@ -166,14 +166,21 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		AB955DCB1DE3BDD300D0347E /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
 		ABC7786C1DC90B7A00815FB9 = {
 			isa = PBXGroup;
 			children = (
-				8338A961860BEC40421553DE /* Frameworks */,
 				ABC778771DC90B7A00815FB9 /* {{ cookiecutter.project_name | replace(' ', '') }} */,
 				ABC7788C1DC90B7A00815FB9 /* {{ cookiecutter.project_name | replace(' ', '') }}Tests */,
-				4A4913662E9FC4926B3F903D /* Pods */,
+				8338A961860BEC40421553DE /* Frameworks */,
 				ABC778761DC90B7A00815FB9 /* Products */,
+				4A4913662E9FC4926B3F903D /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -189,12 +196,12 @@
 		ABC778771DC90B7A00815FB9 /* {{ cookiecutter.project_name | replace(' ', '') }} */ = {
 			isa = PBXGroup;
 			children = (
-				ABC778C51DC9266900815FB9 /* API */,
 				ABC778981DC91DFB00815FB9 /* Application */,
+				AB955DCB1DE3BDD300D0347E /* Screens */,
+				ABC778C51DC9266900815FB9 /* API */,
 				ABC778C41DC9266300815FB9 /* Model */,
-				ABC778991DC91E0D00815FB9 /* Resources */,
 				ABC778C61DC927A600815FB9 /* Utilities */,
-				ABC778C71DC927B800815FB9 /* View */,
+				ABC778991DC91E0D00815FB9 /* Resources */,
 			);
 			path = {{ cookiecutter.project_name | replace(' ', '') }};
 			sourceTree = "<group>";
@@ -202,10 +209,10 @@
 		ABC7788C1DC90B7A00815FB9 /* {{ cookiecutter.project_name | replace(' ', '') }}Tests */ = {
 			isa = PBXGroup;
 			children = (
+				ABC7788D1DC90B7A00815FB9 /* {{ cookiecutter.project_name | replace(' ', '') }}Tests.swift */,
 				ABF84F9E1DCBAB0A002DB24D /* Helpers */,
 				ABF84F9B1DCBA329002DB24D /* OAuth */,
 				ABC7788F1DC90B7A00815FB9 /* Info.plist */,
-				ABC7788D1DC90B7A00815FB9 /* {{ cookiecutter.project_name | replace(' ', '') }}Tests.swift */,
 			);
 			path = {{ cookiecutter.project_name | replace(' ', '') }}Tests;
 			sourceTree = "<group>";
@@ -263,13 +270,6 @@
 				ABF84FA11DCBCB87002DB24D /* Marshal+Utility.swift */,
 			);
 			path = Utilities;
-			sourceTree = "<group>";
-		};
-		ABC778C71DC927B800815FB9 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		ABC778CD1DC92BC200815FB9 /* xcconfig */ = {

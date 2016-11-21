@@ -19,6 +19,7 @@ else
     echo "Fastfile updated"
 fi
 
+synx --no-sort-by-name "{{ cookiecutter.project_name | replace(' ', '') }}.xcodeproj"
 
 
 
