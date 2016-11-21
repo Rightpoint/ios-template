@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "ABC778741DC90B7A00815FB9"
-               BuildableName = "{{ cookiecutter.project_name }}.app"
-               BlueprintName = "{{ cookiecutter.project_name }}"
-               ReferencedContainer = "container:{{ cookiecutter.project_name }}.xcodeproj">
+               BuildableName = "{{ cookiecutter.project_name | replace(' ', '') }}.app"
+               BlueprintName = "{{ cookiecutter.project_name | replace(' ', '') }}"
+               ReferencedContainer = "container:{{ cookiecutter.project_name | replace(' ', '') }}.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "ABC778881DC90B7A00815FB9"
-               BuildableName = "{{ cookiecutter.project_name }}Tests.xctest"
-               BlueprintName = "{{ cookiecutter.project_name }}Tests"
-               ReferencedContainer = "container:{{ cookiecutter.project_name }}.xcodeproj">
+               BuildableName = "{{ cookiecutter.project_name | replace(' ', '') }}Tests.xctest"
+               BlueprintName = "{{ cookiecutter.project_name | replace(' ', '') }}Tests"
+               ReferencedContainer = "container:{{ cookiecutter.project_name | replace(' ', '') }}.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -43,9 +43,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "ABC778741DC90B7A00815FB9"
-            BuildableName = "{{ cookiecutter.project_name }}.app"
-            BlueprintName = "{{ cookiecutter.project_name }}"
-            ReferencedContainer = "container:{{ cookiecutter.project_name }}.xcodeproj">
+            BuildableName = "{{ cookiecutter.project_name | replace(' ', '') }}.app"
+            BlueprintName = "{{ cookiecutter.project_name | replace(' ', '') }}"
+            ReferencedContainer = "container:{{ cookiecutter.project_name | replace(' ', '') }}.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -66,9 +66,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "ABC778741DC90B7A00815FB9"
-            BuildableName = "{{ cookiecutter.project_name }}.app"
-            BlueprintName = "{{ cookiecutter.project_name }}"
-            ReferencedContainer = "container:{{ cookiecutter.project_name }}.xcodeproj">
+            BuildableName = "{{ cookiecutter.project_name | replace(' ', '') }}.app"
+            BlueprintName = "{{ cookiecutter.project_name | replace(' ', '') }}"
+            ReferencedContainer = "container:{{ cookiecutter.project_name | replace(' ', '') }}.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -85,9 +85,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "ABC778741DC90B7A00815FB9"
-            BuildableName = "{{ cookiecutter.project_name }}.app"
-            BlueprintName = "{{ cookiecutter.project_name }}"
-            ReferencedContainer = "container:{{ cookiecutter.project_name }}.xcodeproj">
+            BuildableName = "{{ cookiecutter.project_name | replace(' ', '') }}.app"
+            BlueprintName = "{{ cookiecutter.project_name | replace(' ', '') }}"
+            ReferencedContainer = "container:{{ cookiecutter.project_name | replace(' ', '') }}.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

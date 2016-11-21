@@ -1,1 +1,1 @@
-"Title.Navigation" = "{{ cookiecutter.project_name }}";
+"Title.Navigation" = "{{ cookiecutter.project_name | replace(' ', '') }}";

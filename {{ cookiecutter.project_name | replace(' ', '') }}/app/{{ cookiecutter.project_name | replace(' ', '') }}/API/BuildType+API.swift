@@ -1,6 +1,6 @@
 //
 //  BuildType+API.swift
-//  {{ cookiecutter.project_name }}
+//  {{ cookiecutter.project_name | replace(' ', '') }}
 //
 //  Created by {{ cookiecutter.lead_dev }} on 11/2/16.
 //  Copyright © 2016 {{ cookiecutter.company_name }}. All rights reserved.
@@ -13,9 +13,9 @@ extension BuildType {
         let baseURL: URL
         switch self {
         case .debug:
-            baseURL = URL(string: "https://{{ cookiecutter.project_name }}-dev.raizlabs.xyz")!
+            baseURL = URL(string: "https://{{ cookiecutter.project_name | replace(' ', '') }}-dev.raizlabs.xyz")!
         case .internal:
-            baseURL = URL(string: "https://{{ cookiecutter.project_name }}-sprint.raizlabs.xyz")!
+            baseURL = URL(string: "https://{{ cookiecutter.project_name | replace(' ', '') }}-sprint.raizlabs.xyz")!
         case .release:
             fatalError("Specify the release server")
         }

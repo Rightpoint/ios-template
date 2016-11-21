@@ -1,18 +1,18 @@
 //
 //  Sprint.xcconfig
-//  {{ cookiecutter.project_name }}
+//  {{ cookiecutter.project_name | replace(' ', '') }}
 //
 //  Created by {{ cookiecutter.lead_dev }} on 11/1/16.
 //  Copyright © 2016 {{ cookiecutter.company_name }}. All rights reserved.
 //
 
-#include "{{ cookiecutter.project_name }}/Resources/xcconfig/Raizlabs-Account.xcconfig"
+#include "{{ cookiecutter.project_name | replace(' ', '') }}/Resources/xcconfig/Raizlabs-Account.xcconfig"
 
-PRODUCT_BUNDLE_IDENTIFIER = com.raizlabs.{{ cookiecutter.project_name }}
+PRODUCT_BUNDLE_IDENTIFIER = com.raizlabs.{{ cookiecutter.project_name | replace(' ', '') }}
 
 OTHER_SWIFT_FLAGS = -D INSTABUG -D RZINTERNAL
 
-CODE_SIGN_IDENTITY_{{ cookiecutter.project_name }} = iPhone Developer
-PROVISIONING_PROFILE_{{ cookiecutter.project_name }} =
+CODE_SIGN_IDENTITY_{{ cookiecutter.project_name | replace(' ', '') }} = iPhone Developer
+PROVISIONING_PROFILE_{{ cookiecutter.project_name | replace(' ', '') }} =
 
-#include "{{ cookiecutter.project_name }}/Resources/xcconfig/Global.xcconfig"
+#include "{{ cookiecutter.project_name | replace(' ', '') }}/Resources/xcconfig/Global.xcconfig"

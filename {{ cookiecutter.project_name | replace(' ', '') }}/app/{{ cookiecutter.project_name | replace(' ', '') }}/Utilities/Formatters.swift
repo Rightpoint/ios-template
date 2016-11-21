@@ -1,6 +1,6 @@
 //
 //  Formatters.swift
-//  {{ cookiecutter.project_name }}
+//  {{ cookiecutter.project_name | replace(' ', '') }}
 //
 //  Created by {{ cookiecutter.lead_dev }} on 11/1/16.
 //  Copyright © 2016 {{ cookiecutter.company_name }}. All rights reserved.

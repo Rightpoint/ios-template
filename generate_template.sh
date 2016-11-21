@@ -29,7 +29,7 @@ function replace {
     done
 }
 
-replace "PRODUCTNAME" "{{ cookiecutter.project_name }}"
+replace "PRODUCTNAME" "{{ cookiecutter.project_name | replace(' ', '') }}"
 replace "ORGANIZATION" "{{ cookiecutter.company_name }}"
 replace "Brian King" "{{ cookiecutter.lead_dev }}"
 replace "brian.king@raizlabs.com" "{{ cookiecutter.lead_email }}"

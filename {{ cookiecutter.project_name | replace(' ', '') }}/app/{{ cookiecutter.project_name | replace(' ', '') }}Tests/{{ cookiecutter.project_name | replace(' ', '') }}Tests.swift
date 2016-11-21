@@ -1,14 +1,14 @@
 //
-//  {{ cookiecutter.project_name }}Tests.swift
-//  {{ cookiecutter.project_name }}Tests
+//  {{ cookiecutter.project_name | replace(' ', '') }}Tests.swift
+//  {{ cookiecutter.project_name | replace(' ', '') }}Tests
 //
 //  Created by {{ cookiecutter.lead_dev }} on 11/1/16.
 //  Copyright © 2016 {{ cookiecutter.company_name }}. All rights reserved.
 //
 
 import XCTest
-@testable import {{ cookiecutter.project_name }}
+@testable import {{ cookiecutter.project_name | replace(' ', '') }}
 
-class {{ cookiecutter.project_name }}Tests: XCTestCase {
+class {{ cookiecutter.project_name | replace(' ', '') }}Tests: XCTestCase {
 
 }

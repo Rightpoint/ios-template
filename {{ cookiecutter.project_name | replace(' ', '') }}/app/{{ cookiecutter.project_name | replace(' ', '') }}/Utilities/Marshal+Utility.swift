@@ -1,6 +1,6 @@
 //
 //  Marshal+Utility.swift
-//  {{ cookiecutter.project_name }}
+//  {{ cookiecutter.project_name | replace(' ', '') }}
 //
 //  Created by {{ cookiecutter.lead_dev }} on 11/3/16.
 //  Copyright © 2016 {{ cookiecutter.company_name }}. All rights reserved.

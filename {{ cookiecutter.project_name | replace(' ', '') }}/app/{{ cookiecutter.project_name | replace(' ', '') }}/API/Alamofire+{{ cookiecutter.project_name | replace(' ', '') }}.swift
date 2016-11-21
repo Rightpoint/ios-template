@@ -1,6 +1,6 @@
 //
-//  Alamofire.Manager+{{ cookiecutter.project_name }}.swift
-//  {{ cookiecutter.project_name }}
+//  Alamofire.Manager+{{ cookiecutter.project_name | replace(' ', '') }}.swift
+//  {{ cookiecutter.project_name | replace(' ', '') }}
 //
 //  Created by {{ cookiecutter.lead_dev }} on 11/3/16.
 //  Copyright © 2016 {{ cookiecutter.company_name }}. All rights reserved.

@@ -5,7 +5,7 @@ import Foundation
 // swiftlint:disable file_length
 // swiftlint:disable type_body_length
 enum Localized {
-  /// {{ cookiecutter.project_name }}
+  /// {{ cookiecutter.project_name | replace(' ', '') }}
   case titleNavigation
 }
 // swiftlint:enable type_body_length

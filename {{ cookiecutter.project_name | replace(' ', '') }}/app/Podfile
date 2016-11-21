@@ -2,7 +2,7 @@ platform :ios, '9.0'
 use_frameworks!
 inhibit_all_warnings!
 
-target '{{ cookiecutter.project_name }}' do
+target '{{ cookiecutter.project_name | replace(' ', '') }}' do
   pod 'Instabug'
   pod 'Crashlytics'
 
@@ -14,7 +14,7 @@ target '{{ cookiecutter.project_name }}' do
   pod 'Anchorage'
   pod 'Swiftilities'
 
-  target '{{ cookiecutter.project_name }}Tests' do
+  target '{{ cookiecutter.project_name | replace(' ', '') }}Tests' do
     pod 'OHHTTPStubs/Swift'
   end
 
@@ -25,6 +25,6 @@ pod 'SwiftGen'
 
 post_install do |installer|
   require 'fileutils'
-  FileUtils.cp_r('Pods/Target Support Files/Pods-{{ cookiecutter.project_name }}/Pods-{{ cookiecutter.project_name }}-acknowledgements.plist', '{{ cookiecutter.project_name }}/Resources/Acknowledgements.plist', :remove_destination => true)
+  FileUtils.cp_r('Pods/Target Support Files/Pods-{{ cookiecutter.project_name | replace(' ', '') }}/Pods-{{ cookiecutter.project_name | replace(' ', '') }}-acknowledgements.plist', '{{ cookiecutter.project_name | replace(' ', '') }}/Resources/Acknowledgements.plist', :remove_destination => true)
 end
 

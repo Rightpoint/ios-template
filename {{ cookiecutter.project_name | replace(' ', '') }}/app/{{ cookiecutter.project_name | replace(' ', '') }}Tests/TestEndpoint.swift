@@ -1,6 +1,6 @@
 //
 //  RandomEndpoint.swift
-//  {{ cookiecutter.project_name }}
+//  {{ cookiecutter.project_name | replace(' ', '') }}
 //
 //  Created by {{ cookiecutter.lead_dev }} on 11/3/16.
 //  Copyright © 2016 {{ cookiecutter.company_name }}. All rights reserved.
@@ -8,7 +8,7 @@
 
 import Alamofire
 import Marshal
-@testable import {{ cookiecutter.project_name }}
+@testable import {{ cookiecutter.project_name | replace(' ', '') }}
 
 struct TestEndpoint: APIEndpoint {
     typealias ResponseType = [TestEndpointResult]
