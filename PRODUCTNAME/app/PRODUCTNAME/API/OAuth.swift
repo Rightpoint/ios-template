@@ -11,12 +11,24 @@ import Marshal
 import KeychainAccess
 
 /// OAuthClient manages the OAuth requests. It is responsible for:
-/// - the inital login which obtains the refresh token
-/// - refreshing the token when it expires
-/// - adding authentication token to APIClient requests
+/// - the inital login which obtains the refresh token.
+/// - refreshing the token when it expires.
+/// - adding authentication token to APIClient requests.
 /// - retrying APIClient requests on authorization failures.
+/// - post notification when credentials are lost.
 final class OAuthClient {
     static let credentials = "credentials"
+
+    /// validKeychain indicates that the value in the keychain is from this installation
+    /// This is used so the credentials from a previous installation are not re-used.
+    static var validKeychain: Bool {
+        get {
+            return UserDefaults.standard.bool(forKey: "validCredentials")
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "validCredentials")
+        }
+    }
 
     var clientSecret = BuildType.active.oathClientToken
     var clientID = BuildType.active.oathClientID
@@ -32,6 +44,9 @@ final class OAuthClient {
         didSet {
             if let credentials = credentials {
                 _ = try? keychain.set(credentials, key: OAuthClient.credentials)
+            }
+            else {
+                _ = try? keychain.remove(OAuthClient.credentials)
             }
             // If there were credentials, and there no longer are, post a notification
             if oldValue != nil && credentials == nil {
@@ -58,8 +73,14 @@ final class OAuthClient {
         self.manager = SessionManager(configuration: configuration)
 
         if let credentials: Credentials? = try? keychain.getObject(OAuthClient.credentials) {
-            self.credentials = credentials
+            if OAuthClient.validKeychain {
+                self.credentials = credentials
+            }
+            else {
+                self.credentials = nil
+            }
         }
+        OAuthClient.validKeychain = true
     }
 }
 
