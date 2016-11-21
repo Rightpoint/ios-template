@@ -6,7 +6,7 @@ rm -rf PRODUCTNAME/app/PRODUCTNAME.xcworkspace
 
 #This is the only lookup that is done on filenames
 LOOKUP="PRODUCTNAME"
-EXPANDED="{{ cookiecutter.project_name }}"
+EXPANDED="{{ cookiecutter.project_name | replace(' ', '') }}"
 
 # Make the tree
 for FILE in `find ./PRODUCTNAME -type d` ; do
