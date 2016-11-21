@@ -1,7 +1,9 @@
 PODS:
   - Alamofire (4.0.1)
   - Anchorage (3.0.0)
-  - BonMot (4.0.beta.1)
+  - BonMot (3.2):
+    - BonMot/Core (= 3.2)
+  - BonMot/Core (3.2)
   - Crashlytics (3.8.3):
     - Fabric (~> 1.6.3)
   - Fabric (1.6.10)
@@ -12,56 +14,32 @@ PODS:
   - OHHTTPStubs/Swift (5.2.2):
     - OHHTTPStubs/Core
   - SwiftGen (3.0.0)
-  - Swiftilities (0.3.0):
-    - Swiftilities/All (= 0.3.0)
-  - Swiftilities/All (0.3.0):
-    - Swiftilities/Deselection
-    - Swiftilities/Forms
+  - Swiftilities (0.2.0):
+    - Swiftilities/All (= 0.2.0)
+  - Swiftilities/All (0.2.0):
     - Swiftilities/Keyboard
     - Swiftilities/Logging
-    - Swiftilities/Math
     - Swiftilities/RootViewController
-    - Swiftilities/Views
-  - Swiftilities/Deselection (0.3.0)
-  - Swiftilities/Forms (0.3.0)
-  - Swiftilities/Keyboard (0.3.0)
-  - Swiftilities/Logging (0.3.0)
-  - Swiftilities/Math (0.3.0)
-  - Swiftilities/RootViewController (0.3.0)
-  - Swiftilities/Views (0.3.0)
+  - Swiftilities/Keyboard (0.2.0)
+  - Swiftilities/Logging (0.2.0)
+  - Swiftilities/RootViewController (0.2.0)
 
 DEPENDENCIES:
   - Alamofire
   - Anchorage
-  - BonMot (from `https://github.com/Raizlabs/BonMot.git`, branch `feature/swift-first`)
+  - BonMot
   - Crashlytics
   - Instabug
   - KeychainAccess
   - Marshal
   - OHHTTPStubs/Swift
   - SwiftGen
-  - Swiftilities (from `https://github.com/Raizlabs/Swiftilities.git`, branch `develop`)
-
-EXTERNAL SOURCES:
-  BonMot:
-    :branch: feature/swift-first
-    :git: https://github.com/Raizlabs/BonMot.git
-  Swiftilities:
-    :branch: develop
-    :git: https://github.com/Raizlabs/Swiftilities.git
-
-CHECKOUT OPTIONS:
-  BonMot:
-    :commit: d45c042f9bd1a901c0f370936e7489b92a65ed93
-    :git: https://github.com/Raizlabs/BonMot.git
-  Swiftilities:
-    :commit: 3e8d8ec3dffa4d25bd864f5294ceef0f9e5560ed
-    :git: https://github.com/Raizlabs/Swiftilities.git
+  - Swiftilities
 
 SPEC CHECKSUMS:
   Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
   Anchorage: 0b7244e31069ebc61a4e9611bc670feb7f24a3e2
-  BonMot: d43304965d2277122b47ab5beca79508176f69ec
+  BonMot: 039d91a9f7e408ed21e8627bb093a926e34553e0
   Crashlytics: 2b6dbe138a42395577cfa73dfa1aa7248cadf39e
   Fabric: c73f371ee543e3f0b80608f2674750e4910d1669
   Instabug: c6a8970311a2ebb092c0bec8d425eb4d4d4b6ad3
@@ -69,8 +47,8 @@ SPEC CHECKSUMS:
   Marshal: a3c5c5dbd388112edf3cdabb718f2b4cfe48658a
   OHHTTPStubs: 34d9d0994e64fcf8552dbfade5ce82ada913ee31
   SwiftGen: f679cd0ed4173a5da3b01efd0da23542bf82f6ab
-  Swiftilities: 8b85ce6156eaa0afc870d4df87e1ce1434b70ebf
+  Swiftilities: d5ca3db4fdc6a289d6c4a909eb73409019cee3b9
 
-PODFILE CHECKSUM: 2e03b6e9aad9b6c18de8e37b0e308d47160c401c
+PODFILE CHECKSUM: d25369776ca4d696d4d65d43410a3266a4924551
 
 COCOAPODS: 1.1.1
