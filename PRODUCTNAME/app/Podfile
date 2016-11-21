@@ -10,9 +10,9 @@ target 'PRODUCTNAME' do
   pod 'KeychainAccess'
   pod 'Marshal'
 
-  pod 'BonMot', :git => "https://github.com/Raizlabs/BonMot.git", :branch => 'feature/swift-first'
+  pod 'BonMot'
   pod 'Anchorage'
-  pod 'Swiftilities', :git => "https://github.com/Raizlabs/Swiftilities.git", :branch => 'develop'
+  pod 'Swiftilities'
 
   target 'PRODUCTNAMETests' do
     pod 'OHHTTPStubs/Swift'
