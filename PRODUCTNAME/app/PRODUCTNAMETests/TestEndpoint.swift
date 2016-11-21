@@ -11,14 +11,15 @@ import Marshal
 @testable import PRODUCTNAME
 
 struct TestEndpoint: APIEndpoint {
+    typealias ResponseType = [TestEndpointResult]
     var path: String { return "test" }
     var method: HTTPMethod { return .get }
     var encoding: ParameterEncoding { return URLEncoding.default }
-    var requiresAuth: Bool { return true }
     var parameters: JSONObject? { return [:] }
     var headers: HTTPHeaders { return [:] }
 
 }
+
 struct TestEndpointResult: Unmarshaling {
 
     let value: String

@@ -7,10 +7,11 @@
 //
 
 import Alamofire
+import Marshal
 
 extension SessionManager {
 
-    func request(_ baseURL: URL, endpoint: APIEndpoint) -> DataRequest {
+    func request<Endpoint: APIEndpoint>(_ baseURL: URL, endpoint: Endpoint) -> DataRequest {
         guard let url = URL(string: endpoint.path, relativeTo: baseURL) else {
             fatalError("Invalid Path Specification")
         }
@@ -21,6 +22,28 @@ extension SessionManager {
             encoding: endpoint.encoding,
             headers: endpoint.headers
         )
+        return request
+    }
+
+    @discardableResult
+    func request<Endpoint: APIEndpoint>(_ baseURL: URL, endpoint: Endpoint, completion: @escaping (Endpoint.ResponseType?, Error?) -> Void) -> DataRequest where Endpoint.ResponseType: Unmarshaling {
+        let request = self.request(baseURL, endpoint: endpoint)
+        let handler = APIObjectResponseSerializer(type: Endpoint.ResponseType.self)
+        request.validate(APIResponseValidator)
+        request.response(responseSerializer: handler) { response in
+            completion(response.result.value, response.result.error)
+        }
+        return request
+    }
+
+    @discardableResult
+    func request<Endpoint: APIEndpoint>(_ baseURL: URL, endpoint: Endpoint, completion: @escaping (Endpoint.ResponseType?, Error?) -> Void) -> DataRequest where Endpoint.ResponseType: Collection, Endpoint.ResponseType.Iterator.Element: Unmarshaling {
+        let request = self.request(baseURL, endpoint: endpoint)
+        let handler = APICollectionResponseSerializer(type: Endpoint.ResponseType.self)
+        request.validate(APIResponseValidator)
+        request.response(responseSerializer: handler) { response in
+            completion(response.result.value, response.result.error)
+        }
         return request
     }
 }

@@ -17,25 +17,26 @@ import KeychainAccess
 /// - retrying APIClient requests on authorization failures.
 final class OAuthClient {
     static let credentials = "credentials"
+
     var clientSecret = BuildType.active.oathClientToken
     var clientID = BuildType.active.oathClientID
     let keychain: Keychain
 
     struct Credentials {
         var refreshToken: String
-        var token: String
+        var accessToken: String
         var expirationDate: Date
     }
 
     var credentials: Credentials? {
         didSet {
             if let credentials = credentials {
-                do {
-                    try keychain.set(credentials, key: OAuthClient.credentials)
-                }
-                catch {
-                    print("Unable to persist credentials")
-                }
+                _ = try? keychain.set(credentials, key: OAuthClient.credentials)
+            }
+            // If there were credentials, and there no longer are, post a notification
+            if oldValue != nil && credentials == nil {
+                NSLog("OAuth Lost Authentication")
+                NotificationCenter.default.post(name: .OAuthLostAuthentication, object: self)
             }
         }
     }
@@ -56,9 +57,8 @@ final class OAuthClient {
         configuration.httpAdditionalHeaders?[APIConstants.accept] = APIConstants.applicationJSON
         self.manager = SessionManager(configuration: configuration)
 
-        do { self.credentials = try keychain.getObject(OAuthClient.credentials)
-        }
-        catch {
+        if let credentials: Credentials? = try? keychain.getObject(OAuthClient.credentials) {
+            self.credentials = credentials
         }
     }
 }
@@ -72,7 +72,7 @@ extension OAuthClient: RequestAdapter {
     func adapt(_ urlRequest: URLRequest) throws -> URLRequest {
         lock.lock() ; defer { lock.unlock() }
         var urlRequest = urlRequest
-        if let token = credentials?.token {
+        if let token = credentials?.accessToken {
             urlRequest.allHTTPHeaderFields?[APIConstants.authorization] = "Bearer \(token)"
         }
         return urlRequest
@@ -86,7 +86,22 @@ extension OAuthClient: RequestRetrier {
 
     func should(_ manager: SessionManager, retry request: Request, with error: Error, completion: @escaping RequestRetryCompletion) {
         lock.lock() ; defer { lock.unlock() }
-        guard request.response?.statusCode == 401, isAuthenticated else {
+        let statusCode = request.response?.statusCode
+        let shouldRetry = statusCode == 401 && isAuthenticated
+        if shouldRetry {
+            NSLog("Retrying failed request")
+        }
+        else {
+            var info: [String] = []
+            if !isAuthenticated {
+                info.append("Client not authenticated")
+            }
+            if statusCode != 401 {
+                info.append("Status code is not 401")
+            }
+            NSLog("Fail request: \(info.flatMap { $0 }.joined(separator: ", "))")
+        }
+        guard shouldRetry else {
             completion(false, 0)
             return
         }
@@ -114,9 +129,9 @@ extension OAuthClient {
 
     func login(username: String, password: String, completion: @escaping (Error?) -> Void) {
         let endpoint = TokenRequest(clientID: clientID, clientSecret: clientSecret, username: username, password: password)
-        let request = manager.request(baseURL, endpoint: endpoint)
-        request.responseJSON { [weak self] response in
-            self?.handleOauth(response: response, completion: completion)
+        let request = manager.request(baseURL, endpoint: endpoint) { [weak self] (credentials, error) in
+            self?.handleOauth(credentials: credentials)
+            completion(error)
         }
         authenticationRequest = request
     }
@@ -135,32 +150,21 @@ extension OAuthClient {
             return
         }
         let endpoint = RefreshRequest(clientID: clientID, clientSecret: clientSecret, refreshToken: credentials.refreshToken)
-        let request = manager.request(baseURL, endpoint: endpoint)
-        request.responseJSON { [weak self] response in
-            self?.handleOauth(response: response, completion: completion)
+        let request = manager.request(baseURL, endpoint: endpoint) { [weak self] (credentials, error) in
+            self?.handleOauth(credentials: credentials)
+            completion(error)
         }
         authenticationRequest = request
     }
 
-    func handleOauth(response: DataResponse<Any>, completion: @escaping (Error?) -> Void) {
+    func handleOauth(credentials: Credentials?) {
         lock.lock() ; defer { lock.unlock() }
-        var credentials: Credentials? = nil
-        var error = response.result.error
-        if let value = response.result.value as? MarshalDictionary {
-            do {
-                credentials = try Credentials(object: value)
-            }
-            catch let encodeError {
-                error = encodeError
-            }
-        }
         self.credentials = credentials
         let triggers = authenticatedTriggers
         authenticatedTriggers = []
         for trigger in triggers {
             trigger()
         }
-        completion(error)
         authenticationRequest = nil
     }
 }
@@ -168,10 +172,10 @@ extension OAuthClient {
 // MARK: - Encoding
 
 extension OAuthClient.TokenRequest: APIEndpoint {
+    typealias ResponseType = OAuthClient.Credentials
     var path: String { return "oauth/token" }
     var method: HTTPMethod { return .post }
     var encoding: ParameterEncoding { return URLEncoding.default }
-    var requiresAuth: Bool { return true }
 
     var parameters: JSONObject? {
         return [
@@ -185,17 +189,18 @@ extension OAuthClient.TokenRequest: APIEndpoint {
 
     var headers: HTTPHeaders {
         return [
-            "Content-Type": "application/x-www-form-urlencoded",
+            APIConstants.contentType: APIConstants.formEncoded,
             APIConstants.authorization: "Basic \(clientSecret)",
         ]
     }
 }
 
 extension OAuthClient.RefreshRequest: APIEndpoint {
+    typealias ResponseType = OAuthClient.Credentials
+
     var path: String { return "oauth/refresh" }
     var method: HTTPMethod { return .post }
     var encoding: ParameterEncoding { return URLEncoding.default }
-    var requiresAuth: Bool { return true }
 
     var parameters: JSONObject? {
         return [
@@ -207,14 +212,14 @@ extension OAuthClient.RefreshRequest: APIEndpoint {
     }
 
     var headers: HTTPHeaders {
-        return ["Content-Type": "application/x-www-form-urlencoded"]
+        return [APIConstants.contentType: APIConstants.formEncoded]
     }
 }
 
 extension OAuthClient.Credentials: Unmarshaling {
     init(object json: MarshaledObject) throws {
         refreshToken = try json.value(for: "refreshToken")
-        token = try json.value(for: "token")
+        accessToken = try json.value(for: "token")
         expirationDate = try json.value(for: "expirationDate")
     }
 }
@@ -223,8 +228,14 @@ extension OAuthClient.Credentials: Marshaling {
     func marshaled() -> [String: Any] {
         return [
             "refreshToken": refreshToken,
-            "token": token,
+            "token": accessToken,
             "expirationDate": Formatters.ISODateFormatter.string(from: expirationDate),
         ]
     }
+}
+
+extension NSNotification.Name {
+
+    /// This notification is posted whenever the OAuthClient has a refreshToken and lost it (ie: it attempted to refresh the token and failed)
+    public static let OAuthLostAuthentication: NSNotification.Name = NSNotification.Name(rawValue: BuildType.active.identifier(suffix: "OauthLostAuthentication"))
 }

@@ -14,7 +14,6 @@
 		ABC778831DC90B7A00815FB9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABC778811DC90B7A00815FB9 /* LaunchScreen.storyboard */; };
 		ABC7788E1DC90B7A00815FB9 /* PRODUCTNAMETests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC7788D1DC90B7A00815FB9 /* PRODUCTNAMETests.swift */; };
 		ABC778C91DC927C900815FB9 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC778C81DC927C900815FB9 /* Formatters.swift */; };
-		ABC778D41DC92FCD00815FB9 /* APIResponseSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC778D31DC92FCD00815FB9 /* APIResponseSerializer.swift */; };
 		ABC778D61DC931A400815FB9 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC778D51DC931A400815FB9 /* APIError.swift */; };
 		ABC778DA1DC93E9C00815FB9 /* APIEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC778D91DC93E9C00815FB9 /* APIEndpoint.swift */; };
 		ABC778DD1DC94EE500815FB9 /* Acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = ABC778DC1DC94EE500815FB9 /* Acknowledgements.plist */; };
@@ -39,7 +38,6 @@
 		ABF84FA41DCBCD89002DB24D /* APIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF84FA31DCBCD89002DB24D /* APIClientTests.swift */; };
 		ABF84FA61DCBCEA1002DB24D /* Payloads.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF84FA51DCBCEA1002DB24D /* Payloads.swift */; };
 		ABF84FA81DCBFF84002DB24D /* TestEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF84FA71DCBFF84002DB24D /* TestEndpoint.swift */; };
-		C9E4A7A7C8C2DA562B4F5053 /* Pods_PRODUCTNAMETests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F2C2A97F21BF37CEB2498E0 /* Pods_PRODUCTNAMETests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,7 +90,6 @@
 		ABC778D01DC92BF800815FB9 /* Sprint.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Sprint.xcconfig; sourceTree = "<group>"; };
 		ABC778D11DC92CA600815FB9 /* Global.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Global.xcconfig; sourceTree = "<group>"; };
 		ABC778D21DC92CC500815FB9 /* Raizlabs-Account.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Raizlabs-Account.xcconfig"; sourceTree = "<group>"; };
-		ABC778D31DC92FCD00815FB9 /* APIResponseSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIResponseSerializer.swift; sourceTree = "<group>"; };
 		ABC778D51DC931A400815FB9 /* APIError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		ABC778D91DC93E9C00815FB9 /* APIEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIEndpoint.swift; sourceTree = "<group>"; };
 		ABC778DC1DC94EE500815FB9 /* Acknowledgements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Acknowledgements.plist; sourceTree = "<group>"; };
@@ -134,7 +131,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9E4A7A7C8C2DA562B4F5053 /* Pods_PRODUCTNAMETests.framework in Frameworks */,
 				959F487642A61EF85C170AF9 /* Pods_PRODUCTNAME_PRODUCTNAMETests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -254,7 +250,6 @@
 				ABC778D51DC931A400815FB9 /* APIError.swift */,
 				ABC778C21DC9252200815FB9 /* APIClient.swift */,
 				ABF84F931DCA7F0A002DB24D /* OAuth.swift */,
-				ABC778D31DC92FCD00815FB9 /* APIResponseSerializer.swift */,
 				ABF84F951DCA89B0002DB24D /* BuildType+API.swift */,
 				ABF84F991DCB70BB002DB24D /* Alamofire+PRODUCTNAME.swift */,
 			);
@@ -567,7 +562,6 @@
 				ABF84F921DC99D33002DB24D /* UIImage+Asset.swift in Sources */,
 				ABF84F911DC99D33002DB24D /* Localized.swift in Sources */,
 				ABC778E81DC9503600815FB9 /* InstabugConfiguration.swift in Sources */,
-				ABC778D41DC92FCD00815FB9 /* APIResponseSerializer.swift in Sources */,
 				ABC778DF1DC94F0900815FB9 /* BuildType.swift in Sources */,
 				ABC778E61DC94FFC00815FB9 /* CrashlyticsConfiguration.swift in Sources */,
 				ABF84F961DCA89B0002DB24D /* BuildType+API.swift in Sources */,
@@ -715,6 +709,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = PRODUCTNAME/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.raizlabs.PRODUCTNAME;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -729,6 +724,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = PRODUCTNAME/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.raizlabs.PRODUCTNAME;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -816,6 +812,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = PRODUCTNAME/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.raizlabs.PRODUCTNAME;
 				PRODUCT_NAME = "$(TARGET_NAME)";
