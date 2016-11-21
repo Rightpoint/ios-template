@@ -10,12 +10,11 @@ import Alamofire
 import Marshal
 
 protocol APIEndpoint {
+    associatedtype ResponseType
 
     var path: String { get }
     var method: HTTPMethod { get }
     var encoding: ParameterEncoding { get }
-    var requiresAuth: Bool { get }
     var parameters: JSONObject? { get }
     var headers: HTTPHeaders { get }
-
 }

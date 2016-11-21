@@ -6,7 +6,7 @@
 //  Copyright © 2016 {{ cookiecutter.company_name }}. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 extension BuildType {
     var baseURL: URL {
@@ -20,6 +20,13 @@ extension BuildType {
             fatalError("Specify the release server")
         }
         return baseURL
+    }
+
+    func identifier(suffix: String) -> String {
+        guard let bundleIdentifier = Bundle(for: APIClient.self).bundleIdentifier else {
+            fatalError("Unable to determine bundle identifier")
+        }
+        return bundleIdentifier.appending(".").appending(suffix)
     }
 }
 

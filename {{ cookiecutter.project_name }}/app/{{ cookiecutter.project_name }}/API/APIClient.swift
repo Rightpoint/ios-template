@@ -26,41 +26,14 @@ final class APIClient {
         manager.retrier = oauthClient
     }
 
-    func request<T: Unmarshaling>(_ endpoint: APIEndpoint, completion: @escaping (T?, Error?) -> Void) {
-        let request = manager.request(baseURL, endpoint: endpoint)
-        let handler = APIObjectResponseSerializer(type: T.self)
-        request.validate { (request, response, data) -> Request.ValidationResult in
-            switch response.statusCode {
-            case 401:
-                return .failure(APIError.tokenExpired)
-            case 400..<Int.max:
-                return .failure(APIError.invalidResponse)
-            default:
-                return .success
-            }
-        }
-
-        request.response(responseSerializer: handler) { response in
-            completion(response.result.value, response.result.error)
-        }
+    @discardableResult
+    func request<Endpoint: APIEndpoint>(_ endpoint: Endpoint, completion: @escaping (Endpoint.ResponseType?, Error?) -> Void) -> DataRequest where Endpoint.ResponseType: Unmarshaling {
+        return manager.request(baseURL, endpoint: endpoint, completion: completion)
     }
 
-    func request<T: Unmarshaling>(_ endpoint: APIEndpoint, completion: @escaping ([T]?, Error?) -> Void) {
-        let request = manager.request(baseURL, endpoint: endpoint)
-        request.validate { (request, response, data) -> Request.ValidationResult in
-            switch response.statusCode {
-            case 401:
-                return .failure(APIError.tokenExpired)
-            case 400..<Int.max:
-                return .failure(APIError.invalidResponse)
-            default:
-                return .success
-            }
-        }
-        let handler = APICollectionResponseSerializer(type: T.self)
-
-        request.response(responseSerializer: handler) { response in
-            completion(response.result.value, response.result.error)
-        }
+    @discardableResult
+    func request<Endpoint: APIEndpoint>(_ endpoint: Endpoint, completion: @escaping (Endpoint.ResponseType?, Error?) -> Void) -> DataRequest where Endpoint.ResponseType: Collection, Endpoint.ResponseType.Iterator.Element: Unmarshaling {
+        return manager.request(baseURL, endpoint: endpoint, completion: completion)
     }
+
 }

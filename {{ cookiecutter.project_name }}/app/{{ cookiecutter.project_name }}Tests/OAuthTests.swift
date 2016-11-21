@@ -37,7 +37,7 @@ class OAuthTests: XCTestCase {
         waitForExpectations(timeout: timeout, handler: nil)
         XCTAssertTrue(oauthClient.isAuthenticated)
         XCTAssertEqual(oauthClient.credentials?.refreshToken, "FAKE_REFRESH_TOKEN")
-        XCTAssertEqual(oauthClient.credentials?.token, "FAKE_TOKEN")
+        XCTAssertEqual(oauthClient.credentials?.accessToken, "FAKE_TOKEN")
         XCTAssertTrue(oauthClient.credentials?.expirationDate.timeIntervalSinceNow ?? 0 > 0)
     }
 
@@ -50,7 +50,7 @@ class OAuthTests: XCTestCase {
         let oauthClient = OAuthClient(configuration: configuration)
         oauthClient.credentials = OAuthClient.Credentials(
             refreshToken: "INITIAL_REFRESH_TOKEN",
-            token: "INVALID_TOKEN",
+            accessToken: "INVALID_TOKEN",
             expirationDate: Date.distantPast
         )
         let expectation = self.expectation(description: "Login Complete")
@@ -60,7 +60,7 @@ class OAuthTests: XCTestCase {
         waitForExpectations(timeout: timeout, handler: nil)
         XCTAssertTrue(oauthClient.isAuthenticated)
         XCTAssertEqual(oauthClient.credentials?.refreshToken, "FAKE_REFRESH_TOKEN")
-        XCTAssertEqual(oauthClient.credentials?.token, "FAKE_TOKEN")
+        XCTAssertEqual(oauthClient.credentials?.accessToken, "FAKE_TOKEN")
         XCTAssertTrue(oauthClient.credentials?.expirationDate.timeIntervalSinceNow ?? 0 > 0)
     }
 
@@ -71,7 +71,7 @@ class OAuthTests: XCTestCase {
             _ = try oauthClient.adapt(request)
             oauthClient.credentials = OAuthClient.Credentials(
                 refreshToken: "INITIAL_REFRESH_TOKEN",
-                token: "INVALID_TOKEN",
+                accessToken: "INVALID_TOKEN",
                 expirationDate: Date.distantPast
             )
             _ = try oauthClient.adapt(request)

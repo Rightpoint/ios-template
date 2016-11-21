@@ -37,7 +37,7 @@ class APIClientTests: XCTestCase {
         }
 
         let expectation = self.expectation(description: "Test Endpoint")
-        client.request(TestEndpoint()) { (response: [TestEndpointResult]?, error: Error?) -> Void in
+        client.request(TestEndpoint()) { response, error in
             XCTAssertNotNil(error)
             expectation.fulfill()
         }
@@ -48,7 +48,7 @@ class APIClientTests: XCTestCase {
     func testAuthenticatedRequestWithCredentials() {
         client.oauthClient.credentials = OAuthClient.Credentials(
             refreshToken: "INITIAL_REFRESH_TOKEN",
-            token: "INVALID_TOKEN",
+            accessToken: "INVALID_TOKEN",
             expirationDate: Date.distantFuture
         )
 
@@ -62,7 +62,7 @@ class APIClientTests: XCTestCase {
         }
 
         let expectation = self.expectation(description: "Test Endpoint")
-        client.request(TestEndpoint()) { (response: [TestEndpointResult]?, error: Error?) -> Void in
+        client.request(TestEndpoint()) { (response, error) in
             XCTAssertNil(error)
             XCTAssertNotNil(response)
             XCTAssert(response?.count == 1)
@@ -75,7 +75,7 @@ class APIClientTests: XCTestCase {
     func testManyAuthenticatedRequestWithCredentials() {
         client.oauthClient.credentials = OAuthClient.Credentials(
             refreshToken: "INITIAL_REFRESH_TOKEN",
-            token: "INVALID_TOKEN",
+            accessToken: "INVALID_TOKEN",
             expirationDate: Date.distantFuture
         )
 
@@ -95,7 +95,7 @@ class APIClientTests: XCTestCase {
         // Make 10 requests with an invalid token. The requests should 401 10 times, obtain a new token once, retry, and 200 10 times.
         for i in 0..<10 {
             let expectation = self.expectation(description: "Test Endpoint \(i)")
-            client.request(TestEndpoint()) { (response: [TestEndpointResult]?, error: Error?) -> Void in
+            client.request(TestEndpoint()) { (response, error) in
                 XCTAssertNil(error)
                 XCTAssertNotNil(response)
                 XCTAssert(response?.count == 1)
@@ -108,7 +108,7 @@ class APIClientTests: XCTestCase {
         XCTAssert(testCount > 10)
         // I don't have a good explaination of why more than 1 refresh request is made. There's probably a bug to be fixed here, but I don't think
         // it's severe.
-        XCTAssert(oauthCount > 1)
+        XCTAssert(oauthCount >= 1)
     }
 
 }
