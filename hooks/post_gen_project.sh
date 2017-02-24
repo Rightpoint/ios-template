@@ -3,7 +3,7 @@
 set -e
 
 git init
-bundle install
+bundle install --path=./
 cd app
 bundle exec pod install
 if [[ "{{ cookiecutter.hockey_key }}" =~ .*[nN][oO].* ]]
@@ -19,7 +19,7 @@ else
     echo "Fastfile updated"
 fi
 
-synx --no-sort-by-name "{{ cookiecutter.project_name | replace(' ', '') }}.xcodeproj"
+bundle exec synx --no-sort-by-name "{{ cookiecutter.project_name | replace(' ', '') }}.xcodeproj"
 
 
 
