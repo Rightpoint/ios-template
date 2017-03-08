@@ -50,9 +50,9 @@ GEM
     cocoapods-try (1.1.0)
     colored (1.2)
     colorize (0.8.1)
-    commander (4.4.0)
+    commander (4.4.3)
       highline (~> 1.7.2)
-    credentials_manager (0.16.2)
+    credentials_manager (0.16.4)
       colored
       commander (>= 4.3.5)
       highline (>= 1.7.1)
@@ -288,9 +288,8 @@ PLATFORMS
 DEPENDENCIES
   cocoapods (~> 1.1.0)
   fastlane (~> 1.104.0)
-  gym
   nanaimo (~> 0.2.2)
   synx (~> 0.2.1)
 
 BUNDLED WITH
-   1.13.1
+   1.14.4
