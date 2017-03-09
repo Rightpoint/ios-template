@@ -22,8 +22,6 @@ extension Date : ValueType {
     }
 }
 
-
-
 extension Keychain {
     public func getObject<T: Unmarshaling>(_ key: String) throws -> T? {
         guard let data = try getData(key),

@@ -17,7 +17,7 @@ extension TextStyle {
     var stringStyle: StringStyle {
         switch self {
         case .navigationTitle:
-            return StringStyle.style(.font(.systemFont(ofSize: 20)))
+            return StringStyle(.font(.systemFont(ofSize: 20)))
         }
     }
 }

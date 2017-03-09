@@ -34,7 +34,6 @@ func APIResponseValidator(request: URLRequest?, response: HTTPURLResponse, data:
     return .success
 }
 
-
 // Response serializer to import JSON Object using Marshal and return an object
 func APIObjectResponseSerializer<T: Unmarshaling>(type: T.Type) -> DataResponseSerializer<T> {
     return DataResponseSerializer() { request, response, data, error in
