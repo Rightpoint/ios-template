@@ -2,7 +2,7 @@
 //  BuildType+API.swift
 //  PRODUCTNAME
 //
-//  Created by Brian King on 11/2/16.
+//  Created by LEADDEVELOPER on 11/2/16.
 //  Copyright © 2016 ORGANIZATION. All rights reserved.
 //
 
