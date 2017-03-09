@@ -8,5 +8,17 @@
 
 // This config file should be included last so the variable expansions work correctly
 
+//PRODUCT_MODULE_NAME = PRODUCTNAME
+
 CODE_SIGN_IDENTITY = $(CODE_SIGN_IDENTITY_$(TARGET_NAME))
 PROVISIONING_PROFILE = $(PROVISIONING_PROFILE_$(TARGET_NAME))
+
+PROVISIONING_PROFILE_SPECIFIER = $(PROVISIONING_PROFILE_$(TARGET_NAME))
+
+INTERNAL_FABRIC_API_KEY = xxxxxx //Paste Internal Fabric account API KEY here
+INTERNAL_BUILD_SECRET = xxxxxx //Paste Internal Fabric account BUILD SECRET here
+
+PRODUCTNAME_FABRIC_API_KEY = xxxxxx //Paste Production Fabric account API KEY here
+PRODUCTNAME_FABRIC_BUILD_SECRET = xxxxxx //Paste Production Fabric account BUILD SECRET here
+
+INSTABUG_TOKEN = xxxxxx // Paste instabug token here

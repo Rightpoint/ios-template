@@ -75,7 +75,7 @@
 		8CD9F2E21AB27A0230007885 /* Pods_PRODUCTNAME.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PRODUCTNAME.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		93311DA40F63AE5674D438F9 /* Pods-PRODUCTNAMETests.sprint.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PRODUCTNAMETests.sprint.xcconfig"; path = "Pods/Target Support Files/Pods-PRODUCTNAMETests/Pods-PRODUCTNAMETests.sprint.xcconfig"; sourceTree = "<group>"; };
 		9E61F9E4F9A440040EE8DCF0 /* Pods-PRODUCTNAME.sprint.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PRODUCTNAME.sprint.xcconfig"; path = "Pods/Target Support Files/Pods-PRODUCTNAME/Pods-PRODUCTNAME.sprint.xcconfig"; sourceTree = "<group>"; };
-		ABC778751DC90B7A00815FB9 /* PRODUCTNAME.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PRODUCTNAME.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		ABC778751DC90B7A00815FB9 /* debug-PRODUCTNAME.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "debug-PRODUCTNAME.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABC778781DC90B7A00815FB9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABC7787F1DC90B7A00815FB9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ABC778821DC90B7A00815FB9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -187,7 +187,7 @@
 		ABC778761DC90B7A00815FB9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				ABC778751DC90B7A00815FB9 /* PRODUCTNAME.app */,
+				ABC778751DC90B7A00815FB9 /* debug-PRODUCTNAME.app */,
 				ABC778891DC90B7A00815FB9 /* PRODUCTNAMETests.xctest */,
 			);
 			name = Products;
@@ -354,7 +354,7 @@
 			);
 			name = PRODUCTNAME;
 			productName = PRODUCTNAME;
-			productReference = ABC778751DC90B7A00815FB9 /* PRODUCTNAME.app */;
+			productReference = ABC778751DC90B7A00815FB9 /* debug-PRODUCTNAME.app */;
 			productType = "com.apple.product-type.application";
 		};
 		ABC778881DC90B7A00815FB9 /* PRODUCTNAMETests */ = {
@@ -390,10 +390,12 @@
 				TargetAttributes = {
 					ABC778741DC90B7A00815FB9 = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = xxxxxx;
 						ProvisioningStyle = Automatic;
 					};
 					ABC778881DC90B7A00815FB9 = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = xxxxxx;
 						ProvisioningStyle = Automatic;
 						TestTargetID = ABC778741DC90B7A00815FB9;
 					};
@@ -712,8 +714,6 @@
 				INFOPLIST_FILE = PRODUCTNAME/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.raizlabs.PRODUCTNAME;
-				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -726,8 +726,6 @@
 				INFOPLIST_FILE = PRODUCTNAME/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.raizlabs.PRODUCTNAME;
-				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Develop;
@@ -742,7 +740,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.raizlabs.PRODUCTNAMETests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PRODUCTNAME.app/PRODUCTNAME";
 			};
 			name = Debug;
 		};
@@ -756,7 +753,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.raizlabs.PRODUCTNAMETests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PRODUCTNAME.app/PRODUCTNAME";
 			};
 			name = Develop;
 		};
@@ -812,8 +808,6 @@
 				INFOPLIST_FILE = PRODUCTNAME/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.raizlabs.PRODUCTNAME;
-				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Sprint;
@@ -828,7 +822,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.raizlabs.PRODUCTNAMETests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PRODUCTNAME.app/PRODUCTNAME";
 			};
 			name = Sprint;
 		};
