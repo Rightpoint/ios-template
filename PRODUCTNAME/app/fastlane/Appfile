@@ -1,4 +1,4 @@
 app_identifier "com.ORGANIZATION.PRODUCTNAME" # The bundle identifier of your app
-apple_id "brian.king@raizlabs.com"
+apple_id "LEADEMAIL"
 
 team_id "TEAMID"  # Developer Portal Team ID

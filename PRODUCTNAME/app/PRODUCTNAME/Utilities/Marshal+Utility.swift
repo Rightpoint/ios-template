@@ -2,7 +2,7 @@
 //  Marshal+Utility.swift
 //  PRODUCTNAME
 //
-//  Created by Brian King on 11/3/16.
+//  Created by LEADDEVELOPER on 11/3/16.
 //  Copyright © 2016 ORGANIZATION. All rights reserved.
 //
 
@@ -21,8 +21,6 @@ extension Date : ValueType {
         return date
     }
 }
-
-
 
 extension Keychain {
     public func getObject<T: Unmarshaling>(_ key: String) throws -> T? {

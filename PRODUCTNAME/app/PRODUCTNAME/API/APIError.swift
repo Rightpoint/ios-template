@@ -2,7 +2,7 @@
 //  APIError.swift
 //  PRODUCTNAME
 //
-//  Created by Brian King on 11/1/16.
+//  Created by LEADDEVELOPER on 11/1/16.
 //  Copyright © 2016 ORGANIZATION. All rights reserved.
 //
 
@@ -33,7 +33,6 @@ func APIResponseValidator(request: URLRequest?, response: HTTPURLResponse, data:
     }
     return .success
 }
-
 
 // Response serializer to import JSON Object using Marshal and return an object
 func APIObjectResponseSerializer<T: Unmarshaling>(type: T.Type) -> DataResponseSerializer<T> {

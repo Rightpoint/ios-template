@@ -16,7 +16,6 @@ class OAuthTests: XCTestCase {
         OHHTTPStubs.setEnabled(true)
     }
 
-
     override func tearDown() {
         super.tearDown()
         OHHTTPStubs.removeAllStubs()
