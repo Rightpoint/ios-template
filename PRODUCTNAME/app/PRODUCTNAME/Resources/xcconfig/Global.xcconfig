@@ -6,9 +6,8 @@
 //  Copyright © 2016 ORGANIZATION. All rights reserved.
 //
 
-// This config file should be included last so the variable expansions work correctly
-
-//PRODUCT_MODULE_NAME = PRODUCTNAME
+PRODUCT_MODULE_NAME = PRODUCTNAME
+TESTS_PRODUCT_MODULE_NAME = $(PRODUCT_MODULE_NAME)Tests // Overrides product_module_name for the tests
 
 CODE_SIGN_IDENTITY = $(CODE_SIGN_IDENTITY_$(TARGET_NAME))
 PROVISIONING_PROFILE = $(PROVISIONING_PROFILE_$(TARGET_NAME))

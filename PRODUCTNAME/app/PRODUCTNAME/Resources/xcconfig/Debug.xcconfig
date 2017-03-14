@@ -18,7 +18,7 @@ DEVELOPMENT_TEAM = xxxxxx // Insert debug TEAM ID here
 
 CODE_SIGN_IDENTITY_PRODUCTNAME = iPhone Developer
 PROVISIONING_PROFILE_PRODUCTNAME = xxxxxx // Insert debug provisioning profile ID
-// CODE_SIGN_ENTITLEMENTS = PRODUCTNAME/debug-PRODUCTNAME.entitlements
+// CODE_SIGN_ENTITLEMENTS = PRODUCTNAME/debug-PRODUCTNAME.entitlements // Enable to allow custom debug entitlements
 
 FABRIC_API_KEY = $(INTERNAL_FABRIC_API_KEY)
 FABRIC_BUILD_SECRET = $(INTERNAL_BUILD_SECRET)

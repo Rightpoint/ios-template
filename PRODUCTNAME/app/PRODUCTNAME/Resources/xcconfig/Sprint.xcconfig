@@ -18,7 +18,7 @@ DEVELOPMENT_TEAM = xxxxxx // Insert sprint TEAM ID here
 
 CODE_SIGN_IDENTITY_PRODUCTNAME = iPhone Distribution
 PROVISIONING_PROFILE_PRODUCTNAME = xxxxxx // Insert sprint provisioning profile ID
-// CODE_SIGN_ENTITLEMENTS = PRODUCTNAME/sprint-PRODUCTNAME.entitlements
+// CODE_SIGN_ENTITLEMENTS = PRODUCTNAME/sprint-PRODUCTNAME.entitlements // Enable to allow custom debug entitlements
 
 FABRIC_API_KEY = $(INTERNAL_FABRIC_API_KEY)
 FABRIC_BUILD_SECRET = $(INTERNAL_BUILD_SECRET)
