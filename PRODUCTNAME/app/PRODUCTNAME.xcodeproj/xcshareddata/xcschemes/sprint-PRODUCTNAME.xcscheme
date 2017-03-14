@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "ABC778741DC90B7A00815FB9"
-               BuildableName = "develop-PRODUCTNAME.app"
+               BuildableName = "debug-PRODUCTNAME.app"
                BlueprintName = "PRODUCTNAME"
                ReferencedContainer = "container:PRODUCTNAME.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "ABC778741DC90B7A00815FB9"
-            BuildableName = "develop-PRODUCTNAME.app"
+            BuildableName = "debug-PRODUCTNAME.app"
             BlueprintName = "PRODUCTNAME"
             ReferencedContainer = "container:PRODUCTNAME.xcodeproj">
          </BuildableReference>
@@ -62,14 +62,13 @@
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
       <PathRunnable
-         runnableDebuggingMode = "0"
-         FilePath = "/Users/adamhowitt/Library/Developer/Xcode/DerivedData/PRODUCTNAME-fkcezwbajdzlhncnjevitfmzarlo/Build/Products/Sprint-iphonesimulator/sprint-PRODUCTNAME.app">
+         runnableDebuggingMode = "0">
       </PathRunnable>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "ABC778741DC90B7A00815FB9"
-            BuildableName = "develop-PRODUCTNAME.app"
+            BuildableName = "debug-PRODUCTNAME.app"
             BlueprintName = "PRODUCTNAME"
             ReferencedContainer = "container:PRODUCTNAME.xcodeproj">
          </BuildableReference>
@@ -88,7 +87,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "ABC778741DC90B7A00815FB9"
-            BuildableName = "develop-PRODUCTNAME.app"
+            BuildableName = "debug-PRODUCTNAME.app"
             BlueprintName = "PRODUCTNAME"
             ReferencedContainer = "container:PRODUCTNAME.xcodeproj">
          </BuildableReference>
