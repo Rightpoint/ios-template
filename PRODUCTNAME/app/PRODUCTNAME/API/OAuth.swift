@@ -157,6 +157,23 @@ extension OAuthClient {
         authenticationRequest = request
     }
 
+    // MARK: Logout Request
+
+    struct LogoutRequest {
+        let token: String
+    }
+
+    @discardableResult func logout(completion: @escaping (Error?) -> Void) {
+        let token = credentials?.accessToken ?? "INVALID TOKEN"
+        let endpoint = LogoutRequest(token: token)
+        let request = manager.request(baseURL, endpoint: endpoint) {
+            [weak self] (credentials, error) in
+            self?.handleOauth(credentials: credentials)
+            completion(error)
+        }
+        authenticationRequest = request
+    }
+
     // MARK: Token Refresh
 
     struct RefreshRequest {
@@ -213,6 +230,23 @@ extension OAuthClient.TokenRequest: APIEndpoint {
             APIConstants.contentType: APIConstants.formEncoded,
             APIConstants.authorization: "Basic \(clientSecret)",
         ]
+    }
+}
+
+extension OAuthClient.LogoutRequest: APIEndpoint {
+    typealias ResponseType = OAuthClient.Credentials
+    var path: String { return "oauth/revoke" }
+    var method: HTTPMethod { return .post }
+    var encoding: ParameterEncoding { return URLEncoding.default }
+
+    var parameters: JSONObject? {
+        return [
+            "token": token
+        ]
+    }
+
+    var headers: HTTPHeaders {
+        return [APIConstants.contentType: APIConstants.formEncoded]
     }
 }
 
