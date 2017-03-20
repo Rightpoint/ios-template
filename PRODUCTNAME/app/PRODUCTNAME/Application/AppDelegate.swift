@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
         window = UIWindow(frame: UIScreen.main.bounds)
-        
+
         // Adds (by default) a 2 finger triple tap gesture to present a debug menu
         enableDebugGesture()
 
