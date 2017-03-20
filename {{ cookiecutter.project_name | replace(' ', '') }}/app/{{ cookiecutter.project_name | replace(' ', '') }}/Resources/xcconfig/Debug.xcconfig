@@ -8,11 +8,18 @@
 
 #include "{{ cookiecutter.project_name | replace(' ', '') }}/Resources/xcconfig/Raizlabs-Account.xcconfig"
 
-PRODUCT_BUNDLE_IDENTIFIER = com.raizlabs.{{ cookiecutter.project_name | replace(' ', '') }}
-
 OTHER_SWIFT_FLAGS = -D INSTABUG -D DEBUG
 
-CODE_SIGN_IDENTITY_{{ cookiecutter.project_name | replace(' ', '') }} = iPhone Developer
-PROVISIONING_PROFILE_{{ cookiecutter.project_name | replace(' ', '') }} = 
-
 #include "{{ cookiecutter.project_name | replace(' ', '') }}/Resources/xcconfig/Global.xcconfig"
+
+PRODUCT_BUNDLE_IDENTIFIER = com.raizlabs.{{ cookiecutter.project_name | replace(' ', '') }}.debug
+PRODUCT_NAME = debug-$(TARGET_NAME)
+DEVELOPMENT_TEAM = xxxxxx // Insert debug TEAM ID here
+
+CODE_SIGN_IDENTITY_{{ cookiecutter.project_name | replace(' ', '') }} = iPhone Developer
+PROVISIONING_PROFILE_{{ cookiecutter.project_name | replace(' ', '') }} = xxxxxx // Insert debug provisioning profile ID
+// CODE_SIGN_ENTITLEMENTS = {{ cookiecutter.project_name | replace(' ', '') }}/debug-{{ cookiecutter.project_name | replace(' ', '') }}.entitlements // Enable to allow custom debug entitlements
+
+FABRIC_API_KEY = $(INTERNAL_FABRIC_API_KEY)
+FABRIC_BUILD_SECRET = $(INTERNAL_BUILD_SECRET)
+SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG
