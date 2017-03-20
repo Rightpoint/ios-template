@@ -5,6 +5,7 @@ PODS:
   - Crashlytics (3.8.4):
     - Fabric (~> 1.6.3)
   - Fabric (1.6.11)
+  - GoogleAnalytics (3.17.0)
   - Instabug (7.0.5)
   - KeychainAccess (3.0.1)
   - Marshal (1.2.4)
@@ -59,6 +60,7 @@ DEPENDENCIES:
   - Anchorage
   - BonMot
   - Crashlytics
+  - GoogleAnalytics (~> 3.0)
   - Instabug
   - KeychainAccess
   - Marshal
@@ -72,6 +74,7 @@ SPEC CHECKSUMS:
   BonMot: 9dbd59135974d2fa591a2084b3489bdc0e15e8f8
   Crashlytics: 79e236942ca1e7fc641df1feb9a275360a78ab6a
   Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
+  GoogleAnalytics: f42cc53a87a51fe94334821868d9c8481ff47a7b
   Instabug: 1595db90e56b3de741be687211afbad72facc7e9
   KeychainAccess: 017ea25e313a49eda10bb19b0bb0760fb1edfe1a
   Marshal: 8e04e6624e506921db7143b0bfd83caee03f32d6
@@ -79,6 +82,6 @@ SPEC CHECKSUMS:
   SwiftGen: b6bfed151243348e4603b91bf5bc4eb2486c9d5b
   Swiftilities: 009e9adab05f022c44cd07b33bb6dc1fb54b768a
 
-PODFILE CHECKSUM: d25369776ca4d696d4d65d43410a3266a4924551
+PODFILE CHECKSUM: eabba92e3b6bb8db40923627be65921e51c14f40
 
 COCOAPODS: 1.2.0

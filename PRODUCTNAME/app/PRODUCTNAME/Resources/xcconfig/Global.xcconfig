@@ -21,3 +21,10 @@ PRODUCTNAME_FABRIC_API_KEY = xxxxxx //Paste Production Fabric account API KEY he
 PRODUCTNAME_FABRIC_BUILD_SECRET = xxxxxx //Paste Production Fabric account BUILD SECRET here
 
 INSTABUG_TOKEN = xxxxxx // Paste instabug token here
+
+GA_TRACKING_ID = UA-xxxxxx-x // Paste GA tracking ID here
+// We recommend creating a custom dimension in Google Analytics on the property admin screen to track
+// the environment the build is running in. This allows you to create custom views to keep all but
+// production data from showing up in the main view and then create a filter in a new "dev only data"
+// view to show only dev GA data.
+GA_ENVIRONMENT = dev // Set a string representing the build configuration e.g. dev, production

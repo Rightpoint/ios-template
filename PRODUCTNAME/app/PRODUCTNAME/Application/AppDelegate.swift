@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         InstabugConfiguration(),
         Appearance.shared,
         CrashReportingConfiguration(),
+        AnalyticsConfiguration(),
         ]
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -28,8 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // Don't load the main UI if we're unit testing.
         if let _: AnyClass = NSClassFromString("XCTest") {
-        return true
-    }
+            return true
+        }
 
         window = UIWindow(frame: UIScreen.main.bounds)
         
