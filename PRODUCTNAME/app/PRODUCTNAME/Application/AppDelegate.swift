@@ -22,14 +22,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
+        // Don't load the main UI if we're unit testing.
+        if let _: AnyClass = NSClassFromString("XCTest") {
+            return true
+        }
+
         for config in configurations where config.isEnabled {
             config.onDidLaunch(application: application, launchOptions: launchOptions)
         }
-
-        // Don't load the main UI if we're unit testing.
-        if let _: AnyClass = NSClassFromString("XCTest") {
-        return true
-    }
 
         window = UIWindow(frame: UIScreen.main.bounds)
 
