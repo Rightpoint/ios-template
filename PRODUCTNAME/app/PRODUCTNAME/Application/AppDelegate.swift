@@ -36,14 +36,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Adds (by default) a 2 finger triple tap gesture to present a debug menu
         enableDebugGesture()
 
-        if let w = window {
-            // Configure global window defaults
-            w.backgroundColor = UIColor.white
-
-            // Setting a tintcolor on the window adds a tint to all UIAlertControllers
-            w.tintColor = UIColor.blue
-        }
-
         configureInitialViewState()
         window?.makeKeyAndVisible()
 
