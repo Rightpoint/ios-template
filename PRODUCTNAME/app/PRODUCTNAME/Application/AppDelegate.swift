@@ -29,7 +29,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
         window = UIWindow(frame: UIScreen.main.bounds)
-        //configureInitialViewState()
         showTabBar(animated: false)
         window?.makeKeyAndVisible()
 
@@ -41,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func showTabBar(animated: Bool) {
-        // Hide the root view controller if one exists. This appraoch allows us to switch between the main experience, login and onboarding folows
+        // Dismiss the root view controller if one exists. This approach allows us to switch between the main experience, login and onboarding folows
         window?.rootViewController?.dismiss(animated: false, completion: nil)
 
         let tabBarVC = UITabBarController()
