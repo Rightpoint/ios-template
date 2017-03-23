@@ -48,7 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
 
         return true
-        }
+    }
 
     func configureRootViewController(animated: Bool) {
         // Dismiss the root view controller if one exists. This approach allows us to switch between the main experience, login and onboarding folows

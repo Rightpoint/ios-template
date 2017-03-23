@@ -28,6 +28,15 @@ extension UIViewController {
 
 private enum AnalyticsPageName {
 
+    static func `for`(_ className: String) -> String? {
+        var pageName = className
+
+        if let range = pageName.range(of: "ViewController", options: [.backwards, .anchored], range: nil, locale: nil) {
+            pageName.removeSubrange(range)
+        }
+        return pageName.replacingOccurrences(of: "([a-z])([A-Z])", with: "$1 $2", options: .regularExpression, range: pageName.startIndex..<pageName.endIndex)
+    }
+
     static func `for`(_ viewController: UIViewController) -> String? {
         let identifier = ObjectIdentifier(type(of: viewController))
 
@@ -36,12 +45,8 @@ private enum AnalyticsPageName {
         }
         else if !AnalyticsConfiguration.ignoreList.contains(identifier),
             !viewController.isSystemClass {
-            var className = String(describing: type(of: viewController))
-
-            if let range = className.range(of: "ViewController", options: [.backwards, .anchored], range: nil, locale: nil) {
-                className.removeSubrange(range)
-            }
-            return className.replacingOccurrences(of: "([a-z])([A-Z])", with: "$1 $2", options: .regularExpression, range: className.startIndex..<className.endIndex)
+            let className = String(describing: type(of: viewController))
+            return AnalyticsPageName.for(className)
         }
         else {
             return nil
