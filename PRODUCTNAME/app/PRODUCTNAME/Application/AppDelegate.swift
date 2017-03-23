@@ -39,17 +39,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
         window = UIWindow(frame: UIScreen.main.bounds)
-        showTabBar(animated: false)
-        window?.makeKeyAndVisible()
 
         for config in postWindowConfigurations where config.isEnabled {
             config.onDidLaunch(application: application, launchOptions: launchOptions)
         }
 
+        configureRootViewController(animated: false)
+        window?.makeKeyAndVisible()
+
         return true
         }
 
-    func showTabBar(animated: Bool) {
+    func configureRootViewController(animated: Bool) {
         // Dismiss the root view controller if one exists. This approach allows us to switch between the main experience, login and onboarding folows
         window?.rootViewController?.dismiss(animated: false, completion: nil)
 
