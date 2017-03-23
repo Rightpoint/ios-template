@@ -33,11 +33,11 @@ class APIClientTests: XCTestCase {
             return OHHTTPStubsResponse(data: Payloads.oauth, statusCode:200, headers:nil)
         }
         stub(condition: pathStartsWith("/test")) { _ in
-            return OHHTTPStubsResponse(data: Payloads.test, statusCode: authorized ? 200 : 401, headers:nil)
+            return OHHTTPStubsResponse(data: Payloads.test, statusCode: authorized ? 200 : 401, headers: nil)
         }
 
         let expectation = self.expectation(description: "Test Endpoint")
-        client.request(TestEndpoint()) { response, error in
+        client.request(TestEndpoint()) { _, error in
             XCTAssertNotNil(error)
             expectation.fulfill()
         }
