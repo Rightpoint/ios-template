@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol PageNameConfiguration {
+    static var nameOverrides: [ObjectIdentifier : String] { get }
+    static var ignoreList: [ObjectIdentifier] { get }
+}
+
 extension UIViewController {
 
     var analyticsPageName: String? {
@@ -23,27 +28,13 @@ extension UIViewController {
 
 private enum AnalyticsPageName {
 
-    // By default page names are the VC class name minus the suffix "ViewController" converted from camel case to title case. Adding a class to this list will use the provided string for that view controller.
-    // e.g. ObjectIdentifier(SigninViewController.self): "Sign in",
-    static let nameOverrides: [ObjectIdentifier : String] = [:]
-    // static let nameOverrides: [ObjectIdentifier : String] = [
-    //    ObjectIdentifier(SigninViewController.self): "Sign in",
-    // ]
-
-    // Add any ViewControllers that you don't want to see in Analytics to the ignoreList 
-    // e.g. HomeTabBarViewController isn't really a screen to be tracked
-    static let ignoreList = [
-        ObjectIdentifier(UINavigationController.self),
-        // ObjectIdentifier(HomeTabBarViewController.self),
-    ]
-
     static func `for`(_ viewController: UIViewController) -> String? {
         let identifier = ObjectIdentifier(type(of: viewController))
 
-        if let pageName = nameOverrides[identifier] {
+        if let pageName = AnalyticsConfiguration.nameOverrides[identifier] {
             return pageName
         }
-        else if !ignoreList.contains(identifier),
+        else if !AnalyticsConfiguration.ignoreList.contains(identifier),
             !viewController.isSystemClass {
             var className = String(describing: type(of: viewController))
 
