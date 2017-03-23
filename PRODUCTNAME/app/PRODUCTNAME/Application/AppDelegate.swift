@@ -13,13 +13,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    let configurations: [AppLifecycle] = [
+    // Anything that doesn't rely on the existence of a window should be in this preWindowConfigurations array
+    let preWindowConfigurations: [AppLifecycle] = [
         LoggingConfiguration(),
         InstabugConfiguration(),
         Appearance.shared,
         CrashReportingConfiguration(),
-        DebugMenuConfiguration(),
         AnalyticsConfiguration(),
+        ]
+
+    // Anything that relies on the existence of a window and an initial viewcontroller should be in this postWindowConfigurations array
+    let postWindowConfigurations: [AppLifecycle] = [
+        DebugMenuConfiguration(),
         ]
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -29,11 +34,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return true
         }
 
+        for config in preWindowConfigurations where config.isEnabled {
+            config.onDidLaunch(application: application, launchOptions: launchOptions)
+        }
+
         window = UIWindow(frame: UIScreen.main.bounds)
         showTabBar(animated: false)
         window?.makeKeyAndVisible()
 
-        for config in configurations where config.isEnabled {
+        for config in postWindowConfigurations where config.isEnabled {
             config.onDidLaunch(application: application, launchOptions: launchOptions)
         }
 
@@ -45,7 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController?.dismiss(animated: false, completion: nil)
 
         let tabBarVC = UITabBarController()
-        let firstTab = UIViewController()
+        let firstTab = FirstTabViewController()
         firstTab.view.backgroundColor = UIColor.white // Forces loadView
         tabBarVC.setViewControllers([firstTab], animated: false)
 
