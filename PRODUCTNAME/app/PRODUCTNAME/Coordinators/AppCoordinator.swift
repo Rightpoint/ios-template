@@ -10,16 +10,25 @@ import UIKit
 
 class AppCoordinator: Coordinator {
 
-    private let rootController: UIViewController
+    let baseController: UIViewController
+    var childCoordinators = [Coordinator]()
 
     init() {
         guard let rootController = UIApplication.shared.keyWindow?.rootViewController else {
             preconditionFailure("Initializing an AppCoordinator requires a root view controller.")
         }
-        self.rootController = rootController
+        self.baseController = rootController
     }
 
     func start() {
+        let authCoordinator = AuthCoordinator(baseController)
+        authCoordinator.delegate = self
+        childCoordinators.append(authCoordinator)
+        authCoordinator.start()
     }
+
+}
+
+extension AppCoordinator: AuthCoordinatorDelegate {
 
 }
