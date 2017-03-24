@@ -10,6 +10,8 @@ import UIKit
 
 protocol Coordinator {
 
+    var baseController: UIViewController { get }
+    var childCoordinators: [Coordinator] { get set }
     func start()
 
 }
