@@ -25,7 +25,11 @@ class SignInCoordinator: Coordinator {
     }
 
     func start() {
-        // TODO - launch onboarding controller
+        // TODO - launch sign in controller
+    }
+
+    func cleanup() {
+        baseController.dismiss(animated: false, completion: nil)
     }
 
 }
