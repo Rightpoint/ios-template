@@ -31,4 +31,14 @@ class AppCoordinator: Coordinator {
 
 extension AppCoordinator: AuthCoordinatorDelegate {
 
+    func didSignIn() {
+        guard let authCoordinator = childCoordinators.flatMap({ $0 as? AuthCoordinator }).first,
+            let index = childCoordinators.index(where: { $0 is AuthCoordinator }) else {
+            preconditionFailure("On didSignIn, we should have an AuthCoordinator in our list of coordinators.")
+        }
+        childCoordinators.remove(at: index)
+        authCoordinator.cleanup()
+        // TODO - launch child coordinator
+    }
+
 }
