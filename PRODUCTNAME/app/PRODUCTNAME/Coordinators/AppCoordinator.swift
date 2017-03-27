@@ -40,7 +40,10 @@ extension AppCoordinator: AuthCoordinatorDelegate {
         }
         childCoordinators.remove(at: index)
         authCoordinator.cleanup()
-        // TODO - launch content coordinator
+
+        let contentCoordinator = ContentCoordinator(baseController)
+        contentCoordinator.start()
+        childCoordinators.append(contentCoordinator)
     }
 
 }
