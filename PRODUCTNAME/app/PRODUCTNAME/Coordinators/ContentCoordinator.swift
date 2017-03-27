@@ -12,18 +12,26 @@ class ContentCoordinator: Coordinator {
 
     let baseController: UIViewController
     var childCoordinators = [Coordinator]()
-    weak var delegate: SignInCoordinatorDelegate?
 
     init(_ baseController: UIViewController) {
         self.baseController = baseController
     }
 
     func start() {
-        // TODO - launch main content controller
+        // TODO - create and use ContentViewController
+        let vc = UIViewController()
+        vc.view.backgroundColor = .green
+        // Wrapped in dispatch block to ensure this happens on the next run loop
+        // after the root is configured, to prevent "Unbalanced calls to begin/
+        // "end appearance transitions" warning. Necessary for any controllers
+        // presented directly off of the root controller.
+        DispatchQueue.main.async {
+            self.baseController.present(vc, animated: false, completion: nil)
+        }
     }
 
     func cleanup() {
         baseController.dismiss(animated: false, completion: nil)
     }
-    
+
 }
