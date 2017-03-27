@@ -14,7 +14,7 @@ class AppCoordinator: Coordinator {
     var childCoordinators = [Coordinator]()
 
     init() {
-        guard let rootController = UIApplication.shared.keyWindow?.rootViewController else {
+        guard let rootController = AppDelegate.shared?.window?.rootViewController else {
             preconditionFailure("Initializing an AppCoordinator requires a root view controller.")
         }
         self.baseController = rootController

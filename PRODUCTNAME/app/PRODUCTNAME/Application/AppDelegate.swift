@@ -11,6 +11,10 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    static var shared: AppDelegate? {
+        return UIApplication.shared.delegate as? AppDelegate
+    }
+
     var window: UIWindow?
 
     let configurations: [AppLifecycle] = [
@@ -35,6 +39,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
         configureRootViewController(animated: false)
+
+        AppCoordinator().start()
+
         window?.makeKeyAndVisible()
 
         return true
