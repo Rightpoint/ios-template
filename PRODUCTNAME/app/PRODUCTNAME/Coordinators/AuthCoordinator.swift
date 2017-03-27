@@ -43,8 +43,6 @@ class AuthCoordinator: Coordinator {
     }
 
     func cleanup() {
-        // TODO - what should be done here?
-        baseController.dismiss(animated: false, completion: nil)
     }
 
 }
@@ -55,4 +53,20 @@ extension AuthCoordinator: SignInCoordinatorDelegate {
         delegate?.didSignIn()
     }
 
+}
+
+extension AuthCoordinator: OnboardingCoordinatorDelegate {
+
+    func didCompleteOnboarding() {
+        guard let (index, onboardCoordinator) = child(ofType: OnboardingCoordinator.self) else {
+            preconditionFailure("On didCompleteOnboarding, we should have an OnboardingCoordinator in our list of coordinators.")
+        }
+        childCoordinators.remove(at: index)
+        onboardCoordinator.cleanup()
+
+        let signInCoordinator = SignInCoordinator(baseController)
+        signInCoordinator.delegate = self
+        signInCoordinator.start()
+        childCoordinators.append(signInCoordinator)
+    }
 }

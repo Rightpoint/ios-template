@@ -27,6 +27,9 @@ class AppCoordinator: Coordinator {
         authCoordinator.start()
     }
 
+    func cleanup() {
+    }
+
 }
 
 extension AppCoordinator: AuthCoordinatorDelegate {
