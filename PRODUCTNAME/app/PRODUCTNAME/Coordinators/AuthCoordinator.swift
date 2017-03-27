@@ -27,14 +27,15 @@ class AuthCoordinator: Coordinator {
 
     func start() {
         if authClient.isAuthenticated {
-            cleanup()
             delegate?.didSignIn()
         }
         else if UserDefaults.hasOnboarded {
             // TODO - launch sign in
         }
         else {
-            // TODO - launch onboarding
+            let onboardCoordinator = OnboardingCoordinator(baseController)
+            onboardCoordinator.start()
+            childCoordinators.append(onboardCoordinator)
         }
     }
 

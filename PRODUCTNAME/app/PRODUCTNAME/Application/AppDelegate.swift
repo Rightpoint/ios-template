@@ -11,6 +11,10 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    static var shared: AppDelegate? {
+        return UIApplication.shared.delegate as? AppDelegate
+    }
+
     var window: UIWindow?
 
     // Anything that doesn't rely on the existence of a viewcontroller should be in this preWindowConfigurations array
@@ -41,6 +45,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
 
         configureRootViewController(animated: false)
+
+        AppCoordinator().start()
+
         window?.makeKeyAndVisible()
 
         for config in rootViewControllerDependentConfigurations where config.isEnabled {
