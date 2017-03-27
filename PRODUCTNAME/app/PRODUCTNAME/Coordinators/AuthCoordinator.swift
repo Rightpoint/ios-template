@@ -30,7 +30,10 @@ class AuthCoordinator: Coordinator {
             delegate?.didSignIn()
         }
         else if UserDefaults.hasOnboarded {
-            // TODO - launch sign in
+            let signInCoordinator = SignInCoordinator(baseController)
+            signInCoordinator.delegate = self
+            signInCoordinator.start()
+            childCoordinators.append(signInCoordinator)
         }
         else {
             let onboardCoordinator = OnboardingCoordinator(baseController)
@@ -42,6 +45,14 @@ class AuthCoordinator: Coordinator {
     func cleanup() {
         // TODO - what should be done here?
         baseController.dismiss(animated: false, completion: nil)
+    }
+
+}
+
+extension AuthCoordinator: SignInCoordinatorDelegate {
+
+    func didSignIn() {
+        delegate?.didSignIn()
     }
 
 }
