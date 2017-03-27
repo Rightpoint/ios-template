@@ -42,30 +42,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             config.onDidLaunch(application: application, launchOptions: launchOptions)
         }
 
-        window = UIWindow(frame: UIScreen.main.bounds)
-
-        configureRootViewController(animated: false)
-
         AppCoordinator().start()
-
-        window?.makeKeyAndVisible()
-
-        for config in rootViewControllerDependentConfigurations where config.isEnabled {
-            config.onDidLaunch(application: application, launchOptions: launchOptions)
-        }
 
         return true
     }
 
-    func configureRootViewController(animated: Bool) {
-        // Dismiss the root view controller if one exists. This approach allows us to switch between the main experience, login and onboarding folows
-        window?.rootViewController?.dismiss(animated: false, completion: nil)
-
-        let tabBarVC = UITabBarController()
-        let firstTab = FirstTabViewController()
-        firstTab.view.backgroundColor = UIColor.white // Forces loadView
-        tabBarVC.setViewControllers([firstTab], animated: false)
-
-        window?.setRootViewController(tabBarVC, animated: animated)
-    }
 }
