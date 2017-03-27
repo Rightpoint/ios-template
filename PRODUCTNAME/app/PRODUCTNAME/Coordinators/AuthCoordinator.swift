@@ -11,7 +11,6 @@ import UIKit
 protocol AuthCoordinatorDelegate: class {
 
     func didSignIn()
-    func didSkipSignIn()
 
 }
 
@@ -31,8 +30,11 @@ class AuthCoordinator: Coordinator {
             cleanup()
             delegate?.didSignIn()
         }
+        else if UserDefaults.hasOnboarded {
+            // TODO - launch sign in
+        }
         else {
-            // TODO - launch Onboard or SignIn coordinator
+            // TODO - launch onboarding
         }
     }
 
