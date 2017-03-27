@@ -37,12 +37,18 @@ class AuthCoordinator: Coordinator {
         }
         else {
             let onboardCoordinator = OnboardingCoordinator(baseController)
+            onboardCoordinator.delegate = self
             onboardCoordinator.start()
             childCoordinators.append(onboardCoordinator)
         }
     }
 
     func cleanup() {
+        // This coordinator never directly presents controllers,
+        // so just clean up any children.
+        for child in childCoordinators {
+            child.cleanup()
+        }
     }
 
 }
