@@ -18,6 +18,13 @@
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>GoogleAnalytics</key>
+	<dict>
+		<key>Environment</key>
+		<string>$(GA_ENVIRONMENT)</string>
+		<key>TrackingID</key>
+		<string>$(GA_TRACKING_ID)</string>
+	</dict>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>

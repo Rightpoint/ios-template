@@ -13,11 +13,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    let configurations: [AppLifecycle] = [
+    // Anything that doesn't rely on the existence of a viewcontroller should be in this preWindowConfigurations array
+    let preWindowConfigurations: [AppLifecycle] = [
         LoggingConfiguration(),
         InstabugConfiguration(),
         Appearance.shared,
         CrashReportingConfiguration(),
+        AnalyticsConfiguration(),
+        ]
+
+    // Anything that relies on the existence of a window and an initial viewcontroller should be in this postWindowConfigurations array
+    let rootViewControllerDependentConfigurations: [AppLifecycle] = [
         DebugMenuConfiguration(),
         ]
 
@@ -28,14 +34,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return true
         }
 
-        window = UIWindow(frame: UIScreen.main.bounds)
-
-        for config in configurations where config.isEnabled {
+        for config in preWindowConfigurations where config.isEnabled {
             config.onDidLaunch(application: application, launchOptions: launchOptions)
         }
 
+        window = UIWindow(frame: UIScreen.main.bounds)
+
         configureRootViewController(animated: false)
         window?.makeKeyAndVisible()
+
+        for config in rootViewControllerDependentConfigurations where config.isEnabled {
+            config.onDidLaunch(application: application, launchOptions: launchOptions)
+        }
 
         return true
     }
@@ -45,7 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController?.dismiss(animated: false, completion: nil)
 
         let tabBarVC = UITabBarController()
-        let firstTab = UIViewController()
+        let firstTab = FirstTabViewController()
         firstTab.view.backgroundColor = UIColor.white // Forces loadView
         tabBarVC.setViewControllers([firstTab], animated: false)
 
