@@ -10,10 +10,6 @@ import UIKit
 
 protocol Coordinator {
 
-    /// The controller on top of which any transitions occur,
-    /// and the starting point for the coordinator.
-    var baseController: UIViewController { get }
-
     /// Any child coordinators spun off by this coordinator.
     /// Important to keep a reference to them to prevent deallocation,
     /// and for cleaning up after.
