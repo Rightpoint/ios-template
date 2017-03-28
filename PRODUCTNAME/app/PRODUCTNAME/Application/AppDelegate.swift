@@ -42,7 +42,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             config.onDidLaunch(application: application, launchOptions: launchOptions)
         }
 
-        AppCoordinator().start()
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        self.window = window
+
+        for config in rootViewControllerDependentConfigurations where config.isEnabled {
+            config.onDidLaunch(application: application, launchOptions: launchOptions)
+        }
+
+        AppCoordinator(window: window).start()
 
         return true
     }
