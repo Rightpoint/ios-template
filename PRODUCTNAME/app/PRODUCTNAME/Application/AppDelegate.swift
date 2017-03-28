@@ -15,13 +15,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return UIApplication.shared.delegate as? AppDelegate
     }
 
+    var coordinator: AppCoordinator!
     var window: UIWindow?
 
-    let configurations: [AppLifecycle] = [
+    // Anything that doesn't rely on the existence of a viewcontroller should be in this preWindowConfigurations array
+    let preWindowConfigurations: [AppLifecycle] = [
         LoggingConfiguration(),
         InstabugConfiguration(),
         Appearance.shared,
         CrashReportingConfiguration(),
+        AnalyticsConfiguration(),
+        ]
+
+    // Anything that relies on the existence of a window and an initial viewcontroller should be in this postWindowConfigurations array
+    let rootViewControllerDependentConfigurations: [AppLifecycle] = [
         DebugMenuConfiguration(),
         ]
 
@@ -35,11 +42,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let window = UIWindow(frame: UIScreen.main.bounds)
         self.window = window
 
-        for config in configurations where config.isEnabled {
+        for config in preWindowConfigurations where config.isEnabled {
             config.onDidLaunch(application: application, launchOptions: launchOptions)
         }
 
-        AppCoordinator(window: window).start()
+        self.coordinator = AppCoordinator(window: window)
+        coordinator.start()
+
+        for config in rootViewControllerDependentConfigurations where config.isEnabled {
+            config.onDidLaunch(application: application, launchOptions: launchOptions)
+        }
 
         return true
     }
