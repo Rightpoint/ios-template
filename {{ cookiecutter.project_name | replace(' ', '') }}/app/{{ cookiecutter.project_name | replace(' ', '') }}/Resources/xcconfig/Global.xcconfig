@@ -6,7 +6,25 @@
 //  Copyright © 2016 {{ cookiecutter.company_name }}. All rights reserved.
 //
 
-// This config file should be included last so the variable expansions work correctly
+PRODUCT_MODULE_NAME = {{ cookiecutter.project_name | replace(' ', '') }}
+TESTS_PRODUCT_MODULE_NAME = $(PRODUCT_MODULE_NAME)Tests // Overrides product_module_name for the tests
 
 CODE_SIGN_IDENTITY = $(CODE_SIGN_IDENTITY_$(TARGET_NAME))
 PROVISIONING_PROFILE = $(PROVISIONING_PROFILE_$(TARGET_NAME))
+
+PROVISIONING_PROFILE_SPECIFIER = $(PROVISIONING_PROFILE_$(TARGET_NAME))
+
+INTERNAL_FABRIC_API_KEY = xxxxxx //Paste Internal Fabric account API KEY here
+INTERNAL_BUILD_SECRET = xxxxxx //Paste Internal Fabric account BUILD SECRET here
+
+{{ cookiecutter.project_name | replace(' ', '') }}_FABRIC_API_KEY = xxxxxx //Paste Production Fabric account API KEY here
+{{ cookiecutter.project_name | replace(' ', '') }}_FABRIC_BUILD_SECRET = xxxxxx //Paste Production Fabric account BUILD SECRET here
+
+INSTABUG_TOKEN = xxxxxx // Paste instabug token here
+
+GA_TRACKING_ID = UA-xxxxxx-x // Paste GA tracking ID here
+// We recommend creating a custom dimension in Google Analytics on the property admin screen to track
+// the environment the build is running in. This allows you to create custom views to keep all but
+// production data from showing up in the main view and then create a filter in a new "dev only data"
+// view to show only dev GA data.
+GA_ENVIRONMENT = dev // Set a string representing the build configuration e.g. dev, production

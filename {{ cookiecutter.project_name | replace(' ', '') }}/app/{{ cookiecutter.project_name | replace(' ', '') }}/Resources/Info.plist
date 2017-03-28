@@ -18,6 +18,29 @@
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>GoogleAnalytics</key>
+	<dict>
+		<key>Environment</key>
+		<string>$(GA_ENVIRONMENT)</string>
+		<key>TrackingID</key>
+		<string>$(GA_TRACKING_ID)</string>
+	</dict>
+	<key>Fabric</key>
+	<dict>
+		<key>APIKey</key>
+		<string>$(FABRIC_API_KEY)</string>
+		<key>Kits</key>
+		<array>
+			<dict>
+				<key>KitInfo</key>
+				<dict/>
+				<key>KitName</key>
+				<string>Crashlytics</string>
+			</dict>
+		</array>
+	</dict>
+	<key>InstabugToken</key>
+	<string>$(INSTABUG_TOKEN)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>

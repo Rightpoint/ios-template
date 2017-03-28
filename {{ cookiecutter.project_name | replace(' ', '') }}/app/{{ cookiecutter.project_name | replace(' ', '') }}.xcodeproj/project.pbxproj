@@ -38,6 +38,12 @@
 		ABF84FA41DCBCD89002DB24D /* APIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF84FA31DCBCD89002DB24D /* APIClientTests.swift */; };
 		ABF84FA61DCBCEA1002DB24D /* Payloads.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF84FA51DCBCEA1002DB24D /* Payloads.swift */; };
 		ABF84FA81DCBFF84002DB24D /* TestEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF84FA71DCBFF84002DB24D /* TestEndpoint.swift */; };
+		BE4C21EB1E81970A00645143 /* DebugMenuConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4C21EA1E81970A00645143 /* DebugMenuConfiguration.swift */; };
+		BE28092A1E802893006E50D5 /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2809271E802893006E50D5 /* Analytics.swift */; };
+		BE28092B1E802893006E50D5 /* AnalyticsPageNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2809281E802893006E50D5 /* AnalyticsPageNames.swift */; };
+		BE28092C1E802893006E50D5 /* GoogleAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2809291E802893006E50D5 /* GoogleAnalytics.swift */; };
+		BE28092E1E8029D8006E50D5 /* AnalyticsConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE28092D1E8029D8006E50D5 /* AnalyticsConfiguration.swift */; };
+		BE2809301E8038BE006E50D5 /* FirstTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE28092F1E8038BE006E50D5 /* FirstTabViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,7 +81,7 @@
 		8CD9F2E21AB27A0230007885 /* Pods_{{ cookiecutter.project_name | replace(' ', '') }}.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_{{ cookiecutter.project_name | replace(' ', '') }}.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		93311DA40F63AE5674D438F9 /* Pods-{{ cookiecutter.project_name | replace(' ', '') }}Tests.sprint.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-{{ cookiecutter.project_name | replace(' ', '') }}Tests.sprint.xcconfig"; path = "Pods/Target Support Files/Pods-{{ cookiecutter.project_name | replace(' ', '') }}Tests/Pods-{{ cookiecutter.project_name | replace(' ', '') }}Tests.sprint.xcconfig"; sourceTree = "<group>"; };
 		9E61F9E4F9A440040EE8DCF0 /* Pods-{{ cookiecutter.project_name | replace(' ', '') }}.sprint.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-{{ cookiecutter.project_name | replace(' ', '') }}.sprint.xcconfig"; path = "Pods/Target Support Files/Pods-{{ cookiecutter.project_name | replace(' ', '') }}/Pods-{{ cookiecutter.project_name | replace(' ', '') }}.sprint.xcconfig"; sourceTree = "<group>"; };
-		ABC778751DC90B7A00815FB9 /* {{ cookiecutter.project_name | replace(' ', '') }}.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = {{ cookiecutter.project_name | replace(' ', '') }}.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		ABC778751DC90B7A00815FB9 /* debug-{{ cookiecutter.project_name | replace(' ', '') }}.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "debug-{{ cookiecutter.project_name | replace(' ', '') }}.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABC778781DC90B7A00815FB9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABC7787F1DC90B7A00815FB9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ABC778821DC90B7A00815FB9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -113,6 +119,13 @@
 		ABF84FA31DCBCD89002DB24D /* APIClientTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClientTests.swift; sourceTree = "<group>"; };
 		ABF84FA51DCBCEA1002DB24D /* Payloads.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Payloads.swift; sourceTree = "<group>"; };
 		ABF84FA71DCBFF84002DB24D /* TestEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestEndpoint.swift; sourceTree = "<group>"; };
+		BE2809251E802474006E50D5 /* {{ cookiecutter.project_name | replace(' ', '') }}-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "{{ cookiecutter.project_name | replace(' ', '') }}-Bridging-Header.h"; sourceTree = "<group>"; };
+		BE4C21EA1E81970A00645143 /* DebugMenuConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugMenuConfiguration.swift; sourceTree = "<group>"; };
+		BE2809271E802893006E50D5 /* Analytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Analytics.swift; sourceTree = "<group>"; };
+		BE2809281E802893006E50D5 /* AnalyticsPageNames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsPageNames.swift; sourceTree = "<group>"; };
+		BE2809291E802893006E50D5 /* GoogleAnalytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleAnalytics.swift; sourceTree = "<group>"; };
+		BE28092D1E8029D8006E50D5 /* AnalyticsConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsConfiguration.swift; sourceTree = "<group>"; };
+		BE28092F1E8038BE006E50D5 /* FirstTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstTabViewController.swift; sourceTree = "<group>"; };
 		C3A4171B7E64E228CC7A0DF7 /* Pods-{{ cookiecutter.project_name | replace(' ', '') }}-{{ cookiecutter.project_name | replace(' ', '') }}Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-{{ cookiecutter.project_name | replace(' ', '') }}-{{ cookiecutter.project_name | replace(' ', '') }}Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-{{ cookiecutter.project_name | replace(' ', '') }}-{{ cookiecutter.project_name | replace(' ', '') }}Tests/Pods-{{ cookiecutter.project_name | replace(' ', '') }}-{{ cookiecutter.project_name | replace(' ', '') }}Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		C7DBD1236E57FBDDF10B2FB0 /* Pods-{{ cookiecutter.project_name | replace(' ', '') }}.develop.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-{{ cookiecutter.project_name | replace(' ', '') }}.develop.xcconfig"; path = "Pods/Target Support Files/Pods-{{ cookiecutter.project_name | replace(' ', '') }}/Pods-{{ cookiecutter.project_name | replace(' ', '') }}.develop.xcconfig"; sourceTree = "<group>"; };
 		DCD1E696B5452D855D78934E /* Pods-{{ cookiecutter.project_name | replace(' ', '') }}.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-{{ cookiecutter.project_name | replace(' ', '') }}.release.xcconfig"; path = "Pods/Target Support Files/Pods-{{ cookiecutter.project_name | replace(' ', '') }}/Pods-{{ cookiecutter.project_name | replace(' ', '') }}.release.xcconfig"; sourceTree = "<group>"; };
@@ -169,6 +182,7 @@
 		AB955DCB1DE3BDD300D0347E /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				BE28092F1E8038BE006E50D5 /* FirstTabViewController.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -187,7 +201,7 @@
 		ABC778761DC90B7A00815FB9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				ABC778751DC90B7A00815FB9 /* {{ cookiecutter.project_name | replace(' ', '') }}.app */,
+				ABC778751DC90B7A00815FB9 /* debug-{{ cookiecutter.project_name | replace(' ', '') }}.app */,
 				ABC778891DC90B7A00815FB9 /* {{ cookiecutter.project_name | replace(' ', '') }}Tests.xctest */,
 			);
 			name = Products;
@@ -238,6 +252,7 @@
 				ABC778841DC90B7A00815FB9 /* Info.plist */,
 				ABC778811DC90B7A00815FB9 /* LaunchScreen.storyboard */,
 				ABF84F801DC97653002DB24D /* Localizable.strings */,
+				BE2809251E802474006E50D5 /* {{ cookiecutter.project_name | replace(' ', '') }}-Bridging-Header.h */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -287,10 +302,13 @@
 		ABC778E21DC94F9300815FB9 /* AppLifecycle */ = {
 			isa = PBXGroup;
 			children = (
+				BE2809261E802893006E50D5 /* Analytics */,
 				ABC778E01DC94F4400815FB9 /* AppLifecycle.swift */,
 				ABC778E51DC94FFC00815FB9 /* CrashlyticsConfiguration.swift */,
+				BE28092D1E8029D8006E50D5 /* AnalyticsConfiguration.swift */,
 				ABC778E71DC9503600815FB9 /* InstabugConfiguration.swift */,
 				ABC778E91DC951B900815FB9 /* LoggingConfiguration.swift */,
+				BE4C21EA1E81970A00645143 /* DebugMenuConfiguration.swift */,
 			);
 			path = AppLifecycle;
 			sourceTree = "<group>";
@@ -332,6 +350,16 @@
 			name = Helpers;
 			sourceTree = "<group>";
 		};
+		BE2809261E802893006E50D5 /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				BE2809271E802893006E50D5 /* Analytics.swift */,
+				BE2809281E802893006E50D5 /* AnalyticsPageNames.swift */,
+				BE2809291E802893006E50D5 /* GoogleAnalytics.swift */,
+			);
+			path = Analytics;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -354,7 +382,7 @@
 			);
 			name = {{ cookiecutter.project_name | replace(' ', '') }};
 			productName = {{ cookiecutter.project_name | replace(' ', '') }};
-			productReference = ABC778751DC90B7A00815FB9 /* {{ cookiecutter.project_name | replace(' ', '') }}.app */;
+			productReference = ABC778751DC90B7A00815FB9 /* debug-{{ cookiecutter.project_name | replace(' ', '') }}.app */;
 			productType = "com.apple.product-type.application";
 		};
 		ABC778881DC90B7A00815FB9 /* {{ cookiecutter.project_name | replace(' ', '') }}Tests */ = {
@@ -390,10 +418,12 @@
 				TargetAttributes = {
 					ABC778741DC90B7A00815FB9 = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = xxxxxx;
 						ProvisioningStyle = Automatic;
 					};
 					ABC778881DC90B7A00815FB9 = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = xxxxxx;
 						ProvisioningStyle = Automatic;
 						TestTargetID = ABC778741DC90B7A00815FB9;
 					};
@@ -555,20 +585,26 @@
 				ABF84F8D1DC99CFD002DB24D /* TextStyle.swift in Sources */,
 				ABF84FA21DCBCB87002DB24D /* Marshal+Utility.swift in Sources */,
 				ABC778EA1DC951B900815FB9 /* LoggingConfiguration.swift in Sources */,
+				BE4C21EB1E81970A00645143 /* DebugMenuConfiguration.swift in Sources */,
 				ABF84F9A1DCB70BB002DB24D /* Alamofire+{{ cookiecutter.project_name | replace(' ', '') }}.swift in Sources */,
 				ABC778DA1DC93E9C00815FB9 /* APIEndpoint.swift in Sources */,
 				ABC778C91DC927C900815FB9 /* Formatters.swift in Sources */,
+				BE28092C1E802893006E50D5 /* GoogleAnalytics.swift in Sources */,
 				ABC778E11DC94F4400815FB9 /* AppLifecycle.swift in Sources */,
 				ABF84F921DC99D33002DB24D /* UIImage+Asset.swift in Sources */,
 				ABF84F911DC99D33002DB24D /* Localized.swift in Sources */,
 				ABC778E81DC9503600815FB9 /* InstabugConfiguration.swift in Sources */,
+				BE28092B1E802893006E50D5 /* AnalyticsPageNames.swift in Sources */,
 				ABC778DF1DC94F0900815FB9 /* BuildType.swift in Sources */,
 				ABC778E61DC94FFC00815FB9 /* CrashlyticsConfiguration.swift in Sources */,
 				ABF84F961DCA89B0002DB24D /* BuildType+API.swift in Sources */,
+				BE28092E1E8029D8006E50D5 /* AnalyticsConfiguration.swift in Sources */,
 				ABF84F7F1DC970E8002DB24D /* APIClient.swift in Sources */,
 				ABF84F981DCAB3B9002DB24D /* APIConstants.swift in Sources */,
 				ABF84F8C1DC99CFD002DB24D /* Appearance.swift in Sources */,
 				ABC778791DC90B7A00815FB9 /* AppDelegate.swift in Sources */,
+				BE2809301E8038BE006E50D5 /* FirstTabViewController.swift in Sources */,
+				BE28092A1E802893006E50D5 /* Analytics.swift in Sources */,
 				ABC778D61DC931A400815FB9 /* APIError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -656,6 +692,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_BRIDGING_HEADER = "{{ cookiecutter.project_name | replace(' ', '') }}/Resources/{{ cookiecutter.project_name | replace(' ', '') }}-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -699,6 +736,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "{{ cookiecutter.project_name | replace(' ', '') }}/Resources/{{ cookiecutter.project_name | replace(' ', '') }}-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -712,8 +750,6 @@
 				INFOPLIST_FILE = {{ cookiecutter.project_name | replace(' ', '') }}/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.raizlabs.{{ cookiecutter.project_name | replace(' ', '') }};
-				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -726,8 +762,6 @@
 				INFOPLIST_FILE = {{ cookiecutter.project_name | replace(' ', '') }}/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.raizlabs.{{ cookiecutter.project_name | replace(' ', '') }};
-				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Develop;
@@ -740,9 +774,10 @@
 				INFOPLIST_FILE = {{ cookiecutter.project_name | replace(' ', '') }}Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.raizlabs.{{ cookiecutter.project_name | replace(' ', '') }}Tests;
+				PRODUCT_MODULE_NAME = "$(TESTS_PRODUCT_MODULE_NAME)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/{{ cookiecutter.project_name | replace(' ', '') }}.app/{{ cookiecutter.project_name | replace(' ', '') }}";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/debug-{{ cookiecutter.project_name | replace(' ', '') }}.app/debug-{{ cookiecutter.project_name | replace(' ', '') }}";
 			};
 			name = Debug;
 		};
@@ -754,9 +789,9 @@
 				INFOPLIST_FILE = {{ cookiecutter.project_name | replace(' ', '') }}Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.raizlabs.{{ cookiecutter.project_name | replace(' ', '') }}Tests;
+				PRODUCT_MODULE_NAME = "$(TESTS_PRODUCT_MODULE_NAME)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/{{ cookiecutter.project_name | replace(' ', '') }}.app/{{ cookiecutter.project_name | replace(' ', '') }}";
 			};
 			name = Develop;
 		};
@@ -799,6 +834,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "{{ cookiecutter.project_name | replace(' ', '') }}/Resources/{{ cookiecutter.project_name | replace(' ', '') }}-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -812,8 +848,6 @@
 				INFOPLIST_FILE = {{ cookiecutter.project_name | replace(' ', '') }}/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.raizlabs.{{ cookiecutter.project_name | replace(' ', '') }};
-				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Sprint;
@@ -826,9 +860,9 @@
 				INFOPLIST_FILE = {{ cookiecutter.project_name | replace(' ', '') }}Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.raizlabs.{{ cookiecutter.project_name | replace(' ', '') }}Tests;
+				PRODUCT_MODULE_NAME = "$(TESTS_PRODUCT_MODULE_NAME)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/{{ cookiecutter.project_name | replace(' ', '') }}.app/{{ cookiecutter.project_name | replace(' ', '') }}";
 			};
 			name = Sprint;
 		};
