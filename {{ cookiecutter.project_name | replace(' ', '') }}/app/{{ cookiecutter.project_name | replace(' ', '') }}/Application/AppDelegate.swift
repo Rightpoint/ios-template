@@ -25,11 +25,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Appearance.shared,
         CrashReportingConfiguration(),
         AnalyticsConfiguration(),
+        DebugMenuConfiguration(),
         ]
 
     // Anything that relies on the existence of a window and an initial viewcontroller should be in this postWindowConfigurations array
     let rootViewControllerDependentConfigurations: [AppLifecycle] = [
-        DebugMenuConfiguration(),
         ]
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -39,13 +39,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return true
         }
 
-        let window = UIWindow(frame: UIScreen.main.bounds)
-        self.window = window
-
         for config in preWindowConfigurations where config.isEnabled {
             config.onDidLaunch(application: application, launchOptions: launchOptions)
         }
 
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        self.window = window
         self.coordinator = AppCoordinator(window: window)
         coordinator.start()
 
