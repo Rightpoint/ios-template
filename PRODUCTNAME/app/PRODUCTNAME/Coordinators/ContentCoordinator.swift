@@ -11,7 +11,7 @@ import UIKit
 class ContentCoordinator: Coordinator {
 
     let baseController: UIViewController
-    var childCoordinators = [Coordinator]()
+    var childCoordinator: Coordinator?
 
     init(_ baseController: UIViewController) {
         self.baseController = baseController

@@ -16,7 +16,7 @@ protocol AuthCoordinatorDelegate: class {
 
 class AuthCoordinator: Coordinator {
 
-    var childCoordinators = [Coordinator]()
+    var childCoordinator: Coordinator?
     let baseController: UIViewController
     weak var delegate: AuthCoordinatorDelegate?
     private let authClient = OAuthClient()
@@ -33,22 +33,18 @@ class AuthCoordinator: Coordinator {
             let signInCoordinator = SignInCoordinator(baseController)
             signInCoordinator.delegate = self
             signInCoordinator.start()
-            childCoordinators.append(signInCoordinator)
+            childCoordinator = signInCoordinator
         }
         else {
             let onboardCoordinator = OnboardingCoordinator(baseController)
             onboardCoordinator.delegate = self
             onboardCoordinator.start()
-            childCoordinators.append(onboardCoordinator)
+            childCoordinator = onboardCoordinator
         }
     }
 
     func cleanup() {
-        // This coordinator never directly presents controllers,
-        // so just clean up any children.
-        for child in childCoordinators {
-            child.cleanup()
-        }
+        childCoordinator?.cleanup()
     }
 
 }
@@ -64,15 +60,15 @@ extension AuthCoordinator: SignInCoordinatorDelegate {
 extension AuthCoordinator: OnboardingCoordinatorDelegate {
 
     func didCompleteOnboarding() {
-        guard let (index, onboardCoordinator) = child(ofType: OnboardingCoordinator.self) else {
-            preconditionFailure("On didCompleteOnboarding, we should have an OnboardingCoordinator in our list of coordinators.")
+        guard let onboardCoordinator = childCoordinator as? OnboardingCoordinator else {
+            preconditionFailure("Upon completing onboarding, AuthCoordinator should have an OnboardingCoordinator as a child.")
         }
-        childCoordinators.remove(at: index)
         onboardCoordinator.cleanup()
+        childCoordinator = nil
 
         let signInCoordinator = SignInCoordinator(baseController)
         signInCoordinator.delegate = self
         signInCoordinator.start()
-        childCoordinators.append(signInCoordinator)
+        childCoordinator = signInCoordinator
     }
 }
