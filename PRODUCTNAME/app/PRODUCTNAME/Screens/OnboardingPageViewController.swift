@@ -2,7 +2,7 @@
 //  OnboardingPageViewController.swift
 //  PRODUCTNAME
 //
-//  Created by Connor Neville on 3/29/17.
+//  Created by LEADDEVELOPER on 3/29/17.
 //  Copyright © 2017 ORGANIZATION. All rights reserved.
 //
 
@@ -12,6 +12,12 @@ import Swiftilities
 // TODO - localize
 // TODO - viewModel, pages configuration
 class OnboardingPageViewController: UIViewController {
+
+    fileprivate let viewControllers = [
+        UIViewController(),
+        UIViewController(),
+        UIViewController(),
+    ]
 
     fileprivate let skipButton: UIButton = {
         let button = UIButton()
@@ -56,11 +62,18 @@ private extension OnboardingPageViewController {
         view.backgroundColor = .white
         view.addSubview(skipButton)
 
+        pageController.setViewControllers(
+            [viewControllers[0]], direction: .forward, animated: false, completion: nil)
         pageController.delegate = self
         pageController.dataSource = self
         addChildViewController(pageController)
         view.addSubview(pageController.view)
         pageController.didMove(toParentViewController: self)
+
+        let pageControlAppearance = UIPageControl.appearance(
+            whenContainedInInstancesOf: [OnboardingPageViewController.self])
+        pageControlAppearance.pageIndicatorTintColor = Colors.lightGray
+        pageControlAppearance.currentPageIndicatorTintColor = Colors.darkGray
 
         view.addSubview(firstHairline)
         view.addSubview(joinButton)
@@ -72,7 +85,6 @@ private extension OnboardingPageViewController {
         static let skipButtonTrailingInset = CGFloat(20)
         static let skipButtonTopInset = CGFloat(22)
         static let pageViewTopSpace = CGFloat(20)
-        static let pageViewBottomSpace = CGFloat(23)
         static let joinVerticalSpace = CGFloat(8)
         static let signInVerticalSpace = CGFloat(18)
     }
@@ -84,7 +96,7 @@ private extension OnboardingPageViewController {
         pageController.view.topAnchor == skipButton.bottomAnchor + Layout.pageViewTopSpace
         pageController.view.horizontalAnchors == view.horizontalAnchors
 
-        firstHairline.topAnchor == pageController.view.bottomAnchor + Layout.pageViewBottomSpace
+        firstHairline.topAnchor == pageController.view.bottomAnchor
         firstHairline.horizontalAnchors == view.horizontalAnchors
 
         joinButton.centerXAnchor == view.centerXAnchor
@@ -107,11 +119,29 @@ extension OnboardingPageViewController: UIPageViewControllerDelegate {
 extension OnboardingPageViewController: UIPageViewControllerDataSource {
 
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        return nil
+        guard let index = viewControllers.index(of: viewController), index > 0 else {
+            return nil
+        }
+        return viewControllers[index - 1]
     }
 
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        return nil
+        guard let index = viewControllers.index(of: viewController),
+            index < viewControllers.count - 1 else {
+            return nil
+        }
+        return viewControllers[index + 1]
+    }
+
+    func presentationCount(for pageViewController: UIPageViewController) -> Int {
+        return viewControllers.count
+    }
+
+    func presentationIndex(for pageViewController: UIPageViewController) -> Int {
+        guard let current = pageViewController.viewControllers?.first else {
+            return 0
+        }
+        return viewControllers.index(of: current) ?? 0
     }
 
 }
