@@ -3,6 +3,8 @@
 import Foundation
 
 // swiftlint:disable file_length
+// swiftlint:disable line_length
+
 // swiftlint:disable type_body_length
 enum Localized {
   /// {{ cookiecutter.project_name | replace(' ', '') }}
@@ -21,11 +23,13 @@ extension Localized: CustomStringConvertible {
   }
 
   private static func tr(key: String, _ args: CVarArg...) -> String {
-    let format = NSLocalizedString(key, comment: "")
+    let format = NSLocalizedString(key, bundle: Bundle(for: BundleToken.self), comment: "")
     return String(format: format, locale: Locale.current, arguments: args)
   }
 }
 
-func tr(key: Localized) -> String {
+func tr(_ key: Localized) -> String {
   return key.string
 }
+
+private final class BundleToken {}
