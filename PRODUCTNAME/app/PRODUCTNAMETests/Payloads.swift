@@ -14,7 +14,7 @@ enum Payloads {
         let json = [
             "refreshToken": "FAKE_REFRESH_TOKEN",
             "token": "FAKE_TOKEN",
-            "expirationDate": Formatters.ISODateFormatter.string(from: Date.distantFuture)
+            "expirationDate": Formatters.ISODateFormatter.string(from: Date.distantFuture),
         ]
         do {
             return try JSONSerialization.data(withJSONObject: json)
@@ -27,8 +27,8 @@ enum Payloads {
     static let test: Data = {
         let json = [
             [
-                "value": "FAKE_VALUE"
-            ]
+                "value": "FAKE_VALUE",
+            ],
         ]
         do {
             return try JSONSerialization.data(withJSONObject: json)
