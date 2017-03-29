@@ -25,9 +25,7 @@ class OnboardingCoordinator: Coordinator {
     }
 
     func start() {
-        // TODO - create and use OnboardingViewController
-        let vc = UIViewController()
-        vc.view.backgroundColor = .blue
+        let vc = OnboardingPageViewController()
         // Wrapped in dispatch block to ensure this happens on the next run loop
         // after the root is configured, to prevent "Unbalanced calls to begin/
         // "end appearance transitions" warning. Necessary for any controllers
