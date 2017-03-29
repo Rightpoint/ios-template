@@ -9,14 +9,12 @@
 import Anchorage
 import Swiftilities
 
-// TODO - localize
-// TODO - viewModel, pages configuration
 class OnboardingPageViewController: UIViewController {
 
-    fileprivate let viewControllers = [
-        UIViewController(),
-        UIViewController(),
-        UIViewController(),
+    fileprivate let viewControllers: [UIViewController] = [
+        OnboardingSinglePageViewController(),
+        OnboardingSinglePageViewController(),
+        OnboardingSinglePageViewController(),
     ]
 
     fileprivate let skipButton: UIButton = {
