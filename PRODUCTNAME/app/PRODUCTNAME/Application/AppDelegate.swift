@@ -39,13 +39,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return true
         }
 
-        let window = UIWindow(frame: UIScreen.main.bounds)
-        self.window = window
-
         for config in preWindowConfigurations where config.isEnabled {
             config.onDidLaunch(application: application, launchOptions: launchOptions)
         }
 
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        self.window = window
         self.coordinator = AppCoordinator(window: window)
         coordinator.start()
 
