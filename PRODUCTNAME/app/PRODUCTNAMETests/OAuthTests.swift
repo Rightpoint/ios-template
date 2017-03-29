@@ -53,7 +53,7 @@ class OAuthTests: XCTestCase {
             expirationDate: Date.distantPast
         )
         let expectation = self.expectation(description: "Login Complete")
-        oauthClient.refresh() { _ in
+        oauthClient.refresh { _ in
             expectation.fulfill()
         }
         waitForExpectations(timeout: timeout, handler: nil)
