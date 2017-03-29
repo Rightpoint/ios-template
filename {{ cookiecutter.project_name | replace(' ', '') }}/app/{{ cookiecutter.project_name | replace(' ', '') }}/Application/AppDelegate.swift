@@ -3,7 +3,7 @@
 //  {{ cookiecutter.project_name | replace(' ', '') }}
 //
 //  Created by {{ cookiecutter.lead_dev }} on 11/1/16.
-//  Copyright © 2016 {{ cookiecutter.company_name }}. All rights reserved.
+//  Copyright © 2017 {{ cookiecutter.company_name }}. All rights reserved.
 //
 
 import UIKit
@@ -11,6 +11,11 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    static var shared: AppDelegate? {
+        return UIApplication.shared.delegate as? AppDelegate
+    }
+
+    var coordinator: AppCoordinator!
     var window: UIWindow?
 
     // Anything that doesn't rely on the existence of a viewcontroller should be in this preWindowConfigurations array
@@ -34,14 +39,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return true
         }
 
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        self.window = window
+
         for config in preWindowConfigurations where config.isEnabled {
             config.onDidLaunch(application: application, launchOptions: launchOptions)
         }
 
-        window = UIWindow(frame: UIScreen.main.bounds)
-
-        configureRootViewController(animated: false)
-        window?.makeKeyAndVisible()
+        self.coordinator = AppCoordinator(window: window)
+        coordinator.start()
 
         for config in rootViewControllerDependentConfigurations where config.isEnabled {
             config.onDidLaunch(application: application, launchOptions: launchOptions)
@@ -50,15 +56,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
-    func configureRootViewController(animated: Bool) {
-        // Dismiss the root view controller if one exists. This approach allows us to switch between the main experience, login and onboarding folows
-        window?.rootViewController?.dismiss(animated: false, completion: nil)
-
-        let tabBarVC = UITabBarController()
-        let firstTab = FirstTabViewController()
-        firstTab.view.backgroundColor = UIColor.white // Forces loadView
-        tabBarVC.setViewControllers([firstTab], animated: false)
-
-        window?.setRootViewController(tabBarVC, animated: animated)
-    }
 }

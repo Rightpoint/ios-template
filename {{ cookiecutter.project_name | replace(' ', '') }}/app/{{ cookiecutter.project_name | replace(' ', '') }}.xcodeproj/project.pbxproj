@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D4FA8F51E8574F9006C38ED /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4FA8F41E8574F9006C38ED /* AppCoordinator.swift */; };
+		2D4FA8F71E85752B006C38ED /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4FA8F61E85752B006C38ED /* Coordinator.swift */; };
+		2D4FA8F91E8577B5006C38ED /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4FA8F81E8577B5006C38ED /* AuthCoordinator.swift */; };
+		2DFF1CEB1E89423000B1AD70 /* UserDefaults+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFF1CEA1E89423000B1AD70 /* UserDefaults+Utility.swift */; };
+		2DFF1CED1E8944B900B1AD70 /* OnboardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFF1CEC1E8944B900B1AD70 /* OnboardingCoordinator.swift */; };
+		2DFF1CEF1E89493300B1AD70 /* SignInCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFF1CEE1E89493300B1AD70 /* SignInCoordinator.swift */; };
+		2DFF1CF11E8950F000B1AD70 /* ContentCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFF1CF01E8950F000B1AD70 /* ContentCoordinator.swift */; };
 		85083D4AEA7B5B726A79F450 /* Pods_{{ cookiecutter.project_name | replace(' ', '') }}.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CD9F2E21AB27A0230007885 /* Pods_{{ cookiecutter.project_name | replace(' ', '') }}.framework */; };
 		959F487642A61EF85C170AF9 /* Pods_{{ cookiecutter.project_name | replace(' ', '') }}_{{ cookiecutter.project_name | replace(' ', '') }}Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 845339F96003195CE76EA042 /* Pods_{{ cookiecutter.project_name | replace(' ', '') }}_{{ cookiecutter.project_name | replace(' ', '') }}Tests.framework */; };
 		ABC778791DC90B7A00815FB9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC778781DC90B7A00815FB9 /* AppDelegate.swift */; };
@@ -74,6 +81,13 @@
 		17DC86D175CE0686878A3A82 /* Pods-{{ cookiecutter.project_name | replace(' ', '') }}-{{ cookiecutter.project_name | replace(' ', '') }}Tests.sprint.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-{{ cookiecutter.project_name | replace(' ', '') }}-{{ cookiecutter.project_name | replace(' ', '') }}Tests.sprint.xcconfig"; path = "Pods/Target Support Files/Pods-{{ cookiecutter.project_name | replace(' ', '') }}-{{ cookiecutter.project_name | replace(' ', '') }}Tests/Pods-{{ cookiecutter.project_name | replace(' ', '') }}-{{ cookiecutter.project_name | replace(' ', '') }}Tests.sprint.xcconfig"; sourceTree = "<group>"; };
 		18117B6A27EAD54897E61F7E /* Pods-{{ cookiecutter.project_name | replace(' ', '') }}-{{ cookiecutter.project_name | replace(' ', '') }}Tests.develop.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-{{ cookiecutter.project_name | replace(' ', '') }}-{{ cookiecutter.project_name | replace(' ', '') }}Tests.develop.xcconfig"; path = "Pods/Target Support Files/Pods-{{ cookiecutter.project_name | replace(' ', '') }}-{{ cookiecutter.project_name | replace(' ', '') }}Tests/Pods-{{ cookiecutter.project_name | replace(' ', '') }}-{{ cookiecutter.project_name | replace(' ', '') }}Tests.develop.xcconfig"; sourceTree = "<group>"; };
 		29EBF39E7266FDA41A477533 /* Pods-{{ cookiecutter.project_name | replace(' ', '') }}Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-{{ cookiecutter.project_name | replace(' ', '') }}Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-{{ cookiecutter.project_name | replace(' ', '') }}Tests/Pods-{{ cookiecutter.project_name | replace(' ', '') }}Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		2D4FA8F41E8574F9006C38ED /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppCoordinator.swift; path = Coordinators/AppCoordinator.swift; sourceTree = "<group>"; };
+		2D4FA8F61E85752B006C38ED /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Coordinator.swift; path = Coordinators/Coordinator.swift; sourceTree = "<group>"; };
+		2D4FA8F81E8577B5006C38ED /* AuthCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthCoordinator.swift; path = Coordinators/AuthCoordinator.swift; sourceTree = "<group>"; };
+		2DFF1CEA1E89423000B1AD70 /* UserDefaults+Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Utility.swift"; sourceTree = "<group>"; };
+		2DFF1CEC1E8944B900B1AD70 /* OnboardingCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OnboardingCoordinator.swift; path = Coordinators/OnboardingCoordinator.swift; sourceTree = "<group>"; };
+		2DFF1CEE1E89493300B1AD70 /* SignInCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignInCoordinator.swift; path = Coordinators/SignInCoordinator.swift; sourceTree = "<group>"; };
+		2DFF1CF01E8950F000B1AD70 /* ContentCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContentCoordinator.swift; path = Coordinators/ContentCoordinator.swift; sourceTree = "<group>"; };
 		678F16A2ED0F9395E247B50F /* Pods-{{ cookiecutter.project_name | replace(' ', '') }}Tests.develop.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-{{ cookiecutter.project_name | replace(' ', '') }}Tests.develop.xcconfig"; path = "Pods/Target Support Files/Pods-{{ cookiecutter.project_name | replace(' ', '') }}Tests/Pods-{{ cookiecutter.project_name | replace(' ', '') }}Tests.develop.xcconfig"; sourceTree = "<group>"; };
 		6A9B67E292488844A2F6D30B /* Pods-{{ cookiecutter.project_name | replace(' ', '') }}Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-{{ cookiecutter.project_name | replace(' ', '') }}Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-{{ cookiecutter.project_name | replace(' ', '') }}Tests/Pods-{{ cookiecutter.project_name | replace(' ', '') }}Tests.release.xcconfig"; sourceTree = "<group>"; };
 		7F2C2A97F21BF37CEB2498E0 /* Pods_{{ cookiecutter.project_name | replace(' ', '') }}Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_{{ cookiecutter.project_name | replace(' ', '') }}Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -151,6 +165,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2D4FA8F31E8574D2006C38ED /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				2D4FA8F41E8574F9006C38ED /* AppCoordinator.swift */,
+				2D4FA8F81E8577B5006C38ED /* AuthCoordinator.swift */,
+				2D4FA8F61E85752B006C38ED /* Coordinator.swift */,
+				2DFF1CEC1E8944B900B1AD70 /* OnboardingCoordinator.swift */,
+				2DFF1CEE1E89493300B1AD70 /* SignInCoordinator.swift */,
+				2DFF1CF01E8950F000B1AD70 /* ContentCoordinator.swift */,
+			);
+			name = Coordinators;
+			sourceTree = "<group>";
+		};
 		4A4913662E9FC4926B3F903D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -211,6 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				ABC778981DC91DFB00815FB9 /* Application */,
+				2D4FA8F31E8574D2006C38ED /* Coordinators */,
 				AB955DCB1DE3BDD300D0347E /* Screens */,
 				ABC778C51DC9266900815FB9 /* API */,
 				ABC778C41DC9266300815FB9 /* Model */,
@@ -283,6 +311,7 @@
 			children = (
 				ABC778C81DC927C900815FB9 /* Formatters.swift */,
 				ABF84FA11DCBCB87002DB24D /* Marshal+Utility.swift */,
+				2DFF1CEA1E89423000B1AD70 /* UserDefaults+Utility.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -612,15 +641,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABF84F941DCA7F0A002DB24D /* OAuth.swift in Sources */,
+				2DFF1CF11E8950F000B1AD70 /* ContentCoordinator.swift in Sources */,
 				ABF84F8D1DC99CFD002DB24D /* TextStyle.swift in Sources */,
 				ABF84FA21DCBCB87002DB24D /* Marshal+Utility.swift in Sources */,
 				ABC778EA1DC951B900815FB9 /* LoggingConfiguration.swift in Sources */,
 				BE4C21EB1E81970A00645143 /* DebugMenuConfiguration.swift in Sources */,
 				ABF84F9A1DCB70BB002DB24D /* Alamofire+{{ cookiecutter.project_name | replace(' ', '') }}.swift in Sources */,
+				2D4FA8F71E85752B006C38ED /* Coordinator.swift in Sources */,
+				2D4FA8F51E8574F9006C38ED /* AppCoordinator.swift in Sources */,
+				2DFF1CEF1E89493300B1AD70 /* SignInCoordinator.swift in Sources */,
 				ABC778DA1DC93E9C00815FB9 /* APIEndpoint.swift in Sources */,
 				ABC778C91DC927C900815FB9 /* Formatters.swift in Sources */,
+				2D4FA8F91E8577B5006C38ED /* AuthCoordinator.swift in Sources */,
 				BE28092C1E802893006E50D5 /* GoogleAnalytics.swift in Sources */,
 				ABC778E11DC94F4400815FB9 /* AppLifecycle.swift in Sources */,
+				2DFF1CEB1E89423000B1AD70 /* UserDefaults+Utility.swift in Sources */,
 				ABF84F921DC99D33002DB24D /* UIImage+Asset.swift in Sources */,
 				ABF84F911DC99D33002DB24D /* Localized.swift in Sources */,
 				ABC778E81DC9503600815FB9 /* InstabugConfiguration.swift in Sources */,
@@ -628,6 +663,7 @@
 				ABC778DF1DC94F0900815FB9 /* BuildType.swift in Sources */,
 				ABC778E61DC94FFC00815FB9 /* CrashlyticsConfiguration.swift in Sources */,
 				ABF84F961DCA89B0002DB24D /* BuildType+API.swift in Sources */,
+				2DFF1CED1E8944B900B1AD70 /* OnboardingCoordinator.swift in Sources */,
 				BE28092E1E8029D8006E50D5 /* AnalyticsConfiguration.swift in Sources */,
 				ABF84F7F1DC970E8002DB24D /* APIClient.swift in Sources */,
 				ABF84F981DCAB3B9002DB24D /* APIConstants.swift in Sources */,
