@@ -54,6 +54,7 @@ PODS:
   - Swiftilities/StackViewHelpers (0.11.0)
   - Swiftilities/TintedButton (0.11.0)
   - Swiftilities/Views (0.11.0)
+  - SwiftLint (0.16.1)
 
 DEPENDENCIES:
   - Alamofire
@@ -67,6 +68,7 @@ DEPENDENCIES:
   - OHHTTPStubs/Swift
   - SwiftGen
   - Swiftilities
+  - SwiftLint
 
 SPEC CHECKSUMS:
   Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
@@ -81,7 +83,8 @@ SPEC CHECKSUMS:
   OHHTTPStubs: e238cd5b66d8efa51c861db45895de8fe079f4a7
   SwiftGen: b6bfed151243348e4603b91bf5bc4eb2486c9d5b
   Swiftilities: 009e9adab05f022c44cd07b33bb6dc1fb54b768a
+  SwiftLint: b8b683208cc09640898f16318a7a452274e91f61
 
-PODFILE CHECKSUM: eabba92e3b6bb8db40923627be65921e51c14f40
+PODFILE CHECKSUM: c7a45ce8a9da1dda5a0cf5a049339d142f2686ce
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.1.1
