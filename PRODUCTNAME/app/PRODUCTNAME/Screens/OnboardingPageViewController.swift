@@ -12,14 +12,14 @@ import Swiftilities
 class OnboardingPageViewController: UIViewController {
 
     fileprivate let viewControllers: [UIViewController] = [
-        OnboardingSinglePageViewController(),
-        OnboardingSinglePageViewController(),
-        OnboardingSinglePageViewController(),
+        OnboardingSamplePageViewController(),
+        OnboardingSamplePageViewController(),
+        OnboardingSamplePageViewController(),
     ]
 
     fileprivate let skipButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Skip", for: .normal)
+        button.setTitle(Localized.Onboarding.Buttons.skip, for: .normal)
         button.setTitleColor(Colors.darkGray, for: .normal)
         button.setTitleColor(Colors.darkGray.highlighted, for: .highlighted)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 18)
@@ -30,7 +30,7 @@ class OnboardingPageViewController: UIViewController {
     fileprivate let firstHairline = HairlineView(axis: .horizontal)
     fileprivate let joinButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Join", for: .normal)
+        button.setTitle(Localized.Onboarding.Buttons.join, for: .normal)
         button.setTitleColor(Colors.green, for: .normal)
         button.setTitleColor(Colors.green.highlighted, for: .highlighted)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 17)
@@ -39,7 +39,7 @@ class OnboardingPageViewController: UIViewController {
     fileprivate let secondHairline = HairlineView(axis: .horizontal)
     fileprivate let signInButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Already have an account? Sign in.", for: .normal)
+        button.setTitle(Localized.Onboarding.Buttons.signIn, for: .normal)
         button.setTitleColor(Colors.darkGray, for: .normal)
         button.setTitleColor(Colors.darkGray.highlighted, for: .highlighted)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16)

@@ -1,5 +1,5 @@
 //
-//  OnboardingSinglePageViewController.swift
+//  OnboardingSamplePageViewController.swift
 //  PRODUCTNAME
 //
 //  Created by LEADDEVELOPER on 3/29/17.
@@ -8,14 +8,14 @@
 
 import Anchorage
 
-class OnboardingSinglePageViewController: UIViewController {
+class OnboardingSamplePageViewController: UIViewController {
 
     fileprivate let headerLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 28)
         label.textColor = Colors.darkGray
         label.textAlignment = .center
-        label.text = "HEADING TEXT"
+        label.text = Localized.Onboarding.Pages.Sample.heading
         return label
     }()
 
@@ -25,7 +25,7 @@ class OnboardingSinglePageViewController: UIViewController {
         label.textColor = Colors.darkGray
         label.textAlignment = .center
         label.numberOfLines = 0
-        label.text = "This is body copy for the onboarding and should be replaced with real text!"
+        label.text = Localized.Onboarding.Pages.Sample.heading
         return label
     }()
 
@@ -37,7 +37,7 @@ class OnboardingSinglePageViewController: UIViewController {
 
 }
 
-private extension OnboardingSinglePageViewController {
+private extension OnboardingSamplePageViewController {
 
     func configureView() {
         view.addSubview(headerLabel)
