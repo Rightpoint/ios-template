@@ -21,7 +21,7 @@ class DebugMenuConfiguration: AppLifecycle {
 
 }
 
-class DebugMenu {
+fileprivate class DebugMenu {
     static let shared: DebugMenu = DebugMenu()
 
     func enableDebugGesture(_ viewController: UIViewController) {
@@ -32,6 +32,11 @@ class DebugMenu {
     }
 
     @objc func openDebugAlert() {
+        guard let rootViewController = AppDelegate.shared?.window?.rootViewController else {
+            Log.warn("Debug alert unable to present since the window rootViewController is nil")
+            return
+        }
+
         var debug: UIAlertController
 
         if let dictionary = Bundle.main.infoDictionary,
@@ -56,9 +61,9 @@ class DebugMenu {
         debug.addAction(UIAlertAction(title: "Cancel",
                                       style: .cancel, handler: nil))
 
-        var topMostViewController = AppDelegate.shared?.window?.rootViewController
+        var topMostViewController: UIViewController? = rootViewController
         while topMostViewController?.presentedViewController != nil {
-            topMostViewController = topMostViewController?.presentedViewController
+            topMostViewController = topMostViewController?.presentedViewController!
         }
         topMostViewController?.present(debug, animated: true, completion: nil)
     }
