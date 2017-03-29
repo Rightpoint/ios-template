@@ -49,7 +49,7 @@ class DebugMenuConfiguration: AppLifecycle {
         }))
         debug.addAction(UIAlertAction(title: "Logout", style: .default, handler: { _ in
             APIClient.shared.oauthClient.logout(completion: { (error) in
-                NSLog("Logout: \(error)")
+                NSLog("Logout: \(String(describing: error))")
             })
         }))
         debug.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))

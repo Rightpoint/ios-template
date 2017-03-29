@@ -13,7 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    // Anything that doesn't rely on the existence of a window should be in this preWindowConfigurations array
+    // Anything that doesn't rely on the existence of a viewcontroller should be in this preWindowConfigurations array
     let preWindowConfigurations: [AppLifecycle] = [
         LoggingConfiguration(),
         InstabugConfiguration(),
@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ]
 
     // Anything that relies on the existence of a window and an initial viewcontroller should be in this postWindowConfigurations array
-    let postWindowConfigurations: [AppLifecycle] = [
+    let rootViewControllerDependentConfigurations: [AppLifecycle] = [
         DebugMenuConfiguration(),
         ]
 
@@ -40,12 +40,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         window = UIWindow(frame: UIScreen.main.bounds)
 
-        for config in postWindowConfigurations where config.isEnabled {
-            config.onDidLaunch(application: application, launchOptions: launchOptions)
-        }
-
         configureRootViewController(animated: false)
         window?.makeKeyAndVisible()
+
+        for config in rootViewControllerDependentConfigurations where config.isEnabled {
+            config.onDidLaunch(application: application, launchOptions: launchOptions)
+        }
 
         return true
     }

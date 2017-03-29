@@ -9,6 +9,7 @@ target 'PRODUCTNAME' do
   pod 'Alamofire'
   pod 'KeychainAccess'
   pod 'Marshal'
+  pod 'SwiftLint'
 
   pod 'BonMot'
   pod 'Anchorage'

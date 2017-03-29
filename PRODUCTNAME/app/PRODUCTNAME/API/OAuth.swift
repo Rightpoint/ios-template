@@ -55,8 +55,8 @@ final class OAuthClient {
             }
         }
     }
-    fileprivate var authenticatedTriggers: [(Void) -> ()] = []
-    fileprivate var authenticationRequest: DataRequest? = nil
+    fileprivate var authenticatedTriggers: [() -> Void] = []
+    fileprivate var authenticationRequest: DataRequest?
     fileprivate let lock = NSLock()
 
     var isAuthenticated: Bool {
@@ -163,11 +163,10 @@ extension OAuthClient {
         let token: String
     }
 
-    @discardableResult func logout(completion: @escaping (Error?) -> Void) {
+    func logout(completion: @escaping (Error?) -> Void) {
         let token = credentials?.accessToken ?? "INVALID TOKEN"
         let endpoint = LogoutRequest(token: token)
-        let request = manager.request(baseURL, endpoint: endpoint) {
-            [weak self] (credentials, error) in
+        let request = manager.request(baseURL, endpoint: endpoint) { [weak self] (credentials, error) in
             self?.handleOauth(credentials: credentials)
             completion(error)
         }
@@ -241,7 +240,7 @@ extension OAuthClient.LogoutRequest: APIEndpoint {
 
     var parameters: JSONObject? {
         return [
-            "token": token
+            "token": token,
         ]
     }
 
