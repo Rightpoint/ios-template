@@ -9,6 +9,16 @@
 import Anchorage
 import Swiftilities
 
+// MARK: OnboardingPageViewControllerDelegate
+protocol OnboardingPageViewControllerDelegate: class {
+
+    func skipTapped(for controller: OnboardingPageViewController)
+    func joinTapped(for controller: OnboardingPageViewController)
+    func signInTapped(for controller: OnboardingPageViewController)
+
+}
+
+// MARK: OnboardingPageViewController
 class OnboardingPageViewController: UIViewController {
 
     fileprivate let viewControllers: [UIViewController] = [
@@ -45,6 +55,7 @@ class OnboardingPageViewController: UIViewController {
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
         return button
     }()
+    weak var delegate: OnboardingPageViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,15 +65,16 @@ class OnboardingPageViewController: UIViewController {
 
 }
 
+// MARK: Private
 private extension OnboardingPageViewController {
 
     func configureView() {
         view.backgroundColor = .white
         view.addSubview(skipButton)
+        skipButton.addTarget(self, action: #selector(skipTapped), for: .touchUpInside)
 
         pageController.setViewControllers(
             [viewControllers[0]], direction: .forward, animated: false, completion: nil)
-        pageController.delegate = self
         pageController.dataSource = self
         addChildViewController(pageController)
         view.addSubview(pageController.view)
@@ -74,8 +86,10 @@ private extension OnboardingPageViewController {
         pageControlAppearance.currentPageIndicatorTintColor = Colors.darkGray
 
         view.addSubview(firstHairline)
+        joinButton.addTarget(self, action: #selector(joinTapped), for: .touchUpInside)
         view.addSubview(joinButton)
         view.addSubview(secondHairline)
+        signInButton.addTarget(self, action: #selector(signInTapped), for: .touchUpInside)
         view.addSubview(signInButton)
     }
 
@@ -110,10 +124,24 @@ private extension OnboardingPageViewController {
 
 }
 
-extension OnboardingPageViewController: UIPageViewControllerDelegate {
+// MARK: Actions
+private extension OnboardingPageViewController {
+
+    @objc func skipTapped() {
+        delegate?.skipTapped(for: self)
+    }
+
+    @objc func joinTapped() {
+        delegate?.joinTapped(for: self)
+    }
+
+    @objc func signInTapped() {
+        delegate?.signInTapped(for: self)
+    }
 
 }
 
+// MARK: UIPageViewControllerDataSource
 extension OnboardingPageViewController: UIPageViewControllerDataSource {
 
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {

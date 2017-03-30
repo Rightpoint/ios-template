@@ -25,7 +25,7 @@ class OnboardingSamplePageViewController: UIViewController {
         label.textColor = Colors.darkGray
         label.textAlignment = .center
         label.numberOfLines = 0
-        label.text = Localized.Onboarding.Pages.Sample.heading
+        label.text = Localized.Onboarding.Pages.Sample.body
         return label
     }()
 

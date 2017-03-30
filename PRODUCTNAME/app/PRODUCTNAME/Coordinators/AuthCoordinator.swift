@@ -59,7 +59,10 @@ extension AuthCoordinator: SignInCoordinatorDelegate {
 
 extension AuthCoordinator: OnboardingCoordinatorDelegate {
 
-    func didCompleteOnboarding() {
+    func didSkipAuth() {
+    }
+
+    func didRequestJoin() {
         guard let onboardCoordinator = childCoordinator as? OnboardingCoordinator else {
             preconditionFailure("Upon completing onboarding, AuthCoordinator should have an OnboardingCoordinator as a child.")
         }
@@ -71,4 +74,8 @@ extension AuthCoordinator: OnboardingCoordinatorDelegate {
         signInCoordinator.start()
         childCoordinator = signInCoordinator
     }
+
+    func didRequestSignIn() {
+    }
+
 }
