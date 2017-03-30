@@ -111,13 +111,13 @@ private extension OnboardingPageViewController {
         firstHairline.topAnchor == pageController.view.bottomAnchor
         firstHairline.horizontalAnchors == view.horizontalAnchors
 
-        joinButton.centerXAnchor == view.centerXAnchor
+        joinButton.horizontalAnchors == view.horizontalAnchors
         joinButton.topAnchor == firstHairline.bottomAnchor + Layout.joinVerticalSpace
         joinButton.bottomAnchor == secondHairline.topAnchor - Layout.joinVerticalSpace
 
         secondHairline.horizontalAnchors == view.horizontalAnchors
 
-        signInButton.centerXAnchor == view.centerXAnchor
+        signInButton.horizontalAnchors == view.horizontalAnchors
         signInButton.topAnchor == secondHairline.bottomAnchor + Layout.signInVerticalSpace
         signInButton.bottomAnchor == view.bottomAnchor - Layout.signInVerticalSpace
     }
