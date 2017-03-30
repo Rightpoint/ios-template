@@ -484,7 +484,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "$PODS_ROOT/SwiftGen/bin/swiftgen strings --template swift3 --enumName Localized --output 'PRODUCTNAME/Application/Generated/Localized.swift' 'PRODUCTNAME/Resources/Localizable.strings'";
+			shellScript = "$PODS_ROOT/SwiftGen/bin/swiftgen strings --template dot-syntax-swift3 --enumName Localized --output 'PRODUCTNAME/Application/Generated/Localized.swift' 'PRODUCTNAME/Resources/Localizable.strings'";
 		};
 		2DFF1D1F1E8C56C700B1AD70 /* SwiftGen images */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -498,7 +498,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "$PODS_ROOT/SwiftGen/bin/swiftgen images --template swift3 --enumName Asset --output PRODUCTNAME/Application/Generated/UIImage+Asset.swift PRODUCTNAME/Resources/Assets.xcassets";
+			shellScript = "$PODS_ROOT/SwiftGen/bin/swiftgen images --template dot-syntax-swift3 --enumName Asset --output PRODUCTNAME/Application/Generated/UIImage+Asset.swift PRODUCTNAME/Resources/Assets.xcassets";
 		};
 		4B79AD4EE86D9527DA2201EB /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
