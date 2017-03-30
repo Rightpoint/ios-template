@@ -60,22 +60,33 @@ extension AuthCoordinator: SignInCoordinatorDelegate {
 extension AuthCoordinator: OnboardingCoordinatorDelegate {
 
     func didSkipAuth() {
+        childCoordinator?.cleanup()
+        childCoordinator = nil
+
+        let contentCoordinator = ContentCoordinator(baseController)
+        contentCoordinator.start()
+        childCoordinator = contentCoordinator
     }
 
     func didRequestJoin() {
-        guard let onboardCoordinator = childCoordinator as? OnboardingCoordinator else {
-            preconditionFailure("Upon completing onboarding, AuthCoordinator should have an OnboardingCoordinator as a child.")
-        }
-        onboardCoordinator.cleanup()
+        childCoordinator?.cleanup()
+        childCoordinator = nil
+
+        let signInCoordinator = SignInCoordinator(baseController)
+        signInCoordinator.delegate = self
+        signInCoordinator.start()
+        // TODO - signInCoordinator move from signIn to register here
+        childCoordinator = signInCoordinator
+    }
+
+    func didRequestSignIn() {
+        childCoordinator?.cleanup()
         childCoordinator = nil
 
         let signInCoordinator = SignInCoordinator(baseController)
         signInCoordinator.delegate = self
         signInCoordinator.start()
         childCoordinator = signInCoordinator
-    }
-
-    func didRequestSignIn() {
     }
 
 }
