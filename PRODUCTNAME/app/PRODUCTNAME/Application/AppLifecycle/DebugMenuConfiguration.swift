@@ -22,9 +22,8 @@ class DebugMenuConfiguration: AppLifecycle {
 }
 
 fileprivate class DebugMenu {
-    static let shared: DebugMenu = DebugMenu()
 
-    func enableDebugGesture(_ viewController: UIViewController) {
+    static func enableDebugGesture(_ viewController: UIViewController) {
         let debugGesture = UITapGestureRecognizer(target: self, action: #selector(openDebugAlert))
         debugGesture.numberOfTapsRequired = 3
         debugGesture.numberOfTouchesRequired = 2
@@ -32,7 +31,8 @@ fileprivate class DebugMenu {
     }
 
     @objc func openDebugAlert() {
-        guard let rootViewController = AppDelegate.shared?.window?.rootViewController else {
+        guard let delegate = UIApplication.shared.delegate as? AppDelegate,
+            let rootViewController = delegate.window?.rootViewController else {
             Log.warn("Debug alert unable to present since the window rootViewController is nil")
             return
         }
@@ -73,7 +73,7 @@ public class DebugMenuBehavior: ViewControllerLifecycleBehavior {
 
     public init() {}
     public func afterAppearing(_ viewController: UIViewController, animated: Bool) {
-        DebugMenu.shared.enableDebugGesture(viewController)
+        DebugMenu.enableDebugGesture(viewController)
     }
 
 }
