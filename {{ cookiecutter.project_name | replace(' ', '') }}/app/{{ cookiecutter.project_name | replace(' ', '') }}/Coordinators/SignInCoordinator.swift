@@ -17,7 +17,7 @@ protocol SignInCoordinatorDelegate: class {
 class SignInCoordinator: Coordinator {
 
     let baseController: UIViewController
-    var childCoordinators = [Coordinator]()
+    var childCoordinator: Coordinator?
     weak var delegate: SignInCoordinatorDelegate?
 
     init(_ baseController: UIViewController) {
@@ -38,7 +38,6 @@ class SignInCoordinator: Coordinator {
     }
 
     func cleanup() {
-        baseController.dismiss(animated: false, completion: nil)
     }
 
 }

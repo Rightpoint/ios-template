@@ -10,14 +10,16 @@ import UIKit
 
 protocol OnboardingCoordinatorDelegate: class {
 
-    func didCompleteOnboarding()
+    func didSkipAuth()
+    func didRequestJoin()
+    func didRequestSignIn()
 
 }
 
 class OnboardingCoordinator: Coordinator {
 
     let baseController: UIViewController
-    var childCoordinators = [Coordinator]()
+    var childCoordinator: Coordinator?
     weak var delegate: OnboardingCoordinatorDelegate?
 
     init(_ baseController: UIViewController) {
@@ -25,9 +27,8 @@ class OnboardingCoordinator: Coordinator {
     }
 
     func start() {
-        // TODO - create and use OnboardingViewController
-        let vc = UIViewController()
-        vc.view.backgroundColor = .blue
+        let vc = OnboardingPageViewController()
+        vc.delegate = self
         // Wrapped in dispatch block to ensure this happens on the next run loop
         // after the root is configured, to prevent "Unbalanced calls to begin/
         // "end appearance transitions" warning. Necessary for any controllers
@@ -39,6 +40,22 @@ class OnboardingCoordinator: Coordinator {
 
     func cleanup() {
         baseController.dismiss(animated: false, completion: nil)
+    }
+
+}
+
+extension OnboardingCoordinator: OnboardingPageViewControllerDelegate {
+
+    func skipTapped(for controller: OnboardingPageViewController) {
+        delegate?.didSkipAuth()
+    }
+
+    func joinTapped(for controller: OnboardingPageViewController) {
+        delegate?.didRequestJoin()
+    }
+
+    func signInTapped(for controller: OnboardingPageViewController) {
+        delegate?.didRequestSignIn()
     }
 
 }

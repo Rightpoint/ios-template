@@ -7,8 +7,9 @@
 //
 
 import Alamofire
-import Marshal
 import KeychainAccess
+import Marshal
+import Swiftilities
 
 /// OAuthClient manages the OAuth requests. It is responsible for:
 /// - the inital login which obtains the refresh token.
@@ -43,10 +44,20 @@ final class OAuthClient {
     var credentials: Credentials? {
         didSet {
             if let credentials = credentials {
-                _ = try? keychain.set(credentials, key: OAuthClient.credentials)
+                do {
+                    try keychain.set(credentials, key: OAuthClient.credentials)
+                }
+                catch let error {
+                    Log.error("Error setting auth credentials to keychain: \(error.localizedDescription)")
+                }
             }
             else {
-                _ = try? keychain.remove(OAuthClient.credentials)
+                do {
+                    try keychain.remove(OAuthClient.credentials)
+                }
+                catch let error {
+                    Log.error("Error removing auth credentials from keychain: \(error.localizedDescription)")
+                }
             }
             // If there were credentials, and there no longer are, post a notification
             if oldValue != nil && credentials == nil {
@@ -80,6 +91,7 @@ final class OAuthClient {
                 self.credentials = nil
             }
         }
+
         OAuthClient.validKeychain = true
     }
 }
