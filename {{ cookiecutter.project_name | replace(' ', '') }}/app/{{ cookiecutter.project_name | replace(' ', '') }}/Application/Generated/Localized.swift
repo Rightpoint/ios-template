@@ -10,6 +10,7 @@ import Foundation
 // swiftlint:disable variable_name
 // swiftlint:disable valid_docs
 // swiftlint:disable type_name
+<<<<<<< HEAD
 
 enum Localized {
 
@@ -33,8 +34,18 @@ enum Localized {
         static let heading = Localized.tr("Onboarding.Pages.Sample.Heading")
       }
     }
-  }
+=======
 
+enum Localized {
+
+  enum Title {
+    /// {{ cookiecutter.project_name | replace(' ', '') }}
+    static let navigation = Localized.tr("Title.Navigation")
+>>>>>>> feature/nevillco/coordinators
+  }
+}
+
+<<<<<<< HEAD
   enum Title {
     /// {{ cookiecutter.project_name | replace(' ', '') }}
     static let navigation = Localized.tr("Title.Navigation")
@@ -48,6 +59,15 @@ extension Localized {
   }
 }
 
+=======
+extension Localized {
+  fileprivate static func tr(_ key: String, _ args: CVarArg...) -> String {
+    let format = NSLocalizedString(key, bundle: Bundle(for: BundleToken.self), comment: "")
+    return String(format: format, locale: Locale.current, arguments: args)
+  }
+}
+
+>>>>>>> feature/nevillco/coordinators
 private final class BundleToken {}
 
 // swiftlint:enable type_body_length
