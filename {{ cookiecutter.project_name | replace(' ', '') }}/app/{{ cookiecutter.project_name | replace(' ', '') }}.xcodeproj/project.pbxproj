@@ -38,12 +38,12 @@
 		ABF84FA41DCBCD89002DB24D /* APIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF84FA31DCBCD89002DB24D /* APIClientTests.swift */; };
 		ABF84FA61DCBCEA1002DB24D /* Payloads.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF84FA51DCBCEA1002DB24D /* Payloads.swift */; };
 		ABF84FA81DCBFF84002DB24D /* TestEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF84FA71DCBFF84002DB24D /* TestEndpoint.swift */; };
-		BE4C21EB1E81970A00645143 /* DebugMenuConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4C21EA1E81970A00645143 /* DebugMenuConfiguration.swift */; };
 		BE28092A1E802893006E50D5 /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2809271E802893006E50D5 /* Analytics.swift */; };
 		BE28092B1E802893006E50D5 /* AnalyticsPageNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2809281E802893006E50D5 /* AnalyticsPageNames.swift */; };
 		BE28092C1E802893006E50D5 /* GoogleAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2809291E802893006E50D5 /* GoogleAnalytics.swift */; };
 		BE28092E1E8029D8006E50D5 /* AnalyticsConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE28092D1E8029D8006E50D5 /* AnalyticsConfiguration.swift */; };
 		BE2809301E8038BE006E50D5 /* FirstTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE28092F1E8038BE006E50D5 /* FirstTabViewController.swift */; };
+		BE4C21EB1E81970A00645143 /* DebugMenuConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4C21EA1E81970A00645143 /* DebugMenuConfiguration.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,12 +120,12 @@
 		ABF84FA51DCBCEA1002DB24D /* Payloads.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Payloads.swift; sourceTree = "<group>"; };
 		ABF84FA71DCBFF84002DB24D /* TestEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestEndpoint.swift; sourceTree = "<group>"; };
 		BE2809251E802474006E50D5 /* {{ cookiecutter.project_name | replace(' ', '') }}-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "{{ cookiecutter.project_name | replace(' ', '') }}-Bridging-Header.h"; sourceTree = "<group>"; };
-		BE4C21EA1E81970A00645143 /* DebugMenuConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugMenuConfiguration.swift; sourceTree = "<group>"; };
 		BE2809271E802893006E50D5 /* Analytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Analytics.swift; sourceTree = "<group>"; };
 		BE2809281E802893006E50D5 /* AnalyticsPageNames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsPageNames.swift; sourceTree = "<group>"; };
 		BE2809291E802893006E50D5 /* GoogleAnalytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleAnalytics.swift; sourceTree = "<group>"; };
 		BE28092D1E8029D8006E50D5 /* AnalyticsConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsConfiguration.swift; sourceTree = "<group>"; };
 		BE28092F1E8038BE006E50D5 /* FirstTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstTabViewController.swift; sourceTree = "<group>"; };
+		BE4C21EA1E81970A00645143 /* DebugMenuConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugMenuConfiguration.swift; sourceTree = "<group>"; };
 		C3A4171B7E64E228CC7A0DF7 /* Pods-{{ cookiecutter.project_name | replace(' ', '') }}-{{ cookiecutter.project_name | replace(' ', '') }}Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-{{ cookiecutter.project_name | replace(' ', '') }}-{{ cookiecutter.project_name | replace(' ', '') }}Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-{{ cookiecutter.project_name | replace(' ', '') }}-{{ cookiecutter.project_name | replace(' ', '') }}Tests/Pods-{{ cookiecutter.project_name | replace(' ', '') }}-{{ cookiecutter.project_name | replace(' ', '') }}Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		C7DBD1236E57FBDDF10B2FB0 /* Pods-{{ cookiecutter.project_name | replace(' ', '') }}.develop.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-{{ cookiecutter.project_name | replace(' ', '') }}.develop.xcconfig"; path = "Pods/Target Support Files/Pods-{{ cookiecutter.project_name | replace(' ', '') }}/Pods-{{ cookiecutter.project_name | replace(' ', '') }}.develop.xcconfig"; sourceTree = "<group>"; };
 		DCD1E696B5452D855D78934E /* Pods-{{ cookiecutter.project_name | replace(' ', '') }}.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-{{ cookiecutter.project_name | replace(' ', '') }}.release.xcconfig"; path = "Pods/Target Support Files/Pods-{{ cookiecutter.project_name | replace(' ', '') }}/Pods-{{ cookiecutter.project_name | replace(' ', '') }}.release.xcconfig"; sourceTree = "<group>"; };
@@ -368,6 +368,8 @@
 			buildConfigurationList = ABC778921DC90B7A00815FB9 /* Build configuration list for PBXNativeTarget "{{ cookiecutter.project_name | replace(' ', '') }}" */;
 			buildPhases = (
 				5BD18785D9BC5E2781EBCD52 /* [CP] Check Pods Manifest.lock */,
+				2DFF1D1F1E8C56C700B1AD70 /* SwiftGen images */,
+				2DFF1D1E1E8C563200B1AD70 /* SwiftGen strings */,
 				ABC778DB1DC9405700815FB9 /* SwiftLint */,
 				ABC778711DC90B7A00815FB9 /* Sources */,
 				ABC778721DC90B7A00815FB9 /* Frameworks */,
@@ -470,6 +472,34 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2DFF1D1E1E8C563200B1AD70 /* SwiftGen strings */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "SwiftGen strings";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "$PODS_ROOT/SwiftGen/bin/swiftgen strings --template dot-syntax-swift3 --enumName Localized --output '{{ cookiecutter.project_name | replace(' ', '') }}/Application/Generated/Localized.swift' '{{ cookiecutter.project_name | replace(' ', '') }}/Resources/Localizable.strings'";
+		};
+		2DFF1D1F1E8C56C700B1AD70 /* SwiftGen images */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "SwiftGen images";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "$PODS_ROOT/SwiftGen/bin/swiftgen images --template dot-syntax-swift3 --enumName Asset --output {{ cookiecutter.project_name | replace(' ', '') }}/Application/Generated/UIImage+Asset.swift {{ cookiecutter.project_name | replace(' ', '') }}/Resources/Assets.xcassets";
+		};
 		4B79AD4EE86D9527DA2201EB /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
