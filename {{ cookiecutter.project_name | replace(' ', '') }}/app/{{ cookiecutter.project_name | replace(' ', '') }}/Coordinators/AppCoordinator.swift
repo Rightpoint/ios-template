@@ -12,11 +12,7 @@ class AppCoordinator: Coordinator {
 
     private let window: UIWindow
     fileprivate let rootController: UIViewController
-<<<<<<< HEAD
     var childCoordinator: Coordinator?
-=======
-    var childCoordinators = [Coordinator]()
->>>>>>> feature/nevillco/coordinators
 
     init(window: UIWindow) {
         self.window = window
@@ -33,11 +29,7 @@ class AppCoordinator: Coordinator {
         // Spin off auth coordinator
         let authCoordinator = AuthCoordinator(rootController)
         authCoordinator.delegate = self
-<<<<<<< HEAD
         childCoordinator = authCoordinator
-=======
-        childCoordinators.append(authCoordinator)
->>>>>>> feature/nevillco/coordinators
         authCoordinator.start()
     }
 
@@ -49,26 +41,15 @@ class AppCoordinator: Coordinator {
 extension AppCoordinator: AuthCoordinatorDelegate {
 
     func didSignIn() {
-<<<<<<< HEAD
         guard let authCoordinator = childCoordinator as? AuthCoordinator else {
             preconditionFailure("Upon signing in, AppCoordinator should have an AuthCoordinator as a child.")
         }
         childCoordinator = nil
-=======
-        guard let (index, authCoordinator) = child(ofType: AuthCoordinator.self) else {
-            preconditionFailure("On didSignIn, we should have an AuthCoordinator in our list of coordinators.")
-        }
-        childCoordinators.remove(at: index)
->>>>>>> feature/nevillco/coordinators
         authCoordinator.cleanup()
 
         let contentCoordinator = ContentCoordinator(rootController)
         contentCoordinator.start()
-<<<<<<< HEAD
         childCoordinator = contentCoordinator
-=======
-        childCoordinators.append(contentCoordinator)
->>>>>>> feature/nevillco/coordinators
     }
 
 }

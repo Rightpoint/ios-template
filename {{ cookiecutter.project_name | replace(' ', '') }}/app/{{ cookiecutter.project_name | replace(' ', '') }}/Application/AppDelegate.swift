@@ -11,10 +11,6 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    static var shared: AppDelegate? {
-        return UIApplication.shared.delegate as? AppDelegate
-    }
-
     var coordinator: AppCoordinator!
     var window: UIWindow?
 
@@ -45,6 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let window = UIWindow(frame: UIScreen.main.bounds)
         self.window = window
+
         self.coordinator = AppCoordinator(window: window)
         coordinator.start()
 

@@ -11,11 +11,7 @@ import UIKit
 class ContentCoordinator: Coordinator {
 
     let baseController: UIViewController
-<<<<<<< HEAD
     var childCoordinator: Coordinator?
-=======
-    var childCoordinators = [Coordinator]()
->>>>>>> feature/nevillco/coordinators
 
     init(_ baseController: UIViewController) {
         self.baseController = baseController

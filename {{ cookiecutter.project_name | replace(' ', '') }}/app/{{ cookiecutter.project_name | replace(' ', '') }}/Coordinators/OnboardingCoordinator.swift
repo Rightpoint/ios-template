@@ -10,24 +10,16 @@ import UIKit
 
 protocol OnboardingCoordinatorDelegate: class {
 
-<<<<<<< HEAD
     func didSkipAuth()
     func didRequestJoin()
     func didRequestSignIn()
-=======
-    func didCompleteOnboarding()
->>>>>>> feature/nevillco/coordinators
 
 }
 
 class OnboardingCoordinator: Coordinator {
 
     let baseController: UIViewController
-<<<<<<< HEAD
     var childCoordinator: Coordinator?
-=======
-    var childCoordinators = [Coordinator]()
->>>>>>> feature/nevillco/coordinators
     weak var delegate: OnboardingCoordinatorDelegate?
 
     init(_ baseController: UIViewController) {
@@ -35,14 +27,8 @@ class OnboardingCoordinator: Coordinator {
     }
 
     func start() {
-<<<<<<< HEAD
         let vc = OnboardingPageViewController()
         vc.delegate = self
-=======
-        // TODO - create and use OnboardingViewController
-        let vc = UIViewController()
-        vc.view.backgroundColor = .blue
->>>>>>> feature/nevillco/coordinators
         // Wrapped in dispatch block to ensure this happens on the next run loop
         // after the root is configured, to prevent "Unbalanced calls to begin/
         // "end appearance transitions" warning. Necessary for any controllers
@@ -57,7 +43,6 @@ class OnboardingCoordinator: Coordinator {
     }
 
 }
-<<<<<<< HEAD
 
 extension OnboardingCoordinator: OnboardingPageViewControllerDelegate {
 
@@ -74,5 +59,3 @@ extension OnboardingCoordinator: OnboardingPageViewControllerDelegate {
     }
 
 }
-=======
->>>>>>> feature/nevillco/coordinators

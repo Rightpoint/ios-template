@@ -17,11 +17,7 @@ protocol SignInCoordinatorDelegate: class {
 class SignInCoordinator: Coordinator {
 
     let baseController: UIViewController
-<<<<<<< HEAD
     var childCoordinator: Coordinator?
-=======
-    var childCoordinators = [Coordinator]()
->>>>>>> feature/nevillco/coordinators
     weak var delegate: SignInCoordinatorDelegate?
 
     init(_ baseController: UIViewController) {
@@ -42,10 +38,6 @@ class SignInCoordinator: Coordinator {
     }
 
     func cleanup() {
-<<<<<<< HEAD
-=======
-        baseController.dismiss(animated: false, completion: nil)
->>>>>>> feature/nevillco/coordinators
     }
 
 }
