@@ -17,7 +17,7 @@ protocol OnboardingCoordinatorDelegate: class {
 class OnboardingCoordinator: Coordinator {
 
     let baseController: UIViewController
-    var childCoordinators = [Coordinator]()
+    var childCoordinator: Coordinator?
     weak var delegate: OnboardingCoordinatorDelegate?
 
     init(_ baseController: UIViewController) {

@@ -14,41 +14,56 @@ protocol AuthCoordinatorDelegate: class {
 
 }
 
+private enum State {
+
+    case authenticated
+    case onboarded
+    case needsOnboarding
+
+}
+
 class AuthCoordinator: Coordinator {
 
-    var childCoordinators = [Coordinator]()
+    var childCoordinator: Coordinator?
     let baseController: UIViewController
     weak var delegate: AuthCoordinatorDelegate?
-    private let authClient = OAuthClient()
+
+    private let client = APIClient()
+    private var state: State {
+        if client.oauthClient.isAuthenticated {
+            return .authenticated
+        }
+        else if UserDefaults.hasOnboarded {
+            return .onboarded
+        }
+        else {
+            return .needsOnboarding
+        }
+    }
 
     init(_ baseController: UIViewController) {
         self.baseController = baseController
     }
 
     func start() {
-        if authClient.isAuthenticated {
+        switch state {
+        case .authenticated:
             delegate?.didSignIn()
-        }
-        else if UserDefaults.hasOnboarded {
+        case .onboarded:
             let signInCoordinator = SignInCoordinator(baseController)
             signInCoordinator.delegate = self
             signInCoordinator.start()
-            childCoordinators.append(signInCoordinator)
-        }
-        else {
+            childCoordinator = signInCoordinator
+        case .needsOnboarding:
             let onboardCoordinator = OnboardingCoordinator(baseController)
             onboardCoordinator.delegate = self
             onboardCoordinator.start()
-            childCoordinators.append(onboardCoordinator)
+            childCoordinator = onboardCoordinator
         }
     }
 
     func cleanup() {
-        // This coordinator never directly presents controllers,
-        // so just clean up any children.
-        for child in childCoordinators {
-            child.cleanup()
-        }
+        childCoordinator?.cleanup()
     }
 
 }
@@ -64,15 +79,16 @@ extension AuthCoordinator: SignInCoordinatorDelegate {
 extension AuthCoordinator: OnboardingCoordinatorDelegate {
 
     func didCompleteOnboarding() {
-        guard let (index, onboardCoordinator) = child(ofType: OnboardingCoordinator.self) else {
-            preconditionFailure("On didCompleteOnboarding, we should have an OnboardingCoordinator in our list of coordinators.")
+        guard let onboardCoordinator = childCoordinator as? OnboardingCoordinator else {
+            preconditionFailure("Upon completing onboarding, AuthCoordinator should have an OnboardingCoordinator as a child.")
         }
-        childCoordinators.remove(at: index)
         onboardCoordinator.cleanup()
+        childCoordinator = nil
 
         let signInCoordinator = SignInCoordinator(baseController)
         signInCoordinator.delegate = self
         signInCoordinator.start()
-        childCoordinators.append(signInCoordinator)
+        childCoordinator = signInCoordinator
     }
+
 }

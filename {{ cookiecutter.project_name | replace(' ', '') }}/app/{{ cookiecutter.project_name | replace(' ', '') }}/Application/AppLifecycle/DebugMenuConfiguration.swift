@@ -22,16 +22,21 @@ class DebugMenuConfiguration: AppLifecycle {
 }
 
 class DebugMenu {
-    static let shared: DebugMenu = DebugMenu()
 
-    func enableDebugGesture(_ viewController: UIViewController) {
+    fileprivate static func enableDebugGesture(_ viewController: UIViewController) {
         let debugGesture = UITapGestureRecognizer(target: self, action: #selector(openDebugAlert))
         debugGesture.numberOfTapsRequired = 3
         debugGesture.numberOfTouchesRequired = 2
         viewController.view.addGestureRecognizer(debugGesture)
     }
 
-    @objc func openDebugAlert() {
+    @objc static func openDebugAlert() {
+        guard let delegate = UIApplication.shared.delegate as? AppDelegate,
+            let rootViewController = delegate.window?.rootViewController else {
+                Log.warn("Debug alert unable to present since the window rootViewController is nil")
+                return
+        }
+
         var debug: UIAlertController
 
         if let dictionary = Bundle.main.infoDictionary,
@@ -56,9 +61,9 @@ class DebugMenu {
         debug.addAction(UIAlertAction(title: "Cancel",
                                       style: .cancel, handler: nil))
 
-        var topMostViewController = AppDelegate.shared?.window?.rootViewController
+        var topMostViewController: UIViewController? = rootViewController
         while topMostViewController?.presentedViewController != nil {
-            topMostViewController = topMostViewController?.presentedViewController
+            topMostViewController = topMostViewController?.presentedViewController!
         }
         topMostViewController?.present(debug, animated: true, completion: nil)
     }
@@ -68,7 +73,7 @@ public class DebugMenuBehavior: ViewControllerLifecycleBehavior {
 
     public init() {}
     public func afterAppearing(_ viewController: UIViewController, animated: Bool) {
-        DebugMenu.shared.enableDebugGesture(viewController)
+        DebugMenu.enableDebugGesture(viewController)
     }
 
 }
