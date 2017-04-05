@@ -46,25 +46,25 @@ class AuthCoordinator: Coordinator {
         self.baseController = baseController
     }
 
-    func start() {
+    func start(animated: Bool, completion: (() -> Void)?) {
         switch state {
         case .authenticated:
             delegate?.didSignIn()
         case .onboarded:
             let signInCoordinator = SignInCoordinator(baseController)
             signInCoordinator.delegate = self
-            signInCoordinator.start()
+            signInCoordinator.start(animated: animated, completion: completion)
             childCoordinator = signInCoordinator
         case .needsOnboarding:
             let onboardCoordinator = OnboardingCoordinator(baseController)
             onboardCoordinator.delegate = self
-            onboardCoordinator.start()
+            onboardCoordinator.start(animated: animated, completion: completion)
             childCoordinator = onboardCoordinator
         }
     }
 
-    func cleanup() {
-        childCoordinator?.cleanup()
+    func cleanup(animated: Bool, completion: (() -> Void)?) {
+        childCoordinator?.cleanup(animated: animated, completion: completion)
     }
 
 }
@@ -84,24 +84,30 @@ extension AuthCoordinator: OnboardingCoordinatorDelegate {
     }
 
     func didRequestJoin() {
-        childCoordinator?.cleanup()
+        guard let onboardCoordinator = childCoordinator as? OnboardingCoordinator else {
+            preconditionFailure("Upon signing in, AppCoordinator should have an AuthCoordinator as a child.")
+        }
         childCoordinator = nil
-
-        let signInCoordinator = SignInCoordinator(baseController)
-        signInCoordinator.delegate = self
-        signInCoordinator.start()
-        // TODO - signInCoordinator move from signIn to register here
-        childCoordinator = signInCoordinator
+        onboardCoordinator.cleanup(animated: true, completion: {
+            let signInCoordinator = SignInCoordinator(self.baseController)
+            signInCoordinator.delegate = self
+            self.childCoordinator = signInCoordinator
+            // TODO - signInCoordinator move from signIn to register here
+            signInCoordinator.start(animated: true, completion: nil)
+        })
     }
 
     func didRequestSignIn() {
-        childCoordinator?.cleanup()
+        guard let onboardCoordinator = childCoordinator as? OnboardingCoordinator else {
+            preconditionFailure("Upon signing in, AppCoordinator should have an AuthCoordinator as a child.")
+        }
         childCoordinator = nil
-
-        let signInCoordinator = SignInCoordinator(baseController)
-        signInCoordinator.delegate = self
-        signInCoordinator.start()
-        childCoordinator = signInCoordinator
+        onboardCoordinator.cleanup(animated: true, completion: {
+            let signInCoordinator = SignInCoordinator(self.baseController)
+            signInCoordinator.delegate = self
+            self.childCoordinator = signInCoordinator
+            signInCoordinator.start(animated: true, completion: nil)
+        })
     }
 
 }

@@ -43,11 +43,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = window
 
         self.coordinator = AppCoordinator(window: window)
-        coordinator.start()
-
-        for config in rootViewControllerDependentConfigurations where config.isEnabled {
-            config.onDidLaunch(application: application, launchOptions: launchOptions)
-        }
+        coordinator.start(animated: true, completion: {
+            for config in self.rootViewControllerDependentConfigurations where config.isEnabled {
+                config.onDidLaunch(application: application, launchOptions: launchOptions)
+            }
+        })
 
         return true
     }

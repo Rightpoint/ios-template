@@ -26,7 +26,7 @@ class OnboardingCoordinator: Coordinator {
         self.baseController = baseController
     }
 
-    func start() {
+    func start(animated: Bool, completion: (() -> Void)?) {
         let vc = OnboardingPageViewController()
         vc.delegate = self
         // Wrapped in dispatch block to ensure this happens on the next run loop
@@ -34,12 +34,12 @@ class OnboardingCoordinator: Coordinator {
         // "end appearance transitions" warning. Necessary for any controllers
         // presented directly off of the root controller.
         DispatchQueue.main.async {
-            self.baseController.present(vc, animated: false, completion: nil)
+            self.baseController.present(vc, animated: animated, completion: completion)
         }
     }
 
-    func cleanup() {
-        baseController.dismiss(animated: false, completion: nil)
+    func cleanup(animated: Bool, completion: (() -> Void)?) {
+        baseController.dismiss(animated: animated, completion: completion)
     }
 
 }
