@@ -27,7 +27,8 @@ class OnboardingCoordinator: Coordinator {
     }
 
     func start(animated: Bool, completion: VoidClosure?) {
-        let vc = OnboardingPageViewController()
+        let vc = OnboardingPageViewController(
+            viewModels: OnboardingCoordinator.pageViewModels)
         vc.delegate = self
         // Wrapped in dispatch block to ensure this happens on the next run loop
         // after the root is configured, to prevent "Unbalanced calls to begin/
@@ -56,6 +57,35 @@ extension OnboardingCoordinator: OnboardingPageViewControllerDelegate {
 
     func signInTapped(for controller: OnboardingPageViewController) {
         delegate?.didRequestSignIn()
+    }
+
+}
+
+extension OnboardingCoordinator {
+
+    static var pageViewModels: [OnboardingSamplePageViewModel] {
+        return [
+            OnboardingSamplePageViewModel(
+                header: Localized.Onboarding.Pages.Sample.heading,
+                body: Localized.Onboarding.Pages.Sample.body,
+                asset: nil
+            ),
+            OnboardingSamplePageViewModel(
+                header: Localized.Onboarding.Pages.Sample.heading,
+                body: Localized.Onboarding.Pages.Sample.body,
+                asset: nil
+            ),
+            OnboardingSamplePageViewModel(
+                header: Localized.Onboarding.Pages.Sample.heading,
+                body: Localized.Onboarding.Pages.Sample.body,
+                asset: nil
+            ),
+            OnboardingSamplePageViewModel(
+                header: Localized.Onboarding.Pages.Sample.heading,
+                body: Localized.Onboarding.Pages.Sample.body,
+                asset: nil
+            ),
+        ]
     }
 
 }

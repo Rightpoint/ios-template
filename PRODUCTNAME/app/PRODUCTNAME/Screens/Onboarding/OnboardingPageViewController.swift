@@ -21,11 +21,7 @@ protocol OnboardingPageViewControllerDelegate: class {
 // MARK: OnboardingPageViewController
 class OnboardingPageViewController: UIViewController {
 
-    fileprivate let viewControllers: [UIViewController] = [
-        OnboardingSamplePageViewController(),
-        OnboardingSamplePageViewController(),
-        OnboardingSamplePageViewController(),
-    ]
+    fileprivate let viewControllers: [UIViewController]
 
     fileprivate let skipButton: UIButton = {
         let button = UIButton()
@@ -56,6 +52,18 @@ class OnboardingPageViewController: UIViewController {
         return button
     }()
     weak var delegate: OnboardingPageViewControllerDelegate?
+
+    init(viewModels: [OnboardingSamplePageViewModel]) {
+        self.viewControllers = viewModels.map {
+            OnboardingSamplePageViewController(viewModel: $0)
+        }
+        super.init(nibName: nil, bundle: nil)
+
+    }
+
+    @available(*, unavailable) required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
