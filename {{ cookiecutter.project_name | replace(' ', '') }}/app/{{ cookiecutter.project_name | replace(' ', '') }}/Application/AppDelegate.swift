@@ -13,6 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var coordinator: AppCoordinator!
     var window: UIWindow?
+    var coordinator: AppCoordinator!
 
     // Anything that doesn't rely on the existence of a viewcontroller should be in this preWindowConfigurations array
     let preWindowConfigurations: [AppLifecycle] = [
