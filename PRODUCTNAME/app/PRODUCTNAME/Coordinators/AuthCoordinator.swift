@@ -11,6 +11,7 @@ import UIKit
 protocol AuthCoordinatorDelegate: class {
 
     func didSignIn()
+    func didSkipAuth()
 
 }
 
@@ -79,12 +80,7 @@ extension AuthCoordinator: SignInCoordinatorDelegate {
 extension AuthCoordinator: OnboardingCoordinatorDelegate {
 
     func didSkipAuth() {
-        childCoordinator?.cleanup()
-        childCoordinator = nil
-
-        let contentCoordinator = ContentCoordinator(baseController)
-        contentCoordinator.start()
-        childCoordinator = contentCoordinator
+        delegate?.didSkipAuth()
     }
 
     func didRequestJoin() {

@@ -41,11 +41,19 @@ class AppCoordinator: Coordinator {
 extension AppCoordinator: AuthCoordinatorDelegate {
 
     func didSignIn() {
-        guard let authCoordinator = childCoordinator as? AuthCoordinator else {
-            preconditionFailure("Upon signing in, AppCoordinator should have an AuthCoordinator as a child.")
-        }
+        assert(childCoordinator is AuthCoordinator, "Upon signing in, AppCoordinator should have an AuthCoordinator as a child.")
         childCoordinator = nil
-        authCoordinator.cleanup()
+        childCoordinator?.cleanup()
+
+        let contentCoordinator = ContentCoordinator(rootController)
+        contentCoordinator.start()
+        childCoordinator = contentCoordinator
+    }
+
+    func didSkipAuth() {
+        assert(childCoordinator is AuthCoordinator, "Upon skipping authentication, AppCoordinator should have an AuthCoordinator as a child.")
+        childCoordinator?.cleanup()
+        childCoordinator = nil
 
         let contentCoordinator = ContentCoordinator(rootController)
         contentCoordinator.start()
