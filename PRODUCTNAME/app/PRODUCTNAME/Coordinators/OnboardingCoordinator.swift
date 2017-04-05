@@ -64,28 +64,12 @@ extension OnboardingCoordinator: OnboardingPageViewControllerDelegate {
 extension OnboardingCoordinator {
 
     static var pageViewModels: [OnboardingSamplePageViewModel] {
-        return [
-            OnboardingSamplePageViewModel(
-                header: Localized.Onboarding.Pages.Sample.heading,
-                body: Localized.Onboarding.Pages.Sample.body,
-                asset: nil
-            ),
-            OnboardingSamplePageViewModel(
-                header: Localized.Onboarding.Pages.Sample.heading,
-                body: Localized.Onboarding.Pages.Sample.body,
-                asset: nil
-            ),
-            OnboardingSamplePageViewModel(
-                header: Localized.Onboarding.Pages.Sample.heading,
-                body: Localized.Onboarding.Pages.Sample.body,
-                asset: nil
-            ),
-            OnboardingSamplePageViewModel(
-                header: Localized.Onboarding.Pages.Sample.heading,
-                body: Localized.Onboarding.Pages.Sample.body,
-                asset: nil
-            ),
-        ]
+        let samplePage = OnboardingSamplePageViewModel(
+            header: Localized.Onboarding.Pages.Sample.heading,
+            body: Localized.Onboarding.Pages.Sample.body,
+            asset: nil
+        )
+        return [samplePage, samplePage, samplePage]
     }
 
 }
