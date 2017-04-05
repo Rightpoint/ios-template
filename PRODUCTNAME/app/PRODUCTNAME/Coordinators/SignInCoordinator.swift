@@ -24,7 +24,7 @@ class SignInCoordinator: Coordinator {
         self.baseController = baseController
     }
 
-    func start(animated: Bool, completion: (() -> Void)?) {
+    func start(animated: Bool, completion: VoidClosure?) {
         // TODO - create and use SignInViewController
         let vc = UIViewController()
         vc.view.backgroundColor = .red
@@ -37,7 +37,7 @@ class SignInCoordinator: Coordinator {
         }
     }
 
-    func cleanup(animated: Bool, completion: (() -> Void)?) {
+    func cleanup(animated: Bool, completion: VoidClosure?) {
         baseController.dismiss(animated: animated, completion: completion)
     }
 

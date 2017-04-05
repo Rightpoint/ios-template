@@ -17,7 +17,7 @@ class ContentCoordinator: Coordinator {
         self.baseController = baseController
     }
 
-    func start(animated: Bool, completion: (() -> Void)?) {
+    func start(animated: Bool, completion: VoidClosure?) {
         // TODO - create and use ContentViewController
         let vc = UIViewController()
         vc.view.backgroundColor = .green
@@ -30,7 +30,7 @@ class ContentCoordinator: Coordinator {
         }
     }
 
-    func cleanup(animated: Bool, completion: (() -> Void)?) {
+    func cleanup(animated: Bool, completion: VoidClosure?) {
         baseController.dismiss(animated: animated, completion: completion)
     }
 

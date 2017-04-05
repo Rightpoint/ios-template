@@ -26,7 +26,7 @@ class OnboardingCoordinator: Coordinator {
         self.baseController = baseController
     }
 
-    func start(animated: Bool, completion: (() -> Void)?) {
+    func start(animated: Bool, completion: VoidClosure?) {
         let vc = OnboardingPageViewController()
         vc.delegate = self
         // Wrapped in dispatch block to ensure this happens on the next run loop
@@ -38,7 +38,7 @@ class OnboardingCoordinator: Coordinator {
         }
     }
 
-    func cleanup(animated: Bool, completion: (() -> Void)?) {
+    func cleanup(animated: Bool, completion: VoidClosure?) {
         baseController.dismiss(animated: animated, completion: completion)
     }
 

@@ -46,7 +46,7 @@ class AuthCoordinator: Coordinator {
         self.baseController = baseController
     }
 
-    func start(animated: Bool, completion: (() -> Void)?) {
+    func start(animated: Bool, completion: VoidClosure?) {
         switch state {
         case .authenticated:
             delegate?.didSignIn()
@@ -63,7 +63,7 @@ class AuthCoordinator: Coordinator {
         }
     }
 
-    func cleanup(animated: Bool, completion: (() -> Void)?) {
+    func cleanup(animated: Bool, completion: VoidClosure?) {
         childCoordinator?.cleanup(animated: animated, completion: completion)
     }
 

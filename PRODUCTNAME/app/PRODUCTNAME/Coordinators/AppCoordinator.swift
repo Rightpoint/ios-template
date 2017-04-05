@@ -21,7 +21,7 @@ class AppCoordinator: Coordinator {
         self.rootController = rootController
     }
 
-    func start(animated: Bool, completion: (() -> Void)?) {
+    func start(animated: Bool, completion: VoidClosure?) {
         // Configure window/root view controller
         window.setRootViewController(rootController, animated: false)
         window.makeKeyAndVisible()
@@ -33,7 +33,7 @@ class AppCoordinator: Coordinator {
         authCoordinator.start(animated: animated, completion: completion)
     }
 
-    func cleanup(animated: Bool, completion: (() -> Void)?) {
+    func cleanup(animated: Bool, completion: VoidClosure?) {
         completion?()
     }
 
