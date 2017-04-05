@@ -14,28 +14,47 @@ protocol AuthCoordinatorDelegate: class {
 
 }
 
+private enum State {
+
+    case authenticated
+    case onboarded
+    case needsOnboarding
+
+}
+
 class AuthCoordinator: Coordinator {
 
     var childCoordinator: Coordinator?
     let baseController: UIViewController
     weak var delegate: AuthCoordinatorDelegate?
-    private let authClient = OAuthClient()
+
+    private let client = APIClient()
+    private var state: State {
+        if client.oauthClient.isAuthenticated {
+            return .authenticated
+        }
+        else if UserDefaults.hasOnboarded {
+            return .onboarded
+        }
+        else {
+            return .needsOnboarding
+        }
+    }
 
     init(_ baseController: UIViewController) {
         self.baseController = baseController
     }
 
     func start() {
-        if authClient.isAuthenticated {
+        switch state {
+        case .authenticated:
             delegate?.didSignIn()
-        }
-        else if UserDefaults.hasOnboarded {
+        case .onboarded:
             let signInCoordinator = SignInCoordinator(baseController)
             signInCoordinator.delegate = self
             signInCoordinator.start()
             childCoordinator = signInCoordinator
-        }
-        else {
+        case .needsOnboarding:
             let onboardCoordinator = OnboardingCoordinator(baseController)
             onboardCoordinator.delegate = self
             onboardCoordinator.start()
@@ -71,4 +90,5 @@ extension AuthCoordinator: OnboardingCoordinatorDelegate {
         signInCoordinator.start()
         childCoordinator = signInCoordinator
     }
+
 }
