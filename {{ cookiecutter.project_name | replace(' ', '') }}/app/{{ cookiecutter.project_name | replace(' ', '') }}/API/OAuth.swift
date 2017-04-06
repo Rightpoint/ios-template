@@ -66,7 +66,7 @@ final class OAuthClient {
             }
         }
     }
-    fileprivate var authenticatedTriggers: [() -> Void] = []
+    fileprivate var authenticatedTriggers: [VoidClosure] = []
     fileprivate var authenticationRequest: DataRequest?
     fileprivate let lock = NSLock()
 

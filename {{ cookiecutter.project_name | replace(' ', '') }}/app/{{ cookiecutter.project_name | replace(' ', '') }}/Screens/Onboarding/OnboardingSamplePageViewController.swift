@@ -10,12 +10,13 @@ import Anchorage
 
 class OnboardingSamplePageViewController: UIViewController {
 
+    fileprivate let imageView = UIImageView()
+
     fileprivate let headerLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 28)
         label.textColor = Colors.darkGray
         label.textAlignment = .center
-        label.text = Localized.Onboarding.Pages.Sample.heading
         return label
     }()
 
@@ -25,9 +26,19 @@ class OnboardingSamplePageViewController: UIViewController {
         label.textColor = Colors.darkGray
         label.textAlignment = .center
         label.numberOfLines = 0
-        label.text = Localized.Onboarding.Pages.Sample.body
         return label
     }()
+
+    init(viewModel: OnboardingSamplePageViewModel) {
+        super.init(nibName: nil, bundle: nil)
+        imageView.image = viewModel.asset?.image
+        headerLabel.text = viewModel.header
+        bodyLabel.text = viewModel.body
+    }
+
+    @available(*, unavailable) required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +50,7 @@ class OnboardingSamplePageViewController: UIViewController {
 
 private extension OnboardingSamplePageViewController {
 
+    // TODO - add and layout image view
     func configureView() {
         view.addSubview(headerLabel)
         view.addSubview(bodyLabel)

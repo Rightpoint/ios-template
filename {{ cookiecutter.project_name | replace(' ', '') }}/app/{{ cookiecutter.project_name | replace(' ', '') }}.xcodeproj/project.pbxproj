@@ -11,6 +11,8 @@
 		2D4FA8F71E85752B006C38ED /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4FA8F61E85752B006C38ED /* Coordinator.swift */; };
 		2D75C6C71E8EEAE900F2EB1D /* OnboardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFF1CEC1E8944B900B1AD70 /* OnboardingCoordinator.swift */; };
 		2D75C6C81E8EEB1900F2EB1D /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4FA8F81E8577B5006C38ED /* AuthCoordinator.swift */; };
+		2DAB59F61E9531F700310ABF /* Closures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAB59F51E9531F700310ABF /* Closures.swift */; };
+		2DAB59F81E95336100310ABF /* OnboardingSamplePageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAB59F71E95336100310ABF /* OnboardingSamplePageViewModel.swift */; };
 		2DFF1CEB1E89423000B1AD70 /* UserDefaults+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFF1CEA1E89423000B1AD70 /* UserDefaults+Utility.swift */; };
 		2DFF1CEF1E89493300B1AD70 /* SignInCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFF1CEE1E89493300B1AD70 /* SignInCoordinator.swift */; };
 		2DFF1CF11E8950F000B1AD70 /* ContentCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFF1CF01E8950F000B1AD70 /* ContentCoordinator.swift */; };
@@ -88,6 +90,8 @@
 		2D4FA8F41E8574F9006C38ED /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		2D4FA8F61E85752B006C38ED /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		2D4FA8F81E8577B5006C38ED /* AuthCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
+		2DAB59F51E9531F700310ABF /* Closures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Closures.swift; sourceTree = "<group>"; };
+		2DAB59F71E95336100310ABF /* OnboardingSamplePageViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingSamplePageViewModel.swift; sourceTree = "<group>"; };
 		2DFF1CEA1E89423000B1AD70 /* UserDefaults+Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Utility.swift"; sourceTree = "<group>"; };
 		2DFF1CEC1E8944B900B1AD70 /* OnboardingCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingCoordinator.swift; sourceTree = "<group>"; };
 		2DFF1CEE1E89493300B1AD70 /* SignInCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInCoordinator.swift; sourceTree = "<group>"; };
@@ -191,6 +195,7 @@
 			children = (
 				2DFF1D111E8BE27B00B1AD70 /* OnboardingPageViewController.swift */,
 				2DFF1D1B1E8C424800B1AD70 /* OnboardingSamplePageViewController.swift */,
+				2DAB59F71E95336100310ABF /* OnboardingSamplePageViewModel.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -291,7 +296,6 @@
 			children = (
 				ABC778E21DC94F9300815FB9 /* AppLifecycle */,
 				ABF84F891DC99CFD002DB24D /* Appearance */,
-				ABF84F8E1DC99D33002DB24D /* Generated */,
 				ABC778781DC90B7A00815FB9 /* AppDelegate.swift */,
 				ABC778DE1DC94F0900815FB9 /* BuildType.swift */,
 			);
@@ -301,6 +305,7 @@
 		ABC778991DC91E0D00815FB9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				ABF84F8E1DC99D33002DB24D /* Generated */,
 				ABC778CD1DC92BC200815FB9 /* xcconfig */,
 				ABC778DC1DC94EE500815FB9 /* Acknowledgements.plist */,
 				ABC7787F1DC90B7A00815FB9 /* Assets.xcassets */,
@@ -337,6 +342,7 @@
 		ABC778C61DC927A600815FB9 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				2DAB59F51E9531F700310ABF /* Closures.swift */,
 				ABC778C81DC927C900815FB9 /* Formatters.swift */,
 				ABF84FA11DCBCB87002DB24D /* Marshal+Utility.swift */,
 				2DFF1CEA1E89423000B1AD70 /* UserDefaults+Utility.swift */,
@@ -541,7 +547,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "$PODS_ROOT/SwiftGen/bin/swiftgen strings --template dot-syntax-swift3 --enumName Localized --output '{{ cookiecutter.project_name | replace(' ', '') }}/Application/Generated/Localized.swift' '{{ cookiecutter.project_name | replace(' ', '') }}/Resources/Localizable.strings'";
+			shellScript = "$PODS_ROOT/SwiftGen/bin/swiftgen strings --template dot-syntax-swift3 --enumName Localized --output '{{ cookiecutter.project_name | replace(' ', '') }}/Resources/Generated/Localized.swift' '{{ cookiecutter.project_name | replace(' ', '') }}/Resources/Localizable.strings'";
 		};
 		2DFF1D1F1E8C56C700B1AD70 /* SwiftGen images */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -555,7 +561,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "$PODS_ROOT/SwiftGen/bin/swiftgen images --template dot-syntax-swift3 --enumName Asset --output {{ cookiecutter.project_name | replace(' ', '') }}/Application/Generated/UIImage+Asset.swift {{ cookiecutter.project_name | replace(' ', '') }}/Resources/Assets.xcassets";
+			shellScript = "$PODS_ROOT/SwiftGen/bin/swiftgen images --template dot-syntax-swift3 --enumName Asset --output {{ cookiecutter.project_name | replace(' ', '') }}/Resources/Generated/UIImage+Asset.swift {{ cookiecutter.project_name | replace(' ', '') }}/Resources/Assets.xcassets";
 		};
 		4B79AD4EE86D9527DA2201EB /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -673,6 +679,7 @@
 				2DFF1D1C1E8C424800B1AD70 /* OnboardingSamplePageViewController.swift in Sources */,
 				ABF84F941DCA7F0A002DB24D /* OAuth.swift in Sources */,
 				2DFF1CF11E8950F000B1AD70 /* ContentCoordinator.swift in Sources */,
+				2DAB59F61E9531F700310ABF /* Closures.swift in Sources */,
 				ABF84F8D1DC99CFD002DB24D /* TextStyle.swift in Sources */,
 				ABF84FA21DCBCB87002DB24D /* Marshal+Utility.swift in Sources */,
 				ABC778EA1DC951B900815FB9 /* LoggingConfiguration.swift in Sources */,
@@ -683,8 +690,8 @@
 				2DFF1CEF1E89493300B1AD70 /* SignInCoordinator.swift in Sources */,
 				ABC778DA1DC93E9C00815FB9 /* APIEndpoint.swift in Sources */,
 				ABC778C91DC927C900815FB9 /* Formatters.swift in Sources */,
+				2DAB59F81E95336100310ABF /* OnboardingSamplePageViewModel.swift in Sources */,
 				BE28092C1E802893006E50D5 /* GoogleAnalytics.swift in Sources */,
-				2D4FA8F91E8577B5006C38ED /* AuthCoordinator.swift in Sources */,
 				ABC778E11DC94F4400815FB9 /* AppLifecycle.swift in Sources */,
 				2DFF1D161E8BF38F00B1AD70 /* UIColor+Extensions.swift in Sources */,
 				2DFF1CEB1E89423000B1AD70 /* UserDefaults+Utility.swift in Sources */,
@@ -696,7 +703,6 @@
 				ABC778E61DC94FFC00815FB9 /* CrashlyticsConfiguration.swift in Sources */,
 				ABF84F961DCA89B0002DB24D /* BuildType+API.swift in Sources */,
 				BE28092E1E8029D8006E50D5 /* AnalyticsConfiguration.swift in Sources */,
-				2DFF1CED1E8944B900B1AD70 /* OnboardingCoordinator.swift in Sources */,
 				ABF84F7F1DC970E8002DB24D /* APIClient.swift in Sources */,
 				ABF84F981DCAB3B9002DB24D /* APIConstants.swift in Sources */,
 				ABF84F8C1DC99CFD002DB24D /* Appearance.swift in Sources */,
