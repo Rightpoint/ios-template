@@ -17,10 +17,18 @@ protocol Coordinator {
     /// Start any action this coordinator should take. Often, this is
     /// presenting/pushing a new controller, or starting up a
     /// child coordinator.
-    func start()
+    ///
+    /// - Parameters:
+    ///   - animated: whether to animate any transitions.
+    ///   - completion: a completion block.
+    func start(animated: Bool, completion: VoidClosure?)
 
     /// Clean up after this coordinator. Should get the app back to the
     /// state it was in when this coordinator started.
-    func cleanup()
+    ///
+    /// - Parameters:
+    ///   - animated: whether to animate any transitions.
+    ///   - completion: a completion block.
+    func cleanup(animated: Bool, completion: VoidClosure?)
 
 }

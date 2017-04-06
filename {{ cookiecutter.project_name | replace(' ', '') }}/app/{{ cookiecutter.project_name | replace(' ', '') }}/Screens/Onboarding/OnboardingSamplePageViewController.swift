@@ -1,0 +1,73 @@
+//
+//  OnboardingSamplePageViewController.swift
+//  {{ cookiecutter.project_name | replace(' ', '') }}
+//
+//  Created by {{ cookiecutter.lead_dev }} on 3/29/17.
+//  Copyright © 2017 {{ cookiecutter.company_name }}. All rights reserved.
+//
+
+import Anchorage
+
+class OnboardingSamplePageViewController: UIViewController {
+
+    fileprivate let imageView = UIImageView()
+
+    fileprivate let headerLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 28)
+        label.textColor = Colors.darkGray
+        label.textAlignment = .center
+        return label
+    }()
+
+    fileprivate let bodyLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 20)
+        label.textColor = Colors.darkGray
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        return label
+    }()
+
+    init(viewModel: OnboardingSamplePageViewModel) {
+        super.init(nibName: nil, bundle: nil)
+        imageView.image = viewModel.asset?.image
+        headerLabel.text = viewModel.header
+        bodyLabel.text = viewModel.body
+    }
+
+    @available(*, unavailable) required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configureView()
+        configureLayout()
+    }
+
+}
+
+private extension OnboardingSamplePageViewController {
+
+    // TODO - add and layout image view
+    func configureView() {
+        view.addSubview(headerLabel)
+        view.addSubview(bodyLabel)
+    }
+
+    struct Layout {
+        static let sideInsets = CGFloat(38)
+        static let bodyBottomSpace = CGFloat(40)
+        static let headerBottomSpace = CGFloat(20)
+    }
+
+    func configureLayout() {
+        bodyLabel.horizontalAnchors == view.horizontalAnchors + Layout.sideInsets
+        bodyLabel.bottomAnchor == view.bottomAnchor - Layout.bodyBottomSpace
+
+        headerLabel.horizontalAnchors == view.horizontalAnchors
+        headerLabel.bottomAnchor == bodyLabel.topAnchor - Layout.headerBottomSpace
+    }
+
+}

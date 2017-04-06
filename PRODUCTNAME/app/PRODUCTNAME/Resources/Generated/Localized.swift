@@ -13,6 +13,28 @@ import Foundation
 
 enum Localized {
 
+  enum Onboarding {
+
+    enum Buttons {
+      /// Join
+      static let join = Localized.tr("Onboarding.Buttons.Join")
+      /// Already have an account? Sign in.
+      static let signIn = Localized.tr("Onboarding.Buttons.SignIn")
+      /// Skip
+      static let skip = Localized.tr("Onboarding.Buttons.Skip")
+    }
+
+    enum Pages {
+
+      enum Sample {
+        /// This is body copy for the onboarding and should be replaced with real text!
+        static let body = Localized.tr("Onboarding.Pages.Sample.Body")
+        /// HEADING TEXT
+        static let heading = Localized.tr("Onboarding.Pages.Sample.Heading")
+      }
+    }
+  }
+
   enum Title {
     /// PRODUCTNAME
     static let navigation = Localized.tr("Title.Navigation")

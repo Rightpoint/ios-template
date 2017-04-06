@@ -11,8 +11,8 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    var window: UIWindow?
     var coordinator: AppCoordinator!
+    var window: UIWindow?
 
     // Anything that doesn't rely on the existence of a viewcontroller should be in this preWindowConfigurations array
     let preWindowConfigurations: [AppLifecycle] = [
@@ -43,11 +43,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = window
 
         self.coordinator = AppCoordinator(window: window)
-        coordinator.start()
-
-        for config in rootViewControllerDependentConfigurations where config.isEnabled {
-            config.onDidLaunch(application: application, launchOptions: launchOptions)
-        }
+        coordinator.start(animated: true, completion: {
+            for config in self.rootViewControllerDependentConfigurations where config.isEnabled {
+                config.onDidLaunch(application: application, launchOptions: launchOptions)
+            }
+        })
 
         return true
     }

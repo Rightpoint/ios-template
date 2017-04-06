@@ -21,7 +21,7 @@ class AppCoordinator: Coordinator {
         self.rootController = rootController
     }
 
-    func start() {
+    func start(animated: Bool, completion: VoidClosure?) {
         // Configure window/root view controller
         window.setRootViewController(rootController, animated: false)
         window.makeKeyAndVisible()
@@ -30,10 +30,11 @@ class AppCoordinator: Coordinator {
         let authCoordinator = AuthCoordinator(rootController)
         authCoordinator.delegate = self
         childCoordinator = authCoordinator
-        authCoordinator.start()
+        authCoordinator.start(animated: animated, completion: completion)
     }
 
-    func cleanup() {
+    func cleanup(animated: Bool, completion: VoidClosure?) {
+        completion?()
     }
 
 }
@@ -45,11 +46,23 @@ extension AppCoordinator: AuthCoordinatorDelegate {
             preconditionFailure("Upon signing in, AppCoordinator should have an AuthCoordinator as a child.")
         }
         childCoordinator = nil
-        authCoordinator.cleanup()
+        authCoordinator.cleanup(animated: true, completion: {
+            let contentCoordinator = ContentCoordinator(self.rootController)
+            self.childCoordinator = contentCoordinator
+            contentCoordinator.start(animated: true, completion: nil)
+        })
+    }
 
-        let contentCoordinator = ContentCoordinator(rootController)
-        contentCoordinator.start()
-        childCoordinator = contentCoordinator
+    func didSkipAuth() {
+        guard let authCoordinator = childCoordinator as? AuthCoordinator else {
+            preconditionFailure("Upon signing in, AppCoordinator should have an AuthCoordinator as a child.")
+        }
+        childCoordinator = nil
+        authCoordinator.cleanup(animated: true, completion: {
+            let contentCoordinator = ContentCoordinator(self.rootController)
+            self.childCoordinator = contentCoordinator
+            contentCoordinator.start(animated: true, completion: nil)
+        })
     }
 
 }

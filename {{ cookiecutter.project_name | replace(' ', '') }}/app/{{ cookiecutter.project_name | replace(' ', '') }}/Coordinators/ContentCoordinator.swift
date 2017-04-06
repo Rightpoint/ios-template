@@ -17,7 +17,7 @@ class ContentCoordinator: Coordinator {
         self.baseController = baseController
     }
 
-    func start() {
+    func start(animated: Bool, completion: VoidClosure?) {
         // TODO - create and use ContentViewController
         let vc = UIViewController()
         vc.view.backgroundColor = .green
@@ -26,12 +26,12 @@ class ContentCoordinator: Coordinator {
         // "end appearance transitions" warning. Necessary for any controllers
         // presented directly off of the root controller.
         DispatchQueue.main.async {
-            self.baseController.present(vc, animated: false, completion: nil)
+            self.baseController.present(vc, animated: animated, completion: completion)
         }
     }
 
-    func cleanup() {
-        baseController.dismiss(animated: false, completion: nil)
+    func cleanup(animated: Bool, completion: VoidClosure?) {
+        baseController.dismiss(animated: animated, completion: completion)
     }
 
 }

@@ -24,7 +24,7 @@ class SignInCoordinator: Coordinator {
         self.baseController = baseController
     }
 
-    func start() {
+    func start(animated: Bool, completion: VoidClosure?) {
         // TODO - create and use SignInViewController
         let vc = UIViewController()
         vc.view.backgroundColor = .red
@@ -33,11 +33,12 @@ class SignInCoordinator: Coordinator {
         // "end appearance transitions" warning. Necessary for any controllers
         // presented directly off of the root controller.
         DispatchQueue.main.async {
-            self.baseController.present(vc, animated: false, completion: nil)
+            self.baseController.present(vc, animated: animated, completion: completion)
         }
     }
 
-    func cleanup() {
+    func cleanup(animated: Bool, completion: VoidClosure?) {
+        baseController.dismiss(animated: animated, completion: completion)
     }
 
 }
