@@ -23,14 +23,15 @@ class AppCoordinator: Coordinator {
 
     func start(animated: Bool, completion: VoidClosure?) {
         // Configure window/root view controller
-        window.setRootViewController(rootController, animated: false)
-        window.makeKeyAndVisible()
+        window.setRootViewController(rootController, animated: false, completion: {
+            self.window.makeKeyAndVisible()
 
-        // Spin off auth coordinator
-        let authCoordinator = AuthCoordinator(rootController)
-        authCoordinator.delegate = self
-        childCoordinator = authCoordinator
-        authCoordinator.start(animated: animated, completion: completion)
+            // Spin off auth coordinator
+            let authCoordinator = AuthCoordinator(self.rootController)
+            authCoordinator.delegate = self
+            self.childCoordinator = authCoordinator
+            authCoordinator.start(animated: animated, completion: completion)
+        })
     }
 
     func cleanup(animated: Bool, completion: VoidClosure?) {
