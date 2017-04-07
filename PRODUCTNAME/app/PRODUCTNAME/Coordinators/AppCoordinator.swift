@@ -59,7 +59,7 @@ extension AppCoordinator: AuthCoordinatorDelegate {
             preconditionFailure("Upon signing in, AppCoordinator should have an AuthCoordinator as a child.")
         }
         childCoordinator = nil
-        authCoordinator.cleanup(animated: true, completion: {
+        authCoordinator.cleanup(animated: false, completion: {
             let contentCoordinator = ContentCoordinator(self.rootController)
             self.childCoordinator = contentCoordinator
             contentCoordinator.start(animated: true, completion: nil)

@@ -55,7 +55,7 @@
 		BE28092B1E802893006E50D5 /* AnalyticsPageNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2809281E802893006E50D5 /* AnalyticsPageNames.swift */; };
 		BE28092C1E802893006E50D5 /* GoogleAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2809291E802893006E50D5 /* GoogleAnalytics.swift */; };
 		BE28092E1E8029D8006E50D5 /* AnalyticsConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE28092D1E8029D8006E50D5 /* AnalyticsConfiguration.swift */; };
-		BE2809301E8038BE006E50D5 /* FirstTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE28092F1E8038BE006E50D5 /* FirstTabViewController.swift */; };
+		BE2809301E8038BE006E50D5 /* ContentTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE28092F1E8038BE006E50D5 /* ContentTabBarViewController.swift */; };
 		BE4C21EB1E81970A00645143 /* DebugMenuConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4C21EA1E81970A00645143 /* DebugMenuConfiguration.swift */; };
 /* End PBXBuildFile section */
 
@@ -150,7 +150,7 @@
 		BE2809281E802893006E50D5 /* AnalyticsPageNames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsPageNames.swift; sourceTree = "<group>"; };
 		BE2809291E802893006E50D5 /* GoogleAnalytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleAnalytics.swift; sourceTree = "<group>"; };
 		BE28092D1E8029D8006E50D5 /* AnalyticsConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsConfiguration.swift; sourceTree = "<group>"; };
-		BE28092F1E8038BE006E50D5 /* FirstTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstTabViewController.swift; sourceTree = "<group>"; };
+		BE28092F1E8038BE006E50D5 /* ContentTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentTabBarViewController.swift; sourceTree = "<group>"; };
 		BE4C21EA1E81970A00645143 /* DebugMenuConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugMenuConfiguration.swift; sourceTree = "<group>"; };
 		C3A4171B7E64E228CC7A0DF7 /* Pods-PRODUCTNAME-PRODUCTNAMETests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PRODUCTNAME-PRODUCTNAMETests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PRODUCTNAME-PRODUCTNAMETests/Pods-PRODUCTNAME-PRODUCTNAMETests.debug.xcconfig"; sourceTree = "<group>"; };
 		C7DBD1236E57FBDDF10B2FB0 /* Pods-PRODUCTNAME.develop.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PRODUCTNAME.develop.xcconfig"; path = "Pods/Target Support Files/Pods-PRODUCTNAME/Pods-PRODUCTNAME.develop.xcconfig"; sourceTree = "<group>"; };
@@ -240,7 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				2DFF1D131E8BE3D400B1AD70 /* Onboarding */,
-				BE28092F1E8038BE006E50D5 /* FirstTabViewController.swift */,
+				BE28092F1E8038BE006E50D5 /* ContentTabBarViewController.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -707,7 +707,7 @@
 				ABF84F981DCAB3B9002DB24D /* APIConstants.swift in Sources */,
 				ABF84F8C1DC99CFD002DB24D /* Appearance.swift in Sources */,
 				ABC778791DC90B7A00815FB9 /* AppDelegate.swift in Sources */,
-				BE2809301E8038BE006E50D5 /* FirstTabViewController.swift in Sources */,
+				BE2809301E8038BE006E50D5 /* ContentTabBarViewController.swift in Sources */,
 				2DFF1D181E8BF82A00B1AD70 /* Colors.swift in Sources */,
 				BE28092A1E802893006E50D5 /* Analytics.swift in Sources */,
 				2DFF1D121E8BE27B00B1AD70 /* OnboardingPageViewController.swift in Sources */,

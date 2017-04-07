@@ -18,9 +18,8 @@ class ContentCoordinator: Coordinator {
     }
 
     func start(animated: Bool, completion: VoidClosure?) {
-        // TODO - create and use ContentViewController
-        let vc = UIViewController()
-        vc.view.backgroundColor = .green
+        let vc = ContentTabBarViewController()
+        vc.modalTransitionStyle = .crossDissolve
         baseController.present(vc, animated: animated, completion: completion)
     }
 
