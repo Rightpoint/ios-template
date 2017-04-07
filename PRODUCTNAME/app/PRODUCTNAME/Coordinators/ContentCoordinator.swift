@@ -21,13 +21,7 @@ class ContentCoordinator: Coordinator {
         // TODO - create and use ContentViewController
         let vc = UIViewController()
         vc.view.backgroundColor = .green
-        // Wrapped in dispatch block to ensure this happens on the next run loop
-        // after the root is configured, to prevent "Unbalanced calls to begin/
-        // "end appearance transitions" warning. Necessary for any controllers
-        // presented directly off of the root controller.
-        DispatchQueue.main.async {
-            self.baseController.present(vc, animated: animated, completion: completion)
-        }
+        baseController.present(vc, animated: animated, completion: completion)
     }
 
     func cleanup(animated: Bool, completion: VoidClosure?) {
