@@ -50,19 +50,23 @@ class OnboardingSamplePageViewController: UIViewController {
 
 private extension OnboardingSamplePageViewController {
 
-    // TODO - add and layout image view
     func configureView() {
+        view.addSubview(imageView)
         view.addSubview(headerLabel)
         view.addSubview(bodyLabel)
     }
 
     struct Layout {
         static let sideInsets = CGFloat(38)
+        static let imageTopSpace = CGFloat(42)
         static let bodyBottomSpace = CGFloat(40)
         static let headerBottomSpace = CGFloat(20)
     }
 
     func configureLayout() {
+        imageView.topAnchor == view.topAnchor + Layout.imageTopSpace
+        imageView.centerXAnchor == view.centerXAnchor
+
         bodyLabel.horizontalAnchors == view.horizontalAnchors + Layout.sideInsets
         bodyLabel.bottomAnchor == view.bottomAnchor - Layout.bodyBottomSpace
 

@@ -61,7 +61,7 @@ extension OnboardingCoordinator {
         let samplePage = OnboardingSamplePageViewModel(
             header: Localized.Onboarding.Pages.Sample.heading,
             body: Localized.Onboarding.Pages.Sample.body,
-            asset: nil
+            asset: Asset.logoKennyLoggins
         )
         return [samplePage, samplePage, samplePage]
     }
