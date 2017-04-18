@@ -33,11 +33,11 @@ extension SessionManager {
      Perform request and execute completion block leveraging a `JSONObject`. Use this when an API response doesn't map directly to your object graph.
 
      - Parameters:
-     - baseURL: The base url to apply the endpoint `path` to
-     - endpoint: An `APIEndpoint` with an associated `ResponseType` of `JSONObject`
-     - completion: A closure to process the API response
-     - responseObject: the response JSON as a `JSONObject`
-     - error: a server or serialization error
+        - baseURL: The base url to apply the endpoint `path` to
+        - endpoint: An `APIEndpoint` with an associated `ResponseType` of `JSONObject`
+        - completion: A closure to process the API response
+        - responseObject: the response JSON as a `JSONObject`
+        - error: a server or serialization error
 
      - Returns: a `DataRequest`
      */
@@ -59,11 +59,11 @@ extension SessionManager {
      Perform request and serialize the response automatically according to your Response Type's `Unmarshaling` conformance
 
      - Parameters:
-     - baseURL: The base url to apply the endpoint `path` to
-     - endpoint: An `APIEndpoint` with an associated `ResponseType` conforming to `Unmarshaling`
-     - completion: A closure to process the API response
-     - object: the unmarhsaled response object
-     - error: a server or serialization error
+        - baseURL: The base url to apply the endpoint `path` to
+        - endpoint: An `APIEndpoint` with an associated `ResponseType` conforming to `Unmarshaling`
+        - completion: A closure to process the API response
+        - object: the unmarhsaled response object
+        - error: a server or serialization error
 
      - Returns: a `DataRequest`
      */
@@ -84,11 +84,11 @@ extension SessionManager {
      Perform request and serialize the returned collection automatically according to your Response Type's `Unmarshaling` conformance
 
      - Parameters:
-     - baseURL: The base url to apply the endpoint `path` to
-     - endpoint: An `APIEndpoint` with an associated `ResponseType` which is a collection of bojects conforming to `Unmarshaling`
-     - completion: A closure to process the API response
-     - objects: the unmarhsaled response collection
-     - error: a server or serialization error
+        - baseURL: The base url to apply the endpoint `path` to
+        - endpoint: An `APIEndpoint` with an associated `ResponseType` which is a collection of bojects conforming to `Unmarshaling`
+        - completion: A closure to process the API response
+        - objects: the unmarhsaled response collection
+        - error: a server or serialization error
 
      - Returns: a `DataRequest`
      */
@@ -111,11 +111,11 @@ extension SessionManager {
      Perform request and serialize the response automatically according to your Response Type's `UnmarshalingWithContext` conformance
 
      - Parameters:
-     - baseURL: The base url to apply the endpoint `path` to
-     - endpoint: An `APIEndpoint` with an associated `ResponseType` conforming to `UnmarshalingWithContext`
-     - completion: A closure to process the API response
-     - object: the unmarhsaled response object
-     - error: a server or serialization error
+        - baseURL: The base url to apply the endpoint `path` to
+        - endpoint: An `APIEndpoint` with an associated `ResponseType` conforming to `UnmarshalingWithContext`
+        - completion: A closure to process the API response
+        - object: the unmarhsaled response object
+        - error: a server or serialization error
 
      - Returns: a `DataRequest`
      */
@@ -136,11 +136,11 @@ extension SessionManager {
      Perform request and serialize the returned collection automatically according to your Response Type's `UnmarshalingWithContext` conformance
 
      - Parameters:
-     - baseURL: The base url to apply the endpoint `path` to
-     - endpoint: An `APIEndpoint` with an associated `ResponseType` which is a collection of bojects conforming to `Unmarshaling`
-     - completion: A closure to process the API response
-     - objects: the unmarhsaled response collection
-     - error: a server or serialization error
+        - baseURL: The base url to apply the endpoint `path` to
+        - endpoint: An `APIEndpoint` with an associated `ResponseType` which is a collection of bojects conforming to `Unmarshaling`
+        - completion: A closure to process the API response
+        - objects: the unmarhsaled response collection
+        - error: a server or serialization error
 
      - Returns: a `DataRequest`
      */
