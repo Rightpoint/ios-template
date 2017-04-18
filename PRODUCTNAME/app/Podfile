@@ -9,10 +9,13 @@ target 'PRODUCTNAME' do
   pod 'Alamofire'
   pod 'KeychainAccess'
   pod 'Marshal'
+  pod 'SwiftLint'
 
   pod 'BonMot'
   pod 'Anchorage'
   pod 'Swiftilities'
+
+  pod 'GoogleAnalytics',   '~>3.0'
 
   target 'PRODUCTNAMETests' do
     pod 'OHHTTPStubs/Swift'

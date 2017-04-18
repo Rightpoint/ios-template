@@ -3,7 +3,7 @@
 //  {{ cookiecutter.project_name | replace(' ', '') }}
 //
 //  Created by {{ cookiecutter.lead_dev }} on 11/3/16.
-//  Copyright © 2016 {{ cookiecutter.company_name }}. All rights reserved.
+//  Copyright © 2017 {{ cookiecutter.company_name }}. All rights reserved.
 //
 
 import OHHTTPStubs
@@ -29,15 +29,15 @@ class APIClientTests: XCTestCase {
     func testAuthenticatedRequestWithNoCredentials() {
         var authorized: Bool = false
         stub(condition: pathStartsWith("/oauth/refresh")) { _ in
-            authorized = true
-            return OHHTTPStubsResponse(data: Payloads.oauth, statusCode:200, headers:nil)
+            authorized = false
+            return OHHTTPStubsResponse(data: Payloads.oauth, statusCode:400, headers:nil)
         }
         stub(condition: pathStartsWith("/test")) { _ in
-            return OHHTTPStubsResponse(data: Payloads.test, statusCode: authorized ? 200 : 401, headers:nil)
+            return OHHTTPStubsResponse(data: Payloads.test, statusCode: authorized ? 200 : 401, headers: nil)
         }
 
         let expectation = self.expectation(description: "Test Endpoint")
-        client.request(TestEndpoint()) { response, error in
+        client.request(TestEndpoint()) { _, error in
             XCTAssertNotNil(error)
             expectation.fulfill()
         }

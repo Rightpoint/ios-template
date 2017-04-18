@@ -3,12 +3,13 @@
 //  PRODUCTNAME
 //
 //  Created by LEADDEVELOPER on 11/2/16.
-//  Copyright © 2016 ORGANIZATION. All rights reserved.
+//  Copyright © 2017 ORGANIZATION. All rights reserved.
 //
 
 import Alamofire
-import Marshal
 import KeychainAccess
+import Marshal
+import Swiftilities
 
 /// OAuthClient manages the OAuth requests. It is responsible for:
 /// - the inital login which obtains the refresh token.
@@ -43,10 +44,20 @@ final class OAuthClient {
     var credentials: Credentials? {
         didSet {
             if let credentials = credentials {
-                _ = try? keychain.set(credentials, key: OAuthClient.credentials)
+                do {
+                    try keychain.set(credentials, key: OAuthClient.credentials)
+                }
+                catch let error {
+                    Log.error("Error setting auth credentials to keychain: \(error.localizedDescription)")
+                }
             }
             else {
-                _ = try? keychain.remove(OAuthClient.credentials)
+                do {
+                    try keychain.remove(OAuthClient.credentials)
+                }
+                catch let error {
+                    Log.error("Error removing auth credentials from keychain: \(error.localizedDescription)")
+                }
             }
             // If there were credentials, and there no longer are, post a notification
             if oldValue != nil && credentials == nil {
@@ -55,8 +66,8 @@ final class OAuthClient {
             }
         }
     }
-    fileprivate var authenticatedTriggers: [(Void) -> ()] = []
-    fileprivate var authenticationRequest: DataRequest? = nil
+    fileprivate var authenticatedTriggers: [VoidClosure] = []
+    fileprivate var authenticationRequest: DataRequest?
     fileprivate let lock = NSLock()
 
     var isAuthenticated: Bool {
@@ -80,6 +91,7 @@ final class OAuthClient {
                 self.credentials = nil
             }
         }
+
         OAuthClient.validKeychain = true
     }
 }
@@ -163,11 +175,10 @@ extension OAuthClient {
         let token: String
     }
 
-    @discardableResult func logout(completion: @escaping (Error?) -> Void) {
+    func logout(completion: @escaping (Error?) -> Void) {
         let token = credentials?.accessToken ?? "INVALID TOKEN"
         let endpoint = LogoutRequest(token: token)
-        let request = manager.request(baseURL, endpoint: endpoint) {
-            [weak self] (credentials, error) in
+        let request = manager.request(baseURL, endpoint: endpoint) { [weak self] (credentials, error) in
             self?.handleOauth(credentials: credentials)
             completion(error)
         }
@@ -241,7 +252,7 @@ extension OAuthClient.LogoutRequest: APIEndpoint {
 
     var parameters: JSONObject? {
         return [
-            "token": token
+            "token": token,
         ]
     }
 

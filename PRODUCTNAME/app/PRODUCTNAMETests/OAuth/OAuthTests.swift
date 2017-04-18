@@ -3,7 +3,7 @@
 //  PRODUCTNAME
 //
 //  Created by LEADDEVELOPER on 11/3/16.
-//  Copyright © 2016 ORGANIZATION. All rights reserved.
+//  Copyright © 2017 ORGANIZATION. All rights reserved.
 //
 
 import OHHTTPStubs
@@ -22,7 +22,7 @@ class OAuthTests: XCTestCase {
     }
 
     func testOAuthLogin() {
-        stub(condition: isMethodPOST() && pathStartsWith("/oauth/token")) { request in
+        stub(condition: isMethodPOST() && pathStartsWith("/oauth/token")) { _ in
             return OHHTTPStubsResponse(data: Payloads.oauth, statusCode: 200, headers:nil)
         }
         let configuration = URLSessionConfiguration.default
@@ -30,7 +30,7 @@ class OAuthTests: XCTestCase {
         let oauthClient = OAuthClient(configuration: configuration)
 
         let expectation = self.expectation(description: "Login Complete")
-        oauthClient.login(username: "username", password: "password") { error in
+        oauthClient.login(username: "username", password: "password") { _ in
             expectation.fulfill()
         }
         waitForExpectations(timeout: timeout, handler: nil)
@@ -53,7 +53,7 @@ class OAuthTests: XCTestCase {
             expirationDate: Date.distantPast
         )
         let expectation = self.expectation(description: "Login Complete")
-        oauthClient.refresh() { _ in
+        oauthClient.refresh { _ in
             expectation.fulfill()
         }
         waitForExpectations(timeout: timeout, handler: nil)

@@ -7,6 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D4FA8F51E8574F9006C38ED /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4FA8F41E8574F9006C38ED /* AppCoordinator.swift */; };
+		2D4FA8F71E85752B006C38ED /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4FA8F61E85752B006C38ED /* Coordinator.swift */; };
+		2D6E54781E9D16AA00690B0A /* APISerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6E54771E9D16AA00690B0A /* APISerialization.swift */; };
+		2D6E547A1E9D16F200690B0A /* APIValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6E54791E9D16F200690B0A /* APIValidation.swift */; };
+		2D75C6C71E8EEAE900F2EB1D /* OnboardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFF1CEC1E8944B900B1AD70 /* OnboardingCoordinator.swift */; };
+		2D75C6C81E8EEB1900F2EB1D /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4FA8F81E8577B5006C38ED /* AuthCoordinator.swift */; };
+		2DAB59F61E9531F700310ABF /* Closures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAB59F51E9531F700310ABF /* Closures.swift */; };
+		2DAB59F81E95336100310ABF /* OnboardingSamplePageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAB59F71E95336100310ABF /* OnboardingSamplePageViewModel.swift */; };
+		2DFF1CEB1E89423000B1AD70 /* UserDefaults+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFF1CEA1E89423000B1AD70 /* UserDefaults+Utility.swift */; };
+		2DFF1CEF1E89493300B1AD70 /* SignInCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFF1CEE1E89493300B1AD70 /* SignInCoordinator.swift */; };
+		2DFF1CF11E8950F000B1AD70 /* ContentCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFF1CF01E8950F000B1AD70 /* ContentCoordinator.swift */; };
+		2DFF1D121E8BE27B00B1AD70 /* OnboardingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFF1D111E8BE27B00B1AD70 /* OnboardingPageViewController.swift */; };
+		2DFF1D161E8BF38F00B1AD70 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFF1D151E8BF38F00B1AD70 /* UIColor+Extensions.swift */; };
+		2DFF1D181E8BF82A00B1AD70 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFF1D171E8BF82A00B1AD70 /* Colors.swift */; };
+		2DFF1D1C1E8C424800B1AD70 /* OnboardingSamplePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFF1D1B1E8C424800B1AD70 /* OnboardingSamplePageViewController.swift */; };
 		85083D4AEA7B5B726A79F450 /* Pods_{{ cookiecutter.project_name | replace(' ', '') }}.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CD9F2E21AB27A0230007885 /* Pods_{{ cookiecutter.project_name | replace(' ', '') }}.framework */; };
 		959F487642A61EF85C170AF9 /* Pods_{{ cookiecutter.project_name | replace(' ', '') }}_{{ cookiecutter.project_name | replace(' ', '') }}Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 845339F96003195CE76EA042 /* Pods_{{ cookiecutter.project_name | replace(' ', '') }}_{{ cookiecutter.project_name | replace(' ', '') }}Tests.framework */; };
 		ABC778791DC90B7A00815FB9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC778781DC90B7A00815FB9 /* AppDelegate.swift */; };
@@ -38,6 +53,11 @@
 		ABF84FA41DCBCD89002DB24D /* APIClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF84FA31DCBCD89002DB24D /* APIClientTests.swift */; };
 		ABF84FA61DCBCEA1002DB24D /* Payloads.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF84FA51DCBCEA1002DB24D /* Payloads.swift */; };
 		ABF84FA81DCBFF84002DB24D /* TestEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF84FA71DCBFF84002DB24D /* TestEndpoint.swift */; };
+		BE28092A1E802893006E50D5 /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2809271E802893006E50D5 /* Analytics.swift */; };
+		BE28092B1E802893006E50D5 /* AnalyticsPageNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2809281E802893006E50D5 /* AnalyticsPageNames.swift */; };
+		BE28092C1E802893006E50D5 /* GoogleAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2809291E802893006E50D5 /* GoogleAnalytics.swift */; };
+		BE28092E1E8029D8006E50D5 /* AnalyticsConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE28092D1E8029D8006E50D5 /* AnalyticsConfiguration.swift */; };
+		BE2809301E8038BE006E50D5 /* ContentTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE28092F1E8038BE006E50D5 /* ContentTabBarViewController.swift */; };
 		BE4C21EB1E81970A00645143 /* DebugMenuConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4C21EA1E81970A00645143 /* DebugMenuConfiguration.swift */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +89,21 @@
 		17DC86D175CE0686878A3A82 /* Pods-{{ cookiecutter.project_name | replace(' ', '') }}-{{ cookiecutter.project_name | replace(' ', '') }}Tests.sprint.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-{{ cookiecutter.project_name | replace(' ', '') }}-{{ cookiecutter.project_name | replace(' ', '') }}Tests.sprint.xcconfig"; path = "Pods/Target Support Files/Pods-{{ cookiecutter.project_name | replace(' ', '') }}-{{ cookiecutter.project_name | replace(' ', '') }}Tests/Pods-{{ cookiecutter.project_name | replace(' ', '') }}-{{ cookiecutter.project_name | replace(' ', '') }}Tests.sprint.xcconfig"; sourceTree = "<group>"; };
 		18117B6A27EAD54897E61F7E /* Pods-{{ cookiecutter.project_name | replace(' ', '') }}-{{ cookiecutter.project_name | replace(' ', '') }}Tests.develop.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-{{ cookiecutter.project_name | replace(' ', '') }}-{{ cookiecutter.project_name | replace(' ', '') }}Tests.develop.xcconfig"; path = "Pods/Target Support Files/Pods-{{ cookiecutter.project_name | replace(' ', '') }}-{{ cookiecutter.project_name | replace(' ', '') }}Tests/Pods-{{ cookiecutter.project_name | replace(' ', '') }}-{{ cookiecutter.project_name | replace(' ', '') }}Tests.develop.xcconfig"; sourceTree = "<group>"; };
 		29EBF39E7266FDA41A477533 /* Pods-{{ cookiecutter.project_name | replace(' ', '') }}Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-{{ cookiecutter.project_name | replace(' ', '') }}Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-{{ cookiecutter.project_name | replace(' ', '') }}Tests/Pods-{{ cookiecutter.project_name | replace(' ', '') }}Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		2D4FA8F41E8574F9006C38ED /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		2D4FA8F61E85752B006C38ED /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		2D4FA8F81E8577B5006C38ED /* AuthCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
+		2D6E54771E9D16AA00690B0A /* APISerialization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APISerialization.swift; sourceTree = "<group>"; };
+		2D6E54791E9D16F200690B0A /* APIValidation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIValidation.swift; sourceTree = "<group>"; };
+		2DAB59F51E9531F700310ABF /* Closures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Closures.swift; sourceTree = "<group>"; };
+		2DAB59F71E95336100310ABF /* OnboardingSamplePageViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingSamplePageViewModel.swift; sourceTree = "<group>"; };
+		2DFF1CEA1E89423000B1AD70 /* UserDefaults+Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Utility.swift"; sourceTree = "<group>"; };
+		2DFF1CEC1E8944B900B1AD70 /* OnboardingCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingCoordinator.swift; sourceTree = "<group>"; };
+		2DFF1CEE1E89493300B1AD70 /* SignInCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInCoordinator.swift; sourceTree = "<group>"; };
+		2DFF1CF01E8950F000B1AD70 /* ContentCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentCoordinator.swift; sourceTree = "<group>"; };
+		2DFF1D111E8BE27B00B1AD70 /* OnboardingPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingPageViewController.swift; sourceTree = "<group>"; };
+		2DFF1D151E8BF38F00B1AD70 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		2DFF1D171E8BF82A00B1AD70 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		2DFF1D1B1E8C424800B1AD70 /* OnboardingSamplePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingSamplePageViewController.swift; sourceTree = "<group>"; };
 		678F16A2ED0F9395E247B50F /* Pods-{{ cookiecutter.project_name | replace(' ', '') }}Tests.develop.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-{{ cookiecutter.project_name | replace(' ', '') }}Tests.develop.xcconfig"; path = "Pods/Target Support Files/Pods-{{ cookiecutter.project_name | replace(' ', '') }}Tests/Pods-{{ cookiecutter.project_name | replace(' ', '') }}Tests.develop.xcconfig"; sourceTree = "<group>"; };
 		6A9B67E292488844A2F6D30B /* Pods-{{ cookiecutter.project_name | replace(' ', '') }}Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-{{ cookiecutter.project_name | replace(' ', '') }}Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-{{ cookiecutter.project_name | replace(' ', '') }}Tests/Pods-{{ cookiecutter.project_name | replace(' ', '') }}Tests.release.xcconfig"; sourceTree = "<group>"; };
 		7F2C2A97F21BF37CEB2498E0 /* Pods_{{ cookiecutter.project_name | replace(' ', '') }}Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_{{ cookiecutter.project_name | replace(' ', '') }}Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -114,6 +149,12 @@
 		ABF84FA31DCBCD89002DB24D /* APIClientTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClientTests.swift; sourceTree = "<group>"; };
 		ABF84FA51DCBCEA1002DB24D /* Payloads.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Payloads.swift; sourceTree = "<group>"; };
 		ABF84FA71DCBFF84002DB24D /* TestEndpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestEndpoint.swift; sourceTree = "<group>"; };
+		BE2809251E802474006E50D5 /* {{ cookiecutter.project_name | replace(' ', '') }}-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "{{ cookiecutter.project_name | replace(' ', '') }}-Bridging-Header.h"; sourceTree = "<group>"; };
+		BE2809271E802893006E50D5 /* Analytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Analytics.swift; sourceTree = "<group>"; };
+		BE2809281E802893006E50D5 /* AnalyticsPageNames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsPageNames.swift; sourceTree = "<group>"; };
+		BE2809291E802893006E50D5 /* GoogleAnalytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleAnalytics.swift; sourceTree = "<group>"; };
+		BE28092D1E8029D8006E50D5 /* AnalyticsConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsConfiguration.swift; sourceTree = "<group>"; };
+		BE28092F1E8038BE006E50D5 /* ContentTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentTabBarViewController.swift; sourceTree = "<group>"; };
 		BE4C21EA1E81970A00645143 /* DebugMenuConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugMenuConfiguration.swift; sourceTree = "<group>"; };
 		C3A4171B7E64E228CC7A0DF7 /* Pods-{{ cookiecutter.project_name | replace(' ', '') }}-{{ cookiecutter.project_name | replace(' ', '') }}Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-{{ cookiecutter.project_name | replace(' ', '') }}-{{ cookiecutter.project_name | replace(' ', '') }}Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-{{ cookiecutter.project_name | replace(' ', '') }}-{{ cookiecutter.project_name | replace(' ', '') }}Tests/Pods-{{ cookiecutter.project_name | replace(' ', '') }}-{{ cookiecutter.project_name | replace(' ', '') }}Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		C7DBD1236E57FBDDF10B2FB0 /* Pods-{{ cookiecutter.project_name | replace(' ', '') }}.develop.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-{{ cookiecutter.project_name | replace(' ', '') }}.develop.xcconfig"; path = "Pods/Target Support Files/Pods-{{ cookiecutter.project_name | replace(' ', '') }}/Pods-{{ cookiecutter.project_name | replace(' ', '') }}.develop.xcconfig"; sourceTree = "<group>"; };
@@ -140,6 +181,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2D4FA8F31E8574D2006C38ED /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				2D4FA8F41E8574F9006C38ED /* AppCoordinator.swift */,
+				2D4FA8F81E8577B5006C38ED /* AuthCoordinator.swift */,
+				2DFF1CF01E8950F000B1AD70 /* ContentCoordinator.swift */,
+				2D4FA8F61E85752B006C38ED /* Coordinator.swift */,
+				2DFF1CEC1E8944B900B1AD70 /* OnboardingCoordinator.swift */,
+				2DFF1CEE1E89493300B1AD70 /* SignInCoordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		2DFF1D131E8BE3D400B1AD70 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				2DFF1D111E8BE27B00B1AD70 /* OnboardingPageViewController.swift */,
+				2DFF1D1B1E8C424800B1AD70 /* OnboardingSamplePageViewController.swift */,
+				2DAB59F71E95336100310ABF /* OnboardingSamplePageViewModel.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		2DFF1D141E8BF37C00B1AD70 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2DFF1D151E8BF38F00B1AD70 /* UIColor+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		4A4913662E9FC4926B3F903D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -171,6 +243,8 @@
 		AB955DCB1DE3BDD300D0347E /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				2DFF1D131E8BE3D400B1AD70 /* Onboarding */,
+				BE28092F1E8038BE006E50D5 /* ContentTabBarViewController.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -178,11 +252,11 @@
 		ABC7786C1DC90B7A00815FB9 = {
 			isa = PBXGroup;
 			children = (
+				8338A961860BEC40421553DE /* Frameworks */,
 				ABC778771DC90B7A00815FB9 /* {{ cookiecutter.project_name | replace(' ', '') }} */,
 				ABC7788C1DC90B7A00815FB9 /* {{ cookiecutter.project_name | replace(' ', '') }}Tests */,
-				8338A961860BEC40421553DE /* Frameworks */,
-				ABC778761DC90B7A00815FB9 /* Products */,
 				4A4913662E9FC4926B3F903D /* Pods */,
+				ABC778761DC90B7A00815FB9 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -198,12 +272,14 @@
 		ABC778771DC90B7A00815FB9 /* {{ cookiecutter.project_name | replace(' ', '') }} */ = {
 			isa = PBXGroup;
 			children = (
-				ABC778981DC91DFB00815FB9 /* Application */,
-				AB955DCB1DE3BDD300D0347E /* Screens */,
 				ABC778C51DC9266900815FB9 /* API */,
+				ABC778981DC91DFB00815FB9 /* Application */,
+				2D4FA8F31E8574D2006C38ED /* Coordinators */,
+				2DFF1D141E8BF37C00B1AD70 /* Extensions */,
 				ABC778C41DC9266300815FB9 /* Model */,
-				ABC778C61DC927A600815FB9 /* Utilities */,
 				ABC778991DC91E0D00815FB9 /* Resources */,
+				AB955DCB1DE3BDD300D0347E /* Screens */,
+				ABC778C61DC927A600815FB9 /* Utilities */,
 			);
 			path = {{ cookiecutter.project_name | replace(' ', '') }};
 			sourceTree = "<group>";
@@ -211,10 +287,10 @@
 		ABC7788C1DC90B7A00815FB9 /* {{ cookiecutter.project_name | replace(' ', '') }}Tests */ = {
 			isa = PBXGroup;
 			children = (
-				ABC7788D1DC90B7A00815FB9 /* {{ cookiecutter.project_name | replace(' ', '') }}Tests.swift */,
 				ABF84F9E1DCBAB0A002DB24D /* Helpers */,
 				ABF84F9B1DCBA329002DB24D /* OAuth */,
 				ABC7788F1DC90B7A00815FB9 /* Info.plist */,
+				ABC7788D1DC90B7A00815FB9 /* {{ cookiecutter.project_name | replace(' ', '') }}Tests.swift */,
 			);
 			path = {{ cookiecutter.project_name | replace(' ', '') }}Tests;
 			sourceTree = "<group>";
@@ -224,7 +300,6 @@
 			children = (
 				ABC778E21DC94F9300815FB9 /* AppLifecycle */,
 				ABF84F891DC99CFD002DB24D /* Appearance */,
-				ABF84F8E1DC99D33002DB24D /* Generated */,
 				ABC778781DC90B7A00815FB9 /* AppDelegate.swift */,
 				ABC778DE1DC94F0900815FB9 /* BuildType.swift */,
 			);
@@ -234,12 +309,15 @@
 		ABC778991DC91E0D00815FB9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				ABF84F8E1DC99D33002DB24D /* Generated */,
 				ABC778CD1DC92BC200815FB9 /* xcconfig */,
 				ABC778DC1DC94EE500815FB9 /* Acknowledgements.plist */,
 				ABC7787F1DC90B7A00815FB9 /* Assets.xcassets */,
+				2DFF1D171E8BF82A00B1AD70 /* Colors.swift */,
 				ABC778841DC90B7A00815FB9 /* Info.plist */,
 				ABC778811DC90B7A00815FB9 /* LaunchScreen.storyboard */,
 				ABF84F801DC97653002DB24D /* Localizable.strings */,
+				BE2809251E802474006E50D5 /* {{ cookiecutter.project_name | replace(' ', '') }}-Bridging-Header.h */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -254,13 +332,15 @@
 		ABC778C51DC9266900815FB9 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				ABC778C21DC9252200815FB9 /* APIClient.swift */,
 				ABF84F971DCAB3B9002DB24D /* APIConstants.swift */,
 				ABC778D91DC93E9C00815FB9 /* APIEndpoint.swift */,
 				ABC778D51DC931A400815FB9 /* APIError.swift */,
-				ABC778C21DC9252200815FB9 /* APIClient.swift */,
-				ABF84F931DCA7F0A002DB24D /* OAuth.swift */,
-				ABF84F951DCA89B0002DB24D /* BuildType+API.swift */,
+				2D6E54771E9D16AA00690B0A /* APISerialization.swift */,
+				2D6E54791E9D16F200690B0A /* APIValidation.swift */,
 				ABF84F991DCB70BB002DB24D /* Alamofire+{{ cookiecutter.project_name | replace(' ', '') }}.swift */,
+				ABF84F951DCA89B0002DB24D /* BuildType+API.swift */,
+				ABF84F931DCA7F0A002DB24D /* OAuth.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -268,8 +348,10 @@
 		ABC778C61DC927A600815FB9 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				2DAB59F51E9531F700310ABF /* Closures.swift */,
 				ABC778C81DC927C900815FB9 /* Formatters.swift */,
 				ABF84FA11DCBCB87002DB24D /* Marshal+Utility.swift */,
+				2DFF1CEA1E89423000B1AD70 /* UserDefaults+Utility.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -289,11 +371,13 @@
 		ABC778E21DC94F9300815FB9 /* AppLifecycle */ = {
 			isa = PBXGroup;
 			children = (
+				BE2809261E802893006E50D5 /* Analytics */,
+				BE28092D1E8029D8006E50D5 /* AnalyticsConfiguration.swift */,
 				ABC778E01DC94F4400815FB9 /* AppLifecycle.swift */,
 				ABC778E51DC94FFC00815FB9 /* CrashlyticsConfiguration.swift */,
+				BE4C21EA1E81970A00645143 /* DebugMenuConfiguration.swift */,
 				ABC778E71DC9503600815FB9 /* InstabugConfiguration.swift */,
 				ABC778E91DC951B900815FB9 /* LoggingConfiguration.swift */,
-				BE4C21EA1E81970A00645143 /* DebugMenuConfiguration.swift */,
 			);
 			path = AppLifecycle;
 			sourceTree = "<group>";
@@ -319,20 +403,30 @@
 		ABF84F9B1DCBA329002DB24D /* OAuth */ = {
 			isa = PBXGroup;
 			children = (
-				ABF84F9C1DCBA37A002DB24D /* OAuthTests.swift */,
 				ABF84FA31DCBCD89002DB24D /* APIClientTests.swift */,
+				ABF84F9C1DCBA37A002DB24D /* OAuthTests.swift */,
 			);
-			name = OAuth;
+			path = OAuth;
 			sourceTree = "<group>";
 		};
 		ABF84F9E1DCBAB0A002DB24D /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				ABF84F9F1DCBAB1B002DB24D /* TestConstants.swift */,
 				ABF84FA51DCBCEA1002DB24D /* Payloads.swift */,
+				ABF84F9F1DCBAB1B002DB24D /* TestConstants.swift */,
 				ABF84FA71DCBFF84002DB24D /* TestEndpoint.swift */,
 			);
-			name = Helpers;
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		BE2809261E802893006E50D5 /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				BE2809271E802893006E50D5 /* Analytics.swift */,
+				BE2809281E802893006E50D5 /* AnalyticsPageNames.swift */,
+				BE2809291E802893006E50D5 /* GoogleAnalytics.swift */,
+			);
+			path = Analytics;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -343,6 +437,8 @@
 			buildConfigurationList = ABC778921DC90B7A00815FB9 /* Build configuration list for PBXNativeTarget "{{ cookiecutter.project_name | replace(' ', '') }}" */;
 			buildPhases = (
 				5BD18785D9BC5E2781EBCD52 /* [CP] Check Pods Manifest.lock */,
+				2DFF1D1F1E8C56C700B1AD70 /* SwiftGen images */,
+				2DFF1D1E1E8C563200B1AD70 /* SwiftGen strings */,
 				ABC778DB1DC9405700815FB9 /* SwiftLint */,
 				ABC778711DC90B7A00815FB9 /* Sources */,
 				ABC778721DC90B7A00815FB9 /* Frameworks */,
@@ -388,7 +484,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0830;
 				{{ cookiecutter.company_name }}NAME = {{ cookiecutter.company_name }};
 				TargetAttributes = {
 					ABC778741DC90B7A00815FB9 = {
@@ -445,6 +541,34 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2DFF1D1E1E8C563200B1AD70 /* SwiftGen strings */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "SwiftGen strings";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "$PODS_ROOT/SwiftGen/bin/swiftgen strings --template dot-syntax-swift3 --enumName Localized --output '{{ cookiecutter.project_name | replace(' ', '') }}/Resources/Generated/Localized.swift' '{{ cookiecutter.project_name | replace(' ', '') }}/Resources/Localizable.strings'";
+		};
+		2DFF1D1F1E8C56C700B1AD70 /* SwiftGen images */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "SwiftGen images";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "$PODS_ROOT/SwiftGen/bin/swiftgen images --template dot-syntax-swift3 --enumName Asset --output {{ cookiecutter.project_name | replace(' ', '') }}/Resources/Generated/UIImage+Asset.swift {{ cookiecutter.project_name | replace(' ', '') }}/Resources/Assets.xcassets";
+		};
 		4B79AD4EE86D9527DA2201EB /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -517,7 +641,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "if which swiftlint >/dev/null; then\n${PODS_ROOT}/SwiftLint/swiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 		BD1BB42B08010165A4053F5F /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -556,25 +680,45 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D75C6C81E8EEB1900F2EB1D /* AuthCoordinator.swift in Sources */,
+				2D75C6C71E8EEAE900F2EB1D /* OnboardingCoordinator.swift in Sources */,
+				2DFF1D1C1E8C424800B1AD70 /* OnboardingSamplePageViewController.swift in Sources */,
 				ABF84F941DCA7F0A002DB24D /* OAuth.swift in Sources */,
+				2D6E54781E9D16AA00690B0A /* APISerialization.swift in Sources */,
+				2DFF1CF11E8950F000B1AD70 /* ContentCoordinator.swift in Sources */,
+				2DAB59F61E9531F700310ABF /* Closures.swift in Sources */,
 				ABF84F8D1DC99CFD002DB24D /* TextStyle.swift in Sources */,
 				ABF84FA21DCBCB87002DB24D /* Marshal+Utility.swift in Sources */,
 				ABC778EA1DC951B900815FB9 /* LoggingConfiguration.swift in Sources */,
 				BE4C21EB1E81970A00645143 /* DebugMenuConfiguration.swift in Sources */,
 				ABF84F9A1DCB70BB002DB24D /* Alamofire+{{ cookiecutter.project_name | replace(' ', '') }}.swift in Sources */,
+				2D4FA8F71E85752B006C38ED /* Coordinator.swift in Sources */,
+				2D4FA8F51E8574F9006C38ED /* AppCoordinator.swift in Sources */,
+				2DFF1CEF1E89493300B1AD70 /* SignInCoordinator.swift in Sources */,
 				ABC778DA1DC93E9C00815FB9 /* APIEndpoint.swift in Sources */,
 				ABC778C91DC927C900815FB9 /* Formatters.swift in Sources */,
+				2DAB59F81E95336100310ABF /* OnboardingSamplePageViewModel.swift in Sources */,
+				BE28092C1E802893006E50D5 /* GoogleAnalytics.swift in Sources */,
+				2D6E547A1E9D16F200690B0A /* APIValidation.swift in Sources */,
 				ABC778E11DC94F4400815FB9 /* AppLifecycle.swift in Sources */,
+				2DFF1D161E8BF38F00B1AD70 /* UIColor+Extensions.swift in Sources */,
+				2DFF1CEB1E89423000B1AD70 /* UserDefaults+Utility.swift in Sources */,
 				ABF84F921DC99D33002DB24D /* UIImage+Asset.swift in Sources */,
 				ABF84F911DC99D33002DB24D /* Localized.swift in Sources */,
 				ABC778E81DC9503600815FB9 /* InstabugConfiguration.swift in Sources */,
+				BE28092B1E802893006E50D5 /* AnalyticsPageNames.swift in Sources */,
 				ABC778DF1DC94F0900815FB9 /* BuildType.swift in Sources */,
 				ABC778E61DC94FFC00815FB9 /* CrashlyticsConfiguration.swift in Sources */,
 				ABF84F961DCA89B0002DB24D /* BuildType+API.swift in Sources */,
+				BE28092E1E8029D8006E50D5 /* AnalyticsConfiguration.swift in Sources */,
 				ABF84F7F1DC970E8002DB24D /* APIClient.swift in Sources */,
 				ABF84F981DCAB3B9002DB24D /* APIConstants.swift in Sources */,
 				ABF84F8C1DC99CFD002DB24D /* Appearance.swift in Sources */,
 				ABC778791DC90B7A00815FB9 /* AppDelegate.swift in Sources */,
+				BE2809301E8038BE006E50D5 /* ContentTabBarViewController.swift in Sources */,
+				2DFF1D181E8BF82A00B1AD70 /* Colors.swift in Sources */,
+				BE28092A1E802893006E50D5 /* Analytics.swift in Sources */,
+				2DFF1D121E8BE27B00B1AD70 /* OnboardingPageViewController.swift in Sources */,
 				ABC778D61DC931A400815FB9 /* APIError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -662,6 +806,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_BRIDGING_HEADER = "{{ cookiecutter.project_name | replace(' ', '') }}/Resources/{{ cookiecutter.project_name | replace(' ', '') }}-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -705,6 +850,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "{{ cookiecutter.project_name | replace(' ', '') }}/Resources/{{ cookiecutter.project_name | replace(' ', '') }}-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -802,6 +948,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "{{ cookiecutter.project_name | replace(' ', '') }}/Resources/{{ cookiecutter.project_name | replace(' ', '') }}-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
