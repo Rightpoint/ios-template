@@ -17,14 +17,7 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
-	<key>GoogleAnalytics</key>
-	<dict>
-		<key>Environment</key>
-		<string>$(GA_ENVIRONMENT)</string>
-		<key>TrackingID</key>
-		<string>$(GA_TRACKING_ID)</string>
-	</dict>
+	<string>$(BUILD_NUMBER)</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
@@ -38,6 +31,13 @@
 				<string>Crashlytics</string>
 			</dict>
 		</array>
+	</dict>
+	<key>GoogleAnalytics</key>
+	<dict>
+		<key>Environment</key>
+		<string>$(GA_ENVIRONMENT)</string>
+		<key>TrackingID</key>
+		<string>$(GA_TRACKING_ID)</string>
 	</dict>
 	<key>InstabugToken</key>
 	<string>$(INSTABUG_TOKEN)</string>
