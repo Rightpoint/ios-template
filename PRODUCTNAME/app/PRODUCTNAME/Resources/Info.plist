@@ -25,6 +25,7 @@
 		<key>TrackingID</key>
 		<string>$(GA_TRACKING_ID)</string>
 	</dict>
+	<string>$(BUILD_NUMBER)</string>
 	<key>Fabric</key>
 	<dict>
 		<key>APIKey</key>
