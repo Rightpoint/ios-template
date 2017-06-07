@@ -8,7 +8,7 @@ cd app
 bundle exec pod install
 if [[ "{{ cookiecutter.hockey_key }}" =~ .*[nN][oO].* ]]
 then
-    echo "Skipping hockey app generationg"
+    echo "Skipping hockey app generation"
 else
     export DEVELOP_KEY=`curl -F "title={{ cookiecutter.project_name }}" -F "bundle_identifier={{ cookiecutter.bundle_identifier }}" -F "platform=iOS" -F "custom_release_type=Develop" -H "X-HockeyAppToken: {{ cookiecutter.hockey_key }}" https://rink.hockeyapp.net/api/2/apps/new | jq '.public_identifier' | sed -e 's/\"//g'`
     echo "Hockey App Develop Key: $DEVELOP_KEY"
