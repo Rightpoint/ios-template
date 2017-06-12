@@ -41,7 +41,7 @@ platform :ios do
 
   desc "Builds and submits a Develop release to Hockey"
   lane :develop do
-    build("PRODUCTNAME", 'enterprise')
+    build("develop-PRODUCTNAME", 'enterprise')
     hockey(public_identifier: 'ZZHOCKEY_DEVELOP_IDZZ')
     # upload_symbols_to_crashlytics(:api_token => 'ZZCRASHLYTICS_API_TOKEN_DEVELOPZZ')
     slack(message: "Successfully uploaded build #{build_number} to develop", success: true)
@@ -49,7 +49,7 @@ platform :ios do
 
   desc "Builds and submits a Sprint release to Hockey"
   lane :sprint do
-    build("PRODUCTNAME", 'enterprise')
+    build("sprint-PRODUCTNAME", 'enterprise')
     hockey(public_identifier: 'ZZHOCKEY_SPRINT_IDZZ')
     # upload_symbols_to_crashlytics(:api_token => 'ZZCRASHLYTICS_API_TOKEN_SPRINTZZ')
     slack(message: "Successfully uploaded build #{build_number} to sprint", success: true)
