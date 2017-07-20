@@ -16,7 +16,7 @@ PRODUCT_BUNDLE_IDENTIFIER = com.raizlabs.PRODUCTNAME.develop
 PRODUCT_NAME = develop-$(TARGET_NAME)
 DEVELOPMENT_TEAM = xxxxxx // Insert develop TEAM ID here
 
-CODE_SIGN_IDENTITY_PRODUCTNAME = iPhone Developer
+CODE_SIGN_IDENTITY_PRODUCTNAME = iPhone Distribution
 PROVISIONING_PROFILE_PRODUCTNAME = xxxxxx // Insert develop provisioning profile ID
 // CODE_SIGN_ENTITLEMENTS = PRODUCTNAME/develop-PRODUCTNAME.entitlements // Enable to allow custom debug entitlements
 
