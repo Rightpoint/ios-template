@@ -1,0 +1,19 @@
+//
+//  AppStore.xcconfig
+//  PRODUCTNAME
+//
+//  Created by LEADDEVELOPER on 11/1/16.
+//  Copyright © 2017 ORGANIZATION. All rights reserved.
+//
+
+#include "PRODUCTNAME/Resources/xcconfig/Raizlabs-Account.xcconfig"
+#include "PRODUCTNAME/Resources/xcconfig/Global.xcconfig"
+
+PRODUCT_BUNDLE_IDENTIFIER = // Insert production bundle here
+PRODUCT_NAME = sprint-$(TARGET_NAME)
+DEVELOPMENT_TEAM = xxxxxx // Insert app store TEAM ID here
+
+CODE_SIGN_IDENTITY_PRODUCTNAME = iPhone Distribution
+PROVISIONING_PROFILE_PRODUCTNAME = xxxxxx // Insert sprint provisioning profile ID
+
+GA_ENVIRONMENT = production

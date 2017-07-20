@@ -1,0 +1,19 @@
+//
+//  AppStore.xcconfig
+//  {{ cookiecutter.project_name | replace(' ', '') }}
+//
+//  Created by {{ cookiecutter.lead_dev }} on 11/1/16.
+//  Copyright © 2017 {{ cookiecutter.company_name }}. All rights reserved.
+//
+
+#include "{{ cookiecutter.project_name | replace(' ', '') }}/Resources/xcconfig/Raizlabs-Account.xcconfig"
+#include "{{ cookiecutter.project_name | replace(' ', '') }}/Resources/xcconfig/Global.xcconfig"
+
+PRODUCT_BUNDLE_IDENTIFIER = // Insert production bundle here
+PRODUCT_NAME = sprint-$(TARGET_NAME)
+DEVELOPMENT_TEAM = xxxxxx // Insert app store TEAM ID here
+
+CODE_SIGN_IDENTITY_{{ cookiecutter.project_name | replace(' ', '') }} = iPhone Distribution
+PROVISIONING_PROFILE_{{ cookiecutter.project_name | replace(' ', '') }} = xxxxxx // Insert sprint provisioning profile ID
+
+GA_ENVIRONMENT = production
