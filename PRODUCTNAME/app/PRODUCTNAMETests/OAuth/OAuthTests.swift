@@ -27,7 +27,7 @@ class OAuthTests: XCTestCase {
         }
         let configuration = URLSessionConfiguration.default
         OHHTTPStubs.setEnabled(true, for: configuration)
-        let oauthClient = OAuthClient(configuration: configuration)
+        let oauthClient = OAuthClient(baseURL: TestClient.baseURL, configuration: configuration)
 
         let expectation = self.expectation(description: "Login Complete")
         oauthClient.login(username: "username", password: "password") { _ in
@@ -46,7 +46,7 @@ class OAuthTests: XCTestCase {
         }
         let configuration = URLSessionConfiguration.default
         OHHTTPStubs.setEnabled(true, for: configuration)
-        let oauthClient = OAuthClient(configuration: configuration)
+        let oauthClient = OAuthClient(baseURL: TestClient.baseURL, configuration: configuration)
         oauthClient.credentials = OAuthClient.Credentials(
             refreshToken: "INITIAL_REFRESH_TOKEN",
             accessToken: "INVALID_TOKEN",
@@ -64,7 +64,7 @@ class OAuthTests: XCTestCase {
     }
 
     func testAdaptBeforeAuthenticated() {
-        let oauthClient = OAuthClient()
+        let oauthClient = OAuthClient(baseURL: TestClient.baseURL)
         let request = URLRequest(url: URL(string: "http://test.com")!)
         do {
             _ = try oauthClient.adapt(request)

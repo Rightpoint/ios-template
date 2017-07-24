@@ -31,8 +31,8 @@ final class OAuthClient {
         }
     }
 
-    var clientSecret = BuildType.active.oathClientToken
-    var clientID = BuildType.active.oathClientID
+    var clientSecret = APIEnvironment.active.oathClientToken
+    var clientID = APIEnvironment.active.oathClientID
     let keychain: Keychain
 
     struct Credentials {
@@ -76,9 +76,9 @@ final class OAuthClient {
 
     let baseURL: URL
     let manager: Alamofire.SessionManager
-    init(baseURL: URL = BuildType.active.baseURL, configuration: URLSessionConfiguration = .default) {
+    init(baseURL: URL, configuration: URLSessionConfiguration = .default) {
         self.baseURL = baseURL
-        self.keychain = Keychain(service: BuildType.active.identifier(suffix: OAuthClient.credentials))
+        self.keychain = Keychain(service: OAuthClient.identifier(suffix: OAuthClient.credentials))
 
         configuration.httpAdditionalHeaders?[APIConstants.accept] = APIConstants.applicationJSON
         self.manager = SessionManager(configuration: configuration)
@@ -300,8 +300,20 @@ extension OAuthClient.Credentials: Marshaling {
     }
 }
 
+extension OAuthClient {
+
+    static func identifier(suffix: String) -> String {
+        guard let bundleIdentifier = Bundle(for: OAuthClient.self).bundleIdentifier else {
+            fatalError("Unable to determine bundle identifier")
+        }
+        return bundleIdentifier.appending(".").appending(suffix)
+    }
+
+}
+
 extension NSNotification.Name {
 
     /// This notification is posted whenever the OAuthClient has a refreshToken and lost it (ie: it attempted to refresh the token and failed)
-    public static let OAuthLostAuthentication: NSNotification.Name = NSNotification.Name(rawValue: BuildType.active.identifier(suffix: "OauthLostAuthentication"))
+    public static let OAuthLostAuthentication: NSNotification.Name = NSNotification.Name(rawValue: OAuthClient.identifier(suffix: "OauthLostAuthentication"))
+
 }
