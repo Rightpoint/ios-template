@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		006EFEFE1F267C2B004A95DE /* APIEndpoint+Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006EFEFD1F267C2B004A95DE /* APIEndpoint+Logging.swift */; };
 		2D4FA8F51E8574F9006C38ED /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4FA8F41E8574F9006C38ED /* AppCoordinator.swift */; };
 		2D4FA8F71E85752B006C38ED /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4FA8F61E85752B006C38ED /* Coordinator.swift */; };
 		2D6E54781E9D16AA00690B0A /* APISerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6E54771E9D16AA00690B0A /* APISerialization.swift */; };
@@ -85,6 +86,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		006EFEFD1F267C2B004A95DE /* APIEndpoint+Logging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "APIEndpoint+Logging.swift"; sourceTree = "<group>"; };
 		0B68FC2C40AE35C100C8E0A5 /* Pods-PRODUCTNAME.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PRODUCTNAME.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PRODUCTNAME/Pods-PRODUCTNAME.debug.xcconfig"; sourceTree = "<group>"; };
 		17DC86D175CE0686878A3A82 /* Pods-PRODUCTNAME-PRODUCTNAMETests.sprint.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PRODUCTNAME-PRODUCTNAMETests.sprint.xcconfig"; path = "Pods/Target Support Files/Pods-PRODUCTNAME-PRODUCTNAMETests/Pods-PRODUCTNAME-PRODUCTNAMETests.sprint.xcconfig"; sourceTree = "<group>"; };
 		18117B6A27EAD54897E61F7E /* Pods-PRODUCTNAME-PRODUCTNAMETests.develop.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PRODUCTNAME-PRODUCTNAMETests.develop.xcconfig"; path = "Pods/Target Support Files/Pods-PRODUCTNAME-PRODUCTNAMETests/Pods-PRODUCTNAME-PRODUCTNAMETests.develop.xcconfig"; sourceTree = "<group>"; };
@@ -335,6 +337,7 @@
 				ABC778C21DC9252200815FB9 /* APIClient.swift */,
 				ABF84F971DCAB3B9002DB24D /* APIConstants.swift */,
 				ABC778D91DC93E9C00815FB9 /* APIEndpoint.swift */,
+				006EFEFD1F267C2B004A95DE /* APIEndpoint+Logging.swift */,
 				ABC778D51DC931A400815FB9 /* APIError.swift */,
 				2D6E54771E9D16AA00690B0A /* APISerialization.swift */,
 				2D6E54791E9D16F200690B0A /* APIValidation.swift */,
@@ -611,7 +614,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		6A1FCEA891F5FEC9C4482DA6 /* [CP] Check Pods Manifest.lock */ = {
@@ -626,7 +629,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		ABC778DB1DC9405700815FB9 /* SwiftLint */ = {
@@ -709,6 +712,7 @@
 				BE28092B1E802893006E50D5 /* AnalyticsPageNames.swift in Sources */,
 				ABC778DF1DC94F0900815FB9 /* BuildType.swift in Sources */,
 				ABC778E61DC94FFC00815FB9 /* CrashlyticsConfiguration.swift in Sources */,
+				006EFEFE1F267C2B004A95DE /* APIEndpoint+Logging.swift in Sources */,
 				ABF84F961DCA89B0002DB24D /* BuildType+API.swift in Sources */,
 				BE28092E1E8029D8006E50D5 /* AnalyticsConfiguration.swift in Sources */,
 				ABF84F7F1DC970E8002DB24D /* APIClient.swift in Sources */,
