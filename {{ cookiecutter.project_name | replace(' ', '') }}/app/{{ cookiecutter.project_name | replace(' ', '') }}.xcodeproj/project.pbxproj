@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00C3A8FC1F20FDAA00A1E7D0 /* AppStore.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 00C3A8FB1F20FDAA00A1E7D0 /* AppStore.xcconfig */; };
 		2D4FA8F51E8574F9006C38ED /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4FA8F41E8574F9006C38ED /* AppCoordinator.swift */; };
 		2D4FA8F71E85752B006C38ED /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4FA8F61E85752B006C38ED /* Coordinator.swift */; };
 		2D6E54781E9D16AA00690B0A /* APISerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6E54771E9D16AA00690B0A /* APISerialization.swift */; };
@@ -528,7 +527,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABC778DD1DC94EE500815FB9 /* Acknowledgements.plist in Resources */,
-				00C3A8FC1F20FDAA00A1E7D0 /* AppStore.xcconfig in Resources */,
 				ABF84F811DC97653002DB24D /* Localizable.strings in Resources */,
 				ABC778831DC90B7A00815FB9 /* LaunchScreen.storyboard in Resources */,
 				ABC778801DC90B7A00815FB9 /* Assets.xcassets in Resources */,
