@@ -7,9 +7,6 @@
 //
 
 #include "{{ cookiecutter.project_name | replace(' ', '') }}/Resources/xcconfig/Raizlabs-Account.xcconfig"
-
-OTHER_SWIFT_FLAGS = -D INSTABUG -D DEBUG
-
 #include "{{ cookiecutter.project_name | replace(' ', '') }}/Resources/xcconfig/Global.xcconfig"
 
 PRODUCT_BUNDLE_IDENTIFIER = com.raizlabs.{{ cookiecutter.project_name | replace(' ', '') }}.debug

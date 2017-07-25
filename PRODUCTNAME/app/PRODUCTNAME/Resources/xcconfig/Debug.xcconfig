@@ -7,9 +7,6 @@
 //
 
 #include "PRODUCTNAME/Resources/xcconfig/Raizlabs-Account.xcconfig"
-
-OTHER_SWIFT_FLAGS = -D INSTABUG -D DEBUG
-
 #include "PRODUCTNAME/Resources/xcconfig/Global.xcconfig"
 
 PRODUCT_BUNDLE_IDENTIFIER = com.raizlabs.PRODUCTNAME.debug
