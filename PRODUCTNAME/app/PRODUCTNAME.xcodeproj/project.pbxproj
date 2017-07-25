@@ -446,6 +446,7 @@
 				ABC778BD1DC924EF00815FB9 /* Embed Frameworks */,
 				4B79AD4EE86D9527DA2201EB /* [CP] Embed Pods Frameworks */,
 				BD1BB42B08010165A4053F5F /* [CP] Copy Pods Resources */,
+				006EFEFF1F27B3C0004A95DE /* Crashlytics */,
 			);
 			buildRules = (
 			);
@@ -541,6 +542,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		006EFEFF1F27B3C0004A95DE /* Crashlytics */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Crashlytics;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ \"${CONFIGURATION}\" != \"Debug\" ]; then\n\"${PODS_ROOT}/Fabric/run\" ${FABRIC_API_KEY} ${FABRIC_BUILD_SECRET}\nfi";
+		};
 		2DFF1D1E1E8C563200B1AD70 /* SwiftGen strings */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
