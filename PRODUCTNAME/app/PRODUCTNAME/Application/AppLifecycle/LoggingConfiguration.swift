@@ -13,6 +13,7 @@ struct LoggingConfiguration: AppLifecycle {
 
     func onDidLaunch(application: UIApplication, launchOptions: [UIApplicationLaunchOptionsKey: Any]?) {
         Log.logLevel = .info
+        NetworkLog.logLevel = .info
     }
 
 }

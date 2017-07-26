@@ -14,7 +14,7 @@ class APIClientTests: XCTestCase {
     let client: APIClient = {
         let configuration = URLSessionConfiguration.default
         OHHTTPStubs.setEnabled(true, for: configuration)
-        let client = APIClient(configuration: configuration)
+        let client = APIClient(baseURL: TestClient.baseURL, configuration: configuration)
         return client
     }()
     override class func setUp() {
