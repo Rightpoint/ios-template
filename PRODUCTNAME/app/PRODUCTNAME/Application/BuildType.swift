@@ -8,14 +8,14 @@
 
 import Foundation
 
-/// A representation of the current build type, driven by -D compiler flags.
+/// A representation of the current build type, driven by SWIFT_ACTIVE_COMPILATION_CONDITIONS flags.
 /// These compiler flags are configured in the Config specific `.xcconfig` file.
 enum BuildType {
 
     /// Debug build (-D DEBUG)
     case debug
 
-    /// Internal build, configured as release but not for App Store submission (-D RZINTERNAL)
+    /// Internal build, configured as release but not for App Store submission (RZINTERNAL)
     case `internal`
 
     /// App store Release build, no flags
