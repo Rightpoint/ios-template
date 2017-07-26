@@ -1,60 +1,85 @@
 PODS:
-  - Alamofire (4.4.0)
-  - Anchorage (3.1.0)
-  - BonMot (4.2)
-  - Crashlytics (3.8.4):
+  - Alamofire (4.5.0)
+  - Anchorage (4.0.0)
+  - BonMot (4.3.1)
+  - Crashlytics (3.8.5):
     - Fabric (~> 1.6.3)
-  - Fabric (1.6.11)
+  - Fabric (1.6.12)
   - GoogleAnalytics (3.17.0)
-  - Instabug (7.0.5)
-  - KeychainAccess (3.0.1)
+  - Instabug (7.3.2)
+  - KeychainAccess (3.0.2)
   - Marshal (1.2.4)
-  - OHHTTPStubs/Core (5.2.3)
-  - OHHTTPStubs/Swift (5.2.3):
+  - OHHTTPStubs/Core (6.0.0)
+  - OHHTTPStubs/Default (6.0.0):
     - OHHTTPStubs/Core
-  - SwiftGen (4.2.0)
-  - Swiftilities (0.11.0):
-    - Swiftilities/All (= 0.11.0)
-  - Swiftilities/AboutView (0.11.0)
-  - Swiftilities/AccessibilityHelpers (0.11.0)
-  - Swiftilities/Acknowledgements (0.11.0):
+    - OHHTTPStubs/JSON
+    - OHHTTPStubs/NSURLSession
+    - OHHTTPStubs/OHPathHelpers
+  - OHHTTPStubs/JSON (6.0.0):
+    - OHHTTPStubs/Core
+  - OHHTTPStubs/NSURLSession (6.0.0):
+    - OHHTTPStubs/Core
+  - OHHTTPStubs/OHPathHelpers (6.0.0)
+  - OHHTTPStubs/Swift (6.0.0):
+    - OHHTTPStubs/Default
+  - SwiftGen (4.2.1)
+  - Swiftilities (0.14.0):
+    - Swiftilities/All (= 0.14.0)
+  - Swiftilities/AboutView (0.14.0)
+  - Swiftilities/AccessibilityHelpers (0.14.0)
+  - Swiftilities/Acknowledgements (0.14.0):
     - Swiftilities/Deselection
     - Swiftilities/LicenseFormatter
-  - Swiftilities/All (0.11.0):
+  - Swiftilities/All (0.14.0):
     - Swiftilities/AboutView
     - Swiftilities/AccessibilityHelpers
     - Swiftilities/Acknowledgements
+    - Swiftilities/BetterButton
     - Swiftilities/ColorHelpers
+    - Swiftilities/CoreDataStack
     - Swiftilities/Deselection
     - Swiftilities/DeviceSize
     - Swiftilities/FormattedTextField
     - Swiftilities/Forms
     - Swiftilities/HairlineView
+    - Swiftilities/ImageHelpers
     - Swiftilities/Keyboard
     - Swiftilities/LicenseFormatter
     - Swiftilities/Lifecycle
     - Swiftilities/Logging
     - Swiftilities/Math
     - Swiftilities/RootViewController
+    - Swiftilities/Shapes
     - Swiftilities/StackViewHelpers
+    - Swiftilities/TableViewHelpers
     - Swiftilities/TintedButton
     - Swiftilities/Views
-  - Swiftilities/ColorHelpers (0.11.0)
-  - Swiftilities/Deselection (0.11.0)
-  - Swiftilities/DeviceSize (0.11.0)
-  - Swiftilities/FormattedTextField (0.11.0)
-  - Swiftilities/Forms (0.11.0)
-  - Swiftilities/HairlineView (0.11.0)
-  - Swiftilities/Keyboard (0.11.0)
-  - Swiftilities/LicenseFormatter (0.11.0)
-  - Swiftilities/Lifecycle (0.11.0)
-  - Swiftilities/Logging (0.11.0)
-  - Swiftilities/Math (0.11.0)
-  - Swiftilities/RootViewController (0.11.0)
-  - Swiftilities/StackViewHelpers (0.11.0)
-  - Swiftilities/TintedButton (0.11.0)
-  - Swiftilities/Views (0.11.0)
-  - SwiftLint (0.16.1)
+  - Swiftilities/BetterButton (0.14.0):
+    - Swiftilities/ColorHelpers
+    - Swiftilities/ImageHelpers
+    - Swiftilities/Shapes
+  - Swiftilities/ColorHelpers (0.14.0)
+  - Swiftilities/CoreDataStack (0.14.0)
+  - Swiftilities/Deselection (0.14.0)
+  - Swiftilities/DeviceSize (0.14.0)
+  - Swiftilities/FormattedTextField (0.14.0)
+  - Swiftilities/Forms (0.14.0)
+  - Swiftilities/HairlineView (0.14.0)
+  - Swiftilities/ImageHelpers (0.14.0)
+  - Swiftilities/Keyboard (0.14.0)
+  - Swiftilities/LicenseFormatter (0.14.0)
+  - Swiftilities/Lifecycle (0.14.0):
+    - Swiftilities/HairlineView
+    - Swiftilities/Math
+  - Swiftilities/Logging (0.14.0)
+  - Swiftilities/Math (0.14.0)
+  - Swiftilities/RootViewController (0.14.0)
+  - Swiftilities/Shapes (0.14.0)
+  - Swiftilities/StackViewHelpers (0.14.0)
+  - Swiftilities/TableViewHelpers (0.14.0)
+  - Swiftilities/TintedButton (0.14.0)
+  - Swiftilities/Views (0.14.0)
+  - SwiftLint (0.20.1)
 
 DEPENDENCIES:
   - Alamofire
@@ -71,19 +96,19 @@ DEPENDENCIES:
   - SwiftLint
 
 SPEC CHECKSUMS:
-  Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
-  Anchorage: 516769bb41744e37bbe1eebe6f802c56dbcc8db9
-  BonMot: 9dbd59135974d2fa591a2084b3489bdc0e15e8f8
-  Crashlytics: 79e236942ca1e7fc641df1feb9a275360a78ab6a
-  Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
+  Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
+  Anchorage: fe50dca4e20846b8cb15c859d26fec5132b41577
+  BonMot: 043bb5a8834cc6d74e9d624742272b92385e0a27
+  Crashlytics: dfbae35ef22ca189240d230ad501feea4ee85d2d
+  Fabric: f050464eac45a2ce5a8e6e6a07e977c0df32fe28
   GoogleAnalytics: f42cc53a87a51fe94334821868d9c8481ff47a7b
-  Instabug: 1595db90e56b3de741be687211afbad72facc7e9
-  KeychainAccess: 017ea25e313a49eda10bb19b0bb0760fb1edfe1a
+  Instabug: 254ccc875caeaca004a872876573feea420745a6
+  KeychainAccess: a986406022dfc7c634c691ad3bec670cc6a32002
   Marshal: 8e04e6624e506921db7143b0bfd83caee03f32d6
-  OHHTTPStubs: e238cd5b66d8efa51c861db45895de8fe079f4a7
-  SwiftGen: b6bfed151243348e4603b91bf5bc4eb2486c9d5b
-  Swiftilities: 009e9adab05f022c44cd07b33bb6dc1fb54b768a
-  SwiftLint: b8b683208cc09640898f16318a7a452274e91f61
+  OHHTTPStubs: 752f9b11fd810a15162d50f11c06ff94f8e012eb
+  SwiftGen: 2ba2a88fc6130b96e38e2baa0029e4bd222ffd85
+  Swiftilities: 7b646f8b74adaf85c9fc3aa645ab79bda7643c4b
+  SwiftLint: f60095dc173a3f3ec505bb34f5229c3dfd779a54
 
 PODFILE CHECKSUM: c7a45ce8a9da1dda5a0cf5a049339d142f2686ce
 

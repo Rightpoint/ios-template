@@ -85,7 +85,6 @@ platform :ios do
       include_bitcode: false,
       xcargs: "BUILD_NUMBER=#{build_number}",
       buildlog_path: "#{ENV['RZ_ARTIFACTS']}",
-      use_legacy_build_api: true,
     )
   end
 
