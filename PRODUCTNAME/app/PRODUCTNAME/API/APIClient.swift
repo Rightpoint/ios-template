@@ -9,15 +9,13 @@
 import Alamofire
 import Marshal
 
-final class APIClient {
-    static var shared = APIClient()
-
+class APIClient {
     let manager: Alamofire.SessionManager
     let oauthClient: OAuthClient
     let baseURL: URL
     let authorizationToken: String? = nil
 
-    init(baseURL: URL = BuildType.active.baseURL, configuration: URLSessionConfiguration = .default) {
+    init(baseURL: URL, configuration: URLSessionConfiguration = .default) {
         self.baseURL = baseURL
         self.oauthClient = OAuthClient(baseURL: baseURL, configuration: configuration)
         configuration.httpAdditionalHeaders?[APIConstants.accept] = APIConstants.applicationJSON

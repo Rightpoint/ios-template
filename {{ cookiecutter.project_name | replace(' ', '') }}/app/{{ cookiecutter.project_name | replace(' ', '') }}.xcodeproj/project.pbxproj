@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		006EFEF21F2641C9004A95DE /* APIClient+{{ cookiecutter.project_name | replace(' ', '') }}.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006EFEF11F2641C9004A95DE /* APIClient+{{ cookiecutter.project_name | replace(' ', '') }}.swift */; };
+		006EFEF41F2641D5004A95DE /* APIEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006EFEF31F2641D5004A95DE /* APIEnvironment.swift */; };
+		006EFEF61F264204004A95DE /* TestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006EFEF51F264204004A95DE /* TestClient.swift */; };
 		006EFEFE1F267C2B004A95DE /* APIEndpoint+Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006EFEFD1F267C2B004A95DE /* APIEndpoint+Logging.swift */; };
 		2D4FA8F51E8574F9006C38ED /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4FA8F41E8574F9006C38ED /* AppCoordinator.swift */; };
 		2D4FA8F71E85752B006C38ED /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4FA8F61E85752B006C38ED /* Coordinator.swift */; };
@@ -45,7 +48,6 @@
 		ABF84F911DC99D33002DB24D /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF84F8F1DC99D33002DB24D /* Localized.swift */; };
 		ABF84F921DC99D33002DB24D /* UIImage+Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF84F901DC99D33002DB24D /* UIImage+Asset.swift */; };
 		ABF84F941DCA7F0A002DB24D /* OAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF84F931DCA7F0A002DB24D /* OAuth.swift */; };
-		ABF84F961DCA89B0002DB24D /* BuildType+API.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF84F951DCA89B0002DB24D /* BuildType+API.swift */; };
 		ABF84F981DCAB3B9002DB24D /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF84F971DCAB3B9002DB24D /* APIConstants.swift */; };
 		ABF84F9A1DCB70BB002DB24D /* Alamofire+{{ cookiecutter.project_name | replace(' ', '') }}.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF84F991DCB70BB002DB24D /* Alamofire+{{ cookiecutter.project_name | replace(' ', '') }}.swift */; };
 		ABF84F9D1DCBA37A002DB24D /* OAuthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF84F9C1DCBA37A002DB24D /* OAuthTests.swift */; };
@@ -86,6 +88,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		006EFEF11F2641C9004A95DE /* APIClient+{{ cookiecutter.project_name | replace(' ', '') }}.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "APIClient+{{ cookiecutter.project_name | replace(' ', '') }}.swift"; sourceTree = "<group>"; };
+		006EFEF31F2641D5004A95DE /* APIEnvironment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIEnvironment.swift; sourceTree = "<group>"; };
+		006EFEF51F264204004A95DE /* TestClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestClient.swift; sourceTree = "<group>"; };
 		006EFEFD1F267C2B004A95DE /* APIEndpoint+Logging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "APIEndpoint+Logging.swift"; sourceTree = "<group>"; };
 		00C3A8FB1F20FDAA00A1E7D0 /* AppStore.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = AppStore.xcconfig; sourceTree = "<group>"; };
 		0B68FC2C40AE35C100C8E0A5 /* Pods-{{ cookiecutter.project_name | replace(' ', '') }}.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-{{ cookiecutter.project_name | replace(' ', '') }}.debug.xcconfig"; path = "Pods/Target Support Files/Pods-{{ cookiecutter.project_name | replace(' ', '') }}/Pods-{{ cookiecutter.project_name | replace(' ', '') }}.debug.xcconfig"; sourceTree = "<group>"; };
@@ -145,7 +150,6 @@
 		ABF84F8F1DC99D33002DB24D /* Localized.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Localized.swift; sourceTree = "<group>"; };
 		ABF84F901DC99D33002DB24D /* UIImage+Asset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Asset.swift"; sourceTree = "<group>"; };
 		ABF84F931DCA7F0A002DB24D /* OAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuth.swift; sourceTree = "<group>"; };
-		ABF84F951DCA89B0002DB24D /* BuildType+API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BuildType+API.swift"; sourceTree = "<group>"; };
 		ABF84F971DCAB3B9002DB24D /* APIConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 		ABF84F991DCB70BB002DB24D /* Alamofire+{{ cookiecutter.project_name | replace(' ', '') }}.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Alamofire+{{ cookiecutter.project_name | replace(' ', '') }}.swift"; sourceTree = "<group>"; };
 		ABF84F9C1DCBA37A002DB24D /* OAuthTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthTests.swift; sourceTree = "<group>"; };
@@ -341,13 +345,14 @@
 			children = (
 				ABC778C21DC9252200815FB9 /* APIClient.swift */,
 				ABF84F971DCAB3B9002DB24D /* APIConstants.swift */,
+				006EFEF11F2641C9004A95DE /* APIClient+{{ cookiecutter.project_name | replace(' ', '') }}.swift */,
 				ABC778D91DC93E9C00815FB9 /* APIEndpoint.swift */,
+				006EFEF31F2641D5004A95DE /* APIEnvironment.swift */,
 				006EFEFD1F267C2B004A95DE /* APIEndpoint+Logging.swift */,
 				ABC778D51DC931A400815FB9 /* APIError.swift */,
 				2D6E54771E9D16AA00690B0A /* APISerialization.swift */,
 				2D6E54791E9D16F200690B0A /* APIValidation.swift */,
 				ABF84F991DCB70BB002DB24D /* Alamofire+{{ cookiecutter.project_name | replace(' ', '') }}.swift */,
-				ABF84F951DCA89B0002DB24D /* BuildType+API.swift */,
 				ABF84F931DCA7F0A002DB24D /* OAuth.swift */,
 			);
 			path = API;
@@ -424,6 +429,7 @@
 				ABF84FA51DCBCEA1002DB24D /* Payloads.swift */,
 				ABF84F9F1DCBAB1B002DB24D /* TestConstants.swift */,
 				ABF84FA71DCBFF84002DB24D /* TestEndpoint.swift */,
+				006EFEF51F264204004A95DE /* TestClient.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -701,7 +707,9 @@
 				ABC778EA1DC951B900815FB9 /* LoggingConfiguration.swift in Sources */,
 				BE4C21EB1E81970A00645143 /* DebugMenuConfiguration.swift in Sources */,
 				ABF84F9A1DCB70BB002DB24D /* Alamofire+{{ cookiecutter.project_name | replace(' ', '') }}.swift in Sources */,
+				006EFEF21F2641C9004A95DE /* APIClient+{{ cookiecutter.project_name | replace(' ', '') }}.swift in Sources */,
 				2D4FA8F71E85752B006C38ED /* Coordinator.swift in Sources */,
+				006EFEF41F2641D5004A95DE /* APIEnvironment.swift in Sources */,
 				2D4FA8F51E8574F9006C38ED /* AppCoordinator.swift in Sources */,
 				2DFF1CEF1E89493300B1AD70 /* SignInCoordinator.swift in Sources */,
 				ABC778DA1DC93E9C00815FB9 /* APIEndpoint.swift in Sources */,
@@ -741,6 +749,7 @@
 				ABF84FA61DCBCEA1002DB24D /* Payloads.swift in Sources */,
 				ABF84FA01DCBAB1B002DB24D /* TestConstants.swift in Sources */,
 				ABF84FA81DCBFF84002DB24D /* TestEndpoint.swift in Sources */,
+				006EFEF61F264204004A95DE /* TestClient.swift in Sources */,
 				ABF84F9D1DCBA37A002DB24D /* OAuthTests.swift in Sources */,
 				ABF84FA41DCBCD89002DB24D /* APIClientTests.swift in Sources */,
 			);
