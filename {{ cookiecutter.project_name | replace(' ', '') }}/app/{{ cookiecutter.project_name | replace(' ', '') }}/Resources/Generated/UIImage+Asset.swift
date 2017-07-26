@@ -1,4 +1,4 @@
-// Generated using SwiftGen, by O.Halligon — https://github.com/AliSoftware/SwiftGen
+// Generated using SwiftGen, by O.Halligon — https://github.com/SwiftGen/SwiftGen
 
 #if os(iOS) || os(tvOS) || os(watchOS)
   import UIKit.UIImage
@@ -17,10 +17,12 @@ struct AssetType: ExpressibleByStringLiteral {
 
   var image: Image {
     let bundle = Bundle(for: BundleToken.self)
-    #if os(iOS) || os(tvOS) || os(watchOS)
+    #if os(iOS) || os(tvOS)
     let image = Image(named: value, in: bundle, compatibleWith: nil)
     #elseif os(OSX)
     let image = bundle.image(forResource: value)
+    #elseif os(watchOS)
+    let image = Image(named: value)
     #endif
     guard let result = image else { fatalError("Unable to load image \(value).") }
     return result
@@ -47,10 +49,10 @@ enum Asset {
 
 extension Image {
   convenience init!(asset: AssetType) {
-    #if os(iOS) || os(tvOS) || os(watchOS)
+    #if os(iOS) || os(tvOS)
     let bundle = Bundle(for: BundleToken.self)
     self.init(named: asset.value, in: bundle, compatibleWith: nil)
-    #elseif os(OSX)
+    #elseif os(OSX) || os(watchOS)
     self.init(named: asset.value)
     #endif
   }
