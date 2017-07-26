@@ -31,8 +31,3 @@ deployment:
     tag: /beta-.*/
     commands:
       - cd app && bundle exec fastlane beta
-
-  appstore:
-    tag: /release-.*/
-    commands:
-      - cd app && bundle exec fastlane release
