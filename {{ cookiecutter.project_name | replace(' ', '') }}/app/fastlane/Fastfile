@@ -57,10 +57,13 @@ platform :ios do
 
   # desc "Builds and submits an App Store release to TestFlight"
   lane :beta do
-  end
-
-  desc "Builds and submits an App Store release to iTunes Connect"
-  lane :release do
+    build("appStore-{{ cookiecutter.project_name | replace(' ', '') }}", 'app-store')
+    pilot(
+    	distribute_external: false,
+      	skip_waiting_for_build_processing: true,
+    )
+    # upload_symbols_to_crashlytics(:api_token => 'ZZCRASHLYTICS_API_TOKEN_APPSTOREZZ')
+    slack(message: "Successfully uploaded build #{build_number} to test flight", success: true)
   end
 
   # Helpers ----------------------
