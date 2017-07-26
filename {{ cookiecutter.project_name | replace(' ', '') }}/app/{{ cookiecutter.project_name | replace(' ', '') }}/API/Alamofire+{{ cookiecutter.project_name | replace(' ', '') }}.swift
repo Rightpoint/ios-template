@@ -22,10 +22,11 @@ extension SessionManager {
             encoding: endpoint.encoding,
             headers: endpoint.headers
         )
+        endpoint.log(request)
         return request
     }
 
-    // Mark - JSON
+    // MARK: - JSON
 
     /**
      *For ResponseType: JSONObject*
@@ -33,25 +34,26 @@ extension SessionManager {
      Perform request and execute completion block leveraging a `JSONObject`. Use this when an API response doesn't map directly to your object graph.
 
      - Parameters:
-        - baseURL: The base url to apply the endpoint `path` to
-        - endpoint: An `APIEndpoint` with an associated `ResponseType` of `JSONObject`
-        - completion: A closure to process the API response
-        - responseObject: the response JSON as a `JSONObject`
-        - error: a server or serialization error
+     - baseURL: The base url to apply the endpoint `path` to
+     - endpoint: An `APIEndpoint` with an associated `ResponseType` of `JSONObject`
+     - completion: A closure to process the API response
+     - responseObject: the response JSON as a `JSONObject`
+     - error: a server or serialization error
 
      - Returns: a `DataRequest`
      */
     @discardableResult
     func requestJSON<Endpoint: APIEndpoint>(_ baseURL: URL, endpoint: Endpoint, completion: @escaping (_ responseObject: Endpoint.ResponseType?, _ error: Error?) -> Void) -> DataRequest {
         let request = self.request(baseURL, endpoint: endpoint)
+        let handler = APIJSONObjectResponseSerializer(endpoint)
         request.validate(APIResponseValidator)
-        request.responseJSON { response in
+        request.response(responseSerializer: handler) { response in
             completion(response.result.value as? Endpoint.ResponseType, response.error)
         }
         return request
     }
 
-    // Mark - Unmarshaling
+    // MARK: - Unmarshaling
 
     /**
      *For ResponseType: Unmarshaling*
@@ -59,18 +61,18 @@ extension SessionManager {
      Perform request and serialize the response automatically according to your Response Type's `Unmarshaling` conformance
 
      - Parameters:
-        - baseURL: The base url to apply the endpoint `path` to
-        - endpoint: An `APIEndpoint` with an associated `ResponseType` conforming to `Unmarshaling`
-        - completion: A closure to process the API response
-        - object: the unmarhsaled response object
-        - error: a server or serialization error
+     - baseURL: The base url to apply the endpoint `path` to
+     - endpoint: An `APIEndpoint` with an associated `ResponseType` conforming to `Unmarshaling`
+     - completion: A closure to process the API response
+     - object: the unmarhsaled response object
+     - error: a server or serialization error
 
      - Returns: a `DataRequest`
      */
     @discardableResult
     func request<Endpoint: APIEndpoint>(_ baseURL: URL, endpoint: Endpoint, completion: @escaping (_ object: Endpoint.ResponseType?, _ error: Error?) -> Void) -> DataRequest where Endpoint.ResponseType: Unmarshaling {
         let request = self.request(baseURL, endpoint: endpoint)
-        let handler = APIObjectResponseSerializer(type: Endpoint.ResponseType.self)
+        let handler = APIObjectResponseSerializer(endpoint)
         request.validate(APIResponseValidator)
         request.response(responseSerializer: handler) { response in
             completion(response.result.value, response.result.error)
@@ -84,18 +86,18 @@ extension SessionManager {
      Perform request and serialize the returned collection automatically according to your Response Type's `Unmarshaling` conformance
 
      - Parameters:
-        - baseURL: The base url to apply the endpoint `path` to
-        - endpoint: An `APIEndpoint` with an associated `ResponseType` which is a collection of bojects conforming to `Unmarshaling`
-        - completion: A closure to process the API response
-        - objects: the unmarhsaled response collection
-        - error: a server or serialization error
+     - baseURL: The base url to apply the endpoint `path` to
+     - endpoint: An `APIEndpoint` with an associated `ResponseType` which is a collection of bojects conforming to `Unmarshaling`
+     - completion: A closure to process the API response
+     - objects: the unmarhsaled response collection
+     - error: a server or serialization error
 
      - Returns: a `DataRequest`
      */
     @discardableResult
     func request<Endpoint: APIEndpoint>(_ baseURL: URL, endpoint: Endpoint, completion: @escaping (_ objects: Endpoint.ResponseType?, _ error: Error?) -> Void) -> DataRequest where Endpoint.ResponseType: Collection, Endpoint.ResponseType.Iterator.Element: Unmarshaling {
         let request = self.request(baseURL, endpoint: endpoint)
-        let handler = APICollectionResponseSerializer(type: Endpoint.ResponseType.self)
+        let handler = APICollectionResponseSerializer(endpoint)
         request.validate(APIResponseValidator)
         request.response(responseSerializer: handler) { response in
             completion(response.result.value, response.result.error)
@@ -103,7 +105,7 @@ extension SessionManager {
         return request
     }
 
-    // Mark - UnmarshalingWithContext
+    // MARK: - UnmarshalingWithContext
 
     /**
      *For ResponseType: UnmarshalingWithContext*
@@ -111,18 +113,18 @@ extension SessionManager {
      Perform request and serialize the response automatically according to your Response Type's `UnmarshalingWithContext` conformance
 
      - Parameters:
-        - baseURL: The base url to apply the endpoint `path` to
-        - endpoint: An `APIEndpoint` with an associated `ResponseType` conforming to `UnmarshalingWithContext`
-        - completion: A closure to process the API response
-        - object: the unmarhsaled response object
-        - error: a server or serialization error
+     - baseURL: The base url to apply the endpoint `path` to
+     - endpoint: An `APIEndpoint` with an associated `ResponseType` conforming to `UnmarshalingWithContext`
+     - completion: A closure to process the API response
+     - object: the unmarhsaled response object
+     - error: a server or serialization error
 
      - Returns: a `DataRequest`
      */
     @discardableResult
     func request<Endpoint: APIEndpoint>(_ baseURL: URL, endpoint: Endpoint, context: Endpoint.ResponseType.ContextType, completion: @escaping (_ object: Endpoint.ResponseType?, _ error: Error?) -> Void) -> DataRequest where Endpoint.ResponseType: UnmarshalingWithContext {
         let request = self.request(baseURL, endpoint: endpoint)
-        let handler = APIObjectResponseSerializer(type: Endpoint.ResponseType.self, context: context)
+        let handler = APIObjectResponseSerializer(endpoint, context: context)
         request.validate(APIResponseValidator)
         request.response(responseSerializer: handler) { response in
             completion(response.result.value, response.result.error)
@@ -136,18 +138,18 @@ extension SessionManager {
      Perform request and serialize the returned collection automatically according to your Response Type's `UnmarshalingWithContext` conformance
 
      - Parameters:
-        - baseURL: The base url to apply the endpoint `path` to
-        - endpoint: An `APIEndpoint` with an associated `ResponseType` which is a collection of bojects conforming to `Unmarshaling`
-        - completion: A closure to process the API response
-        - objects: the unmarhsaled response collection
-        - error: a server or serialization error
+     - baseURL: The base url to apply the endpoint `path` to
+     - endpoint: An `APIEndpoint` with an associated `ResponseType` which is a collection of bojects conforming to `Unmarshaling`
+     - completion: A closure to process the API response
+     - objects: the unmarhsaled response collection
+     - error: a server or serialization error
 
      - Returns: a `DataRequest`
      */
     @discardableResult
     func request<Endpoint: APIEndpoint>(_ baseURL: URL, endpoint: Endpoint, context: Endpoint.ResponseType.Iterator.Element.ContextType, completion: @escaping (_ objects: Endpoint.ResponseType?, _ error: Error?) -> Void) -> DataRequest where Endpoint.ResponseType: Collection, Endpoint.ResponseType.Iterator.Element: UnmarshalingWithContext {
         let request = self.request(baseURL, endpoint: endpoint)
-        let handler = APICollectionResponseSerializer(type: Endpoint.ResponseType.self, context: context)
+        let handler = APICollectionResponseSerializer(endpoint, context: context)
         request.validate(APIResponseValidator)
         request.response(responseSerializer: handler) { response in
             completion(response.result.value, response.result.error)

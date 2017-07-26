@@ -9,7 +9,7 @@
 import Alamofire
 import Marshal
 
-protocol APIEndpoint {
+protocol APIEndpoint: NetworkLoggable {
     associatedtype ResponseType
 
     var path: String { get }
