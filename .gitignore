@@ -3,4 +3,3 @@ PRODUCTNAME/app/PRODUCTNAME.xcworkspace/
 PRODUCTNAME/app/Pods/
 
 {{ cookiecutter.project_name | replace(' ', '') }}/app/{{ cookiecutter.project_name | replace(' ', '') }}.xcworkspace
-{{ cookiecutter.project_name | replace(' ', '') }}/app/Pods

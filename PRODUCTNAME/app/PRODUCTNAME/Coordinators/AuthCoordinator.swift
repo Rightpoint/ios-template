@@ -29,7 +29,7 @@ class AuthCoordinator: Coordinator {
     let baseController: UIViewController
     weak var delegate: AuthCoordinatorDelegate?
 
-    private let client = APIClient()
+    private let client = APIClient.shared
     private var state: State {
         if client.oauthClient.isAuthenticated {
             return .authenticated
