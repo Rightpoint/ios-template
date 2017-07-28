@@ -17,6 +17,9 @@ else
     perl -p -i -e "s/ZZHOCKEY_DEVELOP_IDZZ/$DEVELOP_KEY/g" fastlane/Fastfile
     perl -p -i -e "s/ZZHOCKEY_SPRINT_IDZZ/$SPRINT_KEY/g" fastlane/Fastfile
     echo "Fastfile updated"
+    perl -p -i -e "s/ZZHOCKEY_DEVELOP_IDZZ/$DEVELOP_KEY/g" ../README.md
+    perl -p -i -e "s/ZZHOCKEY_SPRINT_IDZZ/$SPRINT_KEY/g" ../README.md
+    echo "README updated"
 fi
 
 bundle exec synx --no-sort-by-name "{{ cookiecutter.project_name | replace(' ', '') }}.xcodeproj"
