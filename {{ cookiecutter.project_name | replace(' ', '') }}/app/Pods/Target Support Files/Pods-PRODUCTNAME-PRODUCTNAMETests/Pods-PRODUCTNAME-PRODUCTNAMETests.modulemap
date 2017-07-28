@@ -1,6 +1,0 @@
-framework module Pods_PRODUCTNAME_PRODUCTNAMETests {
-  umbrella header "Pods-PRODUCTNAME-PRODUCTNAMETests-umbrella.h"
-
-  export *
-  module * { export * }
-}
