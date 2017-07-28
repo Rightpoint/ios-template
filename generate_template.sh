@@ -1,9 +1,5 @@
 # This is a shell script to transform the PRODUCTNAME directory into a cookie-cutter template
 
-# Delete files that we don't want to include in the template
-rm -rf PRODUCTNAME/app/Pods
-rm -rf PRODUCTNAME/app/PRODUCTNAME.xcworkspace
-
 #This is the only lookup that is done on filenames
 LOOKUP="PRODUCTNAME"
 EXPANDED="{{ cookiecutter.project_name | replace(' ', '') }}"
@@ -38,3 +34,7 @@ replace "ORGANIZATION" "{{ cookiecutter.company_name }}"
 replace "LEADDEVELOPER" "{{ cookiecutter.lead_dev }}"
 replace "LEADEMAIL" "{{ cookiecutter.lead_email }}"
 replace "com.raizlabs.PRODUCTNAME" "{{ cookiecutter.bundle_identifier }}"
+
+# Delete files that we don't want to include in the template
+rm -rf "${EXPANDED}/app/Pods"
+rm -rf "${EXPANDED}/app/${EXPANDED}.xcworkspace"

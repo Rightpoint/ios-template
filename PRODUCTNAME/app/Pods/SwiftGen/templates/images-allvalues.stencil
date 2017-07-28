@@ -1,0 +1,75 @@
+// Generated using SwiftGen, by O.Halligon — https://github.com/SwiftGen/SwiftGen
+
+{% if images %}
+#if os(iOS) || os(tvOS) || os(watchOS)
+  import UIKit.UIImage
+  typealias Image = UIImage
+#elseif os(OSX)
+  import AppKit.NSImage
+  typealias Image = NSImage
+#endif
+
+// swiftlint:disable file_length
+// swiftlint:disable line_length
+{% macro recursiveCaseBlock images %}
+  {% for image in images %}
+  {% if not image.items %}
+  case {{image.value|swiftIdentifier|escapeReservedKeywords}} = "{{image.value}}"
+  {% else %}
+  {% call recursiveCaseBlock image.items %}
+  {% endif %}
+  {% endfor %}
+{% endmacro %}
+{% macro recursiveValueBlock images isLast %}
+  {% for image in images %}
+  {% if not image.items %}
+    {{image.value|swiftIdentifier|escapeReservedKeywords}}{% if not forloop.last or not isLast %},{% endif %}
+  {% else %}
+    {% call recursiveValueBlock image.items forloop.last %}
+  {% endif %}
+  {% endfor %}
+{% endmacro %}
+
+// swiftlint:disable type_body_length
+{% set enumName %}{{param.enumName|default:"Asset"}}{% endset %}
+enum {{enumName}}: String {
+  {% for catalog in catalogs %}
+  {% call recursiveCaseBlock catalog.assets %}
+  {% endfor %}
+
+  static let allValues = [
+    {% for catalog in catalogs %}
+    {% call recursiveValueBlock catalog.assets false %}
+    {% endfor %}
+  ]
+
+  var image: Image {
+    let bundle = NSBundle(forClass: BundleToken.self)
+    #if os(iOS) || os(tvOS)
+    let image = Image(named: rawValue, inBundle: bundle, compatibleWithTraitCollection: nil)
+    #elseif os(OSX)
+    let image = bundle.imageForResource(rawValue)
+    #elseif os(watchOS)
+    let image = Image(named: rawValue)
+    #endif
+    guard let result = image else { fatalError("Unable to load image \(rawValue).") }
+    return result
+  }
+}
+// swiftlint:enable type_body_length
+
+extension Image {
+  convenience init!(asset: {{enumName}}) {
+    #if os(iOS) || os(tvOS)
+    let bundle = NSBundle(forClass: BundleToken.self)
+    self.init(named: asset.rawValue, inBundle: bundle, compatibleWithTraitCollection: nil)
+    #elseif os(OSX) || os(watchOS)
+    self.init(named: asset.rawValue)
+    #endif
+  }
+}
+
+private final class BundleToken {}
+{% else %}
+// No image found
+{% endif %}

@@ -1,0 +1,115 @@
+PODS:
+  - Alamofire (4.5.0)
+  - Anchorage (4.0.0)
+  - BonMot (4.3.1)
+  - Crashlytics (3.8.5):
+    - Fabric (~> 1.6.3)
+  - Fabric (1.6.12)
+  - GoogleAnalytics (3.17.0)
+  - Instabug (7.3.2)
+  - KeychainAccess (3.0.2)
+  - Marshal (1.2.4)
+  - OHHTTPStubs/Core (6.0.0)
+  - OHHTTPStubs/Default (6.0.0):
+    - OHHTTPStubs/Core
+    - OHHTTPStubs/JSON
+    - OHHTTPStubs/NSURLSession
+    - OHHTTPStubs/OHPathHelpers
+  - OHHTTPStubs/JSON (6.0.0):
+    - OHHTTPStubs/Core
+  - OHHTTPStubs/NSURLSession (6.0.0):
+    - OHHTTPStubs/Core
+  - OHHTTPStubs/OHPathHelpers (6.0.0)
+  - OHHTTPStubs/Swift (6.0.0):
+    - OHHTTPStubs/Default
+  - SwiftGen (4.2.1)
+  - Swiftilities (0.14.0):
+    - Swiftilities/All (= 0.14.0)
+  - Swiftilities/AboutView (0.14.0)
+  - Swiftilities/AccessibilityHelpers (0.14.0)
+  - Swiftilities/Acknowledgements (0.14.0):
+    - Swiftilities/Deselection
+    - Swiftilities/LicenseFormatter
+  - Swiftilities/All (0.14.0):
+    - Swiftilities/AboutView
+    - Swiftilities/AccessibilityHelpers
+    - Swiftilities/Acknowledgements
+    - Swiftilities/BetterButton
+    - Swiftilities/ColorHelpers
+    - Swiftilities/CoreDataStack
+    - Swiftilities/Deselection
+    - Swiftilities/DeviceSize
+    - Swiftilities/FormattedTextField
+    - Swiftilities/Forms
+    - Swiftilities/HairlineView
+    - Swiftilities/ImageHelpers
+    - Swiftilities/Keyboard
+    - Swiftilities/LicenseFormatter
+    - Swiftilities/Lifecycle
+    - Swiftilities/Logging
+    - Swiftilities/Math
+    - Swiftilities/RootViewController
+    - Swiftilities/Shapes
+    - Swiftilities/StackViewHelpers
+    - Swiftilities/TableViewHelpers
+    - Swiftilities/TintedButton
+    - Swiftilities/Views
+  - Swiftilities/BetterButton (0.14.0):
+    - Swiftilities/ColorHelpers
+    - Swiftilities/ImageHelpers
+    - Swiftilities/Shapes
+  - Swiftilities/ColorHelpers (0.14.0)
+  - Swiftilities/CoreDataStack (0.14.0)
+  - Swiftilities/Deselection (0.14.0)
+  - Swiftilities/DeviceSize (0.14.0)
+  - Swiftilities/FormattedTextField (0.14.0)
+  - Swiftilities/Forms (0.14.0)
+  - Swiftilities/HairlineView (0.14.0)
+  - Swiftilities/ImageHelpers (0.14.0)
+  - Swiftilities/Keyboard (0.14.0)
+  - Swiftilities/LicenseFormatter (0.14.0)
+  - Swiftilities/Lifecycle (0.14.0):
+    - Swiftilities/HairlineView
+    - Swiftilities/Math
+  - Swiftilities/Logging (0.14.0)
+  - Swiftilities/Math (0.14.0)
+  - Swiftilities/RootViewController (0.14.0)
+  - Swiftilities/Shapes (0.14.0)
+  - Swiftilities/StackViewHelpers (0.14.0)
+  - Swiftilities/TableViewHelpers (0.14.0)
+  - Swiftilities/TintedButton (0.14.0)
+  - Swiftilities/Views (0.14.0)
+  - SwiftLint (0.20.1)
+
+DEPENDENCIES:
+  - Alamofire
+  - Anchorage
+  - BonMot
+  - Crashlytics
+  - GoogleAnalytics (~> 3.0)
+  - Instabug
+  - KeychainAccess
+  - Marshal
+  - OHHTTPStubs/Swift
+  - SwiftGen
+  - Swiftilities
+  - SwiftLint
+
+SPEC CHECKSUMS:
+  Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
+  Anchorage: fe50dca4e20846b8cb15c859d26fec5132b41577
+  BonMot: 043bb5a8834cc6d74e9d624742272b92385e0a27
+  Crashlytics: dfbae35ef22ca189240d230ad501feea4ee85d2d
+  Fabric: f050464eac45a2ce5a8e6e6a07e977c0df32fe28
+  GoogleAnalytics: f42cc53a87a51fe94334821868d9c8481ff47a7b
+  Instabug: 254ccc875caeaca004a872876573feea420745a6
+  KeychainAccess: a986406022dfc7c634c691ad3bec670cc6a32002
+  Marshal: 8e04e6624e506921db7143b0bfd83caee03f32d6
+  OHHTTPStubs: 752f9b11fd810a15162d50f11c06ff94f8e012eb
+  SwiftGen: 2ba2a88fc6130b96e38e2baa0029e4bd222ffd85
+  Swiftilities: 7b646f8b74adaf85c9fc3aa645ab79bda7643c4b
+  SwiftLint: f60095dc173a3f3ec505bb34f5229c3dfd779a54
+
+PODFILE CHECKSUM: c7a45ce8a9da1dda5a0cf5a049339d142f2686ce
+
+COCOAPODS: 1.2.1
