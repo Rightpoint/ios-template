@@ -1,6 +1,0 @@
-framework module Swiftilities {
-  umbrella header "Swiftilities-umbrella.h"
-
-  export *
-  module * { export * }
-}
