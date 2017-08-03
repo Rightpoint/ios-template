@@ -22,7 +22,9 @@ extension SessionManager {
             encoding: endpoint.encoding,
             headers: endpoint.headers
         )
-        endpoint.log(request)
+        DispatchQueue.global().async {
+            endpoint.log(request)
+        }
         return request
     }
 
