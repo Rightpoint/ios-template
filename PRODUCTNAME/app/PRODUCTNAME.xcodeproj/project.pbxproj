@@ -95,8 +95,6 @@
 		006EFEFD1F267C2B004A95DE /* APIEndpoint+Logging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "APIEndpoint+Logging.swift"; sourceTree = "<group>"; };
 		00C3A8FB1F20FDAA00A1E7D0 /* AppStore.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = AppStore.xcconfig; sourceTree = "<group>"; };
 		0B68FC2C40AE35C100C8E0A5 /* Pods-PRODUCTNAME.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PRODUCTNAME.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PRODUCTNAME/Pods-PRODUCTNAME.debug.xcconfig"; sourceTree = "<group>"; };
-		17DC86D175CE0686878A3A82 /* Pods-PRODUCTNAME-PRODUCTNAMETests.sprint.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PRODUCTNAME-PRODUCTNAMETests.sprint.xcconfig"; path = "Pods/Target Support Files/Pods-PRODUCTNAME-PRODUCTNAMETests/Pods-PRODUCTNAME-PRODUCTNAMETests.sprint.xcconfig"; sourceTree = "<group>"; };
-		18117B6A27EAD54897E61F7E /* Pods-PRODUCTNAME-PRODUCTNAMETests.develop.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PRODUCTNAME-PRODUCTNAMETests.develop.xcconfig"; path = "Pods/Target Support Files/Pods-PRODUCTNAME-PRODUCTNAMETests/Pods-PRODUCTNAME-PRODUCTNAMETests.develop.xcconfig"; sourceTree = "<group>"; };
 		29EBF39E7266FDA41A477533 /* Pods-PRODUCTNAMETests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PRODUCTNAMETests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PRODUCTNAMETests/Pods-PRODUCTNAMETests.debug.xcconfig"; sourceTree = "<group>"; };
 		2D4FA8F41E8574F9006C38ED /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		2D4FA8F61E85752B006C38ED /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -113,7 +111,6 @@
 		2DFF1D151E8BF38F00B1AD70 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		2DFF1D171E8BF82A00B1AD70 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		2DFF1D1B1E8C424800B1AD70 /* OnboardingSamplePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingSamplePageViewController.swift; sourceTree = "<group>"; };
-		36045522D92DD8ED3DFB7FC8 /* Pods-PRODUCTNAME-PRODUCTNAMETests.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PRODUCTNAME-PRODUCTNAMETests.appstore.xcconfig"; path = "Pods/Target Support Files/Pods-PRODUCTNAME-PRODUCTNAMETests/Pods-PRODUCTNAME-PRODUCTNAMETests.appstore.xcconfig"; sourceTree = "<group>"; };
 		678F16A2ED0F9395E247B50F /* Pods-PRODUCTNAMETests.develop.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PRODUCTNAMETests.develop.xcconfig"; path = "Pods/Target Support Files/Pods-PRODUCTNAMETests/Pods-PRODUCTNAMETests.develop.xcconfig"; sourceTree = "<group>"; };
 		6A9B67E292488844A2F6D30B /* Pods-PRODUCTNAMETests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PRODUCTNAMETests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PRODUCTNAMETests/Pods-PRODUCTNAMETests.release.xcconfig"; sourceTree = "<group>"; };
 		7DA6085A924797A53A836C85 /* Pods-PRODUCTNAME.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PRODUCTNAME.appstore.xcconfig"; path = "Pods/Target Support Files/Pods-PRODUCTNAME/Pods-PRODUCTNAME.appstore.xcconfig"; sourceTree = "<group>"; };
@@ -166,7 +163,6 @@
 		BE28092D1E8029D8006E50D5 /* AnalyticsConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsConfiguration.swift; sourceTree = "<group>"; };
 		BE28092F1E8038BE006E50D5 /* ContentTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentTabBarViewController.swift; sourceTree = "<group>"; };
 		BE4C21EA1E81970A00645143 /* DebugMenuConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugMenuConfiguration.swift; sourceTree = "<group>"; };
-		C3A4171B7E64E228CC7A0DF7 /* Pods-PRODUCTNAME-PRODUCTNAMETests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PRODUCTNAME-PRODUCTNAMETests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PRODUCTNAME-PRODUCTNAMETests/Pods-PRODUCTNAME-PRODUCTNAMETests.debug.xcconfig"; sourceTree = "<group>"; };
 		C7DBD1236E57FBDDF10B2FB0 /* Pods-PRODUCTNAME.develop.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PRODUCTNAME.develop.xcconfig"; path = "Pods/Target Support Files/Pods-PRODUCTNAME/Pods-PRODUCTNAME.develop.xcconfig"; sourceTree = "<group>"; };
 		DCD1E696B5452D855D78934E /* Pods-PRODUCTNAME.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PRODUCTNAME.release.xcconfig"; path = "Pods/Target Support Files/Pods-PRODUCTNAME/Pods-PRODUCTNAME.release.xcconfig"; sourceTree = "<group>"; };
 		DEE597F34E8A185F98165F57 /* Pods-PRODUCTNAMETests.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PRODUCTNAMETests.appstore.xcconfig"; path = "Pods/Target Support Files/Pods-PRODUCTNAMETests/Pods-PRODUCTNAMETests.appstore.xcconfig"; sourceTree = "<group>"; };
@@ -235,11 +231,7 @@
 				9E61F9E4F9A440040EE8DCF0 /* Pods-PRODUCTNAME.sprint.xcconfig */,
 				678F16A2ED0F9395E247B50F /* Pods-PRODUCTNAMETests.develop.xcconfig */,
 				93311DA40F63AE5674D438F9 /* Pods-PRODUCTNAMETests.sprint.xcconfig */,
-				C3A4171B7E64E228CC7A0DF7 /* Pods-PRODUCTNAME-PRODUCTNAMETests.debug.xcconfig */,
-				18117B6A27EAD54897E61F7E /* Pods-PRODUCTNAME-PRODUCTNAMETests.develop.xcconfig */,
-				17DC86D175CE0686878A3A82 /* Pods-PRODUCTNAME-PRODUCTNAMETests.sprint.xcconfig */,
 				7DA6085A924797A53A836C85 /* Pods-PRODUCTNAME.appstore.xcconfig */,
-				36045522D92DD8ED3DFB7FC8 /* Pods-PRODUCTNAME-PRODUCTNAMETests.appstore.xcconfig */,
 				DEE597F34E8A185F98165F57 /* Pods-PRODUCTNAMETests.appstore.xcconfig */,
 			);
 			name = Pods;
