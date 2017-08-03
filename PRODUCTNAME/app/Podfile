@@ -18,6 +18,7 @@ target 'PRODUCTNAME' do
   pod 'GoogleAnalytics',   '~>3.0'
 
   target 'PRODUCTNAMETests' do
+    inherit! :search_paths
     pod 'OHHTTPStubs/Swift'
   end
 

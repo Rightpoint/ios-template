@@ -18,6 +18,7 @@ target '{{ cookiecutter.project_name | replace(' ', '') }}' do
   pod 'GoogleAnalytics',   '~>3.0'
 
   target '{{ cookiecutter.project_name | replace(' ', '') }}Tests' do
+    inherit! :search_paths
     pod 'OHHTTPStubs/Swift'
   end
 
