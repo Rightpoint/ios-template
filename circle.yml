@@ -13,5 +13,5 @@ machine:
 test:
   override:
     - if [ -n "${CI_PULL_REQUEST:-}" ]; then
-        cd PRODUCTNAME/app && bundle exec fastlane test;
+        cd PRODUCTNAME/app && bundle install && bundle exec fastlane test;
       fi
