@@ -1,0 +1,17 @@
+dependencies:
+  pre:
+    - "[[ ! -s \"$(git rev-parse --git-dir)/shallow\" ]] || git fetch --unshallow"
+    - xcrun instruments -s #list available devices
+    - xcrun instruments -w 'E8DD285C-51EE-4DB5-B326-7E927686EC36' || true #mitigate scenario where simulator resource isn't available - device is iPhone 6s (9.3)
+
+machine:
+  xcode:
+    version: "8.3.2"
+  environment:
+      FASTLANE_SKIP_UPDATE_CHECK: 1
+
+test:
+  override:
+    - if [ -n "${CI_PULL_REQUEST:-}" ]; then
+        cd PRODUCTNAME/app && bundle exec fastlane test;
+      fi
