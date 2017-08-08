@@ -36,5 +36,6 @@ replace "LEADEMAIL" "{{ cookiecutter.lead_email }}"
 replace "com.raizlabs.PRODUCTNAME" "{{ cookiecutter.bundle_identifier }}"
 
 # Delete files that we don't want to include in the template
+rm -rf "${EXPANDED}/app/Podfile.lock"
 rm -rf "${EXPANDED}/app/Pods"
 rm -rf "${EXPANDED}/app/${EXPANDED}.xcworkspace"
