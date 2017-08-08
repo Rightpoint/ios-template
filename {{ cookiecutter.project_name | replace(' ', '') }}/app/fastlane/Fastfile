@@ -28,7 +28,7 @@ platform :ios do
   lane :test do
     scan(
       output_types: 'junit',
-      scheme: '{{ cookiecutter.project_name | replace(' ', '') }}',
+      scheme: 'debug-{{ cookiecutter.project_name | replace(' ', '') }}',
       output_directory: "#{ENV['RZ_TEST_REPORTS']}",
       buildlog_path: "#{ENV['RZ_ARTIFACTS']}",
     )
