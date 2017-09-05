@@ -21,8 +21,8 @@ extension SessionManager {
                 }
                 return urlComponents?.url
             }()
-            else {
-                fatalError("Invalid Path Specification")
+        else {
+            fatalError("Invalid Path Specification")
         }
 
         let request = self.request(
