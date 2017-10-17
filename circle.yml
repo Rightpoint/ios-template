@@ -6,7 +6,7 @@ dependencies:
 
 machine:
   xcode:
-    version: "8.3.2"
+    version: "9.0.1"
   environment:
       FASTLANE_SKIP_UPDATE_CHECK: 1
 
