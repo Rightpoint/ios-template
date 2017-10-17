@@ -13,8 +13,30 @@ protocol APIEndpoint: NetworkLoggable {
     associatedtype ResponseType
 
     var path: String { get }
+    typealias QueryParam = (String, String)
+    var queryParams: [QueryParam]? { get }
     var method: HTTPMethod { get }
     var encoding: ParameterEncoding { get }
     var parameters: JSONObject? { get }
     var headers: HTTPHeaders { get }
+}
+
+extension APIEndpoint {
+
+    var encoding: ParameterEncoding {
+        return JSONEncoding.default
+    }
+
+    var parameters: JSONObject? {
+        return nil
+    }
+
+    var queryParams: [QueryParam]? {
+        return nil
+    }
+
+    var headers: HTTPHeaders {
+        return [:]
+    }
+
 }
