@@ -8,17 +8,9 @@
 
 import Marshal
 
-protocol DateFormatable {
-    func string(from date: Date) -> String
+public enum Formatters {
 
-    func date(from string: String) -> Date?
-}
-
-extension ISO8601DateFormatter: DateFormatable {}
-
-enum Formatters {
-
-    static var ISODateFormatter: DateFormatable = {
+    public static var ISODateFormatter: ISO8601DateFormatter = {
         return ISO8601DateFormatter()
     }()
 

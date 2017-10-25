@@ -8,7 +8,7 @@
 
 import OHHTTPStubs
 import XCTest
-@testable import PRODUCTNAME
+@testable import Services
 
 class OAuthTests: XCTestCase {
     override class func setUp() {

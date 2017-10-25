@@ -21,7 +21,7 @@ public protocol APIEndpoint: NetworkLoggable {
     var headers: HTTPHeaders { get }
 }
 
-extension APIEndpoint {
+public extension APIEndpoint {
 
     var encoding: ParameterEncoding {
         return JSONEncoding.default

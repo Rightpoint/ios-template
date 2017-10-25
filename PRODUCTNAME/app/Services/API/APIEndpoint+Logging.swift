@@ -20,7 +20,7 @@ public protocol NetworkLoggable {
 
 extension NetworkLoggable {
 
-    var logLevel: Log.Level {
+    public var logLevel: Log.Level {
         return .verbose
     }
 

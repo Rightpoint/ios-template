@@ -15,7 +15,7 @@ public class APIClient {
     let baseURL: URL
     let authorizationToken: String? = nil
 
-    init(baseURL: URL, configuration: URLSessionConfiguration = .default) {
+    public init(baseURL: URL, configuration: URLSessionConfiguration = .default) {
         self.baseURL = baseURL
         self.oauthClient = OAuthClient(baseURL: baseURL, configuration: configuration)
         configuration.httpAdditionalHeaders?[APIConstants.accept] = APIConstants.applicationJSON
@@ -23,9 +23,10 @@ public class APIClient {
         manager.adapter = oauthClient
         manager.retrier = oauthClient
     }
+}
 
 // MARK: - JSON
-
+public extension APIClient {
     /**
      *For ResponseType: JSONObject*
 
