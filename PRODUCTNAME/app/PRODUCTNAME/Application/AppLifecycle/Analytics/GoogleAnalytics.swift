@@ -36,9 +36,8 @@ class GoogleAnalytics {
             let environmentDimensionParameter = GAIFields.customDimension(for: GoogleAnalytics.environmentCustomDimensionIndex)
             gai.defaultTracker.set(environmentDimensionParameter, value: environment)
 
-            // TODO: This is initially configured to verbose logging so you see screen hits and in dryrun mode so the hits aren't transmitted. When you are ready to start sending data uncomment these lines.  Be sure to set your GA_TRACKING_ID and GA_ENVIRONMENT in the Global.xcconfig
-            // Comment this to hide GA debugging content
-            gai.logger.logLevel = GAILogLevel.verbose
+            // Uncomment to manually verify analytic events.
+            // gai.logger.logLevel = GAILogLevel.verbose
             gai.dryRun = true
         }
         else {

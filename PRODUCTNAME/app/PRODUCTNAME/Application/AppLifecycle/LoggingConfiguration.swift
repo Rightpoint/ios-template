@@ -8,6 +8,7 @@
 
 import UIKit
 import Swiftilities
+import Services
 
 struct LoggingConfiguration: AppLifecycle {
 
