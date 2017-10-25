@@ -22,7 +22,6 @@ class DebugMenuConfiguration: AppLifecycle {
 
 }
 
-
 public class DebugMenuBehavior: ViewControllerLifecycleBehavior {
 
     public init() {}

@@ -8,6 +8,7 @@
 
 import UIKit
 import Swiftilities
+import Services
 
 class DebugMenuConfiguration: AppLifecycle {
 
@@ -19,54 +20,6 @@ class DebugMenuConfiguration: AppLifecycle {
         DefaultBehaviors(behaviors: [DebugMenuBehavior()]).inject()
     }
 
-}
-
-class DebugMenu {
-
-    fileprivate static func enableDebugGesture(_ viewController: UIViewController) {
-        let debugGesture = UITapGestureRecognizer(target: self, action: #selector(openDebugAlert))
-        debugGesture.numberOfTapsRequired = 3
-        debugGesture.numberOfTouchesRequired = 2
-        viewController.view.addGestureRecognizer(debugGesture)
-    }
-
-    @objc static func openDebugAlert() {
-        guard let delegate = UIApplication.shared.delegate as? AppDelegate,
-            let rootViewController = delegate.window?.rootViewController else {
-                Log.warn("Debug alert unable to present since the window rootViewController is nil")
-                return
-        }
-
-        var debug: UIAlertController
-
-        if let dictionary = Bundle.main.infoDictionary,
-            let version = dictionary["CFBundleShortVersionString"] as? String,
-            let build = dictionary["CFBundleVersion"] as? String {
-            debug = UIAlertController(title: "Debug Menu \(version) (\(build))", message: nil, preferredStyle: .actionSheet)
-        }
-        else {
-            debug = UIAlertController(title: "Debug Menu", message: nil, preferredStyle: .actionSheet)
-        }
-        debug.addAction(UIAlertAction(title: "Invalidate Refresh Token", style: .default, handler: { _ in
-            APIClient.shared.oauthClient.credentials?.refreshToken = "BAD ACCESS TOKEN"
-        }))
-        debug.addAction(UIAlertAction(title: "Invalidate Access Token", style: .default, handler: { _ in
-            APIClient.shared.oauthClient.credentials?.accessToken = "THIS IS A BAD DEBUG TOKEN"
-        }))
-        debug.addAction(UIAlertAction(title: "Logout", style: .default, handler: { _ in
-            APIClient.shared.oauthClient.logout(completion: { (error) in
-                NSLog("Logout: \(String(describing: error))")
-            })
-        }))
-        debug.addAction(UIAlertAction(title: "Cancel",
-                                      style: .cancel, handler: nil))
-
-        var topMostViewController: UIViewController? = rootViewController
-        while topMostViewController?.presentedViewController != nil {
-            topMostViewController = topMostViewController?.presentedViewController!
-        }
-        topMostViewController?.present(debug, animated: true, completion: nil)
-    }
 }
 
 public class DebugMenuBehavior: ViewControllerLifecycleBehavior {

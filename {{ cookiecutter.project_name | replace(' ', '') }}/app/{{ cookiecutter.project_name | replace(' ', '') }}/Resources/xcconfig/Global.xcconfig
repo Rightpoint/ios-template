@@ -6,9 +6,6 @@
 //  Copyright © 2017 {{ cookiecutter.company_name }}. All rights reserved.
 //
 
-PRODUCT_MODULE_NAME = {{ cookiecutter.project_name | replace(' ', '') }}
-TESTS_PRODUCT_MODULE_NAME = $(PRODUCT_MODULE_NAME)Tests // Overrides product_module_name for the tests
-
 CODE_SIGN_IDENTITY = $(CODE_SIGN_IDENTITY_$(TARGET_NAME))
 PROVISIONING_PROFILE = $(PROVISIONING_PROFILE_$(TARGET_NAME))
 
@@ -22,6 +19,7 @@ INTERNAL_BUILD_SECRET = xxxxxx //Paste Internal Fabric account BUILD SECRET here
 
 INSTABUG_TOKEN = xxxxxx // Paste instabug token here
 
+// Disable `dryRun` in GoogleAnalytics.swift after updating this.
 GA_TRACKING_ID = UA-xxxxxx-x // Paste GA tracking ID here
 // We recommend creating a custom dimension in Google Analytics on the property admin screen to track
 // the environment the build is running in. This allows you to create custom views to keep all but

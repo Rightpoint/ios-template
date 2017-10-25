@@ -1,7 +1,7 @@
 <img width=443 src="Resources/readme-images/BonMot-logo.png" alt="BonMot Logo" />
 
-[![Swift 2.x + 3.0](https://img.shields.io/badge/Swift-2.3%20+%203.0-orange.svg?style=flat)](https://swift.org)
-[![CircleCI](https://img.shields.io/circleci/project/github/Raizlabs/BonMot.svg)](https://circleci.com/gh/Raizlabs/BonMot)
+[![Swift 4.0](https://img.shields.io/badge/Swift-4.0-orange.svg?style=flat)](https://swift.org)
+[![CircleCI](https://img.shields.io/circleci/project/github/Raizlabs/BonMot/master.svg)](https://circleci.com/gh/Raizlabs/BonMot)
 [![Version](https://img.shields.io/cocoapods/v/BonMot.svg?style=flat)](http://cocoapods.org/pods/BonMot)
 [![License](https://img.shields.io/cocoapods/l/BonMot.svg?style=flat)](http://cocoapods.org/pods/BonMot)
 [![Platform](https://img.shields.io/cocoapods/p/BonMot.svg?style=flat)](http://cocoapods.org/pods/BonMot)
@@ -23,7 +23,7 @@ In any Swift file where you want to use BonMot, simply `import BonMot`.
 Use a `StringStyle` to specify the style of your attributed string. Then, use the `styled(with:)` method on `String` to get your attributed string:
 
 ```swift
-let quote = "I used to love correcting people’s grammar until" +
+let quote = "I used to love correcting people’s grammar until " +
             "I realized what I loved more was having friends.\n" +
             "-Mara Wilson"
 
@@ -229,12 +229,12 @@ UIKit lets you align labels by top, bottom, or baseline. BonMot includes `TextAl
 You can use `TextAlignmentConstraint` programmatically or in Interface Builder. In code, use it like this:
 
 ```swift
-TextAlignmentConstraint(
+TextAlignmentConstraint.with(
     item: someLabel,
-    attribute: capHeight,
+    attribute: .capHeight,
     relatedBy: .equal,
     toItem: someOtherLabel,
-    attribute: capHeight).active = true
+    attribute: .capHeight).isActive = true
 ```
 
 In Interface Builder, start by constraining two views to each other with a `top` constraint. Select the constraint, and in the Identity Inspector, change the class to `TextAlignmentConstraint`:

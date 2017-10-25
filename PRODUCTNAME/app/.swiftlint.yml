@@ -27,3 +27,4 @@ statement_position:
 
 excluded:
   - Pods
+  - PRODUCTNAME/Resources/Generated

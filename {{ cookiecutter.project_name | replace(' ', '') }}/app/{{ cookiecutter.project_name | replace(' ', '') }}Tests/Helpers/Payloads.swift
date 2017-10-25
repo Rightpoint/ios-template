@@ -8,6 +8,7 @@
 
 import Foundation
 @testable import {{ cookiecutter.project_name | replace(' ', '') }}
+import Services
 
 enum Payloads {
     static let oauth: Data = {

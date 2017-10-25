@@ -8,7 +8,7 @@
 
 import OHHTTPStubs
 import XCTest
-@testable import {{ cookiecutter.project_name | replace(' ', '') }}
+@testable import Services
 
 class OAuthTests: XCTestCase {
     override class func setUp() {
@@ -23,7 +23,7 @@ class OAuthTests: XCTestCase {
 
     func testOAuthLogin() {
         stub(condition: isMethodPOST() && pathStartsWith("/oauth/token")) { _ in
-            return OHHTTPStubsResponse(data: Payloads.oauth, statusCode: 200, headers:nil)
+            return OHHTTPStubsResponse(data: Payloads.oauth, statusCode: 200, headers: nil)
         }
         let configuration = URLSessionConfiguration.default
         OHHTTPStubs.setEnabled(true, for: configuration)
@@ -42,7 +42,7 @@ class OAuthTests: XCTestCase {
 
     func testOAuthRefresh() {
         stub(condition: pathStartsWith("/oauth/refresh")) { _ in
-            return OHHTTPStubsResponse(data: Payloads.oauth, statusCode:200, headers:nil)
+            return OHHTTPStubsResponse(data: Payloads.oauth, statusCode:200, headers: nil)
         }
         let configuration = URLSessionConfiguration.default
         OHHTTPStubs.setEnabled(true, for: configuration)

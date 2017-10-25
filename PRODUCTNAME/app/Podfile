@@ -36,7 +36,7 @@ pod 'SwiftLint'
 # This is a hack to support both 3.2 and 4.0 pods. Add the pod name to the array below to build in 4.0.
 #
 # https://github.com/CocoaPods/CocoaPods/issues/7134 is the official thread tracking the issue.
-SWIFT_4_PODS=[]
+SWIFT_4_PODS=["BonMot"]
 
 post_install do |installer|
   require 'fileutils'

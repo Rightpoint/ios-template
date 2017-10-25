@@ -27,3 +27,4 @@ statement_position:
 
 excluded:
   - Pods
+  - {{ cookiecutter.project_name | replace(' ', '') }}/Resources/Generated
