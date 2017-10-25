@@ -12,9 +12,19 @@ import Marshal
 public extension SessionManager {
 
     func request<Endpoint: APIEndpoint>(_ baseURL: URL, endpoint: Endpoint) -> DataRequest {
-        guard let url = URL(string: endpoint.path, relativeTo: baseURL) else {
+        guard
+            let endpointURL = URL(string: endpoint.path, relativeTo: baseURL),
+            let url: URL = {
+                var urlComponents = URLComponents(url: endpointURL, resolvingAgainstBaseURL: true)
+                urlComponents?.queryItems = endpoint.queryParams?.flatMap { (name, value) in
+                    return URLQueryItem(name: name, value: value)
+                }
+                return urlComponents?.url
+            }()
+        else {
             fatalError("Invalid Path Specification")
         }
+
         let request = self.request(
             url,
             method: endpoint.method,
