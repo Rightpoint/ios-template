@@ -21,6 +21,8 @@
 		2DFF1D1C1E8C424800B1AD70 /* OnboardingSamplePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFF1D1B1E8C424800B1AD70 /* OnboardingSamplePageViewController.swift */; };
 		63E19DA1AE4BD0875DF235F8 /* Pods_Services.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D465E6ECC8509BBB6035678 /* Pods_Services.framework */; };
 		85083D4AEA7B5B726A79F450 /* Pods_PRODUCTNAME.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CD9F2E21AB27A0230007885 /* Pods_PRODUCTNAME.framework */; };
+		862B204C1FA11315007D33BC /* DebugMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862B204B1FA11315007D33BC /* DebugMenu.swift */; };
+		862B204E1FA11345007D33BC /* DebugTextStyleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862B204D1FA11345007D33BC /* DebugTextStyleViewController.swift */; };
 		86A65AF21FA0EA2400705C14 /* Services.h in Headers */ = {isa = PBXBuildFile; fileRef = 86A65AF01FA0EA2400705C14 /* Services.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		86A65AF51FA0EA2400705C14 /* Services.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86A65AEE1FA0EA2400705C14 /* Services.framework */; };
 		86A65AF61FA0EA2400705C14 /* Services.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 86A65AEE1FA0EA2400705C14 /* Services.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -123,6 +125,8 @@
 		7DA6085A924797A53A836C85 /* Pods-PRODUCTNAME.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PRODUCTNAME.appstore.xcconfig"; path = "Pods/Target Support Files/Pods-PRODUCTNAME/Pods-PRODUCTNAME.appstore.xcconfig"; sourceTree = "<group>"; };
 		7F2C2A97F21BF37CEB2498E0 /* Pods_PRODUCTNAMETests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PRODUCTNAMETests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		845339F96003195CE76EA042 /* Pods_PRODUCTNAME_PRODUCTNAMETests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PRODUCTNAME_PRODUCTNAMETests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		862B204B1FA11315007D33BC /* DebugMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugMenu.swift; sourceTree = "<group>"; };
+		862B204D1FA11345007D33BC /* DebugTextStyleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugTextStyleViewController.swift; sourceTree = "<group>"; };
 		86A65AEE1FA0EA2400705C14 /* Services.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Services.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		86A65AF01FA0EA2400705C14 /* Services.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Services.h; sourceTree = "<group>"; };
 		86A65AF11FA0EA2400705C14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -277,6 +281,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		862B204A1FA1130B007D33BC /* Debug */ = {
+			isa = PBXGroup;
+			children = (
+				862B204B1FA11315007D33BC /* DebugMenu.swift */,
+				862B204D1FA11345007D33BC /* DebugTextStyleViewController.swift */,
+			);
+			path = Debug;
+			sourceTree = "<group>";
+		};
 		86A65AEF1FA0EA2400705C14 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -384,6 +397,7 @@
 		ABC778981DC91DFB00815FB9 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				862B204A1FA1130B007D33BC /* Debug */,
 				ABC778E21DC94F9300815FB9 /* AppLifecycle */,
 				ABF84F891DC99CFD002DB24D /* Appearance */,
 				ABC778781DC90B7A00815FB9 /* AppDelegate.swift */,
@@ -872,7 +886,9 @@
 				BE28092E1E8029D8006E50D5 /* AnalyticsConfiguration.swift in Sources */,
 				ABF84F8C1DC99CFD002DB24D /* Appearance.swift in Sources */,
 				ABC778791DC90B7A00815FB9 /* AppDelegate.swift in Sources */,
+				862B204C1FA11315007D33BC /* DebugMenu.swift in Sources */,
 				BE2809301E8038BE006E50D5 /* ContentTabBarViewController.swift in Sources */,
+				862B204E1FA11345007D33BC /* DebugTextStyleViewController.swift in Sources */,
 				86A65B201FA0F6DB00705C14 /* UserDefaults+Utility.swift in Sources */,
 				2DFF1D181E8BF82A00B1AD70 /* Colors.swift in Sources */,
 				BE28092A1E802893006E50D5 /* Analytics.swift in Sources */,
