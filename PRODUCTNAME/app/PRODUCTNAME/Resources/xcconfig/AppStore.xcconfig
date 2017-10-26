@@ -7,7 +7,6 @@
 //
 
 #include "PRODUCTNAME/Resources/xcconfig/Raizlabs-Account.xcconfig"
-#include "PRODUCTNAME/Resources/xcconfig/Global.xcconfig"
 
 PRODUCT_BUNDLE_IDENTIFIER = // Insert production bundle here
 PRODUCT_NAME = sprint-$(TARGET_NAME)
@@ -17,3 +16,6 @@ CODE_SIGN_IDENTITY_PRODUCTNAME = iPhone Distribution
 PROVISIONING_PROFILE_PRODUCTNAME = xxxxxx // Insert sprint provisioning profile ID
 
 GA_ENVIRONMENT = production
+
+// This file must be included last to properly resolve the offical Xcode variables.
+#include "PRODUCTNAME/Resources/xcconfig/Global.xcconfig"

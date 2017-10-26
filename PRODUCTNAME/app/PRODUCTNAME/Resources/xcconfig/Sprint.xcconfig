@@ -7,7 +7,6 @@
 //
 
 #include "PRODUCTNAME/Resources/xcconfig/Raizlabs-Account.xcconfig"
-#include "PRODUCTNAME/Resources/xcconfig/Global.xcconfig"
 
 PRODUCT_BUNDLE_IDENTIFIER = com.raizlabs.PRODUCTNAME.sprint
 PRODUCT_NAME = sprint-$(TARGET_NAME)
@@ -20,3 +19,6 @@ PROVISIONING_PROFILE_PRODUCTNAME = xxxxxx // Insert sprint provisioning profile 
 FABRIC_API_KEY = $(INTERNAL_FABRIC_API_KEY)
 FABRIC_BUILD_SECRET = $(INTERNAL_BUILD_SECRET)
 SWIFT_ACTIVE_COMPILATION_CONDITIONS = RZINTERNAL
+
+// This file must be included last to properly resolve the offical Xcode variables.
+#include "PRODUCTNAME/Resources/xcconfig/Global.xcconfig"
