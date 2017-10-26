@@ -30,7 +30,7 @@ class APIClientTests: XCTestCase {
         var authorized: Bool = false
         stub(condition: pathStartsWith("/oauth/refresh")) { _ in
             authorized = false
-            return OHHTTPStubsResponse(data: Payloads.oauth, statusCode:400, headers: nil)
+            return OHHTTPStubsResponse(data: Payloads.oauth, statusCode: 400, headers: nil)
         }
         stub(condition: pathStartsWith("/test")) { _ in
             return OHHTTPStubsResponse(data: Payloads.test, statusCode: authorized ? 200 : 401, headers: nil)
@@ -55,7 +55,7 @@ class APIClientTests: XCTestCase {
         var authorized: Bool = false
         stub(condition: pathStartsWith("/oauth/refresh")) { _ in
             authorized = true
-            return OHHTTPStubsResponse(data: Payloads.oauth, statusCode:200, headers: nil)
+            return OHHTTPStubsResponse(data: Payloads.oauth, statusCode: 200, headers: nil)
         }
         stub(condition: pathStartsWith("/test")) { _ in
             return OHHTTPStubsResponse(data: Payloads.test, statusCode: authorized ? 200 : 401, headers: nil)
@@ -84,7 +84,7 @@ class APIClientTests: XCTestCase {
         stub(condition: pathStartsWith("/oauth/refresh")) { _ in
             oauthCount += 1
 
-            return OHHTTPStubsResponse(data: Payloads.oauth, statusCode:200, headers: nil)
+            return OHHTTPStubsResponse(data: Payloads.oauth, statusCode: 200, headers: nil)
         }
 
         stub(condition: pathStartsWith("/test")) { _ in

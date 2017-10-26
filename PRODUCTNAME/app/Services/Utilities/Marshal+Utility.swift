@@ -9,7 +9,7 @@
 import Marshal
 import KeychainAccess
 
-extension Date : ValueType {
+extension Date: ValueType {
     public static func value(from object: Any) throws -> Date {
         guard let dateString = object as? String else {
             throw MarshalError.typeMismatch(expected: String.self, actual: type(of: object))
