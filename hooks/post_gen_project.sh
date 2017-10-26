@@ -34,6 +34,7 @@ Congratulations! Please perform the following tasks:
   - Protect "master" and "develop". Set "develop" as the default branch
 - Ensure the Hockey Apps created have the correct teams
 - Review README.md architecture guidance
+- Make a PR against ios-template fixing any issues encountered
 EOF
 
 
