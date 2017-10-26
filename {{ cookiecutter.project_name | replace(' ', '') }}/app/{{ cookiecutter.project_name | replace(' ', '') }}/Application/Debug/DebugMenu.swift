@@ -8,6 +8,7 @@
 
 import Swiftilities
 import Services
+import Crashlytics
 
 class DebugMenu {
 
@@ -49,6 +50,9 @@ class DebugMenu {
         }))
         debug.addAction(UIAlertAction(title: "Invalidate Access Token", style: .default, handler: { _ in
             APIClient.shared.oauthClient.credentials?.accessToken = "THIS IS A BAD DEBUG TOKEN"
+        }))
+        debug.addAction(UIAlertAction(title: "Crash", style: .default, handler: { _ in
+            Crashlytics.sharedInstance().crash()
         }))
         debug.addAction(UIAlertAction(title: "Logout", style: .default, handler: { _ in
             APIClient.shared.oauthClient.logout(completion: { (error) in
