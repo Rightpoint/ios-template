@@ -542,8 +542,7 @@
 			buildConfigurationList = ABC778921DC90B7A00815FB9 /* Build configuration list for PBXNativeTarget "{{ cookiecutter.project_name | replace(' ', '') }}" */;
 			buildPhases = (
 				5BD18785D9BC5E2781EBCD52 /* [CP] Check Pods Manifest.lock */,
-				2DFF1D1F1E8C56C700B1AD70 /* SwiftGen images */,
-				2DFF1D1E1E8C563200B1AD70 /* SwiftGen strings */,
+				2DFF1D1F1E8C56C700B1AD70 /* SwiftGen */,
 				ABC778DB1DC9405700815FB9 /* SwiftLint */,
 				ABC778711DC90B7A00815FB9 /* Sources */,
 				ABC778721DC90B7A00815FB9 /* Frameworks */,
@@ -673,33 +672,19 @@
 			shellPath = /bin/sh;
 			shellScript = "if [ ${FABRIC_API_KEY} != \"xxxxxx\" ]; then\nif [ \"${CONFIGURATION}\" != \"Debug\" ]; then\n\"${PODS_ROOT}/Fabric/run\" ${FABRIC_API_KEY} ${FABRIC_BUILD_SECRET}\nfi\nfi";
 		};
-		2DFF1D1E1E8C563200B1AD70 /* SwiftGen strings */ = {
+		2DFF1D1F1E8C56C700B1AD70 /* SwiftGen */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "SwiftGen strings";
+			name = SwiftGen;
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "$PODS_ROOT/SwiftGen/bin/swiftgen strings --template structured-swift4 --output '{{ cookiecutter.project_name | replace(' ', '') }}/Resources/Generated/Localized.swift' '{{ cookiecutter.project_name | replace(' ', '') }}/Resources/Localizable.strings'";
-		};
-		2DFF1D1F1E8C56C700B1AD70 /* SwiftGen images */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "SwiftGen images";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "$PODS_ROOT/SwiftGen/bin/swiftgen xcassets --template swift3 --output {{ cookiecutter.project_name | replace(' ', '') }}/Resources/Generated/UIImage+Asset.swift {{ cookiecutter.project_name | replace(' ', '') }}/Resources/Assets.xcassets";
+			shellScript = "if [ -x \"$PODS_ROOT/SwiftGen/bin/swiftgen\" ]; then\n  $PODS_ROOT/SwiftGen/bin/swiftgen xcassets --template swift3 --output {{ cookiecutter.project_name | replace(' ', '') }}/Resources/Generated/UIImage+Asset.swift {{ cookiecutter.project_name | replace(' ', '') }}/Resources/Assets.xcassets\n  $PODS_ROOT/SwiftGen/bin/swiftgen strings --template structured-swift4 --output {{ cookiecutter.project_name | replace(' ', '') }}/Resources/Generated/Localized.swift {{ cookiecutter.project_name | replace(' ', '') }}/Resources/Localizable.strings\nfi\n";
 		};
 		4B79AD4EE86D9527DA2201EB /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;

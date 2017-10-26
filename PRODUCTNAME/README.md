@@ -7,12 +7,12 @@
 ## Development Process
 All stories and bugs are tracked in [JIRA][]. Development occurs on branches that are tested with the `test` fastlane task once a PR is created. The PR is reviewed and then merged into the `develop` branch. This triggers the `develop` fastlane task which distributes a build to the [develop][develop-hockey] hockey app for testing and PO approval. At the end of a sprint, a `sprint-X` tag is manually created which triggers the `sprint` fastlane task which distributes a build to the [sprint][sprint-hockey] hockey app.
 
-[circleci]: https://circleci.com/gh/Raizlabs/{{ cookiecutter.project_name }}-ios
+[circle-ci]: https://circleci.com/gh/Raizlabs/{{ cookiecutter.project_name }}-ios
 [JIRA]: https://raizlabs.atlassian.net/secure/RapidBoard.jspa?projectKey={{ cookiecutter.jira_key }}
 [sprint-hockey]: https://rink.hockeyapp.net/apps/ZZHOCKEY_SPRINT_IDZZ
 [develop-hockey]: https://rink.hockeyapp.net/apps/ZZHOCKEY_DEVELOP_IDZZ
 
-To get started, see [Contributing][]
+To get started, see [Contributing][#contributing]
 
 ## Architecture
 
