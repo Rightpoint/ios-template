@@ -29,7 +29,7 @@ final class DebugTextStyleViewController: UIViewController {
         super.viewDidLoad()
 
         title = "Text Styles"
-//        addBehaviors([ModalDismissBehavior()])
+        addBehaviors([ModalDismissBehavior()])
 
         view.backgroundColor = .white
 

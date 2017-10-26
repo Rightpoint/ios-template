@@ -21,6 +21,8 @@
 		2DFF1D1C1E8C424800B1AD70 /* OnboardingSamplePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFF1D1B1E8C424800B1AD70 /* OnboardingSamplePageViewController.swift */; };
 		63E19DA1AE4BD0875DF235F8 /* Pods_Services.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D465E6ECC8509BBB6035678 /* Pods_Services.framework */; };
 		85083D4AEA7B5B726A79F450 /* Pods_PRODUCTNAME.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CD9F2E21AB27A0230007885 /* Pods_PRODUCTNAME.framework */; };
+		861732D41FA28DB600C14354 /* HideBackButtonTextBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861732D21FA28DB600C14354 /* HideBackButtonTextBehavior.swift */; };
+		861732D51FA28DB600C14354 /* ModalDismissBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861732D31FA28DB600C14354 /* ModalDismissBehavior.swift */; };
 		862B204C1FA11315007D33BC /* DebugMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862B204B1FA11315007D33BC /* DebugMenu.swift */; };
 		862B204E1FA11345007D33BC /* DebugTextStyleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 862B204D1FA11345007D33BC /* DebugTextStyleViewController.swift */; };
 		86A65AF21FA0EA2400705C14 /* Services.h in Headers */ = {isa = PBXBuildFile; fileRef = 86A65AF01FA0EA2400705C14 /* Services.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -125,6 +127,8 @@
 		7DA6085A924797A53A836C85 /* Pods-PRODUCTNAME.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PRODUCTNAME.appstore.xcconfig"; path = "Pods/Target Support Files/Pods-PRODUCTNAME/Pods-PRODUCTNAME.appstore.xcconfig"; sourceTree = "<group>"; };
 		7F2C2A97F21BF37CEB2498E0 /* Pods_PRODUCTNAMETests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PRODUCTNAMETests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		845339F96003195CE76EA042 /* Pods_PRODUCTNAME_PRODUCTNAMETests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PRODUCTNAME_PRODUCTNAMETests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		861732D21FA28DB600C14354 /* HideBackButtonTextBehavior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HideBackButtonTextBehavior.swift; sourceTree = "<group>"; };
+		861732D31FA28DB600C14354 /* ModalDismissBehavior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalDismissBehavior.swift; sourceTree = "<group>"; };
 		862B204B1FA11315007D33BC /* DebugMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugMenu.swift; sourceTree = "<group>"; };
 		862B204D1FA11345007D33BC /* DebugTextStyleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugTextStyleViewController.swift; sourceTree = "<group>"; };
 		86A65AEE1FA0EA2400705C14 /* Services.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Services.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -281,6 +285,23 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		861732D01FA28DB600C14354 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				861732D11FA28DB600C14354 /* Behaviors */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		861732D11FA28DB600C14354 /* Behaviors */ = {
+			isa = PBXGroup;
+			children = (
+				861732D21FA28DB600C14354 /* HideBackButtonTextBehavior.swift */,
+				861732D31FA28DB600C14354 /* ModalDismissBehavior.swift */,
+			);
+			path = Behaviors;
+			sourceTree = "<group>";
+		};
 		862B204A1FA1130B007D33BC /* Debug */ = {
 			isa = PBXGroup;
 			children = (
@@ -374,6 +395,7 @@
 			children = (
 				ABC778981DC91DFB00815FB9 /* Application */,
 				2D4FA8F31E8574D2006C38ED /* Coordinators */,
+				861732D01FA28DB600C14354 /* Components */,
 				2DFF1D141E8BF37C00B1AD70 /* Extensions */,
 				ABC778C41DC9266300815FB9 /* Model */,
 				86A65B1E1FA0F6C700705C14 /* Utilities */,
@@ -595,10 +617,12 @@
 				TargetAttributes = {
 					86A65AED1FA0EA2400705C14 = {
 						CreatedOnToolsVersion = 9.0.1;
+						DevelopmentTeam = xxxxxx;
 						ProvisioningStyle = Automatic;
 					};
 					ABC778741DC90B7A00815FB9 = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = xxxxxx;
 						ProvisioningStyle = Manual;
 					};
 					ABC778881DC90B7A00815FB9 = {
@@ -865,6 +889,7 @@
 				2DFF1D161E8BF38F00B1AD70 /* UIColor+Extensions.swift in Sources */,
 				ABF84F921DC99D33002DB24D /* UIImage+Asset.swift in Sources */,
 				ABF84F911DC99D33002DB24D /* Localized.swift in Sources */,
+				861732D41FA28DB600C14354 /* HideBackButtonTextBehavior.swift in Sources */,
 				ABC778E81DC9503600815FB9 /* InstabugConfiguration.swift in Sources */,
 				BE28092B1E802893006E50D5 /* AnalyticsPageNames.swift in Sources */,
 				ABC778E61DC94FFC00815FB9 /* CrashlyticsConfiguration.swift in Sources */,
@@ -876,6 +901,7 @@
 				862B204E1FA11345007D33BC /* DebugTextStyleViewController.swift in Sources */,
 				86A65B201FA0F6DB00705C14 /* UserDefaults+Utility.swift in Sources */,
 				2DFF1D181E8BF82A00B1AD70 /* Colors.swift in Sources */,
+				861732D51FA28DB600C14354 /* ModalDismissBehavior.swift in Sources */,
 				BE28092A1E802893006E50D5 /* Analytics.swift in Sources */,
 				2DFF1D121E8BE27B00B1AD70 /* OnboardingPageViewController.swift in Sources */,
 			);
