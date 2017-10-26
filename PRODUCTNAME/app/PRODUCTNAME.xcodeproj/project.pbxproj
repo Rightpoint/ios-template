@@ -542,7 +542,7 @@
 			buildConfigurationList = ABC778921DC90B7A00815FB9 /* Build configuration list for PBXNativeTarget "PRODUCTNAME" */;
 			buildPhases = (
 				5BD18785D9BC5E2781EBCD52 /* [CP] Check Pods Manifest.lock */,
-				2DFF1D1F1E8C56C700B1AD70 /* SwiftGen images */,
+				2DFF1D1F1E8C56C700B1AD70 /* SwiftGen */,
 				2DFF1D1E1E8C563200B1AD70 /* SwiftGen strings */,
 				ABC778DB1DC9405700815FB9 /* SwiftLint */,
 				ABC778711DC90B7A00815FB9 /* Sources */,
@@ -685,21 +685,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "$PODS_ROOT/SwiftGen/bin/swiftgen strings --template structured-swift4 --output 'PRODUCTNAME/Resources/Generated/Localized.swift' 'PRODUCTNAME/Resources/Localizable.strings'";
+			shellScript = "";
 		};
-		2DFF1D1F1E8C56C700B1AD70 /* SwiftGen images */ = {
+		2DFF1D1F1E8C56C700B1AD70 /* SwiftGen */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "SwiftGen images";
+			name = SwiftGen;
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "$PODS_ROOT/SwiftGen/bin/swiftgen xcassets --template swift3 --output PRODUCTNAME/Resources/Generated/UIImage+Asset.swift PRODUCTNAME/Resources/Assets.xcassets";
+			shellScript = "if [ -x \"$PODS_ROOT/SwiftGen/bin/swiftgen\" ]; then\n  $PODS_ROOT/SwiftGen/bin/swiftgen xcassets --template swift3 --output PRODUCTNAME/Resources/Generated/UIImage+Asset.swift PRODUCTNAME/Resources/Assets.xcassets\n  $PODS_ROOT/SwiftGen/bin/swiftgen strings --template structured-swift4 --output PRODUCTNAME/Resources/Generated/Localized.swift PRODUCTNAME/Resources/Localizable.strings\nfi\n";
 		};
 		4B79AD4EE86D9527DA2201EB /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
