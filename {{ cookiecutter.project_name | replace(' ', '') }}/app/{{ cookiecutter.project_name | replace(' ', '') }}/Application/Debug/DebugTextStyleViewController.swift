@@ -2,7 +2,7 @@
 //  DebugTextStyleViewController.swift
 //  {{ cookiecutter.project_name | replace(' ', '') }}
 //
-//  Created by Brian King on 10/25/17.
+//  Created by {{ cookiecutter.lead_dev }} on 10/25/17.
 //  Copyright © 2017 {{ cookiecutter.company_name }}. All rights reserved.
 //
 
@@ -29,7 +29,7 @@ final class DebugTextStyleViewController: UIViewController {
         super.viewDidLoad()
 
         title = "Text Styles"
-//        addBehaviors([ModalDismissBehavior()])
+        addBehaviors([ModalDismissBehavior()])
 
         view.backgroundColor = .white
 
