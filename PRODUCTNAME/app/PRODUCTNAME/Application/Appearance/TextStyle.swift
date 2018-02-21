@@ -9,15 +9,9 @@
 import Foundation
 import BonMot
 
-enum TextStyle: String {
-    case navigationTitle = "NavigationTitle"
-}
-
-extension TextStyle {
-    var stringStyle: StringStyle {
-        switch self {
-        case .navigationTitle:
-            return StringStyle(.font(.systemFont(ofSize: 20)))
-        }
+extension StringStyle {
+    // Add all of your pre-defined styles here.
+    static var demo: StringStyle {
+        return StringStyle(.font(.systemFont(ofSize: 20)))
     }
 }

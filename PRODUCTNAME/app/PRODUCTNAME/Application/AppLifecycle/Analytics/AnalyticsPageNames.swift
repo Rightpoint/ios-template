@@ -9,7 +9,7 @@
 import UIKit
 
 protocol PageNameConfiguration {
-    static var nameOverrides: [ObjectIdentifier : String] { get }
+    static var nameOverrides: [ObjectIdentifier: String] { get }
     static var ignoreList: [ObjectIdentifier] { get }
 }
 

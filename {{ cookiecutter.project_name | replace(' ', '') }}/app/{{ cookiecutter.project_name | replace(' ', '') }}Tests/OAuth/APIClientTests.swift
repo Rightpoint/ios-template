@@ -8,7 +8,7 @@
 
 import OHHTTPStubs
 import XCTest
-@testable import {{ cookiecutter.project_name | replace(' ', '') }}
+@testable import Services
 
 class APIClientTests: XCTestCase {
     let client: APIClient = {
@@ -30,7 +30,7 @@ class APIClientTests: XCTestCase {
         var authorized: Bool = false
         stub(condition: pathStartsWith("/oauth/refresh")) { _ in
             authorized = false
-            return OHHTTPStubsResponse(data: Payloads.oauth, statusCode:400, headers:nil)
+            return OHHTTPStubsResponse(data: Payloads.oauth, statusCode: 400, headers: nil)
         }
         stub(condition: pathStartsWith("/test")) { _ in
             return OHHTTPStubsResponse(data: Payloads.test, statusCode: authorized ? 200 : 401, headers: nil)
@@ -55,10 +55,10 @@ class APIClientTests: XCTestCase {
         var authorized: Bool = false
         stub(condition: pathStartsWith("/oauth/refresh")) { _ in
             authorized = true
-            return OHHTTPStubsResponse(data: Payloads.oauth, statusCode:200, headers:nil)
+            return OHHTTPStubsResponse(data: Payloads.oauth, statusCode: 200, headers: nil)
         }
         stub(condition: pathStartsWith("/test")) { _ in
-            return OHHTTPStubsResponse(data: Payloads.test, statusCode: authorized ? 200 : 401, headers:nil)
+            return OHHTTPStubsResponse(data: Payloads.test, statusCode: authorized ? 200 : 401, headers: nil)
         }
 
         let expectation = self.expectation(description: "Test Endpoint")
@@ -84,12 +84,12 @@ class APIClientTests: XCTestCase {
         stub(condition: pathStartsWith("/oauth/refresh")) { _ in
             oauthCount += 1
 
-            return OHHTTPStubsResponse(data: Payloads.oauth, statusCode:200, headers:nil)
+            return OHHTTPStubsResponse(data: Payloads.oauth, statusCode: 200, headers: nil)
         }
 
         stub(condition: pathStartsWith("/test")) { _ in
             testCount += 1
-            return OHHTTPStubsResponse(data: Payloads.test, statusCode: oauthCount > 0 ? 200 : 401, headers:nil)
+            return OHHTTPStubsResponse(data: Payloads.test, statusCode: oauthCount > 0 ? 200 : 401, headers: nil)
         }
 
         // Make 10 requests with an invalid token. The requests should 401 10 times, obtain a new token once, retry, and 200 10 times.

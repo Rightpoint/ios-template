@@ -9,6 +9,7 @@
 import Alamofire
 import Marshal
 @testable import {{ cookiecutter.project_name | replace(' ', '') }}
+import Services
 
 struct TestEndpoint: APIEndpoint {
     typealias ResponseType = [TestEndpointResult]

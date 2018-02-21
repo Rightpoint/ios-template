@@ -9,6 +9,7 @@
 import Fabric
 import Crashlytics
 import UIKit
+import Services
 
 struct CrashReportingConfiguration: AppLifecycle {
 

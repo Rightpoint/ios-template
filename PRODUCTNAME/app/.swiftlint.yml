@@ -37,3 +37,4 @@ custom_rules:
 
 excluded:
   - Pods
+  - PRODUCTNAME/Resources/Generated

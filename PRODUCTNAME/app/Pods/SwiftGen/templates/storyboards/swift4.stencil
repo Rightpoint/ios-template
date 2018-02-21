@@ -1,0 +1,113 @@
+// Generated using SwiftGen, by O.Halligon — https://github.com/SwiftGen/SwiftGen
+
+{% if platform and storyboards %}
+{% set isAppKit %}{% if platform == "macOS" %}true{% endif %}{% endset %}
+{% set prefix %}{% if isAppKit %}NS{% else %}UI{% endif %}{% endset %}
+{% set controller %}{% if isAppKit %}Controller{% else %}ViewController{% endif %}{% endset %}
+// swiftlint:disable sorted_imports
+import Foundation
+import {% if isAppKit %}Cocoa{% else %}UIKit{% endif %}
+{% for module in modules where module != env.PRODUCT_MODULE_NAME and module != param.module %}
+import {{module}}
+{% endfor %}
+
+// swiftlint:disable file_length
+
+{# This first part of the code is static, same every time whatever Storyboard you have #}
+protocol StoryboardType {
+  static var storyboardName: String { get }
+}
+
+extension StoryboardType {
+  static var storyboard: {{prefix}}Storyboard {
+    let name = {% if isAppKit %}NSStoryboard.Name({% endif %}self.storyboardName{% if isAppKit %}){% endif %}
+    return {{prefix}}Storyboard(name: name, bundle: Bundle(for: BundleToken.self))
+  }
+}
+
+struct SceneType<T: Any> {
+  let storyboard: StoryboardType.Type
+  let identifier: String
+
+  func instantiate() -> T {
+    let identifier = {% if isAppKit %}NSStoryboard.SceneIdentifier({% endif %}self.identifier{% if isAppKit %}){% endif %}
+    guard let controller = storyboard.storyboard.instantiate{{controller}}(withIdentifier: identifier) as? T else {
+      fatalError("{{controller}} '\(identifier)' is not of the expected class \(T.self).")
+    }
+    return controller
+  }
+}
+
+struct InitialSceneType<T: Any> {
+  let storyboard: StoryboardType.Type
+
+  func instantiate() -> T {
+    guard let controller = storyboard.storyboard.instantiateInitial{{controller}}() as? T else {
+      fatalError("{{controller}} is not of the expected class \(T.self).")
+    }
+    return controller
+  }
+}
+
+protocol SegueType: RawRepresentable { }
+
+extension {% if isAppKit %}NSSeguePerforming{% else %}UIViewController{% endif %} {
+  func perform<S: SegueType>(segue: S, sender: Any? = nil) where S.RawValue == String {
+    let identifier = {% if isAppKit %}NSStoryboardSegue.Identifier({% endif %}segue.rawValue{% if isAppKit %}){% endif %}
+    performSegue{% if isAppKit %}?{% endif %}(withIdentifier: identifier, sender: sender)
+  }
+}
+
+{# This is where the generation begins, this code depends on what you have in your Storyboards #}
+// swiftlint:disable explicit_type_interface identifier_name line_length type_body_length type_name
+{% set sceneEnumName %}{{param.sceneEnumName|default:"StoryboardScene"}}{% endset %}
+{% macro className scene %}{% filter removeNewlines %}
+  {% if scene.customClass %}
+    {% if scene.customModule %}
+      {% if not param.ignoreTargetModule or scene.customModule != env.PRODUCT_MODULE_NAME and scene.customModule != param.module %}
+        {{scene.customModule}}.
+      {% endif %}
+    {% endif %}
+    {{scene.customClass}}
+  {% else %}
+    {{prefix}}{{scene.baseType}}
+  {% endif %}
+{% endfilter %}{% endmacro %}
+enum {{sceneEnumName}} {
+  {% for storyboard in storyboards %}
+  {% set storyboardName %}{{storyboard.name|swiftIdentifier:"pretty"|escapeReservedKeywords}}{% endset %}
+  enum {{storyboardName}}: StoryboardType {
+    static let storyboardName = "{{storyboard.name}}"
+    {% if storyboard.initialScene %}
+
+    {% set sceneClass %}{% call className storyboard.initialScene %}{% endset %}
+    static let initialScene = InitialSceneType<{{sceneClass}}>(storyboard: {{storyboardName}}.self)
+    {% endif %}
+    {% for scene in storyboard.scenes %}
+
+    {% set sceneID %}{{scene.identifier|swiftIdentifier:"pretty"|lowerFirstWord|escapeReservedKeywords}}{% endset %}
+    {% set sceneClass %}{% call className scene %}{% endset %}
+    static let {{sceneID}} = SceneType<{{sceneClass}}>(storyboard: {{storyboardName}}.self, identifier: "{{scene.identifier}}")
+    {% endfor %}
+  }
+  {% endfor %}
+}
+
+enum {{param.segueEnumName|default:"StoryboardSegue"}} {
+  {% for storyboard in storyboards where storyboard.segues %}
+  enum {{storyboard.name|swiftIdentifier:"pretty"|escapeReservedKeywords}}: String, SegueType {
+    {% for segue in storyboard.segues %}
+    {% set segueID %}{{segue.identifier|swiftIdentifier:"pretty"|lowerFirstWord}}{% endset %}
+    case {{segueID|escapeReservedKeywords}}{% if segueID != segue.identifier %} = "{{segue.identifier}}"{% endif %}
+    {% endfor %}
+  }
+  {% endfor %}
+}
+// swiftlint:enable explicit_type_interface identifier_name line_length type_body_length type_name
+
+private final class BundleToken {}
+{% elif storyboards %}
+// Mixed AppKit and UIKit storyboard files found, please invoke swiftgen with these separately
+{% else %}
+// No storyboard found
+{% endif %}

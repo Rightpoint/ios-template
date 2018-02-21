@@ -68,12 +68,6 @@ platform :ios do
 
   # Helpers ----------------------
 
-  desc "Update Swiftgen"
-  lane :swiftgen do
-    sh "cd .. && Pods/SwiftGen/bin/swiftgen strings --template swift3 --enumName Localized --output '{{ cookiecutter.project_name | replace(' ', '') }}/Application/Generated/Localized.swift' '{{ cookiecutter.project_name | replace(' ', '') }}/Resources/Localizable.strings'"
-    sh "cd .. && Pods/SwiftGen/bin/swiftgen images --template swift3 --enumName Asset --output {{ cookiecutter.project_name | replace(' ', '') }}/Application/Generated/UIImage+Asset.swift {{ cookiecutter.project_name | replace(' ', '') }}/Resources/Assets.xcassets"
-  end
-
   desc "Sync Project and Directory Structure"
   lane :synx do
     sh "cd .. && synx {{ cookiecutter.project_name | replace(' ', '') }}.xcodeproj"

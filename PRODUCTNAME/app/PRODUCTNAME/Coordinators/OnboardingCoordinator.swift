@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Services
 
 protocol OnboardingCoordinatorDelegate: class {
 
@@ -59,8 +60,8 @@ extension OnboardingCoordinator {
 
     static var pageViewModels: [OnboardingSamplePageViewModel] {
         let samplePage = OnboardingSamplePageViewModel(
-            header: Localized.Onboarding.Pages.Sample.heading,
-            body: Localized.Onboarding.Pages.Sample.body,
+            header: L10n.Onboarding.Pages.Sample.heading,
+            body: L10n.Onboarding.Pages.Sample.body,
             asset: Asset.logoKennyLoggins
         )
         return [samplePage, samplePage, samplePage]

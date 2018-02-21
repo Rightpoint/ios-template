@@ -68,12 +68,6 @@ platform :ios do
 
   # Helpers ----------------------
 
-  desc "Update Swiftgen"
-  lane :swiftgen do
-    sh "cd .. && Pods/SwiftGen/bin/swiftgen strings --template swift3 --enumName Localized --output 'PRODUCTNAME/Application/Generated/Localized.swift' 'PRODUCTNAME/Resources/Localizable.strings'"
-    sh "cd .. && Pods/SwiftGen/bin/swiftgen images --template swift3 --enumName Asset --output PRODUCTNAME/Application/Generated/UIImage+Asset.swift PRODUCTNAME/Resources/Assets.xcassets"
-  end
-
   desc "Sync Project and Directory Structure"
   lane :synx do
     sh "cd .. && synx PRODUCTNAME.xcodeproj"

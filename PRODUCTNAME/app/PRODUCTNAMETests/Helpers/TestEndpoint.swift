@@ -9,6 +9,7 @@
 import Alamofire
 import Marshal
 @testable import PRODUCTNAME
+import Services
 
 struct TestEndpoint: APIEndpoint {
     typealias ResponseType = [TestEndpointResult]

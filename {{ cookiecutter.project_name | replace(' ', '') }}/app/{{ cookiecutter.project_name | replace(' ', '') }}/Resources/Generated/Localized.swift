@@ -3,54 +3,44 @@
 import Foundation
 
 // swiftlint:disable file_length
-// swiftlint:disable line_length
 
-// swiftlint:disable type_body_length
-// swiftlint:disable nesting
-// swiftlint:disable variable_name
-// swiftlint:disable valid_docs
-// swiftlint:disable type_name
-
-enum Localized {
+// swiftlint:disable explicit_type_interface identifier_name line_length nesting type_body_length type_name
+enum L10n {
 
   enum Onboarding {
 
     enum Buttons {
       /// Join
-      static let join = Localized.tr("Onboarding.Buttons.Join")
+      static let join = L10n.tr("Localizable", "Onboarding.Buttons.Join")
       /// Already have an account? Sign in.
-      static let signIn = Localized.tr("Onboarding.Buttons.SignIn")
+      static let signIn = L10n.tr("Localizable", "Onboarding.Buttons.SignIn")
       /// Skip
-      static let skip = Localized.tr("Onboarding.Buttons.Skip")
+      static let skip = L10n.tr("Localizable", "Onboarding.Buttons.Skip")
     }
 
     enum Pages {
 
       enum Sample {
         /// This is body copy for the onboarding and should be replaced with real text!
-        static let body = Localized.tr("Onboarding.Pages.Sample.Body")
+        static let body = L10n.tr("Localizable", "Onboarding.Pages.Sample.Body")
         /// HEADING TEXT
-        static let heading = Localized.tr("Onboarding.Pages.Sample.Heading")
+        static let heading = L10n.tr("Localizable", "Onboarding.Pages.Sample.Heading")
       }
     }
   }
 
   enum Title {
     /// {{ cookiecutter.project_name | replace(' ', '') }}
-    static let navigation = Localized.tr("Title.Navigation")
+    static let navigation = L10n.tr("Localizable", "Title.Navigation")
   }
 }
+// swiftlint:enable explicit_type_interface identifier_name line_length nesting type_body_length type_name
 
-extension Localized {
-  fileprivate static func tr(_ key: String, _ args: CVarArg...) -> String {
-    let format = NSLocalizedString(key, bundle: Bundle(for: BundleToken.self), comment: "")
+extension L10n {
+  private static func tr(_ table: String, _ key: String, _ args: CVarArg...) -> String {
+    let format = NSLocalizedString(key, tableName: table, bundle: Bundle(for: BundleToken.self), comment: "")
     return String(format: format, locale: Locale.current, arguments: args)
   }
 }
 
 private final class BundleToken {}
-
-// swiftlint:enable type_body_length
-// swiftlint:enable nesting
-// swiftlint:enable variable_name
-// swiftlint:enable valid_docs

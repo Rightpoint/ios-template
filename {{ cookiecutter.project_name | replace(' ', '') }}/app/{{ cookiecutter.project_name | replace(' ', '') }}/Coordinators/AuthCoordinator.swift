@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Services
 
 protocol AuthCoordinatorDelegate: class {
 

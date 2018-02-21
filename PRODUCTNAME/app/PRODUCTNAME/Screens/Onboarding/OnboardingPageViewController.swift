@@ -25,7 +25,7 @@ class OnboardingPageViewController: UIViewController {
 
     fileprivate let skipButton: UIButton = {
         let button = UIButton()
-        button.setTitle(Localized.Onboarding.Buttons.skip, for: .normal)
+        button.setTitle(L10n.Onboarding.Buttons.skip, for: .normal)
         button.setTitleColor(Colors.darkGray, for: .normal)
         button.setTitleColor(Colors.darkGray.highlighted, for: .highlighted)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 18)
@@ -36,7 +36,7 @@ class OnboardingPageViewController: UIViewController {
     fileprivate let firstHairline = HairlineView(axis: .horizontal)
     fileprivate let joinButton: UIButton = {
         let button = UIButton()
-        button.setTitle(Localized.Onboarding.Buttons.join, for: .normal)
+        button.setTitle(L10n.Onboarding.Buttons.join, for: .normal)
         button.setTitleColor(Colors.green, for: .normal)
         button.setTitleColor(Colors.green.highlighted, for: .highlighted)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 17)
@@ -45,7 +45,7 @@ class OnboardingPageViewController: UIViewController {
     fileprivate let secondHairline = HairlineView(axis: .horizontal)
     fileprivate let signInButton: UIButton = {
         let button = UIButton()
-        button.setTitle(Localized.Onboarding.Buttons.signIn, for: .normal)
+        button.setTitle(L10n.Onboarding.Buttons.signIn, for: .normal)
         button.setTitleColor(Colors.darkGray, for: .normal)
         button.setTitleColor(Colors.darkGray.highlighted, for: .highlighted)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
@@ -134,7 +134,6 @@ private extension OnboardingPageViewController {
 
 // MARK: Actions
 private extension OnboardingPageViewController {
-
     @objc func skipTapped() {
         delegate?.skipTapped(for: self)
     }

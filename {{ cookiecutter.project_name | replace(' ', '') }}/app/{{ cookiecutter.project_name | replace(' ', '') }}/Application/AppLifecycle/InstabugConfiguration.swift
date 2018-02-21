@@ -8,6 +8,7 @@
 
 import Instabug
 import UIKit
+import Services
 
 struct InstabugConfiguration: AppLifecycle {
 

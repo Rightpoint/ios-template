@@ -63,6 +63,8 @@ extern NSString * const kIBGVideoPressRecordTitle;
 extern NSString * const kIBGLowDiskStorageTitle;
 extern NSString * const kIBGLowDiskStorageMessage;
 extern NSString * const kIBGCollectingDataText;
+extern NSString * const kIBGExtraFieldIsRequiredText;
+extern NSString * const kIBGExtraFieldMissingDataText;
 
 /// -----------
 /// @name Enums
@@ -242,7 +244,9 @@ typedef NS_ENUM(NSInteger, IBGString) {
     kIBGStringVideoPressRecordTitle,
     kIBGStringLowDiskStorageTitle,
     kIBGStringLowDiskStorageMessage,
-    kIBGStringCollectingDataText
+    kIBGStringCollectingDataText,
+    kIBGStringExtraFieldIsRequiredText,
+    kIBGStringExtraFieldMissingDataText
 };
 
 /**
@@ -253,3 +257,16 @@ typedef NS_ENUM(NSInteger, IBGPromptOption) {
     IBGPromptOptionBug,
     IBGPromptOptionFeedback
 };
+
+/**
+ The Conosle Log Level.
+ */
+typedef NS_ENUM(NSInteger, IBGLogLevel) {
+    IBGLogLevelDefault,
+    IBGLogLevelTrace,
+    IBGLogLevelInfo,
+    IBGLogLevelWarning,
+    IBGLogLevelError,
+    IBGLogLevelFatal
+};
+

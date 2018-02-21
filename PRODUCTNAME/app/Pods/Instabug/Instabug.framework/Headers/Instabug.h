@@ -5,7 +5,7 @@
 
  Copyright:  (c) 2013-2017 by Instabug, Inc., all rights reserved.
 
- Version:    7.3.2
+ Version:    7.3.9
  */
 
 #import <Foundation/Foundation.h>
@@ -117,6 +117,17 @@ typedef void (^NetworkObfuscationCompletionBlock)(NSData *data, NSURLResponse *r
  @param fileURL Path to a file that's going to be attached to each report.
  */
 + (void)addFileAttachmentWithURL:(NSURL *)fileURL;
+
+/**
+ @brief Add a set of data as a file attachment to be sent with each report.
+ 
+ @discussion The data will be written to a file and will be attached with each report.
+ 
+ Each call to this method adds this set of data as a file attachment, until a maximum of 3 then it overrides the first data.
+ 
+ @param data NSData to be added as a file attachment with each report.
+ */
++(void)addFileAttachmentWithData:(NSData *)data;
 
 
 /**
@@ -642,6 +653,24 @@ typedef void (^NetworkObfuscationCompletionBlock)(NSData *data, NSURLResponse *r
 + (void)setReportCategoriesWithTitles:(NSArray<NSString *> *)titles iconNames:(nullable NSArray<NSString *> *)names;
 
 /**
+ @brief Sets an array of report categories to be shown for users to select from before reporting a bug or sending
+ feedback.
+ 
+ @discussion Use this method to give users a form after reporting a bug to be filled and sent inside description.
+ 
+ @param title extra field key.
+ @param required determine whether this field is required or not.
+ */
++ (void)addExtraReportFieldWithTitle:(NSString *)title required:(BOOL)required;
+
+/**
+ @brief Remove all extra fields.
+ 
+ @discussion Use this method to remove all added extra fields.
+  */
++ (void)removeExtraReportFields;
+
+/**
  @brief Set custom user attributes that are going to be sent with each feedback, bug or crash.
  
  @param value User attribute value.
@@ -836,12 +865,23 @@ OBJC_EXTERN void IBGLogError(NSString *format, ...) NS_FORMAT_FUNCTION(1, 2);
 /**
  @brief Used to reroute all your NSLogs to Instabug to be able to automatically include them with reports.
  
- @discussion For details on how to reroute your NSLogs to Instabug, see http://docs.instabug.com/docs/logging
+ @discussion For details on how to reroute your NSLogs to Instabug, see https://docs.instabug.com/docs/ios-logging
  
  @param format Format string.
  @param args Arguments list.
  */
-OBJC_EXTERN void IBGNSLog(NSString *format, va_list args);
+OBJC_EXTERN void IBGNSLog(NSString *format, va_list args) DEPRECATED_MSG_ATTRIBUTE("Use IBGNSLogWithLevel instead");
+
+/**
+ @brief Used to reroute all your NSLogs to Instabug with their log level to be able to automatically include them with reports.
+ 
+ @discussion For details on how to reroute your NSLogs to Instabug, see https://docs.instabug.com/docs/ios-logging
+ 
+ @param format Format string.
+ @param args Arguments list.
+ @param logLevel log level.
+ */
+OBJC_EXTERN void IBGNSLogWithLevel(NSString *format, va_list args, IBGLogLevel logLevel);
 
 /**
  @brief Adds custom logs that will be sent with each report. Logs are added with the debug log level.
@@ -1049,22 +1089,33 @@ OBJC_EXTERN void IBGNSLog(NSString *format, va_list args);
 #pragma mark - Surveys
 
 /**
- @brief Sets whether surveys are enabled or not.
+ @brief Sets whether auto surveys showing are enabled or not.
  
- @discussion If you disable surveys on the SDK but still have active surveys on your Instabug dashboard, those surveys are still going to be sent to the device, but are not going to be shown automatically.
+ @discussion If you disable surveys auto showing on the SDK but still have active surveys on your Instabug dashboard, those surveys are still going to be sent to the device, but are not going to be shown automatically.
  
  To manually display any available surveys, call `+ [Instabug showSurveyIfAvailable]`.
  
+ Defaults to NO.
+ 
+ @param autoShowingSurveysEnabled A boolean to indicate whether the surveys auto showing are enabled or not.
+ */
++ (void)setAutoShowingSurveysEnabled:(BOOL)autoShowingSurveysEnabled;
+
+/**
+ @brief Sets whether surveys are enabled or not.
+ 
+ @discussion  if you disable surveys feature. all survey's methods won't perform untile this flage is enabled again.
+ 
  Defaults to YES.
  
- @param surveysEnabled A boolean to indicate whether the surveys are enabled or not.
+ @param surveysEnabled A boolean to indicate whether the survey feature is enabled or not.
  */
 + (void)setSurveysEnabled:(BOOL)surveysEnabled;
 
 /**
  @brief Shows one of the surveys that were not shown before, that also have conditions that match the current device/user.
  
- @discussion Does nothing if there are no available surveys or if a survey has already been shown in the current session.
+ @discussion Does nothing if there are no available surveys.
  */
 + (void)showSurveyIfAvailable;
 

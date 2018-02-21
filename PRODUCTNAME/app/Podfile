@@ -2,18 +2,18 @@ platform :ios, '9.0'
 use_frameworks!
 inhibit_all_warnings!
 
+def shared
+    pod 'Marshal'
+    pod 'KeychainAccess'
+    pod 'BonMot'
+    pod 'Alamofire'
+    pod 'Anchorage'
+    pod 'Swiftilities'
+end
+
 target 'PRODUCTNAME' do
   pod 'Instabug'
   pod 'Crashlytics'
-
-  pod 'Alamofire'
-  pod 'KeychainAccess'
-  pod 'Marshal'
-  pod 'SwiftLint'
-
-  pod 'BonMot'
-  pod 'Anchorage'
-  pod 'Swiftilities'
 
   pod 'GoogleAnalytics',   '~>3.0'
 
@@ -21,15 +21,22 @@ target 'PRODUCTNAME' do
     pod 'OHHTTPStubs/Swift'
   end
 
+  shared()
+end
+
+target 'Services' do
+    shared()
 end
 
 
 pod 'SwiftGen'
+pod 'Sourcery'
+pod 'SwiftLint'
 
 # This is a hack to support both 3.2 and 4.0 pods. Add the pod name to the array below to build in 4.0.
 #
 # https://github.com/CocoaPods/CocoaPods/issues/7134 is the official thread tracking the issue.
-SWIFT_4_PODS=[]
+SWIFT_4_PODS=["BonMot"]
 
 post_install do |installer|
   require 'fileutils'

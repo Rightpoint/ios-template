@@ -1,0 +1,115 @@
+// Generated using SwiftGen, by O.Halligon — https://github.com/SwiftGen/SwiftGen
+
+{% if catalogs %}
+{% set imageAlias %}{{param.imageAliasName|default:"Image"}}{% endset %}
+#if os(OSX)
+  import AppKit.NSImage
+  typealias {{imageAlias}} = NSImage
+#elseif os(iOS) || os(tvOS) || os(watchOS)
+  import UIKit.UIImage
+  typealias {{imageAlias}} = UIImage
+#endif
+
+// swiftlint:disable file_length
+
+{% set enumName %}{{param.enumName|default:"Asset"}}{% endset %}
+{% set imageType %}{{param.imageTypeName|default:"ImageAsset"}}{% endset %}
+@available(*, deprecated, renamed: "{{imageType}}")
+typealias {{enumName}}Type = {{imageType}}
+
+struct {{imageType}} {
+  private var name: String
+
+  var image: {{imageAlias}} {
+    let bundle = NSBundle(forClass: BundleToken.self)
+    #if os(iOS) || os(tvOS)
+    let image = {{imageAlias}}(named: name, inBundle: bundle, compatibleWithTraitCollection: nil)
+    #elseif os(OSX)
+    let image = bundle.imageForResource(name)
+    #elseif os(watchOS)
+    let image = {{imageAlias}}(named: name)
+    #endif
+    guard let result = image else { fatalError("Unable to load image named \(name).") }
+    return result
+  }
+}
+
+{% set colorType %}{{param.colorTypeName|default:"ColorAsset"}}{% endset %}
+struct {{colorType}} {
+  fileprivate var name: String
+}
+{% macro enumBlock assets sp %}
+{{sp}}  {% call casesBlock assets sp %}
+{{sp}}  {% if not param.noAllValues %}
+
+{{sp}}  // swiftlint:disable trailing_comma
+{{sp}}  static let allColors: [{{colorType}}] = [
+{{sp}}    {% set sp2 %}{{sp}}  {% endset %}
+{{sp}}    {% call allValuesBlock assets "color" "" sp2 %}
+{{sp}}  ]
+{{sp}}  static let allImages: [{{imageType}}] = [
+{{sp}}    {% set sp2 %}{{sp}}  {% endset %}
+{{sp}}    {% call allValuesBlock assets "image" "" sp2 %}
+{{sp}}  ]
+{{sp}}  // swiftlint:enable trailing_comma
+{{sp}}  @available(*, deprecated, renamed: "allImages")
+{{sp}}  static let allValues: [{{enumName}}Type] = allImages
+{{sp}}  {% endif %}
+{% endmacro %}
+{% macro casesBlock assets sp %}
+{{sp}}  {% for asset in assets %}
+{{sp}}  {% if asset.type == "color" %}
+{{sp}}  static let {{asset.name|swiftIdentifier:"pretty"|escapeReservedKeywords}} = {{colorType}}(name: "{{asset.value}}")
+{{sp}}  {% elif asset.type == "image" %}
+{{sp}}  static let {{asset.name|swiftIdentifier:"pretty"|escapeReservedKeywords}} = {{imageType}}(name: "{{asset.value}}")
+{{sp}}  {% elif asset.items %}
+{{sp}}  enum {{asset.name|swiftIdentifier:"pretty"|escapeReservedKeywords}} {
+{{sp}}    {% set sp2 %}{{sp}}  {% endset %}
+{{sp}}    {% call casesBlock asset.items sp2 %}
+{{sp}}  }
+{{sp}}  {% endif %}
+{{sp}}  {% endfor %}
+{% endmacro %}
+{% macro allValuesBlock assets filter prefix sp %}
+{{sp}}  {% for asset in assets %}
+{{sp}}  {% if asset.type == filter %}
+{{sp}}  {{prefix}}{{asset.name|swiftIdentifier:"pretty"|escapeReservedKeywords}},
+{{sp}}  {% elif asset.items %}
+{{sp}}  {% set prefix2 %}{{prefix}}{{asset.name|swiftIdentifier:"pretty"|escapeReservedKeywords}}.{% endset %}
+{{sp}}  {% call allValuesBlock asset.items filter prefix2 sp %}
+{{sp}}  {% endif %}
+{{sp}}  {% endfor %}
+{% endmacro %}
+
+// swiftlint:disable identifier_name line_length nesting type_body_length type_name
+enum {{enumName}} {
+  {% if catalogs.count > 1 %}
+  {% for catalog in catalogs %}
+  enum {{catalog.name|swiftIdentifier:"pretty"|escapeReservedKeywords}} {
+    {% call enumBlock catalog.assets "  " %}
+  }
+  {% endfor %}
+  {% else %}
+  {% call enumBlock catalogs.first.assets "" %}
+  {% endif %}
+}
+// swiftlint:enable identifier_name line_length nesting type_body_length type_name
+
+extension {{imageAlias}} {
+  @available(iOS 1.0, tvOS 1.0, watchOS 1.0, *)
+  @available(OSX, deprecated,
+    message: "This initializer is unsafe on macOS, please use the {{imageType}}.image property")
+  convenience init!(asset: {{imageType}}) {
+    #if os(iOS) || os(tvOS)
+    let bundle = NSBundle(forClass: BundleToken.self)
+    self.init(named: asset.name, inBundle: bundle, compatibleWithTraitCollection: nil)
+    #elseif os(OSX) || os(watchOS)
+    self.init(named: asset.name)
+    #endif
+  }
+}
+
+private final class BundleToken {}
+{% else %}
+// No assets found
+{% endif %}

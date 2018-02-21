@@ -8,6 +8,7 @@
 
 import Foundation
 @testable import PRODUCTNAME
+import Services
 
 enum Payloads {
     static let oauth: Data = {
