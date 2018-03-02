@@ -12,7 +12,7 @@ All stories and bugs are tracked in [JIRA][]. Development occurs on branches tha
 [sprint-hockey]: https://rink.hockeyapp.net/apps/ZZHOCKEY_SPRINT_IDZZ
 [develop-hockey]: https://rink.hockeyapp.net/apps/ZZHOCKEY_DEVELOP_IDZZ
 
-To get started, see [Contributing][#contributing]
+To get started, see [Contributing](#contributing)
 
 ## Architecture
 
@@ -68,7 +68,7 @@ bundle exec fastlane test
 ```
 
 ### Dependencies
-When adding a dependency is necessary it should be managed using Cocoapods. After running `bundle pod install` the built version should be committed to the repository to keep
+When adding a dependency is necessary it should be managed using Cocoapods. After running `bundle exec pod install` the built version should be committed to the repository to keep
 
 ### Branching
 
@@ -79,15 +79,14 @@ Development should take place on a development branch cut from the existing `dev
 Development branches should follow the convention:
 `{bugfix | feature}/{developer initials}-{JIRA_ID}`
 
-Release branches should be taged and cut from `master` as:
+Release branches should be tagged and cut from `master` as:
 `release-0.0.0`
 
 ### Testing
 
-All non-trivial code should be tested. Contributers are encouraged to use TDD where applicable
+All non-trivial code should be tested. Contributors are encouraged to use [TDD](https://en.wikipedia.org/wiki/Test-driven_development) where applicable.
 
 All development branches must pass CI before merging. Save yourself some trouble and run `bundle exec fastlane test` before filing a pull request.
 
 ### Synx
-To keep the Application structure orderly, organize code logically into groups using XCode and run [synx](https://github.com/venmo/synx) (`bundle exec fastlane synx`) before commiting.
-
+To keep the Application structure orderly, organize code logically into groups using Xcode and run [synx](https://github.com/venmo/synx) (`bundle exec fastlane synx`) before commiting.
