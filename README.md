@@ -9,7 +9,7 @@ Inspired by [thoughtbot]/[ios-template]
 
 ## What's in the template?
 
- - Configures the project name, company name, lead name, an initial local repo, gitignore, and syntax.
+ - Configures the project name, company name, lead name, an initial local repo, gitignore, and synx.
  - Option to configure [Hockey][hockey] apps automatically.
  - [Default Fastfile][fastfile] with test, develop, sprint, beta and release lanes and slack notifications.
  - Configuration for [CircleCI][CircleCI] with auto-triggered builds for merges to develop or tags prefixed with sprint, beta or release.
