@@ -22,7 +22,7 @@ PODS:
   - OHHTTPStubs/OHPathHelpers (6.0.0)
   - OHHTTPStubs/Swift (6.0.0):
     - OHHTTPStubs/Default
-  - Sourcery (0.9.0)
+  - Sourcery (0.10.1)
   - SwiftGen (5.1.2)
   - Swiftilities (0.16.0):
     - Swiftilities/All (= 0.16.0)
@@ -109,11 +109,11 @@ SPEC CHECKSUMS:
   KeychainAccess: 94c5540b32eabf7bc32bfb976a268e8ea05fd6da
   Marshal: 8e04e6624e506921db7143b0bfd83caee03f32d6
   OHHTTPStubs: 752f9b11fd810a15162d50f11c06ff94f8e012eb
-  Sourcery: e3829460a1fa0bcd3b689e6087a89cc063cd2289
+  Sourcery: ac71ac4d490f62fd381a9f3b558f3093d91bddd5
   SwiftGen: dd2892e7fb008151f30e6ce0cf465b8b8d89e80e
   Swiftilities: d185d1bb04085a0e455bdc94340fa8ba0248b136
   SwiftLint: 1b670ce79284c76520f84060e87d645078fd32fa
 
 PODFILE CHECKSUM: 54817b274f524e589107fb6dd179e0c70cb607eb
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.3.1
