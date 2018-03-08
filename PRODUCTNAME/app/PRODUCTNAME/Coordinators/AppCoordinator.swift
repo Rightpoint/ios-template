@@ -43,28 +43,29 @@ class AppCoordinator: Coordinator {
 
 extension AppCoordinator: AuthCoordinatorDelegate {
 
-    func didSignIn() {
-        guard let authCoordinator = childCoordinator as? AuthCoordinator else {
-            preconditionFailure("Upon signing in, AppCoordinator should have an AuthCoordinator as a child.")
+    func authCoordinator(_ coordinator: AuthCoordinator, didNotify action: AuthCoordinator.Action) {
+        switch action {
+        case .didSignIn:
+            guard let authCoordinator = childCoordinator as? AuthCoordinator else {
+                preconditionFailure("Upon signing in, AppCoordinator should have an AuthCoordinator as a child.")
+            }
+            childCoordinator = nil
+            authCoordinator.cleanup(animated: true) {
+                let contentCoordinator = ContentCoordinator(self.rootController)
+                self.childCoordinator = contentCoordinator
+                contentCoordinator.start(animated: true, completion: nil)
+            }
+        case .didSkipAuth:
+            guard let authCoordinator = childCoordinator as? AuthCoordinator else {
+                preconditionFailure("Upon signing in, AppCoordinator should have an AuthCoordinator as a child.")
+            }
+            childCoordinator = nil
+            authCoordinator.cleanup(animated: false) {
+                let contentCoordinator = ContentCoordinator(self.rootController)
+                self.childCoordinator = contentCoordinator
+                contentCoordinator.start(animated: true, completion: nil)
+            }
         }
-        childCoordinator = nil
-        authCoordinator.cleanup(animated: true, completion: {
-            let contentCoordinator = ContentCoordinator(self.rootController)
-            self.childCoordinator = contentCoordinator
-            contentCoordinator.start(animated: true, completion: nil)
-        })
     }
-
-    func didSkipAuth() {
-        guard let authCoordinator = childCoordinator as? AuthCoordinator else {
-            preconditionFailure("Upon signing in, AppCoordinator should have an AuthCoordinator as a child.")
-        }
-        childCoordinator = nil
-        authCoordinator.cleanup(animated: false, completion: {
-            let contentCoordinator = ContentCoordinator(self.rootController)
-            self.childCoordinator = contentCoordinator
-            contentCoordinator.start(animated: true, completion: nil)
-        })
-    }
-
+    
 }
