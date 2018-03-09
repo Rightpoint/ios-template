@@ -1,6 +1,28 @@
 # Sourcery CHANGELOG
 
 ---
+## 0.10.1
+
+* When installing Sourcery via CocoaPods, the unneeded `file.zip` is not kept in `Pods/Sourcery/` anymore _(freeing ~12MB on each install of Sourcery made via CocoaPods!)_.  
+
+## 0.10.0
+
+### New Features
+
+- Added test for count Stencil filter
+- Added new reversed Stencil filter
+- Added new isEmpty Stencil filter
+- Added new sorted and sortedDescending Stencil filters. This can sort arrays by calling e.g. `protocol.allVariables|sorted:"name"`
+- Added new toArray Stencil filter
+- Added a console warning when a yaml is available but any parameter between 'sources', templates', 'forceParse', 'output' are provided
+
+### Internal changes
+
+- Add release to Homebrew rake task
+- Fixed Swiftlint warnings
+- Fixed per file generation if there is long (approx. 150KB) output inside `sourcery:file` annotation
+- Do not generate default.profraw
+- Remove filters in favor of same filters from StencilSwiftKit
 
 ## 0.9.0
 
