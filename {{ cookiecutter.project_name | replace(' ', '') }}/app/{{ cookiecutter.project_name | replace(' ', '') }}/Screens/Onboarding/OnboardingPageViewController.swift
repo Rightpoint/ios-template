@@ -9,15 +9,6 @@
 import Anchorage
 import Swiftilities
 
-// MARK: OnboardingPageViewControllerDelegate
-protocol OnboardingPageViewControllerDelegate: class {
-
-    func skipTapped(for controller: OnboardingPageViewController)
-    func joinTapped(for controller: OnboardingPageViewController)
-    func signInTapped(for controller: OnboardingPageViewController)
-
-}
-
 // MARK: OnboardingPageViewController
 class OnboardingPageViewController: UIViewController {
 
@@ -51,7 +42,7 @@ class OnboardingPageViewController: UIViewController {
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
         return button
     }()
-    weak var delegate: OnboardingPageViewControllerDelegate?
+    weak var delegate: Delegate?
 
     init(viewModels: [OnboardingSamplePageViewModel]) {
         self.viewControllers = viewModels.map {
@@ -71,6 +62,17 @@ class OnboardingPageViewController: UIViewController {
         configureLayout()
     }
 
+}
+
+// MARK: Actionable
+extension OnboardingPageViewController: Actionable {
+
+    enum Action {
+        case skipTapped(for: OnboardingPageViewController)
+        case joinTapped(for: OnboardingPageViewController)
+        case signInTapped(for: OnboardingPageViewController)
+    }
+    
 }
 
 // MARK: Private
@@ -135,15 +137,15 @@ private extension OnboardingPageViewController {
 // MARK: Actions
 private extension OnboardingPageViewController {
     @objc func skipTapped() {
-        delegate?.skipTapped(for: self)
+        notify(.skipTapped(for: self))
     }
 
     @objc func joinTapped() {
-        delegate?.joinTapped(for: self)
+        notify(.joinTapped(for: self))
     }
 
     @objc func signInTapped() {
-        delegate?.signInTapped(for: self)
+        notify(.signInTapped(for: self))
     }
 
 }
