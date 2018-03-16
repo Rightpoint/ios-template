@@ -14,7 +14,7 @@ jobs:
     steps:
       - run:
           name: pre-start simulator
-          command: xcrun instruments -w "iPhone 8 (11.0) [" || true
+          command: xcrun instruments -w "iPhone 8 (11.2) [" || true
       - checkout
       # Make sure that the output directory exists
       - run: mkdir $FL_OUTPUT_DIR
@@ -40,7 +40,7 @@ jobs:
       xcode: "9.2.0"
     environment:
       FL_OUTPUT_DIR: /Users/distiller/project/output
-      FASTLANE_LANE: adhoc
+      FASTLANE_LANE: sprint
     shell: /bin/bash --login -eo pipefail
     working_directory: /Users/distiller/project
     steps:
@@ -67,7 +67,10 @@ workflows:
   version: 2
   integration:
     jobs:
-      - test
+      - test:
+          filters:
+            tags:
+              only: /.*/
       - integration:
           requires:
             - test
@@ -78,11 +81,15 @@ workflows:
           requires:
             - test
           filters:
+            branches:
+              ignore: /.*/
             tags:
               only: /sprint-.*/
       - beta:
           requires:
             - test
           filters:
+            branches:
+              ignore: /.*/
             tags:
               only: /beta-.*/
