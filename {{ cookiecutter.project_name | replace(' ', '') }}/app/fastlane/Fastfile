@@ -22,6 +22,7 @@ platform :ios do
       sh 'rm -rf $RZ_ARTIFACTS && mkdir $RZ_ARTIFACTS'
     end
     unlock_keychain(path: './Signing/Raizlabs-{{ cookiecutter.project_name | replace(' ', '') }}.keychain', password: ENV['RZ_KEYCHAIN_PASSWORD'] )
+    install_provisioning_profiles(override_provisioning_profiles: true)
   end
 
   desc "Runs tests"
