@@ -18,6 +18,7 @@ GEM
     atomos (0.1.2)
     babosa (1.0.2)
     claide (1.0.2)
+    clamp (0.6.5)
     cocoapods (1.4.0)
       activesupport (>= 4.0.2, < 5)
       claide (>= 1.0.2, < 2.0)
@@ -53,6 +54,7 @@ GEM
     cocoapods-try (1.1.0)
     colored (1.2)
     colored2 (3.1.2)
+    colorize (0.8.1)
     commander-fastlane (4.4.6)
       highline (~> 1.7.2)
     concurrent-ruby (1.0.5)
@@ -166,6 +168,10 @@ GEM
       jwt (>= 1.5, < 3.0)
       multi_json (~> 1.10)
     slack-notifier (2.3.2)
+    synx (0.2.1)
+      clamp (~> 0.6)
+      colorize (~> 0.7)
+      xcodeproj (~> 1.0)
     terminal-notifier (1.8.0)
     terminal-table (1.8.0)
       unicode-display_width (~> 1.1, >= 1.1.1)
@@ -201,6 +207,7 @@ DEPENDENCIES
   fastlane (~> 2.85.0)
   fastlane-plugin-install_provisioning_profiles!
   nanaimo (~> 0.2.2)
+  synx (~> 0.2.1)
 
 BUNDLED WITH
    1.16.0
