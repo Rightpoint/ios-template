@@ -1,0 +1,85 @@
+# .circleci/config.yml
+version: 2
+jobs:
+  test:
+    macos:
+      xcode: "9.2.0"
+    environment:
+      FL_OUTPUT_DIR: /Users/distiller/project/output
+      FASTLANE_LANE: test
+      # required to set the correct ruby version
+      # see https://circleci.com/docs/2.0/testing-ios/#custom-ruby-versions
+    shell: /bin/bash --login -eo pipefail
+    working_directory: /Users/distiller/project
+    steps:
+      - checkout
+      # Make sure that the output directory exists
+      - run: mkdir $FL_OUTPUT_DIR
+      - run: bundle install
+      - run: cd app && bundle exec fastlane $FASTLANE_LANE;
+            
+  integration:
+    macos:
+      xcode: "9.2.0"
+    environment:
+      FL_OUTPUT_DIR: /Users/distiller/project/output
+      FASTLANE_LANE: develop
+    shell: /bin/bash --login -eo pipefail
+    working_directory: /Users/distiller/project
+    steps:
+      - checkout
+      - run: bundle install
+      - run: cd app && bundle exec fastlane $FASTLANE_LANE
+      - store_artifacts:
+          path: /Users/distiller/project/output/{{ cookiecutter.project_name }}.ipa
+  sprint:
+    macos:
+      xcode: "9.2.0"
+    environment:
+      FL_OUTPUT_DIR: /Users/distiller/project/output
+      FASTLANE_LANE: adhoc
+    shell: /bin/bash --login -eo pipefail
+    working_directory: /Users/distiller/project
+    steps:
+      - checkout
+      - run: bundle install
+      - run: cd app && bundle exec fastlane $FASTLANE_LANE
+      - store_artifacts:
+          path: /Users/distiller/project/output/{{ cookiecutter.project_name }}.ipa
+  beta:
+    macos:
+      xcode: "9.2.0"
+    environment:
+      FL_OUTPUT_DIR: /Users/distiller/project/output
+      FASTLANE_LANE: beta
+    shell: /bin/bash --login -eo pipefail
+    working_directory: /Users/distiller/project
+    steps:
+      - checkout
+      - run: bundle install
+      - run: cd app && bundle exec fastlane $FASTLANE_LANE
+      - store_artifacts:
+          path: /Users/distiller/project/output/{{ cookiecutter.project_name }}.ipa
+workflows:
+  version: 2
+  integration:
+    jobs:
+      - test
+      - integration:
+          requires:
+            - test
+          filters:
+            branches:
+              only: develop
+      - sprint:
+          requires:
+            - test
+          filters:
+            tags:
+              only: /sprint-.*/
+      - beta:
+          requires:
+            - test
+          filters:
+            tags:
+              only: /beta-.*/
