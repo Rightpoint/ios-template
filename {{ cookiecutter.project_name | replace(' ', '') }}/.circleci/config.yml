@@ -32,7 +32,7 @@ jobs:
       - run: bundle install
       - run: cd app && bundle exec fastlane develop
       - store_artifacts:
-          path: /Users/distiller/project/output/{{ cookiecutter.project_name }}.ipa
+          path: "${FL_OUTPUT_DIR}/{{ cookiecutter.project_name }}.ipa"
   sprint:
     macos:
       xcode: "9.2.0"
@@ -45,7 +45,7 @@ jobs:
       - run: bundle install
       - run: cd app && bundle exec fastlane sprint
       - store_artifacts:
-          path: /Users/distiller/project/output/{{ cookiecutter.project_name }}.ipa
+          path: "${FL_OUTPUT_DIR}/{{ cookiecutter.project_name }}.ipa"
   beta:
     macos:
       xcode: "9.2.0"
@@ -58,7 +58,7 @@ jobs:
       - run: bundle install
       - run: cd app && bundle exec fastlane beta
       - store_artifacts:
-          path: /Users/distiller/project/output/{{ cookiecutter.project_name }}.ipa
+          path: "${FL_OUTPUT_DIR}/{{ cookiecutter.project_name }}.ipa"
 workflows:
   version: 2
   integration:
