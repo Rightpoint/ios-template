@@ -9,11 +9,14 @@
 #include "{{ cookiecutter.project_name | replace(' ', '') }}/Resources/xcconfig/Raizlabs-Account.xcconfig"
 
 PRODUCT_BUNDLE_IDENTIFIER = // Insert production bundle here
-PRODUCT_NAME = sprint-$(TARGET_NAME)
+PRODUCT_NAME = $(TARGET_NAME)
 DEVELOPMENT_TEAM = xxxxxx // Insert app store TEAM ID here
 
 CODE_SIGN_IDENTITY_{{ cookiecutter.project_name | replace(' ', '') }} = iPhone Distribution
-PROVISIONING_PROFILE_{{ cookiecutter.project_name | replace(' ', '') }} = xxxxxx // Insert sprint provisioning profile ID
+PROVISIONING_PROFILE_{{ cookiecutter.project_name | replace(' ', '') }} = xxxxxx // Insert App Store provisioning profile ID
+
+FABRIC_API_KEY = $({{ cookiecutter.project_name | replace(' ', '') }}_FABRIC_API_KEY)
+FABRIC_BUILD_SECRET = $({{ cookiecutter.project_name | replace(' ', '') }}_FABRIC_BUILD_SECRET)
 
 GA_ENVIRONMENT = production
 
