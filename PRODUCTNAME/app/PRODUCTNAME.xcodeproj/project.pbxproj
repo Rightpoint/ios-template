@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		006EFEF61F264204004A95DE /* TestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006EFEF51F264204004A95DE /* TestClient.swift */; };
+		209BE2512051C768004CF0FF /* Actionable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209BE2502051C768004CF0FF /* Actionable.swift */; };
+		209BE2562051C90C004CF0FF /* actionable.swifttemplate in Resources */ = {isa = PBXBuildFile; fileRef = 209BE2552051C90C004CF0FF /* actionable.swifttemplate */; };
+		209BE2592051CB4B004CF0FF /* Actionable+AutoConformance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209BE2582051CB4B004CF0FF /* Actionable+AutoConformance.swift */; };
 		2D4FA8F51E8574F9006C38ED /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4FA8F41E8574F9006C38ED /* AppCoordinator.swift */; };
 		2D4FA8F71E85752B006C38ED /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4FA8F61E85752B006C38ED /* Coordinator.swift */; };
 		2D75C6C71E8EEAE900F2EB1D /* OnboardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFF1CEC1E8944B900B1AD70 /* OnboardingCoordinator.swift */; };
@@ -120,6 +123,9 @@
 		17DC86D175CE0686878A3A82 /* Pods-PRODUCTNAME-PRODUCTNAMETests.sprint.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PRODUCTNAME-PRODUCTNAMETests.sprint.xcconfig"; path = "Pods/Target Support Files/Pods-PRODUCTNAME-PRODUCTNAMETests/Pods-PRODUCTNAME-PRODUCTNAMETests.sprint.xcconfig"; sourceTree = "<group>"; };
 		18117B6A27EAD54897E61F7E /* Pods-PRODUCTNAME-PRODUCTNAMETests.develop.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PRODUCTNAME-PRODUCTNAMETests.develop.xcconfig"; path = "Pods/Target Support Files/Pods-PRODUCTNAME-PRODUCTNAMETests/Pods-PRODUCTNAME-PRODUCTNAMETests.develop.xcconfig"; sourceTree = "<group>"; };
 		1FE712F80AD5930EEAA24325 /* Pods-Services.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Services.appstore.xcconfig"; path = "Pods/Target Support Files/Pods-Services/Pods-Services.appstore.xcconfig"; sourceTree = "<group>"; };
+		209BE2502051C768004CF0FF /* Actionable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actionable.swift; sourceTree = "<group>"; };
+		209BE2552051C90C004CF0FF /* actionable.swifttemplate */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = actionable.swifttemplate; sourceTree = "<group>"; };
+		209BE2582051CB4B004CF0FF /* Actionable+AutoConformance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Actionable+AutoConformance.swift"; sourceTree = "<group>"; };
 		2D4FA8F41E8574F9006C38ED /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		2D4FA8F61E85752B006C38ED /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		2D4FA8F81E8577B5006C38ED /* AuthCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
@@ -241,6 +247,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		209BE24F2051C758004CF0FF /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				209BE2502051C768004CF0FF /* Actionable.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		209BE2522051C7BB004CF0FF /* Sourcery */ = {
+			isa = PBXGroup;
+			children = (
+				209BE2552051C90C004CF0FF /* actionable.swifttemplate */,
+			);
+			path = Sourcery;
+			sourceTree = "<group>";
+		};
 		2D4FA8F31E8574D2006C38ED /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
@@ -306,6 +328,7 @@
 		861732D01FA28DB600C14354 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				209BE24F2051C758004CF0FF /* Protocols */,
 				861732EE1FA2984600C14354 /* Representable */,
 				861732D61FA290F400C14354 /* Views */,
 				861732D11FA28DB600C14354 /* Behaviors */,
@@ -473,6 +496,7 @@
 		ABC778991DC91E0D00815FB9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				209BE2522051C7BB004CF0FF /* Sourcery */,
 				ABF84F8E1DC99D33002DB24D /* Generated */,
 				ABC778CD1DC92BC200815FB9 /* xcconfig */,
 				ABC778DC1DC94EE500815FB9 /* Acknowledgements.plist */,
@@ -534,6 +558,7 @@
 			children = (
 				ABF84F8F1DC99D33002DB24D /* Localized.swift */,
 				ABF84F901DC99D33002DB24D /* UIImage+Asset.swift */,
+				209BE2582051CB4B004CF0FF /* Actionable+AutoConformance.swift */,
 			);
 			path = Generated;
 			sourceTree = "<group>";
@@ -609,6 +634,7 @@
 				5BD18785D9BC5E2781EBCD52 /* [CP] Check Pods Manifest.lock */,
 				2DFF1D1F1E8C56C700B1AD70 /* SwiftGen */,
 				ABC778DB1DC9405700815FB9 /* SwiftLint */,
+				209BE2572051C936004CF0FF /* Sourcery */,
 				ABC778711DC90B7A00815FB9 /* Sources */,
 				ABC778721DC90B7A00815FB9 /* Frameworks */,
 				ABC778731DC90B7A00815FB9 /* Resources */,
@@ -709,6 +735,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABC778DD1DC94EE500815FB9 /* Acknowledgements.plist in Resources */,
+				209BE2562051C90C004CF0FF /* actionable.swifttemplate in Resources */,
 				ABF84F811DC97653002DB24D /* Localizable.strings in Resources */,
 				ABC778831DC90B7A00815FB9 /* LaunchScreen.storyboard in Resources */,
 				ABC778801DC90B7A00815FB9 /* Assets.xcassets in Resources */,
@@ -738,6 +765,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if [ ${FABRIC_API_KEY} != \"xxxxxx\" ]; then\nif [ \"${CONFIGURATION}\" != \"Debug\" ]; then\n\"${PODS_ROOT}/Fabric/run\" ${FABRIC_API_KEY} ${FABRIC_BUILD_SECRET}\nfi\nfi";
+		};
+		209BE2572051C936004CF0FF /* Sourcery */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Sourcery;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ -x \"$PODS_ROOT/Sourcery/bin/sourcery\" ]; then\n\"$PODS_ROOT/Sourcery/bin/sourcery\" --sources \"PRODUCTNAME\" --templates \"PRODUCTNAME/Resources/Sourcery/actionable.swifttemplate\" --output \"PRODUCTNAME/Resources/Generated/Actionable+AutoConformance.swift\"\nfi";
 		};
 		2DFF1D1F1E8C56C700B1AD70 /* SwiftGen */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -936,9 +977,11 @@
 				ABC778E11DC94F4400815FB9 /* AppLifecycle.swift in Sources */,
 				2DFF1D161E8BF38F00B1AD70 /* UIColor+Extensions.swift in Sources */,
 				ABF84F921DC99D33002DB24D /* UIImage+Asset.swift in Sources */,
+				209BE2592051CB4B004CF0FF /* Actionable+AutoConformance.swift in Sources */,
 				ABF84F911DC99D33002DB24D /* Localized.swift in Sources */,
 				861732D41FA28DB600C14354 /* HideBackButtonTextBehavior.swift in Sources */,
 				ABC778E81DC9503600815FB9 /* InstabugConfiguration.swift in Sources */,
+				209BE2512051C768004CF0FF /* Actionable.swift in Sources */,
 				BE28092B1E802893006E50D5 /* AnalyticsPageNames.swift in Sources */,
 				ABC778E61DC94FFC00815FB9 /* CrashlyticsConfiguration.swift in Sources */,
 				861732D81FA290F400C14354 /* ControlContainable.swift in Sources */,

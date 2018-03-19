@@ -18,7 +18,7 @@ import Swiftilities
 /// - retrying APIClient requests on authorization failures.
 /// - post notification when credentials are lost.
 public final class OAuthClient {
-    static let credentials = "credentials"
+    static let credentialKey = "credentials"
 
     /// validKeychain indicates that the value in the keychain is from this installation
     /// This is used so the credentials from a previous installation are not re-used.
@@ -45,19 +45,14 @@ public final class OAuthClient {
         didSet {
             if let credentials = credentials {
                 do {
-                    try keychain.set(credentials, key: OAuthClient.credentials)
+                    try keychain.set(credentials, key: OAuthClient.credentialKey)
                 }
                 catch let error {
                     Log.error("Error setting auth credentials to keychain: \(error.localizedDescription)")
                 }
             }
             else {
-                do {
-                    try keychain.remove(OAuthClient.credentials)
-                }
-                catch let error {
-                    Log.error("Error removing auth credentials from keychain: \(error.localizedDescription)")
-                }
+                clearKeychain()
             }
             // If there were credentials, and there no longer are, post a notification
             if oldValue != nil && credentials == nil {
@@ -66,6 +61,16 @@ public final class OAuthClient {
             }
         }
     }
+
+    fileprivate func clearKeychain() {
+        do {
+            try keychain.remove(OAuthClient.credentialKey)
+        }
+        catch {
+            Log.error("Error removing auth credentials from keychain: \(error.localizedDescription)")
+        }
+    }
+
     fileprivate var authenticatedTriggers: [VoidClosure] = []
     fileprivate var authenticationRequest: DataRequest?
     fileprivate let lock = NSLock()
@@ -78,17 +83,17 @@ public final class OAuthClient {
     let manager: Alamofire.SessionManager
     public init(baseURL: URL, configuration: URLSessionConfiguration = .default) {
         self.baseURL = baseURL
-        self.keychain = Keychain(service: OAuthClient.identifier(suffix: OAuthClient.credentials))
+        self.keychain = Keychain(service: OAuthClient.identifier(suffix: OAuthClient.credentialKey))
 
         configuration.httpAdditionalHeaders?[APIConstants.accept] = APIConstants.applicationJSON
         self.manager = SessionManager(configuration: configuration)
 
-        if let credentials: Credentials? = try? keychain.getObject(OAuthClient.credentials) {
+        if let credentials: Credentials? = try? keychain.getObject(OAuthClient.credentialKey) {
             if OAuthClient.validKeychain {
                 self.credentials = credentials
             }
             else {
-                self.credentials = nil
+                clearKeychain()
             }
         }
 

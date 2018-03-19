@@ -25,6 +25,16 @@ trailing_comma:
 statement_position:
   statement_mode: uncuddled_else
 
+custom_rules:
+  straight_quotes:
+    included: "Localized.swift"
+    name: "Straight Quotes"
+    regex: "'|\""
+    match_kinds:
+      - docComment
+    message: "Quotes and apostrophes in localized strings should be curly: “” ‘’"
+    severity: warning
+
 excluded:
   - Pods
   - {{ cookiecutter.project_name | replace(' ', '') }}/Resources/Generated
