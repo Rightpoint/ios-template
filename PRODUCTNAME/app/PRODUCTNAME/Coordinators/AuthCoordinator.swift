@@ -69,7 +69,7 @@ extension AuthCoordinator: Actionable {
         case didSignIn
         case didSkipAuth
     }
-    
+
 }
 
 extension AuthCoordinator: SignInCoordinatorDelegate {

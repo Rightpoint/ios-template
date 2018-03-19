@@ -67,5 +67,5 @@ extension AppCoordinator: AuthCoordinatorDelegate {
             }
         }
     }
-    
+
 }

@@ -37,5 +37,5 @@ extension SignInCoordinator: Actionable {
     enum Action {
         case didSignIn
     }
-    
+
 }

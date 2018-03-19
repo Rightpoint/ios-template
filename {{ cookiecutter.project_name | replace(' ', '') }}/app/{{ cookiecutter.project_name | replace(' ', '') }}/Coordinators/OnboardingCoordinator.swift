@@ -39,7 +39,7 @@ extension OnboardingCoordinator: Actionable {
         case didRequestJoin
         case didRequestSignIn
     }
-    
+
 }
 
 extension OnboardingCoordinator: OnboardingPageViewControllerDelegate {

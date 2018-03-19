@@ -72,7 +72,7 @@ extension OnboardingPageViewController: Actionable {
         case joinTapped(for: OnboardingPageViewController)
         case signInTapped(for: OnboardingPageViewController)
     }
-    
+
 }
 
 // MARK: Private
