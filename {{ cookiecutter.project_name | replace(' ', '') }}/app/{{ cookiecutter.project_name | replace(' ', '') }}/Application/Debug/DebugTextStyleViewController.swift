@@ -14,14 +14,24 @@ import Anchorage
 final class DebugTextStyleViewController: UIViewController {
 
     let textStyles: [(name: String, bonMotStyle: StringStyle)] = [
-        ("demo",   .demo),
+        ("largeTitle", .largeTitle),
+        ("title1", .title1),
+        ("title2", .title2),
+        ("title3", .title3),
+        ("headline", .headline),
+        ("body", .body),
+        ("callout", .callout),
+        ("subhead", .subhead),
+        ("footnote", .footnote),
+        ("caption1", .caption1),
+        ("caption2", .caption2),
         ]
 
     let scrollView = UIScrollView()
     let stackView: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
-        stack.spacing = 10
+        stack.spacing = 20
         return stack
     }()
 
@@ -29,24 +39,22 @@ final class DebugTextStyleViewController: UIViewController {
         super.viewDidLoad()
 
         title = "Text Styles"
-        addBehaviors([ModalDismissBehavior()])
 
         view.backgroundColor = .white
 
         view.addSubview(scrollView)
         scrollView.addSubview(stackView)
-        scrollView.edgeAnchors == view.edgeAnchors
-        stackView.topAnchor == scrollView.topAnchor + 80
-        stackView.bottomAnchor == scrollView.bottomAnchor
+        scrollView.edgeAnchors == edgeAnchors
+        stackView.verticalAnchors == scrollView.verticalAnchors + 20
         stackView.horizontalAnchors == horizontalAnchors + 20
 
         for style in textStyles {
             let label = UILabel()
             label.bonMotStyle = style.bonMotStyle
-            label.bonMotStyle?.alignment = .center
+            label.bonMotStyle?.alignment = .left
             label.numberOfLines = 0
             let font = style.bonMotStyle.font!
-            label.styledText = "This is some \(style.name) text! Point size is \(font.pointSize). Font name is \(font.fontName)."
+            label.styledText = "\(style.name)\nPoint size is \(font.pointSize).\nFont name is \(font.fontName)."
             stackView.addArrangedSubview(label)
         }
     }
