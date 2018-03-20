@@ -79,7 +79,7 @@ platform :ios do
       output_name: "PRODUCTNAME",
       export_method: export_method,
       scheme: scheme,
-      include_bitcode: false,
+      include_bitcode: true,
       xcargs: "BUILD_NUMBER=#{build_number}",
       buildlog_path: "#{ENV['RZ_ARTIFACTS']}",
     )
