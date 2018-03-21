@@ -53,6 +53,7 @@ extension AppCoordinator: OnboardingCoordinator.Delegate {
 
         case .join:
             let authCoordinator = AuthCoordinator()
+            authCoordinator.delegate = self
             attach(to: authCoordinator)
             authCoordinator.startSignUp {
                 window.rootViewController?.present($0, animated: true, completion: nil)
@@ -60,6 +61,7 @@ extension AppCoordinator: OnboardingCoordinator.Delegate {
 
         case .signIn:
             let authCoordinator = AuthCoordinator()
+            authCoordinator.delegate = self
             attach(to: authCoordinator)
             authCoordinator.startSignIn {
                 window.rootViewController?.present($0, animated: true, completion: nil)
