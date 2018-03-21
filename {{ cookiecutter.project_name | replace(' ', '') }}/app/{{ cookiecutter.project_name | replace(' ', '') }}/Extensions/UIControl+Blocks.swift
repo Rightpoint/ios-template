@@ -2,7 +2,7 @@
 //  UIControl+Blocks.swift
 //  {{ cookiecutter.project_name | replace(' ', '') }}
 //
-//  Created by Jason Clark on 3/21/18.
+//  Created by {{ cookiecutter.lead_dev }} on 3/21/18.
 //  Copyright © 2018 {{ cookiecutter.company_name }}. All rights reserved.
 //
 
