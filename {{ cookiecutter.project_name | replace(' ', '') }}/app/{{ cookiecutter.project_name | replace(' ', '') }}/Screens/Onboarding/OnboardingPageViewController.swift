@@ -68,9 +68,9 @@ class OnboardingPageViewController: UIViewController {
 extension OnboardingPageViewController: Actionable {
 
     enum Action {
-        case skipTapped(for: OnboardingPageViewController)
-        case joinTapped(for: OnboardingPageViewController)
-        case signInTapped(for: OnboardingPageViewController)
+        case skipTapped
+        case joinTapped
+        case signInTapped
     }
 
 }
@@ -137,15 +137,15 @@ private extension OnboardingPageViewController {
 // MARK: Actions
 private extension OnboardingPageViewController {
     @objc func skipTapped() {
-        notify(.skipTapped(for: self))
+        notify(.skipTapped)
     }
 
     @objc func joinTapped() {
-        notify(.joinTapped(for: self))
+        notify(.joinTapped)
     }
 
     @objc func signInTapped() {
-        notify(.signInTapped(for: self))
+        notify(.signInTapped)
     }
 
 }
