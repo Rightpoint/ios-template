@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00551422206144E300E4CF68 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 00551421206144E200E4CF68 /* InfoPlist.strings */; };
 		0055142620615F9D00E4CF68 /* Storyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0055142520615F9C00E4CF68 /* Storyboards.swift */; };
 		006EFEF61F264204004A95DE /* TestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006EFEF51F264204004A95DE /* TestClient.swift */; };
 		209BE2512051C768004CF0FF /* Actionable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209BE2502051C768004CF0FF /* Actionable.swift */; };
@@ -116,6 +117,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		00551421206144E200E4CF68 /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
 		0055142520615F9C00E4CF68 /* Storyboards.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storyboards.swift; sourceTree = "<group>"; };
 		006EFEF51F264204004A95DE /* TestClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestClient.swift; sourceTree = "<group>"; };
 		00C3A8FB1F20FDAA00A1E7D0 /* AppStore.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = AppStore.xcconfig; sourceTree = "<group>"; };
@@ -502,6 +504,7 @@
 				ABC7787F1DC90B7A00815FB9 /* Assets.xcassets */,
 				2DFF1D171E8BF82A00B1AD70 /* Colors.swift */,
 				ABC778841DC90B7A00815FB9 /* Info.plist */,
+				00551421206144E200E4CF68 /* InfoPlist.strings */,
 				ABC778811DC90B7A00815FB9 /* LaunchScreen.storyboard */,
 				ABF84F801DC97653002DB24D /* Localizable.strings */,
 				BE2809251E802474006E50D5 /* PRODUCTNAME-Bridging-Header.h */,
@@ -736,6 +739,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABC778DD1DC94EE500815FB9 /* Acknowledgements.plist in Resources */,
+				00551422206144E300E4CF68 /* InfoPlist.strings in Resources */,
 				209BE2562051C90C004CF0FF /* actionable.swifttemplate in Resources */,
 				ABF84F811DC97653002DB24D /* Localizable.strings in Resources */,
 				ABC778831DC90B7A00815FB9 /* LaunchScreen.storyboard in Resources */,
