@@ -41,13 +41,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let window = UIWindow(frame: UIScreen.main.bounds)
         self.window = window
-
         self.coordinator = AppCoordinator(window: window)
-        coordinator.start(animated: true, completion: {
+        coordinator.start { rootViewController in
+            window.rootViewController = rootViewController
+            window.makeKeyAndVisible()
             for config in self.rootViewControllerDependentConfigurations where config.isEnabled {
                 config.onDidLaunch(application: application, launchOptions: launchOptions)
             }
-        })
+        }
 
         return true
     }
