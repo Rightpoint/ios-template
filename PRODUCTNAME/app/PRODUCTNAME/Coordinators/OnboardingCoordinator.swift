@@ -7,27 +7,20 @@
 //
 
 import UIKit
-import Services
 
 class OnboardingCoordinator: Coordinator {
 
-    let baseController: UIViewController
-    var childCoordinator: Coordinator?
     weak var delegate: Delegate?
 
-    init(_ baseController: UIViewController) {
-        self.baseController = baseController
+    static var hasOnboarded: Bool {
+        return UserDefaults.hasOnboarded
     }
 
-    func start(animated: Bool, completion: VoidClosure?) {
-        let vc = OnboardingPageViewController(
-            viewModels: OnboardingCoordinator.pageViewModels)
+    func start(with presentation: (UIViewController) -> Void) {
+        let vc = OnboardingViewController()
         vc.delegate = self
-        baseController.present(vc, animated: animated, completion: completion)
-    }
-
-    func cleanup(animated: Bool, completion: VoidClosure?) {
-        baseController.dismiss(animated: animated, completion: completion)
+        attach(to: vc)
+        presentation(vc)
     }
 
 }
@@ -35,37 +28,21 @@ class OnboardingCoordinator: Coordinator {
 extension OnboardingCoordinator: Actionable {
 
     enum Action {
-        case didSkipAuth
-        case didRequestJoin
-        case didRequestSignIn
+        case skip
+        case join
+        case signIn
     }
 
 }
 
-extension OnboardingCoordinator: OnboardingPageViewControllerDelegate {
+extension OnboardingCoordinator: OnboardingViewController.Delegate {
 
-    func onboardingPageViewController(_ vc: OnboardingPageViewController, didNotify action: OnboardingPageViewController.Action) {
+    func onboardingViewController(_ vc: OnboardingViewController, didNotify action: OnboardingViewController.Action) {
         switch action {
-        case .skipTapped:
-            notify(.didSkipAuth)
-        case .joinTapped:
-            notify(.didRequestJoin)
-        case .signInTapped:
-            notify(.didRequestSignIn)
+        case .skip: notify(.skip)
+        case .join: notify(.join)
+        case .signIn: notify(.signIn)
         }
-    }
-
-}
-
-extension OnboardingCoordinator {
-
-    static var pageViewModels: [OnboardingSamplePageViewModel] {
-        let samplePage = OnboardingSamplePageViewModel(
-            header: L10n.Onboarding.Pages.Sample.heading,
-            body: L10n.Onboarding.Pages.Sample.body,
-            asset: Asset.logoKennyLoggins
-        )
-        return [samplePage, samplePage, samplePage]
     }
 
 }

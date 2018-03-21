@@ -1,5 +1,5 @@
 //
-//  OnboardingPageViewController.swift
+//  OnboardingViewController.swift
 //  PRODUCTNAME
 //
 //  Created by LEADDEVELOPER on 3/29/17.
@@ -9,8 +9,8 @@
 import Anchorage
 import Swiftilities
 
-// MARK: OnboardingPageViewController
-class OnboardingPageViewController: UIViewController {
+// MARK: OnboardingViewController
+class OnboardingViewController: UIViewController {
 
     fileprivate let viewControllers: [UIViewController]
 
@@ -44,12 +44,23 @@ class OnboardingPageViewController: UIViewController {
     }()
     weak var delegate: Delegate?
 
-    init(viewModels: [OnboardingSamplePageViewModel]) {
-        self.viewControllers = viewModels.map {
-            OnboardingSamplePageViewController(viewModel: $0)
-        }
-        super.init(nibName: nil, bundle: nil)
+    init() {
+        let samplePage = OnboardingSamplePageViewModel(
+            header: L10n.Onboarding.Pages.Sample.heading,
+            body: L10n.Onboarding.Pages.Sample.body,
+            asset: Asset.logoKennyLoggins
+        )
+        let viewModels = [samplePage, samplePage, samplePage]
 
+        self.viewControllers = viewModels.map {
+            let vc = OnboardingSamplePageViewController()
+            vc.imageView.image = $0.asset?.image
+            vc.headerLabel.styledText = $0.header
+            vc.bodyLabel.styledText = $0.body
+            return vc
+        }
+
+        super.init(nibName: nil, bundle: nil)
     }
 
     @available(*, unavailable) required init?(coder aDecoder: NSCoder) {
@@ -65,18 +76,18 @@ class OnboardingPageViewController: UIViewController {
 }
 
 // MARK: Actionable
-extension OnboardingPageViewController: Actionable {
+extension OnboardingViewController: Actionable {
 
     enum Action {
-        case skipTapped
-        case joinTapped
-        case signInTapped
+        case skip
+        case join
+        case signIn
     }
 
 }
 
 // MARK: Private
-private extension OnboardingPageViewController {
+private extension OnboardingViewController {
 
     func configureView() {
         view.backgroundColor = .white
@@ -91,7 +102,7 @@ private extension OnboardingPageViewController {
         pageController.didMove(toParentViewController: self)
 
         let pageControlAppearance = UIPageControl.appearance(
-            whenContainedInInstancesOf: [OnboardingPageViewController.self])
+            whenContainedInInstancesOf: [OnboardingViewController.self])
         pageControlAppearance.pageIndicatorTintColor = Colors.lightGray
         pageControlAppearance.currentPageIndicatorTintColor = Colors.darkGray
 
@@ -135,23 +146,23 @@ private extension OnboardingPageViewController {
 }
 
 // MARK: Actions
-private extension OnboardingPageViewController {
+private extension OnboardingViewController {
     @objc func skipTapped() {
-        notify(.skipTapped)
+        notify(.skip)
     }
 
     @objc func joinTapped() {
-        notify(.joinTapped)
+        notify(.join)
     }
 
     @objc func signInTapped() {
-        notify(.signInTapped)
+        notify(.signIn)
     }
 
 }
 
 // MARK: UIPageViewControllerDataSource
-extension OnboardingPageViewController: UIPageViewControllerDataSource {
+extension OnboardingViewController: UIPageViewControllerDataSource {
 
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let index = viewControllers.index(of: viewController), index > 0 else {

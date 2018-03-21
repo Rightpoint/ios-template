@@ -10,9 +10,9 @@ import Anchorage
 
 class OnboardingSamplePageViewController: UIViewController {
 
-    fileprivate let imageView = UIImageView()
+    let imageView = UIImageView()
 
-    fileprivate let headerLabel: UILabel = {
+    let headerLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 28)
         label.textColor = Colors.darkGray
@@ -20,7 +20,7 @@ class OnboardingSamplePageViewController: UIViewController {
         return label
     }()
 
-    fileprivate let bodyLabel: UILabel = {
+    let bodyLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 20)
         label.textColor = Colors.darkGray
@@ -29,11 +29,8 @@ class OnboardingSamplePageViewController: UIViewController {
         return label
     }()
 
-    init(viewModel: OnboardingSamplePageViewModel) {
+    init() {
         super.init(nibName: nil, bundle: nil)
-        imageView.image = viewModel.asset?.image
-        headerLabel.text = viewModel.header
-        bodyLabel.text = viewModel.body
     }
 
     @available(*, unavailable) required init?(coder aDecoder: NSCoder) {
