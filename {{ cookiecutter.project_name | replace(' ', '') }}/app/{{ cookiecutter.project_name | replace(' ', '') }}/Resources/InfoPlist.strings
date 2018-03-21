@@ -1,0 +1,2 @@
+"NSPhotoLibraryUsageDescription" = "The photo library is used by Instabug in debug builds to allow users to upload screenshots.";
+"NSMicrophoneUsageDescription" = "The microphone is used by Instabug in debug builds to allow users to record descriptions of bugs.";
