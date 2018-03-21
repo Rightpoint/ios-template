@@ -8,12 +8,7 @@
 
 import ObjectiveC.runtime
 
-protocol CoordinatorProtocol: class, NSObjectProtocol {
-    func attach(to child: AnyObject)
-    func detatch(from child: AnyObject)
-}
-
-class Coordinator: NSObject, CoordinatorProtocol {}
+class Coordinator: NSObject {}
 
 extension Coordinator {
 
