@@ -1,0 +1,91 @@
+# .circleci/config.yml
+version: 2
+jobs:
+  test:
+    macos:
+      xcode: "9.2.0"
+    environment:
+      FL_OUTPUT_DIR: /Users/distiller/project/output
+      # required to set the correct ruby version
+      # see https://circleci.com/docs/2.0/testing-ios/#custom-ruby-versions
+    shell: /bin/bash --login -eo pipefail
+    working_directory: /Users/distiller/project
+    steps:
+      - run:
+          name: pre-start simulator
+          command: xcrun instruments -w "iPhone 8 (11.2) [" || true
+      - checkout
+      # Make sure that the output directory exists
+      - run: mkdir $FL_OUTPUT_DIR
+      - run: bundle install
+      - run: cd app && bundle exec fastlane test
+            
+  integration:
+    macos:
+      xcode: "9.2.0"
+    environment:
+      FL_OUTPUT_DIR: /Users/distiller/project/output
+    shell: /bin/bash --login -eo pipefail
+    working_directory: /Users/distiller/project
+    steps:
+      - checkout
+      - run: bundle install
+      - run: cd app && bundle exec fastlane develop
+      - store_artifacts:
+          path: "${FL_OUTPUT_DIR}/{{ cookiecutter.project_name }}.ipa"
+  sprint:
+    macos:
+      xcode: "9.2.0"
+    environment:
+      FL_OUTPUT_DIR: /Users/distiller/project/output
+    shell: /bin/bash --login -eo pipefail
+    working_directory: /Users/distiller/project
+    steps:
+      - checkout
+      - run: bundle install
+      - run: cd app && bundle exec fastlane sprint
+      - store_artifacts:
+          path: "${FL_OUTPUT_DIR}/{{ cookiecutter.project_name }}.ipa"
+  beta:
+    macos:
+      xcode: "9.2.0"
+    environment:
+      FL_OUTPUT_DIR: /Users/distiller/project/output
+    shell: /bin/bash --login -eo pipefail
+    working_directory: /Users/distiller/project
+    steps:
+      - checkout
+      - run: bundle install
+      - run: cd app && bundle exec fastlane beta
+      - store_artifacts:
+          path: "${FL_OUTPUT_DIR}/{{ cookiecutter.project_name }}.ipa"
+workflows:
+  version: 2
+  integration:
+    jobs:
+      - test:
+          filters:
+            tags:
+              only: /.*/
+      - integration:
+          requires:
+            - test
+          filters:
+            branches:
+              only: develop
+      - sprint:
+          requires:
+            - test
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /sprint-.*/
+      - beta:
+          requires:
+            - test
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /beta-.*/
