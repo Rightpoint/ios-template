@@ -61,7 +61,7 @@ public final class OAuthClient {
             }
         }
     }
-
+    
     fileprivate func clearKeychain() {
         do {
             try keychain.remove(OAuthClient.credentialKey)
@@ -70,7 +70,7 @@ public final class OAuthClient {
             Log.error("Error removing auth credentials from keychain: \(error.localizedDescription)")
         }
     }
-
+    
     fileprivate var authenticatedTriggers: [VoidClosure] = []
     fileprivate var authenticationRequest: DataRequest?
     fileprivate let lock = NSLock()
