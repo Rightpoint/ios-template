@@ -7,6 +7,11 @@ import Foundation
 // swiftlint:disable explicit_type_interface identifier_name line_length nesting type_body_length type_name
 enum L10n {
 
+  enum Home {
+    /// {{ cookiecutter.project_name | replace(' ', '') }}
+    static let title = L10n.tr("Localizable", "Home.Title")
+  }
+
   enum Onboarding {
 
     enum Buttons {
@@ -29,9 +34,14 @@ enum L10n {
     }
   }
 
-  enum Title {
-    /// {{ cookiecutter.project_name | replace(' ', '') }}
-    static let navigation = L10n.tr("Localizable", "Title.Navigation")
+  enum Signin {
+    /// Sign In
+    static let title = L10n.tr("Localizable", "SignIn.Title")
+  }
+
+  enum Signup {
+    /// Sign Up
+    static let title = L10n.tr("Localizable", "SignUp.Title")
   }
 }
 // swiftlint:enable explicit_type_interface identifier_name line_length nesting type_body_length type_name

@@ -21,6 +21,9 @@ To get started, see [Contributing](#contributing)
 
 - Coordinators should:
   - Manage view controller transitions
+  - Deinit when the views they manage Deinit
+    -  `attach()` to the lifecycle of their children
+  - **NOT** hold strong references to their children
 - View Controllers should:
   - Delegate 'final' actions to a Coordinator
   - **Not** access the navigation controller or present view controllers

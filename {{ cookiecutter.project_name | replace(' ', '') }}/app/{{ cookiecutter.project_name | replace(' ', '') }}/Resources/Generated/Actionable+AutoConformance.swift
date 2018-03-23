@@ -37,34 +37,18 @@ extension OnboardingCoordinator {
 
 }
 
-// MARK: - OnboardingPageViewController
-protocol OnboardingPageViewControllerDelegate: class {
-    func onboardingPageViewController(_ vc: OnboardingPageViewController, didNotify action: OnboardingPageViewController.Action)
+// MARK: - OnboardingViewController
+protocol OnboardingViewControllerDelegate: class {
+    func onboardingViewController(_ vc: OnboardingViewController, didNotify action: OnboardingViewController.Action)
 }
 
-extension OnboardingPageViewController {
+extension OnboardingViewController {
 
     typealias ActionType = Action
-    typealias Delegate = OnboardingPageViewControllerDelegate
+    typealias Delegate = OnboardingViewControllerDelegate
 
     func notify(_ action: ActionType) {
-        delegate?.onboardingPageViewController(self, didNotify: action)
-    }
-
-}
-
-// MARK: - SignInCoordinator
-protocol SignInCoordinatorDelegate: class {
-    func signInCoordinator(_ coordinator: SignInCoordinator, didNotify action: SignInCoordinator.Action)
-}
-
-extension SignInCoordinator {
-
-    typealias ActionType = Action
-    typealias Delegate = SignInCoordinatorDelegate
-
-    func notify(_ action: ActionType) {
-        delegate?.signInCoordinator(self, didNotify: action)
+        delegate?.onboardingViewController(self, didNotify: action)
     }
 
 }

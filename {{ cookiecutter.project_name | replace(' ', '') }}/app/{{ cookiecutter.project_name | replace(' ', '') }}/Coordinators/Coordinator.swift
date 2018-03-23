@@ -6,30 +6,27 @@
 //  Copyright © 2017 {{ cookiecutter.company_name }}. All rights reserved.
 //
 
-import UIKit
-import Services
+import ObjectiveC.runtime
 
-protocol Coordinator {
+class Coordinator: NSObject {}
 
-    /// A child coordinator spun off by this coordinator.
-    /// Important to keep a reference to prevent deallocation.
-    var childCoordinator: Coordinator? { get set }
+extension Coordinator {
 
-    /// Start any action this coordinator should take. Often, this is
-    /// presenting/pushing a new controller, or starting up a
-    /// child coordinator.
-    ///
-    /// - Parameters:
-    ///   - animated: whether to animate any transitions.
-    ///   - completion: a completion block.
-    func start(animated: Bool, completion: VoidClosure?)
+    private static var key = 0
 
-    /// Clean up after this coordinator. Should get the app back to the
-    /// state it was in when this coordinator started.
-    ///
-    /// - Parameters:
-    ///   - animated: whether to animate any transitions.
-    ///   - completion: a completion block.
-    func cleanup(animated: Bool, completion: VoidClosure?)
+    func attach(to child: AnyObject) {
+        var attached = objc_getAssociatedObject(child, &Coordinator.key) as? NSMutableArray
+
+        if attached == nil {
+            attached = NSMutableArray()
+            objc_setAssociatedObject(child, &Coordinator.key, attached, .OBJC_ASSOCIATION_RETAIN)
+        }
+
+        attached?.add(self)
+    }
+
+    func detatch(from child: AnyObject) {
+        (objc_getAssociatedObject(child, &Coordinator.key) as? NSMutableArray)?.remove(self)
+    }
 
 }

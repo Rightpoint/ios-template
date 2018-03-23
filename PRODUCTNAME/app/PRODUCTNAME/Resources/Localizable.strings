@@ -1,7 +1,11 @@
-"Title.Navigation" = "PRODUCTNAME";
-
 "Onboarding.Buttons.Skip" = "Skip";
 "Onboarding.Buttons.Join" = "Join";
 "Onboarding.Buttons.SignIn" = "Already have an account? Sign in.";
 "Onboarding.Pages.Sample.Heading" = "HEADING TEXT";
 "Onboarding.Pages.Sample.Body" = "This is body copy for the onboarding and should be replaced with real text!";
+
+"Home.Title" = "PRODUCTNAME";
+
+"SignIn.Title" = "Sign In";
+
+"SignUp.Title" = "Sign Up";

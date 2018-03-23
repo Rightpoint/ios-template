@@ -7,63 +7,80 @@
 //
 
 import UIKit
-import Services
 
 class AppCoordinator: Coordinator {
 
     private let window: UIWindow
-    fileprivate let rootController: UIViewController
-    var childCoordinator: Coordinator?
 
     init(window: UIWindow) {
         self.window = window
-        let rootController = UIViewController()
-        rootController.view.backgroundColor = .white
-        self.rootController = rootController
     }
 
-    func start(animated: Bool, completion: VoidClosure?) {
-        // Configure window/root view controller
-        window.setRootViewController(rootController, animated: false, completion: {
-            self.window.makeKeyAndVisible()
+    func start(with presentation: (UIViewController) -> Void) {
+        guard OnboardingCoordinator.hasOnboarded else {
+            let onboardingCoordinator = OnboardingCoordinator()
+            onboardingCoordinator.delegate = self
+            attach(to: onboardingCoordinator)
+            onboardingCoordinator.start(with: presentation)
+            return
+        }
 
-            // Spin off auth coordinator
-            let authCoordinator = AuthCoordinator(self.rootController)
+        let authCoordinator = AuthCoordinator()
+        guard authCoordinator.isAuthenticated else {
             authCoordinator.delegate = self
-            self.childCoordinator = authCoordinator
-            authCoordinator.start(animated: animated, completion: completion)
-        })
-    }
+            attach(to: authCoordinator)
+            authCoordinator.startSignIn(with: presentation)
+            return
+        }
 
-    func cleanup(animated: Bool, completion: VoidClosure?) {
-        completion?()
+        let homeCoordinator = HomeCoordinator()
+        attach(to: homeCoordinator)
+        homeCoordinator.start(with: presentation)
     }
 
 }
 
-extension AppCoordinator: AuthCoordinatorDelegate {
+extension AppCoordinator: OnboardingCoordinator.Delegate {
+
+    func onboardingCoordinator(_ coordinator: OnboardingCoordinator, didNotify action: OnboardingCoordinator.Action) {
+        switch action {
+        case .skip:
+            let homeCoordinator = HomeCoordinator()
+            attach(to: homeCoordinator)
+            homeCoordinator.start {
+                window.setRootViewController($0, animated: true)
+            }
+
+        case .join:
+            let authCoordinator = AuthCoordinator()
+            authCoordinator.delegate = self
+            attach(to: authCoordinator)
+            authCoordinator.startSignUp {
+                window.rootViewController?.present($0, animated: true, completion: nil)
+            }
+
+        case .signIn:
+            let authCoordinator = AuthCoordinator()
+            authCoordinator.delegate = self
+            attach(to: authCoordinator)
+            authCoordinator.startSignIn {
+                window.rootViewController?.present($0, animated: true, completion: nil)
+            }
+
+        }
+    }
+
+}
+
+extension AppCoordinator: AuthCoordinator.Delegate {
 
     func authCoordinator(_ coordinator: AuthCoordinator, didNotify action: AuthCoordinator.Action) {
         switch action {
-        case .didSignIn:
-            guard let authCoordinator = childCoordinator as? AuthCoordinator else {
-                preconditionFailure("Upon signing in, AppCoordinator should have an AuthCoordinator as a child.")
-            }
-            childCoordinator = nil
-            authCoordinator.cleanup(animated: true) {
-                let contentCoordinator = ContentCoordinator(self.rootController)
-                self.childCoordinator = contentCoordinator
-                contentCoordinator.start(animated: true, completion: nil)
-            }
-        case .didSkipAuth:
-            guard let authCoordinator = childCoordinator as? AuthCoordinator else {
-                preconditionFailure("Upon signing in, AppCoordinator should have an AuthCoordinator as a child.")
-            }
-            childCoordinator = nil
-            authCoordinator.cleanup(animated: false) {
-                let contentCoordinator = ContentCoordinator(self.rootController)
-                self.childCoordinator = contentCoordinator
-                contentCoordinator.start(animated: true, completion: nil)
+        case .signedIn:
+            let homeCoordinator = HomeCoordinator()
+            attach(to: homeCoordinator)
+            homeCoordinator.start {
+                window.setRootViewController($0, animated: true)
             }
         }
     }
