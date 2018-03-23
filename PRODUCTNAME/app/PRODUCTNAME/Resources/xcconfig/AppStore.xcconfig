@@ -8,12 +8,15 @@
 
 #include "PRODUCTNAME/Resources/xcconfig/Raizlabs-Account.xcconfig"
 
-PRODUCT_BUNDLE_IDENTIFIER = // Insert production bundle here
-PRODUCT_NAME = sprint-$(TARGET_NAME)
-DEVELOPMENT_TEAM = xxxxxx // Insert app store TEAM ID here
+PRODUCT_BUNDLE_IDENTIFIER = //FIXME: Insert production bundle here
+PRODUCT_NAME = $(TARGET_NAME)
+DEVELOPMENT_TEAM = xxxxxx //FIXME: Insert app store TEAM ID here
 
 CODE_SIGN_IDENTITY_PRODUCTNAME = iPhone Distribution
-PROVISIONING_PROFILE_PRODUCTNAME = xxxxxx // Insert sprint provisioning profile ID
+PROVISIONING_PROFILE_PRODUCTNAME = xxxxxx //FIXME: Insert App Store provisioning profile ID
+
+FABRIC_API_KEY = $(PRODUCTNAME_FABRIC_API_KEY)
+FABRIC_BUILD_SECRET = $(PRODUCTNAME_FABRIC_BUILD_SECRET)
 
 GA_ENVIRONMENT = production
 

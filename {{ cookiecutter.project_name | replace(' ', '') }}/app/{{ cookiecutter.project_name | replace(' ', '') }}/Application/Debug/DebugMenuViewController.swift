@@ -17,10 +17,10 @@ class DebugMenuViewController: UITableViewController {
             self?.navigationController?.pushViewController(DebugTextStyleViewController(), animated: true)
         },
         SimpleTableCellItem(text: "Invalidate Refresh Token") {
-            APIClient.shared.oauthClient.credentials?.refreshToken = "BAD ACCESS TOKEN"
+            APIClient.shared.oauthClient.credentials?.refreshToken = "BAD REFRESH TOKEN"
         },
         SimpleTableCellItem(text: "Invalidate Access Token") {
-            APIClient.shared.oauthClient.credentials?.accessToken = "THIS IS A BAD DEBUG TOKEN"
+            APIClient.shared.oauthClient.credentials?.accessToken = "BAD ACCESS TOKEN"
         },
         SimpleTableCellItem(text: "Crash") {
             Crashlytics.sharedInstance().crash()

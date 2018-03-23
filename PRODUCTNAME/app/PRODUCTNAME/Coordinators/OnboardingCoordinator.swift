@@ -9,19 +9,11 @@
 import UIKit
 import Services
 
-protocol OnboardingCoordinatorDelegate: class {
-
-    func didSkipAuth()
-    func didRequestJoin()
-    func didRequestSignIn()
-
-}
-
 class OnboardingCoordinator: Coordinator {
 
     let baseController: UIViewController
     var childCoordinator: Coordinator?
-    weak var delegate: OnboardingCoordinatorDelegate?
+    weak var delegate: Delegate?
 
     init(_ baseController: UIViewController) {
         self.baseController = baseController
@@ -40,18 +32,27 @@ class OnboardingCoordinator: Coordinator {
 
 }
 
+extension OnboardingCoordinator: Actionable {
+
+    enum Action {
+        case didSkipAuth
+        case didRequestJoin
+        case didRequestSignIn
+    }
+
+}
+
 extension OnboardingCoordinator: OnboardingPageViewControllerDelegate {
 
-    func skipTapped(for controller: OnboardingPageViewController) {
-        delegate?.didSkipAuth()
-    }
-
-    func joinTapped(for controller: OnboardingPageViewController) {
-        delegate?.didRequestJoin()
-    }
-
-    func signInTapped(for controller: OnboardingPageViewController) {
-        delegate?.didRequestSignIn()
+    func onboardingPageViewController(_ vc: OnboardingPageViewController, didNotify action: OnboardingPageViewController.Action) {
+        switch action {
+        case .skipTapped:
+            notify(.didSkipAuth)
+        case .joinTapped:
+            notify(.didRequestJoin)
+        case .signInTapped:
+            notify(.didRequestSignIn)
+        }
     }
 
 }

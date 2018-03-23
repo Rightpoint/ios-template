@@ -14,8 +14,8 @@ class DebugMenu {
 
     static func enableDebugGesture(_ viewController: UIViewController) {
         let debugGesture = UITapGestureRecognizer(target: self, action: #selector(openDebugAlert))
-        debugGesture.numberOfTapsRequired = 4
-        debugGesture.numberOfTouchesRequired = 1
+        debugGesture.numberOfTapsRequired = 3
+        debugGesture.numberOfTouchesRequired = 2
         viewController.view.addGestureRecognizer(debugGesture)
     }
 

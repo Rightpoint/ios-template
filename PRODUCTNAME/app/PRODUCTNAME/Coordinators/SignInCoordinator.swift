@@ -9,17 +9,11 @@
 import UIKit
 import Services
 
-protocol SignInCoordinatorDelegate: class {
-
-    func didSignIn()
-
-}
-
 class SignInCoordinator: Coordinator {
 
     let baseController: UIViewController
     var childCoordinator: Coordinator?
-    weak var delegate: SignInCoordinatorDelegate?
+    weak var delegate: Delegate?
 
     init(_ baseController: UIViewController) {
         self.baseController = baseController
@@ -34,6 +28,14 @@ class SignInCoordinator: Coordinator {
 
     func cleanup(animated: Bool, completion: VoidClosure?) {
         baseController.dismiss(animated: animated, completion: completion)
+    }
+
+}
+
+extension SignInCoordinator: Actionable {
+
+    enum Action {
+        case didSignIn
     }
 
 }

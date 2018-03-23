@@ -14,16 +14,16 @@ class OnboardingSamplePageViewController: UIViewController {
 
     fileprivate let headerLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 28)
-        label.textColor = Colors.darkGray
+        label.bonMotStyle = .title1
+        label.bonMotStyle?.color = Color.darkGray
         label.textAlignment = .center
         return label
     }()
 
     fileprivate let bodyLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 20)
-        label.textColor = Colors.darkGray
+        label.bonMotStyle = .title3
+        label.bonMotStyle?.color = Color.darkGray
         label.textAlignment = .center
         label.numberOfLines = 0
         return label
@@ -32,8 +32,8 @@ class OnboardingSamplePageViewController: UIViewController {
     init(viewModel: OnboardingSamplePageViewModel) {
         super.init(nibName: nil, bundle: nil)
         imageView.image = viewModel.asset?.image
-        headerLabel.text = viewModel.header
-        bodyLabel.text = viewModel.body
+        headerLabel.styledText = viewModel.header
+        bodyLabel.styledText = viewModel.body
     }
 
     @available(*, unavailable) required init?(coder aDecoder: NSCoder) {

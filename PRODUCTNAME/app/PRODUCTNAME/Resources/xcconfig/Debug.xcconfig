@@ -10,10 +10,10 @@
 
 PRODUCT_BUNDLE_IDENTIFIER = com.raizlabs.PRODUCTNAME.debug
 PRODUCT_NAME = debug-$(TARGET_NAME)
-DEVELOPMENT_TEAM = xxxxxx // Insert debug TEAM ID here
+DEVELOPMENT_TEAM = xxxxxx // FIXME: Insert debug TEAM ID here
 
 CODE_SIGN_IDENTITY_PRODUCTNAME = iPhone Developer
-PROVISIONING_PROFILE_PRODUCTNAME = xxxxxx // Insert debug provisioning profile ID
+PROVISIONING_PROFILE_PRODUCTNAME = xxxxxx // FIXME: Insert debug provisioning profile ID
 // CODE_SIGN_ENTITLEMENTS = PRODUCTNAME/debug-PRODUCTNAME.entitlements // Enable to allow custom debug entitlements
 
 FABRIC_API_KEY = $(INTERNAL_FABRIC_API_KEY)

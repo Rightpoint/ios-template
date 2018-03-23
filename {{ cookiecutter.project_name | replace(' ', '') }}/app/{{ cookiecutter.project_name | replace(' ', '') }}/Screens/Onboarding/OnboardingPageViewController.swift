@@ -9,15 +9,6 @@
 import Anchorage
 import Swiftilities
 
-// MARK: OnboardingPageViewControllerDelegate
-protocol OnboardingPageViewControllerDelegate: class {
-
-    func skipTapped(for controller: OnboardingPageViewController)
-    func joinTapped(for controller: OnboardingPageViewController)
-    func signInTapped(for controller: OnboardingPageViewController)
-
-}
-
 // MARK: OnboardingPageViewController
 class OnboardingPageViewController: UIViewController {
 
@@ -25,10 +16,10 @@ class OnboardingPageViewController: UIViewController {
 
     fileprivate let skipButton: UIButton = {
         let button = UIButton()
-        button.setTitle(L10n.Onboarding.Buttons.skip, for: .normal)
-        button.setTitleColor(Colors.darkGray, for: .normal)
-        button.setTitleColor(Colors.darkGray.highlighted, for: .highlighted)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 18)
+        button.bonMotStyle = .body
+        button.bonMotStyle?.color = Color.darkGray
+        button.setTitleColor(Color.darkGray.highlighted, for: .highlighted)
+        button.styledText = L10n.Onboarding.Buttons.skip
         return button
     }()
     fileprivate let pageController = UIPageViewController(
@@ -36,22 +27,22 @@ class OnboardingPageViewController: UIViewController {
     fileprivate let firstHairline = HairlineView(axis: .horizontal)
     fileprivate let joinButton: UIButton = {
         let button = UIButton()
-        button.setTitle(L10n.Onboarding.Buttons.join, for: .normal)
-        button.setTitleColor(Colors.green, for: .normal)
-        button.setTitleColor(Colors.green.highlighted, for: .highlighted)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 17)
+        button.bonMotStyle = .body
+        button.bonMotStyle?.color = Color.green
+        button.setTitleColor(Color.green.highlighted, for: .highlighted)
+        button.styledText = L10n.Onboarding.Buttons.join
         return button
     }()
     fileprivate let secondHairline = HairlineView(axis: .horizontal)
     fileprivate let signInButton: UIButton = {
         let button = UIButton()
-        button.setTitle(L10n.Onboarding.Buttons.signIn, for: .normal)
-        button.setTitleColor(Colors.darkGray, for: .normal)
-        button.setTitleColor(Colors.darkGray.highlighted, for: .highlighted)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        button.bonMotStyle = .body
+        button.bonMotStyle?.color = Color.darkGray
+        button.styledText = L10n.Onboarding.Buttons.signIn
+        button.setTitleColor(Color.darkGray.highlighted, for: .highlighted)
         return button
     }()
-    weak var delegate: OnboardingPageViewControllerDelegate?
+    weak var delegate: Delegate?
 
     init(viewModels: [OnboardingSamplePageViewModel]) {
         self.viewControllers = viewModels.map {
@@ -73,6 +64,17 @@ class OnboardingPageViewController: UIViewController {
 
 }
 
+// MARK: Actionable
+extension OnboardingPageViewController: Actionable {
+
+    enum Action {
+        case skipTapped
+        case joinTapped
+        case signInTapped
+    }
+
+}
+
 // MARK: Private
 private extension OnboardingPageViewController {
 
@@ -90,8 +92,8 @@ private extension OnboardingPageViewController {
 
         let pageControlAppearance = UIPageControl.appearance(
             whenContainedInInstancesOf: [OnboardingPageViewController.self])
-        pageControlAppearance.pageIndicatorTintColor = Colors.lightGray
-        pageControlAppearance.currentPageIndicatorTintColor = Colors.darkGray
+        pageControlAppearance.pageIndicatorTintColor = Color.lightGray
+        pageControlAppearance.currentPageIndicatorTintColor = Color.darkGray
 
         view.addSubview(firstHairline)
         joinButton.addTarget(self, action: #selector(joinTapped), for: .touchUpInside)
@@ -135,15 +137,15 @@ private extension OnboardingPageViewController {
 // MARK: Actions
 private extension OnboardingPageViewController {
     @objc func skipTapped() {
-        delegate?.skipTapped(for: self)
+        notify(.skipTapped)
     }
 
     @objc func joinTapped() {
-        delegate?.joinTapped(for: self)
+        notify(.joinTapped)
     }
 
     @objc func signInTapped() {
-        delegate?.signInTapped(for: self)
+        notify(.signInTapped)
     }
 
 }

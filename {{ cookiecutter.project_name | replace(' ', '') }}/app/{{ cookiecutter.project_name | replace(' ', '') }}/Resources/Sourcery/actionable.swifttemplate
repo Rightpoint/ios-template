@@ -1,0 +1,60 @@
+<%
+func variableName(fromTypeName typeName: String) -> String {
+    if typeName.hasSuffix("Coordinator") { return "coordinator" }
+    else if typeName.hasSuffix("ViewController") { return "vc" }
+    else if typeName.hasSuffix("View") { return "view" }
+    else { return "component" }
+}
+
+/// Lowercases the first camel-case group of a type name
+///
+/// - Parameter input: The name of a type
+/// - Returns: The name of the type with the first camel-case group lowercased.
+/// Examples:
+///  - lowerThingy → lowerThingy
+///  - FooViewController → fooViewController
+///  - ABCViewController → abcViewController
+func lowerFirstCamelCaseGroup(_ input: String) -> String {
+    guard !input.isEmpty else { return "" }
+    let firstCapitals = input.prefix { character in
+        return character.unicodeScalars.contains { unicodeScalar in
+            CharacterSet.uppercaseLetters.contains(unicodeScalar)
+        }
+    }
+
+    guard !firstCapitals.isEmpty else {
+        return input
+    }
+
+    let newPrefix: String
+
+    if firstCapitals.count == 1 {
+        newPrefix = firstCapitals.lowercased()
+    }
+    else {
+        newPrefix = "\(firstCapitals.dropLast().lowercased())\(firstCapitals.last!)"
+    }
+    var updated = input
+    let range = updated.range(of: firstCapitals)!
+    updated.replaceSubrange(range, with: newPrefix)
+    return updated
+} _%>
+//swiftlint:disable:previous vertical_whitespace
+<% for type in (types.implementing["Actionable"] ?? []) { %>
+<% let lowerFirstTypeName = lowerFirstCamelCaseGroup(type.name) -%>
+// MARK: - <%= type.name %>
+protocol <%= type.name %>Delegate: class {
+    func <%= lowerFirstTypeName %>(_ <%= variableName(fromTypeName: type.name) %>: <%= type.name %>, didNotify action: <%= type.name %>.Action)
+}
+
+extension <%= type.name %> {
+
+    typealias ActionType = Action
+    typealias Delegate = <%= type.name %>Delegate
+
+    func notify(_ action: ActionType) {
+        delegate?.<%= lowerFirstTypeName %>(self, didNotify: action)
+    }
+
+}
+<% } -%>
