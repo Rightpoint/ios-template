@@ -21,7 +21,6 @@ platform :ios do
     if ENV['RZ_ARTIFACTS'] && ENV['RZ_ARTIFACTS'].length > 0
       sh 'rm -rf $RZ_ARTIFACTS && mkdir $RZ_ARTIFACTS'
     end
-    unlock_keychain(path: './Signing/Raizlabs-PRODUCTNAME.keychain', password: ENV['RZ_KEYCHAIN_PASSWORD'] )
     install_provisioning_profiles(override_provisioning_profiles: true)
   end
 
@@ -42,7 +41,11 @@ platform :ios do
 
   desc "Builds and submits a Develop release to Hockey"
   lane :develop do
-    build("develop-PRODUCTNAME", 'enterprise')
+    build("develop-PRODUCTNAME", 'enterprise', {
+      teamID: "XRTVVR644Y",
+      signingCertificate: "iPhone Distribution",
+      provisioningProfiles: { "com.raizlabs.PRODUCTNAME.develop" => "Raizlabs Generic Enterprise Profile" }
+    })    
     hockey(public_identifier: 'ZZHOCKEY_DEVELOP_IDZZ')
     # upload_symbols_to_crashlytics(:api_token => 'ZZCRASHLYTICS_API_TOKEN_DEVELOPZZ')
     slack(message: "Successfully uploaded build #{build_number} to develop", success: true)
@@ -50,7 +53,11 @@ platform :ios do
 
   desc "Builds and submits a Sprint release to Hockey"
   lane :sprint do
-    build("sprint-PRODUCTNAME", 'enterprise')
+    build("sprint-PRODUCTNAME", 'enterprise', {
+      teamID: "XRTVVR644Y",
+      signingCertificate: "iPhone Distribution",
+      provisioningProfiles: { "com.raizlabs.PRODUCTNAME.sprint" => "Raizlabs Generic Enterprise Profile" }
+    })  
     hockey(public_identifier: 'ZZHOCKEY_SPRINT_IDZZ')
     # upload_symbols_to_crashlytics(:api_token => 'ZZCRASHLYTICS_API_TOKEN_SPRINTZZ')
     slack(message: "Successfully uploaded build #{build_number} to sprint", success: true)
@@ -58,13 +65,17 @@ platform :ios do
 
   # desc "Builds and submits an App Store release to TestFlight"
   lane :beta do
-    build("appStore-PRODUCTNAME", 'app-store')
-    pilot(
-    	distribute_external: false,
-      	skip_waiting_for_build_processing: true,
-    )
-    # upload_symbols_to_crashlytics(:api_token => 'ZZCRASHLYTICS_API_TOKEN_APPSTOREZZ')
-    slack(message: "Successfully uploaded build #{build_number} to test flight", success: true)
+  #  build("appStore-PRODUCTNAME", 'app-store', {
+  #    teamID: "",
+  #    signingCertificate: "iPhone Distribution",
+  #    provisioningProfiles: { "" => "" }
+  #  })    
+  #  pilot(
+  #  	distribute_external: false,
+  #    	skip_waiting_for_build_processing: true,
+  #  )
+  #  upload_symbols_to_crashlytics(:api_token => 'ZZCRASHLYTICS_API_TOKEN_APPSTOREZZ')
+  #  slack(message: "Successfully uploaded build #{build_number} to test flight", success: true)
   end
 
   # Helpers ----------------------
@@ -74,7 +85,8 @@ platform :ios do
     sh "cd .. && synx PRODUCTNAME.xcodeproj"
   end
 
-  def build(scheme, export_method)
+  def build(scheme, export_method, export_options)
+    unlock_keychain(path: './Signing/Raizlabs-PRODUCTNAME.keychain', password: ENV['RZ_KEYCHAIN_PASSWORD'] )
     gym(
       output_directory: "#{ENV['RZ_ARTIFACTS']}",
       output_name: "PRODUCTNAME",
@@ -83,6 +95,7 @@ platform :ios do
       include_bitcode: false,
       xcargs: "BUILD_NUMBER=#{build_number}",
       buildlog_path: "#{ENV['RZ_ARTIFACTS']}",
+      export_options: export_options
     )
   end
 
