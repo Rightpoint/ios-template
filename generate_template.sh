@@ -2,6 +2,15 @@
 
 # This is a shell script to transform the PRODUCTNAME directory into a cookie-cutter template
 
+# Environmental variable options accepted by `generate_template.sh`:
+
+# * `VERBOSE=true`: Prints more verbose output.
+# * `SKIP_REGENERATION=true`: Does not alter the generated cookiecutter template.
+# * `SKIP_TESTS=true`: Does not perform tests after generating template.
+# * `KEEP_COOKIECUTTER_OUTPUT=true`: Do not delete cookiecutter output after running tests (final output is in `ProjectName` directory).
+# * `OUTPUT_DIR`: Use a different output directory (default is current directory)
+
+
 set -e
 set -o pipefail
 
