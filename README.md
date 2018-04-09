@@ -1,4 +1,4 @@
-# iOS template
+# iOS Template
 
 [![Swift 4.1](https://img.shields.io/badge/Swift-4.1-orange.svg?style=flat)](https://swift.org)
 [![CircleCI](https://img.shields.io/circleci/project/github/Raizlabs/ios-template/master.svg)](https://circleci.com/gh/Raizlabs/ios-template)
@@ -9,6 +9,12 @@ Inspired by [thoughtbot]/[ios-template]
 
 [thoughtbot]: https://thoughtbot.com/
 [ios-template]: https://github.com/thoughtbot/ios-template
+
+### Template Output
+
+[![CircleCI](https://img.shields.io/circleci/project/github/Raizlabs/ios-template-output/master.svg)](https://circleci.com/gh/Raizlabs/ios-template-output)
+
+Pushing updates to this repository triggers CircleCI to build a blank template and push the result to the [ios-template-output](https://github.com/Raizlabs/ios-template-output) repository. If the badge above is failing, most likely there is a problem with the inner CircleCI script located in `PRODUCTNAME/.circleci/config.yml`.
 
 ## What's in the template?
 
