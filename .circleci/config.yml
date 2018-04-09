@@ -1,0 +1,177 @@
+version: 2
+jobs:
+  test-xcode-9-2:
+    macos:
+      xcode: "9.2.0"
+    shell: /bin/bash --login -eo pipefail
+    steps:
+      - checkout
+      # Ruby dependencies
+      - run:
+          name: Set Ruby Version
+          command: |
+            echo "ruby-2.4" > ~/.ruby-version
+            chruby
+      - restore_cache:
+          key: 4-gems-{{ checksum "./PRODUCTNAME/Gemfile.lock" }}
+      - run:
+          name: Restore Gems
+          command: |
+           bundle check --gemfile ./PRODUCTNAME/Gemfile || bundle install --gemfile ./PRODUCTNAME/Gemfile
+      # Download CocoaPods specs via HTTPS (faster than Git)
+      - run:
+          name: Install CocoaPods
+          command: |
+            curl https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf
+      # Restore Pods
+      - restore_cache:
+          key: 3-pods-{{ checksum "./PRODUCTNAME/app/Podfile.lock" }}
+      # Python dependencies
+      - restore_cache:
+          key: v3-python-requirements-{{ checksum "requirements.txt" }}
+      - run:
+          name: Install Python dependencies
+          command: pip install -r requirements.txt
+      - save_cache:
+          key: v3-python-requirements-{{ checksum "requirements.txt" }}
+          paths:
+            - "~/Library/Caches/pip"
+            - "/usr/local/lib/python2.7/site-packages"
+            - "/usr/local/lib/site-python"
+            - "/usr/local/bin/cookiecutter"
+      # Run tests
+      - run:
+          name: Test Pre-generated Cookiecutter Template
+          command: |
+            echo Testing branch ${CIRCLE_BRANCH}
+            cookiecutter --no-input ./
+            cd ProjectName/app
+            bundle install
+            bundle exec fastlane test
+      - run:
+          name: Test Template Generation from PRODUCTNAME Directory
+          command: |
+            KEEP_COOKIECUTTER_OUTPUT=true ./generate_template.sh
+      - run:
+          name: Verify cookiecutter matches PRODUCTNAME
+          command: test `git status -s \{\{\ cookiecutter.project_name\ \|\ replace\(\'\ \'\,\ \'\'\)\ \}\}/ | wc -l` -eq 0
+      # Cache Gems
+      - save_cache:
+          key: 4-gems-{{ checksum "./PRODUCTNAME/Gemfile.lock" }}
+          paths:
+            - "{{ $GEM_HOME }}"
+      # Cache Pods
+      - save_cache:
+          key: 3-pods-{{ checksum "./PRODUCTNAME/app/Podfile.lock" }}
+          paths:
+            - "/Users/distiller/Library/Caches/CocoaPods"
+      # Adds SSH key for deploying result to ios-template-output repo
+      - add_ssh_keys:
+          fingerprints:
+            - "33:4f:93:81:10:0e:18:95:86:a8:92:e6:eb:ee:39:92"
+      # This allows us to test that the inner CircleCI template is valid by pushing to another remote repo
+      # Note: we must delete the Pods folder because otherwise "git add -A" crashes due to OOM.
+      - run:
+          name: Deploy template to ios-template-output repo
+          command: |
+            cd ProjectName/app
+            rm -rf Pods
+            bundle exec pod install
+            git add -A
+            export COMMIT_MSG="\"https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/commit/$CIRCLE_SHA1\""
+            git commit -m $COMMIT_MSG
+            git remote add output git@github.com:Raizlabs/ios-template-output.git
+            export GIT_SSH_COMMAND='ssh -i ~/.ssh/id_rsa_334f9381100e189586a892e6ebee3992'
+            git push -u output master:${CIRCLE_BRANCH} --force
+  test-xcode-9-3:
+    macos:
+      xcode: "9.3.0"
+    shell: /bin/bash --login -eo pipefail
+    steps:
+      - checkout
+      - run: 
+          name: Check Xcode Version
+          command: xcodebuild -version
+      # Ruby dependencies
+      - run:
+          name: Set Ruby Version
+          command: |
+            echo "ruby-2.4" > ~/.ruby-version
+            chruby
+      - restore_cache:
+          key: 4-gems-{{ checksum "./PRODUCTNAME/Gemfile.lock" }}
+      - run:
+          name: Restore Gems
+          command: |
+           bundle check --gemfile ./PRODUCTNAME/Gemfile || bundle install --gemfile ./PRODUCTNAME/Gemfile
+      # Download CocoaPods specs via HTTPS (faster than Git)
+      - run:
+          name: Install CocoaPods
+          command: |
+            curl https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf
+      # Restore Pods
+      - restore_cache:
+          key: 3-pods-{{ checksum "./PRODUCTNAME/app/Podfile.lock" }}
+      # Python dependencies
+      - restore_cache:
+          key: v3-python-requirements-{{ checksum "requirements.txt" }}
+      - run:
+          name: Install Python dependencies
+          command: pip install -r requirements.txt
+      - save_cache:
+          key: v3-python-requirements-{{ checksum "requirements.txt" }}
+          paths:
+            - "~/Library/Caches/pip"
+            - "/usr/local/lib/python2.7/site-packages"
+            - "/usr/local/lib/site-python"
+            - "/usr/local/bin/cookiecutter"
+      # Run tests
+      - run:
+          name: Test Pre-generated Cookiecutter Template
+          command: |
+            echo Testing branch ${CIRCLE_BRANCH}
+            cookiecutter --no-input ./
+            cd ProjectName/app
+            bundle install
+            bundle exec fastlane test
+      - run:
+          name: Test Template Generation from PRODUCTNAME Directory
+          command: |
+            KEEP_COOKIECUTTER_OUTPUT=true ./generate_template.sh
+      - run:
+          name: Verify cookiecutter matches PRODUCTNAME
+          command: test `git status -s \{\{\ cookiecutter.project_name\ \|\ replace\(\'\ \'\,\ \'\'\)\ \}\}/ | wc -l` -eq 0
+      # Cache Gems
+      - save_cache:
+          key: 4-gems-{{ checksum "./PRODUCTNAME/Gemfile.lock" }}
+          paths:
+            - "{{ $GEM_HOME }}"
+      # Cache Pods
+      - save_cache:
+          key: 3-pods-{{ checksum "./PRODUCTNAME/app/Podfile.lock" }}
+          paths:
+            - "/Users/distiller/Library/Caches/CocoaPods"
+      # Adds SSH key for deploying result to ios-template-output repo
+      - add_ssh_keys:
+          fingerprints:
+            - "33:4f:93:81:10:0e:18:95:86:a8:92:e6:eb:ee:39:92"
+      # This allows us to test that the inner CircleCI template is valid by pushing to another remote repo
+      # Note: we must delete the Pods folder because otherwise "git add -A" crashes due to OOM.
+      - run:
+          name: Deploy template to ios-template-output repo
+          command: |
+            cd ProjectName/app
+            rm -rf Pods
+            bundle exec pod install
+            git add -A
+            export COMMIT_MSG="\"https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME/commit/$CIRCLE_SHA1\""
+            git commit -m $COMMIT_MSG
+            git remote add output git@github.com:Raizlabs/ios-template-output.git
+            export GIT_SSH_COMMAND='ssh -i ~/.ssh/id_rsa_334f9381100e189586a892e6ebee3992'
+            git push -u output master:${CIRCLE_BRANCH} --force
+workflows:
+  version: 2
+  test-all:
+    jobs:
+      - test-xcode-9-2
+      # - test-xcode-9-3

@@ -1,26 +1,28 @@
 // Generated using SwiftGen, by O.Halligon — https://github.com/SwiftGen/SwiftGen
 
 {% if families %}
+{% set accessModifier %}{% if param.publicAccess %}public{% else %}internal{% endif %}{% endset %}
 #if os(OSX)
   import AppKit.NSFont
-  typealias Font = NSFont
+  {{accessModifier}} typealias Font = NSFont
 #elseif os(iOS) || os(tvOS) || os(watchOS)
   import UIKit.UIFont
-  typealias Font = UIFont
+  {{accessModifier}} typealias Font = UIFont
 #endif
 
+// swiftlint:disable superfluous_disable_command
 // swiftlint:disable file_length
 
-struct FontConvertible {
-  let name: String
-  let family: String
-  let path: String
+{{accessModifier}} struct FontConvertible {
+  {{accessModifier}} let name: String
+  {{accessModifier}} let family: String
+  {{accessModifier}} let path: String
 
-  func font(size: CGFloat) -> Font! {
+  {{accessModifier}} func font(size: CGFloat) -> Font! {
     return Font(font: self, size: size)
   }
 
-  func register() {
+  {{accessModifier}} func register() {
     guard let url = url else { return }
     var errorRef: Unmanaged<CFError>?
     CTFontManagerRegisterFontsForURL(url as CFURL, .process, &errorRef)
@@ -32,7 +34,7 @@ struct FontConvertible {
   }
 }
 
-extension Font {
+{{accessModifier}} extension Font {
   convenience init!(font: FontConvertible, size: CGFloat) {
     #if os(iOS) || os(tvOS) || os(watchOS)
     if !UIFont.fontNames(forFamilyName: font.family).contains(font.name) {
@@ -56,11 +58,11 @@ extension Font {
     {{path|basename}}
   {% endif %}
 {% endfilter %}{% endmacro %}
-enum {{param.enumName|default:"FontFamily"}} {
+{{accessModifier}} enum {{param.enumName|default:"FontFamily"}} {
   {% for family in families %}
-  enum {{family.name|swiftIdentifier:"pretty"|escapeReservedKeywords}} {
+  {{accessModifier}} enum {{family.name|swiftIdentifier:"pretty"|escapeReservedKeywords}} {
     {% for font in family.fonts %}
-    static let {{font.style|swiftIdentifier:"pretty"|lowerFirstWord|escapeReservedKeywords}} = FontConvertible(name: "{{font.name}}", family: "{{family.name}}", path: "{% call transformPath font.path %}")
+    {{accessModifier}} static let {{font.style|swiftIdentifier:"pretty"|lowerFirstWord|escapeReservedKeywords}} = FontConvertible(name: "{{font.name}}", family: "{{family.name}}", path: "{% call transformPath font.path %}")
     {% endfor %}
   }
   {% endfor %}

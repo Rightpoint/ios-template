@@ -71,6 +71,8 @@ public struct StringStyle {
     #if os(iOS) || os(tvOS)
     public var adaptations: [AdaptiveStyle] = []
     #endif
+
+    public var emphasis: Emphasis?
     public var tracking: Tracking?
     public var xmlStyler: XMLStyler?
     public var transform: Transform?
@@ -130,13 +132,13 @@ extension StringStyle {
             let preFeaturedFont = theAttributes[.font] as? BONFont
             var featureProviders = fontFeatureProviders
 
-            featureProviders += [numberCase].flatMap { $0 }
-            featureProviders += [numberSpacing].flatMap { $0 }
-            featureProviders += [fractions].flatMap { $0 }
-            featureProviders += [superscript].flatMap { $0 }.map { ($0 ? VerticalPosition.superscript : VerticalPosition.normal) } as [FontFeatureProvider]
-            featureProviders += [`subscript`].flatMap { $0 }.map { ($0 ? VerticalPosition.`subscript` : VerticalPosition.normal) } as [FontFeatureProvider]
-            featureProviders += [ordinals].flatMap { $0 }.map { $0 ? VerticalPosition.ordinals : VerticalPosition.normal } as [FontFeatureProvider]
-            featureProviders += [scientificInferiors].flatMap { $0 }.map { $0 ? VerticalPosition.scientificInferiors : VerticalPosition.normal } as [FontFeatureProvider]
+            featureProviders += [numberCase].compactMap { $0 } as [FontFeatureProvider]
+            featureProviders += [numberSpacing].compactMap { $0 } as [FontFeatureProvider]
+            featureProviders += [fractions].compactMap { $0 } as [FontFeatureProvider]
+            featureProviders += [superscript].compactMap { $0 }.map { ($0 ? VerticalPosition.superscript : VerticalPosition.normal) } as [FontFeatureProvider]
+            featureProviders += [`subscript`].compactMap { $0 }.map { ($0 ? VerticalPosition.`subscript` : VerticalPosition.normal) } as [FontFeatureProvider]
+            featureProviders += [ordinals].compactMap { $0 }.map { $0 ? VerticalPosition.ordinals : VerticalPosition.normal } as [FontFeatureProvider]
+            featureProviders += [scientificInferiors].compactMap { $0 }.map { $0 ? VerticalPosition.scientificInferiors : VerticalPosition.normal } as [FontFeatureProvider]
             featureProviders += smallCaps.map { $0 as FontFeatureProvider }
             featureProviders += [stylisticAlternates as FontFeatureProvider]
             featureProviders += [contextualAlternates as FontFeatureProvider]
@@ -144,6 +146,20 @@ extension StringStyle {
             let featuredFont = preFeaturedFont?.font(withFeatures: featureProviders)
             theAttributes.update(possibleValue: featuredFont, forKey: .font)
         #endif
+
+        if let font = theAttributes[.font] as? BONFont, let emphasis = emphasis {
+            let descriptor = font.fontDescriptor
+            let existingTraits = descriptor.symbolicTraits
+            let newTraits = existingTraits.union(emphasis.symbolicTraits)
+
+            // Explicit cast to optional because withSymbolicTraits returns an
+            // optional on Mac, but not on iOS.
+            let newDescriptor: BONFontDescriptor? = descriptor.withSymbolicTraits(newTraits)
+            if let newDesciptor = newDescriptor {
+                let newFont = BONFont(descriptor: newDesciptor, size: 0)
+                theAttributes.update(possibleValue: newFont, forKey: .font)
+            }
+        }
 
         #if os(iOS) || os(tvOS)
             // Apply any adaptations
@@ -155,7 +171,7 @@ extension StringStyle {
         // Apply tracking
         if let tracking = tracking {
             let styledFont = theAttributes[.font] as? BONFont
-            theAttributes.update(possibleValue: tracking.kerning(forFont: styledFont), forKey: .kern)
+            theAttributes.update(possibleValue: tracking.kerning(for: styledFont), forKey: .kern)
             #if os(iOS) || os(tvOS)
                 // Add the tracking as an adaptation
                 theAttributes = EmbeddedTransformationHelpers.embed(transformation: tracking, to: theAttributes)
@@ -275,6 +291,16 @@ extension StringStyle {
             stylisticAlternates.add(other: theStringStyle.stylisticAlternates)
             contextualAlternates.add(other: theStringStyle.contextualAlternates)
         #endif
+
+        if let newEmphasis = theStringStyle.emphasis, let existingEmphasis = emphasis {
+            // If we have both new and existing, merge them
+            emphasis = existingEmphasis.union(newEmphasis)
+        }
+        else if let newEmphasis = theStringStyle.emphasis {
+            // If we have only new, just replace existing
+            emphasis = newEmphasis
+        }
+
         #if os(iOS) || os(tvOS)
             adaptations.append(contentsOf: theStringStyle.adaptations)
         #endif

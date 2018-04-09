@@ -3,27 +3,29 @@
 {% if catalogs %}
 {% set colorAlias %}{{param.colorAliasName|default:"AssetColorTypeAlias"}}{% endset %}
 {% set imageAlias %}{{param.imageAliasName|default:"Image"}}{% endset %}
+{% set accessModifier %}{% if param.publicAccess %}public{% else %}internal{% endif %}{% endset %}
 #if os(OSX)
   import AppKit.NSImage
-  typealias {{colorAlias}} = NSColor
-  typealias {{imageAlias}} = NSImage
+  {{accessModifier}} typealias {{colorAlias}} = NSColor
+  {{accessModifier}} typealias {{imageAlias}} = NSImage
 #elseif os(iOS) || os(tvOS) || os(watchOS)
   import UIKit.UIImage
-  typealias {{colorAlias}} = UIColor
-  typealias {{imageAlias}} = UIImage
+  {{accessModifier}} typealias {{colorAlias}} = UIColor
+  {{accessModifier}} typealias {{imageAlias}} = UIImage
 #endif
 
+// swiftlint:disable superfluous_disable_command
 // swiftlint:disable file_length
 
 {% set enumName %}{{param.enumName|default:"Asset"}}{% endset %}
 {% set imageType %}{{param.imageTypeName|default:"ImageAsset"}}{% endset %}
 @available(*, deprecated, renamed: "{{imageType}}")
-typealias {{enumName}}Type = {{imageType}}
+{{accessModifier}} typealias {{enumName}}Type = {{imageType}}
 
-struct {{imageType}} {
-  fileprivate var name: String
+{{accessModifier}} struct {{imageType}} {
+  {{accessModifier}} fileprivate(set) var name: String
 
-  var image: {{imageAlias}} {
+  {{accessModifier}} var image: {{imageAlias}} {
     let bundle = Bundle(for: BundleToken.self)
     #if os(iOS) || os(tvOS)
     let image = {{imageAlias}}(named: name, in: bundle, compatibleWith: nil)
@@ -38,12 +40,12 @@ struct {{imageType}} {
 }
 
 {% set colorType %}{{param.colorTypeName|default:"ColorAsset"}}{% endset %}
-struct {{colorType}} {
-  fileprivate var name: String
+{{accessModifier}} struct {{colorType}} {
+  {{accessModifier}} fileprivate(set) var name: String
 
   #if swift(>=3.2)
   @available(iOS 11.0, tvOS 11.0, watchOS 4.0, OSX 10.13, *)
-  var color: {{colorAlias}} {
+  {{accessModifier}} var color: {{colorAlias}} {
     return {{colorAlias}}(asset: self)
   }
   #endif
@@ -53,27 +55,27 @@ struct {{colorType}} {
 {{sp}}  {% if not param.noAllValues %}
 
 {{sp}}  // swiftlint:disable trailing_comma
-{{sp}}  static let allColors: [{{colorType}}] = [
+{{sp}}  {{accessModifier}} static let allColors: [{{colorType}}] = [
 {{sp}}    {% set sp2 %}{{sp}}  {% endset %}
 {{sp}}    {% call allValuesBlock assets "color" "" sp2 %}
 {{sp}}  ]
-{{sp}}  static let allImages: [{{imageType}}] = [
+{{sp}}  {{accessModifier}} static let allImages: [{{imageType}}] = [
 {{sp}}    {% set sp2 %}{{sp}}  {% endset %}
 {{sp}}    {% call allValuesBlock assets "image" "" sp2 %}
 {{sp}}  ]
 {{sp}}  // swiftlint:enable trailing_comma
 {{sp}}  @available(*, deprecated, renamed: "allImages")
-{{sp}}  static let allValues: [{{enumName}}Type] = allImages
+{{sp}}  {{accessModifier}} static let allValues: [{{enumName}}Type] = allImages
 {{sp}}  {% endif %}
 {% endmacro %}
 {% macro casesBlock assets sp %}
 {{sp}}  {% for asset in assets %}
 {{sp}}  {% if asset.type == "color" %}
-{{sp}}  static let {{asset.name|swiftIdentifier:"pretty"|lowerFirstWord|escapeReservedKeywords}} = {{colorType}}(name: "{{asset.value}}")
+{{sp}}  {{accessModifier}} static let {{asset.name|swiftIdentifier:"pretty"|lowerFirstWord|escapeReservedKeywords}} = {{colorType}}(name: "{{asset.value}}")
 {{sp}}  {% elif asset.type == "image" %}
-{{sp}}  static let {{asset.name|swiftIdentifier:"pretty"|lowerFirstWord|escapeReservedKeywords}} = {{imageType}}(name: "{{asset.value}}")
+{{sp}}  {{accessModifier}} static let {{asset.name|swiftIdentifier:"pretty"|lowerFirstWord|escapeReservedKeywords}} = {{imageType}}(name: "{{asset.value}}")
 {{sp}}  {% elif asset.items %}
-{{sp}}  enum {{asset.name|swiftIdentifier:"pretty"|escapeReservedKeywords}} {
+{{sp}}  {{accessModifier}} enum {{asset.name|swiftIdentifier:"pretty"|escapeReservedKeywords}} {
 {{sp}}    {% set sp2 %}{{sp}}  {% endset %}
 {{sp}}    {% call casesBlock asset.items sp2 %}
 {{sp}}  }
@@ -92,10 +94,10 @@ struct {{colorType}} {
 {% endmacro %}
 
 // swiftlint:disable identifier_name line_length nesting type_body_length type_name
-enum {{enumName}} {
+{{accessModifier}} enum {{enumName}} {
   {% if catalogs.count > 1 %}
   {% for catalog in catalogs %}
-  enum {{catalog.name|swiftIdentifier:"pretty"|escapeReservedKeywords}} {
+  {{accessModifier}} enum {{catalog.name|swiftIdentifier:"pretty"|escapeReservedKeywords}} {
     {% call enumBlock catalog.assets "  " %}
   }
   {% endfor %}
@@ -105,7 +107,7 @@ enum {{enumName}} {
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
 
-extension {{imageAlias}} {
+{{accessModifier}} extension {{imageAlias}} {
   @available(iOS 1.0, tvOS 1.0, watchOS 1.0, *)
   @available(OSX, deprecated,
     message: "This initializer is unsafe on macOS, please use the {{imageType}}.image property")
@@ -119,7 +121,7 @@ extension {{imageAlias}} {
   }
 }
 
-extension {{colorAlias}} {
+{{accessModifier}} extension {{colorAlias}} {
   #if swift(>=3.2)
   @available(iOS 11.0, tvOS 11.0, watchOS 4.0, OSX 10.13, *)
   convenience init!(asset: {{colorType}}) {

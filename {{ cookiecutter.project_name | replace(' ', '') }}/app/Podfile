@@ -1,4 +1,4 @@
-platform :ios, '9.0'
+platform :ios, '10.0'
 use_frameworks!
 inhibit_all_warnings!
 
@@ -28,23 +28,7 @@ target 'Services' do
     shared()
 end
 
-
 pod 'SwiftGen'
-pod 'Sourcery'
+# version 0.11.0 is broken, see https://github.com/krzysztofzablocki/Sourcery/issues/584
+pod 'Sourcery', '~> 0.10.1'
 pod 'SwiftLint'
-
-# This is a hack to support both 3.2 and 4.0 pods. Add the pod name to the array below to build in 4.0.
-#
-# https://github.com/CocoaPods/CocoaPods/issues/7134 is the official thread tracking the issue.
-SWIFT_4_PODS=["BonMot"]
-
-post_install do |installer|
-  require 'fileutils'
-  FileUtils.cp_r('Pods/Target Support Files/Pods-{{ cookiecutter.project_name | replace(' ', '') }}/Pods-{{ cookiecutter.project_name | replace(' ', '') }}-acknowledgements.plist', '{{ cookiecutter.project_name | replace(' ', '') }}/Resources/Acknowledgements.plist', :remove_destination => true)
-  installer.pods_project.targets.each do |target|
-    target.build_configurations.each do |config|
-      config.build_settings['SWIFT_VERSION'] = SWIFT_4_PODS.include?(target.name) ? '4.0' : '3.2'
-    end
-  end
-end
-

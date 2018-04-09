@@ -3,14 +3,14 @@
 
  Contains:   API for using Instabug's SDK.
 
- Copyright:  (c) 2013-2017 by Instabug, Inc., all rights reserved.
+ Copyright:  (c) 2013-2018 by Instabug, Inc., all rights reserved.
 
- Version:    7.3.9
+ Version:    7.11.2
  */
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "IBGTypes.h"
+#import <InstabugCore/InstabugCore.h>
 
 /**
  This is the API for using Instabug's SDK. For more details about the SDK integration,
@@ -43,6 +43,7 @@ typedef void (^NetworkObfuscationCompletionBlock)(NSData *data, NSURLResponse *r
 /// ---------------------------
 /// @name SDK Manual Invocation
 /// ---------------------------
+
 
 /**
  @brief Invokes the SDK manually with the default invocation mode.
@@ -118,6 +119,7 @@ typedef void (^NetworkObfuscationCompletionBlock)(NSData *data, NSURLResponse *r
  */
 + (void)addFileAttachmentWithURL:(NSURL *)fileURL;
 
+
 /**
  @brief Add a set of data as a file attachment to be sent with each report.
  
@@ -128,7 +130,6 @@ typedef void (^NetworkObfuscationCompletionBlock)(NSData *data, NSURLResponse *r
  @param data NSData to be added as a file attachment with each report.
  */
 +(void)addFileAttachmentWithData:(NSData *)data;
-
 
 /**
  @brief Clear list of files to be attached with each report.
@@ -159,6 +160,37 @@ typedef void (^NetworkObfuscationCompletionBlock)(NSData *data, NSURLResponse *r
  @param isUserStepsEnabled A boolean to set user steps tracking to being enabled or disabled.
  */
 + (void)setUserStepsEnabled:(BOOL)isUserStepsEnabled;
+
+/**
+ @brief Sets whether the SDK is recording the screen or not.
+
+ @discussion Enabling auto screen recording would give you an insight on the scenario a user has performed before encountering a bug or a crash. screen recording is attached with each report being sent.
+
+ Auto screen recording is disabled by default.
+
+ @param enabled A boolean to set auto screen recording to being enabled or disabled.
+ */
++ (void)setAutoScreenRecordingEnabled:(BOOL)enabled;
+
+/**
+ @brief Sets maximum auto screen recording video duration.
+
+ @discussion sets maximum auto screen recording video duration with max value 30 seconds and min value greater than 1 sec.
+
+ @param duration A float to set maximum auto screen recording video duration.
+ */
++ (void)setAutoScreenRecordingDuration:(CGFloat)duration;
+/**
+ @brief Sets whether user steps tracking is visual, non visula or disabled.
+ 
+ @discussion Enabling user steps would give you an insight on the scenario a user has performed before encountering a
+ bug or a crash. User steps are attached with each report being sent.
+ 
+ User Steps tracking is enabled by default if it's available in your current plan.
+ 
+ @param userStepsMode An enum to set user steps tracking to be enabled , non visual or disabled.
+ */
++ (void)setReproStepsMode:(IBGUserStepsMode)userStepsMode;
 
 /**
  @brief Sets whether to track and report crashes or not.
@@ -452,6 +484,15 @@ typedef void (^NetworkObfuscationCompletionBlock)(NSData *data, NSURLResponse *r
 + (void)setFloatingButtonEdge:(CGRectEdge)floatingButtonEdge withTopOffset:(double)floatingButtonOffsetFromTop;
 
 /**
+ @brief Sets the default position at which the Instabug screen recording button will be shown. Different orientations are already handled.
+ 
+ @discussion Default for `position` is `bottomRight`.
+ 
+ @param position `topLeft` to show on the top left of screen , or `bottomRight` to show on the bottom right of scrren.
+ */
++ (void)setVideoRecordingFloatingButtonPosition:(IBGPosition)position;
+
+/**
  @brief Sets the SDK's locale.
  
  @discussion Use to change the SDK's UI to different language.
@@ -609,8 +650,14 @@ typedef void (^NetworkObfuscationCompletionBlock)(NSData *data, NSURLResponse *r
                             extraScreenShot:(BOOL)extraScreenShot
                                galleryImage:(BOOL)galleryImage
                                   voiceNote:(BOOL)voiceNote
-                            screenRecording:(BOOL)screenRecording;
+                            screenRecording:(BOOL)screenRecording DEPRECATED_MSG_ATTRIBUTE("Starting from v7.6.1, use setEnabledAttachmentTypes: instead");
 
+/**
+ @brief Sets whether attachments in bug reporting and in-app messaging are enabled.
+ 
+ @param attachmentTypes A NS_OPTIONS to add enabled attachments type.
+ */
++ (void)setEnabledAttachmentTypes:(IBGAttachmentType)attachmentTypes;
 /**
  @brief Enables/disables showing in-app notifications when the user receives a new message.
  
@@ -630,7 +677,7 @@ typedef void (^NetworkObfuscationCompletionBlock)(NSData *data, NSURLResponse *r
  
  @discussion When only a single option is enabled, it become the default invocation mode. 
  If all options are disabled, bug reporting becomes the default invocation mode.
- 
+
  By default, all three options are enabled.
  
  @param bugReportEnabled A boolean to indicate whether bug reports are enabled or disabled.
@@ -650,7 +697,7 @@ typedef void (^NetworkObfuscationCompletionBlock)(NSData *data, NSURLResponse *r
  @param names Array of names of icons to be shown along with titles. Use the same names you would use
  with `+ [UIImage imageNamed:]`.
  */
-+ (void)setReportCategoriesWithTitles:(NSArray<NSString *> *)titles iconNames:(nullable NSArray<NSString *> *)names;
++ (void)setReportCategoriesWithTitles:(NSArray<NSString *> *)titles iconNames:(nullable NSArray<NSString *> *)names DEPRECATED_MSG_ATTRIBUTE("Starting from v7.9, you can add categories from dashboard.");
 
 /**
  @brief Sets an array of report categories to be shown for users to select from before reporting a bug or sending
@@ -661,14 +708,26 @@ typedef void (^NetworkObfuscationCompletionBlock)(NSData *data, NSURLResponse *r
  @param title extra field key.
  @param required determine whether this field is required or not.
  */
-+ (void)addExtraReportFieldWithTitle:(NSString *)title required:(BOOL)required;
++ (void)addExtraReportFieldWithTitle:(NSString *)title required:(BOOL)required DEPRECATED_MSG_ATTRIBUTE("Starting from v7.9, use setExtendedBugReportMode: instead");;
 
 /**
  @brief Remove all extra fields.
  
  @discussion Use this method to remove all added extra fields.
-  */
-+ (void)removeExtraReportFields;
+ */
++ (void)removeExtraReportFields DEPRECATED_MSG_ATTRIBUTE("Starting from v7.9, use setExtendedBugReportMode: instead");;
+
+/**
+ @brief Sets whether the extended bug report mode should be disabled, enabled with required fields or enabled with optional fields.
+ 
+ @discussion This feature is disabled by default. When enabled, it adds more fields for your reporters to fill in. You can set whether the extra fields are required or optional.
+ 1. Expected Results.
+ 2. Actual Results.
+ 3. Steps to Reproduce.
+ 
+ @param extendedBugReportMode An enum to disable the extended bug report mode, enable it with required or with optional fields.
+ */
++ (void)setExtendedBugReportMode:(IBGExtendedBugReportMode)extendedBugReportMode;
 
 /**
  @brief Set custom user attributes that are going to be sent with each feedback, bug or crash.
@@ -799,7 +858,9 @@ typedef void (^NetworkObfuscationCompletionBlock)(NSData *data, NSURLResponse *r
  */
 + (void)logUserEventWithName:(NSString *)name params:(nullable NSDictionary *)params;
 
-#pragma mark - IBGLog
+/// ------------------------
+/// @name IBGLog
+/// ------------------------
 
 /**
  @brief Adds custom logs that will be sent with each report.
@@ -865,7 +926,7 @@ OBJC_EXTERN void IBGLogError(NSString *format, ...) NS_FORMAT_FUNCTION(1, 2);
 /**
  @brief Used to reroute all your NSLogs to Instabug to be able to automatically include them with reports.
  
- @discussion For details on how to reroute your NSLogs to Instabug, see https://docs.instabug.com/docs/ios-logging
+ @discussion For details on how to reroute your NSLogs to Instabug, see http://docs.instabug.com/docs/logging
  
  @param format Format string.
  @param args Arguments list.
@@ -942,7 +1003,9 @@ OBJC_EXTERN void IBGNSLogWithLevel(NSString *format, va_list args, IBGLogLevel l
  */
 + (void)clearAllLogs;
 
-#pragma mark - Network Logging
+/// ------------------------
+/// @name Network Logging
+/// ------------------------
 
 /**
  @brief Sets whether to log network requests or not.
@@ -1086,7 +1149,9 @@ OBJC_EXTERN void IBGNSLogWithLevel(NSString *format, va_list args, IBGLogLevel l
  */
 + (void)setDidReceiveAuthenticationChallengeHandler:(NSURLCredential* (^)(NSURLAuthenticationChallenge *challenge))reciveChallengeHandler;
 
-#pragma mark - Surveys
+/// ------------------------
+/// @name Surveys
+/// ------------------------
 
 /**
  @brief Sets whether auto surveys showing are enabled or not.
@@ -1095,7 +1160,7 @@ OBJC_EXTERN void IBGNSLogWithLevel(NSString *format, va_list args, IBGLogLevel l
  
  To manually display any available surveys, call `+ [Instabug showSurveyIfAvailable]`.
  
- Defaults to NO.
+ Defaults to YES.
  
  @param autoShowingSurveysEnabled A boolean to indicate whether the surveys auto showing are enabled or not.
  */
@@ -1144,14 +1209,48 @@ OBJC_EXTERN void IBGNSLogWithLevel(NSString *format, va_list args, IBGLogLevel l
  */
 + (void)setDidDismissSurveyHandler:(void (^)(void))didShowSurveyHandler;
 
-#pragma mark - SDK Debugging
+/**
+  @brief Shows Survey with a specific token.
+ 
+ @discussion Does nothing if there are no available surveys with that specific token. Answered and canceled surveys won't show up again.
+ 
+  @param surveyToken A String with a survey token.
+  */
++ (void)showSurveyWithToken:(NSString *)surveyToken;
+
+/**
+ @brief Returns true if the survey with a specific token was answered before .
+ 
+ @discussion Will return false if the token does not exist or if the survey was not answered before.
+ 
+ @param surveyToken A String with a survey token.
+*/
++ (BOOL)hasRespondedToSurveyWithToken:(NSString *)surveyToken;
+
+/**
+ @brief Sets a threshold for numbers of sessions and another for number of days required before a survey, that has been dismissed once, would show again.
+ 
+ @discussion When a survey that has been shown to the user gets dismissed once, it will not reappear to the user unless a certain number of sessions have started AND a certain number of days have passed since the user first dismissed the survey. Note that if a survey is dismissed for a second time, it will not show again, in other words, it will be set to `canceled`. This applies to both surveys with and without tokens.
+ 
+ @param sessionCount : Number of sessions required to be initialized before a dismissed survey can be shown again.
+ @param daysCount : Number of days required to pass before a dismissed survey can be shown again.
+ */
++ (void)setThresholdForReshowingSurveyAfterDismiss:(NSInteger)sessionCount daysCount:(NSInteger)daysCount;
+
+/// ------------------------
+/// @name SDK Debugging
+/// ------------------------
 
 /**
  @brief Sets the verbosity level of logs used to debug the Instabug SDK itself.
+ 
+ @discussion This API sets the verbosity level of logs used to debug The SDK. The defualt value in debug mode is IBGSDKDebugLogsLevelVerbose and in production is IBGSDKDebugLogsLevelError.
 
  @param level Logs verbosity level.
  */
 + (void)setSDKDebugLogsLevel:(IBGSDKDebugLogsLevel)level;
 
 @end
+
+
 NS_ASSUME_NONNULL_END

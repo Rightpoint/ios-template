@@ -1,6 +1,7 @@
 // Generated using SwiftGen, by O.Halligon — https://github.com/SwiftGen/SwiftGen
 
 {% if platform and storyboards %}
+{% set accessModifier %}{% if param.publicAccess %}public{% else %}internal{% endif %}{% endset %}
 {% set isAppKit %}{% if platform == "macOS" %}true{% endif %}{% endset %}
 {% set prefix %}{% if isAppKit %}NS{% else %}UI{% endif %}{% endset %}
 {% set controller %}{% if isAppKit %}Controller{% else %}ViewController{% endif %}{% endset %}
@@ -11,24 +12,25 @@ import {% if isAppKit %}Cocoa{% else %}UIKit{% endif %}
 import {{module}}
 {% endfor %}
 
+// swiftlint:disable superfluous_disable_command
 // swiftlint:disable file_length
 
 {# This first part of the code is static, same every time whatever Storyboard you have #}
-protocol StoryboardType {
+{{accessModifier}} protocol StoryboardType {
   static var storyboardName: String { get }
 }
 
-extension StoryboardType {
+{{accessModifier}} extension StoryboardType {
   static var storyboard: {{prefix}}Storyboard {
     return {{prefix}}Storyboard(name: self.storyboardName, bundle: NSBundle(forClass: BundleToken.self))
   }
 }
 
-struct SceneType<T: Any> {
-  let storyboard: StoryboardType.Type
-  let identifier: String
+{{accessModifier}} struct SceneType<T: Any> {
+  {{accessModifier}} let storyboard: StoryboardType.Type
+  {{accessModifier}} let identifier: String
 
-  var controller: T {
+  {{accessModifier}} var controller: T {
     guard let controller = storyboard.storyboard.instantiate{{controller}}WithIdentifier(identifier) as? T else {
       fatalError("Controller '\(identifier)' is not of the expected class \(T.self).")
     }
@@ -36,10 +38,10 @@ struct SceneType<T: Any> {
   }
 }
 
-struct InitialSceneType<T: Any> {
-  let storyboard: StoryboardType.Type
+{{accessModifier}} struct InitialSceneType<T: Any> {
+  {{accessModifier}} let storyboard: StoryboardType.Type
 
-  var controller: T {
+  {{accessModifier}} var controller: T {
     guard let controller = storyboard.storyboard.instantiateInitial{{controller}}() as? T else {
       fatalError("Controller is not of the expected class \(T.self).")
     }
@@ -47,9 +49,9 @@ struct InitialSceneType<T: Any> {
   }
 }
 
-protocol SegueType: RawRepresentable { }
+{{accessModifier}} protocol SegueType: RawRepresentable { }
 
-extension {% if isAppKit %}NSSeguePerforming{% else %}UIViewController{% endif %} {
+{{accessModifier}} extension {% if isAppKit %}NSSeguePerforming{% else %}UIViewController{% endif %} {
   func performSegue<S: SegueType where S.RawValue == String>(segue: S, sender: AnyObject? = nil) {
     performSegueWithIdentifier{% if isAppKit %}?{% endif %}(segue.rawValue, sender: sender)
   }
@@ -70,29 +72,29 @@ extension {% if isAppKit %}NSSeguePerforming{% else %}UIViewController{% endif %
     {{prefix}}{{scene.baseType}}
   {% endif %}
 {% endfilter %}{% endmacro %}
-enum {{sceneEnumName}} {
+{{accessModifier}} enum {{sceneEnumName}} {
   {% for storyboard in storyboards %}
   {% set storyboardName %}{{storyboard.name|swiftIdentifier:"pretty"|escapeReservedKeywords}}{% endset %}
-  enum {{storyboardName}}: StoryboardType {
-    static let storyboardName = "{{storyboard.name}}"
+  {{accessModifier}} enum {{storyboardName}}: StoryboardType {
+    {{accessModifier}} static let storyboardName = "{{storyboard.name}}"
     {% if storyboard.initialScene %}
 
     {% set sceneClass %}{% call className storyboard.initialScene %}{% endset %}
-    static let initialScene = InitialSceneType<{{sceneClass}}>({{storyboardName}}.self)
+    {{accessModifier}} static let initialScene = InitialSceneType<{{sceneClass}}>({{storyboardName}}.self)
     {% endif %}
     {% for scene in storyboard.scenes %}
 
     {% set sceneID %}{{scene.identifier|swiftIdentifier:"pretty"|escapeReservedKeywords}}{% endset %}
     {% set sceneClass %}{% call className scene %}{% endset %}
-    static let {{sceneID}} = SceneType<{{sceneClass}}>({{storyboardName}}.self, identifier: "{{scene.identifier}}")
+    {{accessModifier}} static let {{sceneID}} = SceneType<{{sceneClass}}>({{storyboardName}}.self, identifier: "{{scene.identifier}}")
     {% endfor %}
   }
   {% endfor %}
 }
 
-enum {{param.segueEnumName|default:"StoryboardSegue"}} {
+{{accessModifier}} enum {{param.segueEnumName|default:"StoryboardSegue"}} {
   {% for storyboard in storyboards where storyboard.segues %}
-  enum {{storyboard.name|swiftIdentifier:"pretty"|escapeReservedKeywords}}: String, SegueType {
+  {{accessModifier}} enum {{storyboard.name|swiftIdentifier:"pretty"|escapeReservedKeywords}}: String, SegueType {
     {% for segue in storyboard.segues %}
     {% set segueID %}{{segue.identifier|swiftIdentifier:"pretty"}}{% endset %}
     case {{segueID|escapeReservedKeywords}}{% if segueID != segue.identifier %} = "{{segue.identifier}}"{% endif %}

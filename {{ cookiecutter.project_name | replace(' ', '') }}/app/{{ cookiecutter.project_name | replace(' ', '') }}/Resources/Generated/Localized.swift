@@ -2,36 +2,37 @@
 
 import Foundation
 
+// swiftlint:disable superfluous_disable_command
 // swiftlint:disable file_length
 
 // swiftlint:disable explicit_type_interface identifier_name line_length nesting type_body_length type_name
-enum L10n {
+internal enum L10n {
 
-  enum Onboarding {
+  internal enum Onboarding {
 
-    enum Buttons {
+    internal enum Buttons {
       /// Join
-      static let join = L10n.tr("Localizable", "Onboarding.Buttons.Join")
+      internal static let join = L10n.tr("Localizable", "Onboarding.Buttons.Join")
       /// Already have an account? Sign in.
-      static let signIn = L10n.tr("Localizable", "Onboarding.Buttons.SignIn")
+      internal static let signIn = L10n.tr("Localizable", "Onboarding.Buttons.SignIn")
       /// Skip
-      static let skip = L10n.tr("Localizable", "Onboarding.Buttons.Skip")
+      internal static let skip = L10n.tr("Localizable", "Onboarding.Buttons.Skip")
     }
 
-    enum Pages {
+    internal enum Pages {
 
-      enum Sample {
+      internal enum Sample {
         /// This is body copy for the onboarding and should be replaced with real text!
-        static let body = L10n.tr("Localizable", "Onboarding.Pages.Sample.Body")
+        internal static let body = L10n.tr("Localizable", "Onboarding.Pages.Sample.Body")
         /// HEADING TEXT
-        static let heading = L10n.tr("Localizable", "Onboarding.Pages.Sample.Heading")
+        internal static let heading = L10n.tr("Localizable", "Onboarding.Pages.Sample.Heading")
       }
     }
   }
 
-  enum Title {
+  internal enum Title {
     /// {{ cookiecutter.project_name | replace(' ', '') }}
-    static let navigation = L10n.tr("Localizable", "Title.Navigation")
+    internal static let navigation = L10n.tr("Localizable", "Title.Navigation")
   }
 }
 // swiftlint:enable explicit_type_interface identifier_name line_length nesting type_body_length type_name
