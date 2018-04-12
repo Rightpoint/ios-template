@@ -10,5 +10,7 @@ import XCTest
 @testable import {{ cookiecutter.project_name | replace(' ', '') }}
 
 class {{ cookiecutter.project_name | replace(' ', '') }}Tests: XCTestCase {
-
+    func testUserDefaults() {
+        XCTAssertFalse(UserDefaults.hasOnboarded)
+    }
 }

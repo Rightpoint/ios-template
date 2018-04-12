@@ -10,5 +10,7 @@ import XCTest
 @testable import PRODUCTNAME
 
 class PRODUCTNAMETests: XCTestCase {
-
+    func testUserDefaults() {
+        XCTAssertFalse(UserDefaults.hasOnboarded)
+    }
 }

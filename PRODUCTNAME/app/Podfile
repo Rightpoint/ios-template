@@ -29,6 +29,5 @@ target 'Services' do
 end
 
 pod 'SwiftGen'
-# version 0.11.0 is broken, see https://github.com/krzysztofzablocki/Sourcery/issues/584
-pod 'Sourcery', '~> 0.10.1'
+pod 'Sourcery', '~> 0.12.0'
 pod 'SwiftLint'

@@ -811,7 +811,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ -x \"$PODS_ROOT/SwiftGen/bin/swiftgen\" ]; then\n  $PODS_ROOT/SwiftGen/bin/swiftgen xcassets --template swift3 --output {{ cookiecutter.project_name | replace(' ', '') }}/Resources/Generated/UIImage+Asset.swift {{ cookiecutter.project_name | replace(' ', '') }}/Resources/Assets.xcassets\n  $PODS_ROOT/SwiftGen/bin/swiftgen strings --template structured-swift4 --output {{ cookiecutter.project_name | replace(' ', '') }}/Resources/Generated/Localized.swift {{ cookiecutter.project_name | replace(' ', '') }}/Resources/Localizable.strings\n  $PODS_ROOT/SwiftGen/bin/swiftgen storyboards -t swift3 {{ cookiecutter.project_name | replace(' ', '') }}/ --output {{ cookiecutter.project_name | replace(' ', '') }}/Resources/Generated/Storyboards.swift\nfi\n";
+			shellScript = "if [ -x \"$PODS_ROOT/SwiftGen/bin/swiftgen\" ]; then\n  $PODS_ROOT/SwiftGen/bin/swiftgen xcassets --template swift4 --output {{ cookiecutter.project_name | replace(' ', '') }}/Resources/Generated/UIImage+Asset.swift {{ cookiecutter.project_name | replace(' ', '') }}/Resources/Assets.xcassets\n  $PODS_ROOT/SwiftGen/bin/swiftgen strings --template structured-swift4 --output {{ cookiecutter.project_name | replace(' ', '') }}/Resources/Generated/Localized.swift {{ cookiecutter.project_name | replace(' ', '') }}/Resources/Localizable.strings\n  $PODS_ROOT/SwiftGen/bin/swiftgen storyboards -t swift4 {{ cookiecutter.project_name | replace(' ', '') }}/ --output {{ cookiecutter.project_name | replace(' ', '') }}/Resources/Generated/Storyboards.swift\nfi\n";
 		};
 		4B79AD4EE86D9527DA2201EB /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1149,6 +1149,7 @@
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/debug-{{ cookiecutter.project_name | replace(' ', '') }}.app/debug-{{ cookiecutter.project_name | replace(' ', '') }}";
 			};
 			name = AppStore;
 		};
@@ -1525,6 +1526,7 @@
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/debug-{{ cookiecutter.project_name | replace(' ', '') }}.app/debug-{{ cookiecutter.project_name | replace(' ', '') }}";
 			};
 			name = Debug;
 		};
@@ -1539,6 +1541,7 @@
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/debug-{{ cookiecutter.project_name | replace(' ', '') }}.app/debug-{{ cookiecutter.project_name | replace(' ', '') }}";
 			};
 			name = Develop;
 		};
@@ -1619,6 +1622,7 @@
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/debug-{{ cookiecutter.project_name | replace(' ', '') }}.app/debug-{{ cookiecutter.project_name | replace(' ', '') }}";
 			};
 			name = Sprint;
 		};

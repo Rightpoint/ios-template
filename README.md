@@ -1,7 +1,7 @@
 # iOS Template
 
 [![Swift 4.1](https://img.shields.io/badge/Swift-4.1-orange.svg?style=flat)](https://swift.org)
-[![CircleCI](https://img.shields.io/circleci/project/github/Raizlabs/ios-template/master.svg)](https://circleci.com/gh/Raizlabs/ios-template)
+[![CircleCI](https://img.shields.io/circleci/project/github/Raizlabs/ios-template/master.svg)](https://circleci.com/gh/Raizlabs/ios-template) [![Coverage Status](https://coveralls.io/repos/github/Raizlabs/ios-template/badge.svg)](https://coveralls.io/github/Raizlabs/ios-template)
 
 A template for new iOS projects at Raizlabs.
 
@@ -22,6 +22,7 @@ Pushing updates to this repository triggers CircleCI to build a blank template a
  - Option to configure [Hockey][hockey] apps automatically.
  - [Default Fastfile][fastfile] with test, develop, sprint, beta and release lanes and slack notifications.
  - Configuration for [CircleCI][CircleCI] with auto-triggered builds for merges to develop or tags prefixed with sprint, beta or release.
+ - [Danger](https://danger.systems) to automatically enforce conventions on every pull request.
  - [APIClient Stub][apiclient] with functional OAuth implementation and APIEndpoint protocol.
  - [SwiftGen][SwiftGen] configured to generate localized strings and image enums.
  - Default [swiftlint][swiftlint] rules to help enforce code style standards across projects.
@@ -82,6 +83,32 @@ After running the `generate_template.sh` script, you can manually run `cookiecut
 ## Usage
 
 ### Prerequisites
+
+#### Installing Cookiecutter in a Python Virtual Environment
+
+Install Python 3 using Homebrew.
+
+```bash
+$ brew install python3
+```
+
+Create Python 3 virtual environment `.venv`, activate it, and then install the dependencies. To deactivate use `deactivate`.
+
+```bash
+$ python3 -m venv .venv
+$ source .venv/bin/activate
+# you'll notice your terminal is now prefixed with the virtualenv name
+(.venv) $ pip install -r requirements.txt
+(.venv) $ cookiecutter --help
+```
+
+Before using `cookiecutter` you'll need to activate the virtualenv. You can also install cookiecutter globally, but it may not match the version used by the template.
+
+```bash
+$ cd /path/to/ios-template
+$ source .venv/bin/activate
+(.venv) $ cookiecutter .
+```
 
 #### Installing Ruby
 
@@ -167,6 +194,18 @@ Now you're ready to generate the new project from the cookiecutter template.
 ### OAuth Endpoint
 
 ### APIClient 
+
+### Code Coverage
+
+`xcov` build artifacts are stored on CircleCI with every build and can be accessed within the Artifacts tab of each build.
+
+####  Coveralls
+
+You can also use Coveralls by setting up the `repo_token` from https://coveralls.io/github/Raizlabs/ios-template-output. Add it to the CircleCI environment as `COVERALLS_REPO_TOKEN`.
+
+### Danger
+
+To [set up Danger](http://danger.systems/guides/getting_started.html) on CircleCI you'll need to add a `DANGER_GITHUB_API_TOKEN` to the test environment. There are two bots already available for Raizlabs: for open source projects use our "OSS" bot, and for closed source projects use the "Private" bot.
 
 ## Cookie Cutter
 Cookie Cutter is a python project for templating files and directories. Cookie cutter will ask a series of questions as defined in `cookiecutter.json` and then run the expansion on the contained files and directory names, and file contents. Anything with `{{ cookiecutter.variable }}` is expanded when the template is expanded. This is a powerful primitive but has some complications with Xcode

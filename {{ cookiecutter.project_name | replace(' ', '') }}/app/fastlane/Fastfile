@@ -1,4 +1,4 @@
-fastlane_version "1.104.0"
+fastlane_version "2.89.0"
 
 default_platform :ios
 
@@ -31,12 +31,35 @@ platform :ios do
       scheme: 'debug-{{ cookiecutter.project_name | replace(' ', '') }}',
       output_directory: "#{ENV['RZ_TEST_REPORTS']}",
       buildlog_path: "#{ENV['RZ_ARTIFACTS']}",
+      code_coverage: true
     )
     if !ENV['CIRCLE_TEST_REPORTS'].nil?
       # CircleCI requires the "xml" extension for test reporting
       puts "Fixing JUnit report name"
       sh "mv #{ENV['RZ_TEST_REPORTS']}/report.junit #{ENV['RZ_TEST_REPORTS']}/report.xml"
     end
+
+    if ENV['COVERALLS_REPO_TOKEN'].nil?
+      xcov(
+        workspace: "{{ cookiecutter.project_name | replace(' ', '') }}.xcworkspace",
+        scheme: "debug-{{ cookiecutter.project_name | replace(' ', '') }}",
+        output_directory: "#{ENV['RZ_TEST_REPORTS']}",
+         # For some reason coverage is on the "develop-" app target instead of "debug-"
+        include_targets: "develop-{{ cookiecutter.project_name | replace(' ', '') }}.app, Services.framework",
+      )
+    else
+      xcov(
+        workspace: "{{ cookiecutter.project_name | replace(' ', '') }}.xcworkspace",
+        scheme: "debug-{{ cookiecutter.project_name | replace(' ', '') }}",
+        output_directory: "#{ENV['RZ_TEST_REPORTS']}",
+         # For some reason coverage is on the "develop-" app target instead of "debug-"
+        include_targets: "develop-{{ cookiecutter.project_name | replace(' ', '') }}.app, Services.framework",
+        coveralls_service_name: "circleci",
+        coveralls_service_job_id: "#{ENV['CIRCLE_BUILD_NUM']}"
+      )
+    end
+
+
   end
 
   desc "Builds and submits a Develop release to Hockey"

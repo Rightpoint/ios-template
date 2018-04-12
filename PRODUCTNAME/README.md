@@ -14,6 +14,19 @@ All stories and bugs are tracked in [JIRA][]. Development occurs on branches tha
 
 To get started, see [Contributing](#contributing)
 
+## External Services Setup
+
+`xcov` build artifacts are stored on CircleCI with every build and can be accessed within the Artifacts tab of each build.
+
+### Coveralls
+
+You can also use Coveralls by setting up the `repo_token` from https://coveralls.io. Add it to the CircleCI environment as `COVERALLS_REPO_TOKEN`.
+
+### Danger
+
+To [set up Danger](http://danger.systems/guides/getting_started.html) on CircleCI you'll need to add a `DANGER_GITHUB_API_TOKEN` to the test environment. There are two bots already available for Raizlabs: for open source projects use our "OSS" bot, and for closed source projects use the "Private" bot.
+
+
 ## Architecture
 
 

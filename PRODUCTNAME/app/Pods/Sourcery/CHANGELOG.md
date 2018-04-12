@@ -1,6 +1,99 @@
 # Sourcery CHANGELOG
 
 ---
+
+## 0.12.0
+
+### Internal Changes
+
+- Migrate to Swift 4.1 and Xcode 9.3
+
+## 0.11.2
+
+### Bug fixes
+
+- Autocases template not respecting type access level
+- Ensure SPM and CocoaPods dependencies match
+- Improve AutoMockable template to handle methods with optional return values
+- Fixed crash while compiling swift templates
+
+## 0.11.1
+
+### Internal changes
+
+- Do not fail the build if slather fails
+- Updated SourceKitten to 0.20.0
+
+### Bug fixes
+
+- Fixed parsing protocol methods return type (#579)
+
+## 0.11.0
+
+### New Features
+
+- Supports adding new templates files while in watcher mode
+- Supports adding new source files while in watcher mode
+- Added support for subscripts
+- Added `isGeneric` property for `Method`
+- You can now pass additional arguments one by one, i.e. `--args arg1=value1 --args arg2 --args arg3=value3`
+- Improved support for generic types. Now you can access basic generic type information with `TypeName.generic` property
+- added `@objcMembers` attribute
+- Moved EJS and Swift templates to separate framework targets
+- EJS templates now can be used when building Sourcery with SPM
+- Added Closures to AutoMockable
+- You can now link generated files to projects using config file
+- You can now use AutoMockable with annotations
+- Updated to latest version of Stencil (commit 9184720)
+- Added support for annotation namespaces
+- Added `--exclude-sources` and `--exclude-templates` CLI options
+
+** Breaking **
+
+- @objc attribute now has a `name` argument that contains Objective-C name of attributed declaration
+- Type collections `types.based`, `types.implementing` and `types.inheriting` now return non-optional array. If no types found, empty array will be returned. 
+This is a breaking change for template code like this:
+
+ ```swift
+<% for type in (types.implementing["SomeProtocol"] ?? []) { %>
+```
+
+ The new correct syntax would be:
+
+ ```swift
+<% for type in types.implementing["SomeProtocol"] { %>
+```
+
+### Internal changes
+
+- Migrate to Swift 4, SwiftPM 4 and Xcode 9.2
+- `selectorName` for methods without parameters now will not contain `()`
+- `returnTypeName` for initializers will be the type name of defining type, with `?` for failable initializers
+- Improved compile time of AutoHashable template
+- Updated StencilSwiftKit and Stencil to 0.10.1
+
+### Bug fixes 
+
+- Fixes FSEvents errors reported in #465 that happen on Sierra
+- JS exceptions no more override syntax errors in JS templates 
+- Accessing unknown property on `types` now results in a better error than `undefined is not an object` in JS templates
+- Fixed issue in AutoMockable, where generated non-optional variables wouldn't meet protocol's requirements. For this purpose, underlying variable was introduced
+- Fixed `inline:auto` not inserting code if Sourcery is run with cache enabled #467
+- Fixed parsing @objc attributes on types  
+- Fixed parsing void return type in methods without spaces between method name and body open curly brace and in protocols
+- Fixed AutoMockable template generating throwing method with void return type 
+- Fixed parsing throwing initializers
+- Fixed trying to process files which do not exist
+- Automockable will not generate mocks for methods defined in protocol extensions
+- Fixed parsing typealiases of generic types
+- AutoLenses template will create lenses only for stored properties
+- Fixed resolving actual type name for generics with inner types
+- Fixed parsing nested types from extensions
+- Fixed removing back ticks in types names
+- Fixed creating output folder if it does not exist
+- Fixed inferring variable types with closures and improved inferring types of enum default values
+- Fixed enum cases with empty parenthesis not having () associated value
+
 ## 0.10.1
 
 * When installing Sourcery via CocoaPods, the unneeded `file.zip` is not kept in `Pods/Sourcery/` anymore _(freeing ~12MB on each install of Sourcery made via CocoaPods!)_.  

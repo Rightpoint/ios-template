@@ -24,7 +24,7 @@ internal struct ImageAsset {
     #if os(iOS) || os(tvOS)
     let image = Image(named: name, in: bundle, compatibleWith: nil)
     #elseif os(OSX)
-    let image = bundle.image(forResource: name)
+    let image = bundle.image(forResource: NSImage.Name(name))
     #elseif os(watchOS)
     let image = Image(named: name)
     #endif
@@ -36,12 +36,10 @@ internal struct ImageAsset {
 internal struct ColorAsset {
   internal fileprivate(set) var name: String
 
-  #if swift(>=3.2)
   @available(iOS 11.0, tvOS 11.0, watchOS 4.0, OSX 10.13, *)
   internal var color: AssetColorTypeAlias {
     return AssetColorTypeAlias(asset: self)
   }
-  #endif
 }
 
 // swiftlint:disable identifier_name line_length nesting type_body_length type_name
@@ -68,26 +66,26 @@ internal extension Image {
     #if os(iOS) || os(tvOS)
     let bundle = Bundle(for: BundleToken.self)
     self.init(named: asset.name, in: bundle, compatibleWith: nil)
-    #elseif os(OSX) || os(watchOS)
+    #elseif os(OSX)
+    self.init(named: NSImage.Name(asset.name))
+    #elseif os(watchOS)
     self.init(named: asset.name)
     #endif
   }
 }
 
 internal extension AssetColorTypeAlias {
-  #if swift(>=3.2)
   @available(iOS 11.0, tvOS 11.0, watchOS 4.0, OSX 10.13, *)
   convenience init!(asset: ColorAsset) {
     let bundle = Bundle(for: BundleToken.self)
     #if os(iOS) || os(tvOS)
     self.init(named: asset.name, in: bundle, compatibleWith: nil)
     #elseif os(OSX)
-    self.init(named: asset.name, bundle: bundle)
+    self.init(named: NSColor.Name(asset.name), bundle: bundle)
     #elseif os(watchOS)
     self.init(named: asset.name)
     #endif
   }
-  #endif
 }
 
 private final class BundleToken {}

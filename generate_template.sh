@@ -105,21 +105,21 @@ fi
 
 # Run Tests
 
-if [ "${SKIP_TESTS}" == "true" ] ; then
-    echo "Skipping tests..."
-    exit 0
-fi
-
-echo "Running tests..."
-
 # cookiecutter default output dir is ProjectName
 TEST_OUTPUT_DIR="ProjectName"
 cookiecutter --no-input --overwrite-if-exists ./
-pushd "$TEST_OUTPUT_DIR/app"
-    bundle install
-    bundle exec pod install
-    bundle exec fastlane test
-popd
+
+if [ "${SKIP_TESTS}" == "true" ] ; then
+    echo "Skipping tests..."
+else    
+    echo "Running tests..."
+
+    pushd "$TEST_OUTPUT_DIR/app"
+        bundle install
+        bundle exec pod install
+        bundle exec fastlane test
+    popd
+fi
 
 if [ "${KEEP_COOKIECUTTER_OUTPUT}" == "true" ] ; then
     echo "cookiecutter output kept in ${TEST_OUTPUT_DIR}"
