@@ -1,7 +1,7 @@
 # iOS Template
 
 [![Swift 4.1](https://img.shields.io/badge/Swift-4.1-orange.svg?style=flat)](https://swift.org)
-[![CircleCI](https://img.shields.io/circleci/project/github/Raizlabs/ios-template/master.svg)](https://circleci.com/gh/Raizlabs/ios-template) [![Coverage Status](https://coveralls.io/repos/github/Raizlabs/ios-template/badge.svg)](https://coveralls.io/github/Raizlabs/ios-template)
+[![CircleCI](https://img.shields.io/circleci/project/github/Raizlabs/ios-template/master.svg)](https://circleci.com/gh/Raizlabs/ios-template) [![codecov](https://codecov.io/gh/Raizlabs/ios-template/branch/master/graph/badge.svg)](https://codecov.io/gh/Raizlabs/ios-template)
 
 A template for new iOS projects at Raizlabs.
 
@@ -197,11 +197,11 @@ Now you're ready to generate the new project from the cookiecutter template.
 
 ### Code Coverage
 
-`xcov` build artifacts are stored on CircleCI with every build and can be accessed within the Artifacts tab of each build.
+`xcov` and `slather` build artifacts are stored on CircleCI with every build and can be accessed within the Artifacts tab of each build. For more information see the `PRODUCTNAME/README.md`.
 
-####  Coveralls
+#### Codecov
 
-You can also use Coveralls by setting up the `repo_token` from https://coveralls.io/github/Raizlabs/ios-template-output. Add it to the CircleCI environment as `COVERALLS_REPO_TOKEN`.
+You can use [Codecov](https://codecov.io) automatically as long as the repository's owner is a paid Codecov member (assuming this is a private repo).
 
 ### Danger
 

@@ -13,18 +13,29 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: 2-gems-{{ "{{" }} checksum "Gemfile.lock" {{ "}}" }}
+          key: 3-gems-{{ "{{" }} checksum "Gemfile.lock" {{ "}}" }}
       - run:
           name: Restore Gems
           command: |
            bundle check --gemfile Gemfile || bundle install --gemfile Gemfile
       - save_cache:
-          key: 2-gems-{{ "{{" }} checksum "Gemfile.lock" {{ "}}" }}
+          key: 3-gems-{{ "{{" }} checksum "Gemfile.lock" {{ "}}" }}
+          # The path to the gems may change if .ruby-version file is changed or CircleCI image is updated.
           paths:
-            - "/Users/distiller/.gem/ruby/2.4.0"
+            - "/Users/distiller/.gem/ruby/2.4.4"
       # Make sure that the output directory exists
       - run: mkdir $FL_OUTPUT_DIR
       - run: cd app && bundle exec fastlane test
+      # Store xcov and slather Code Coverage HTML report artifacts
+      - store_artifacts:
+          path: /Users/distiller/project/app/build/xcov
+          destination: xcov
+      - store_artifacts:
+          path: /Users/distiller/project/app/build/slather
+          destination: slather
+      - run:
+          name: Upload to Codecov
+          command: bash <(curl -s https://codecov.io/bash) -f app/build/slather/cobertura.xml -X coveragepy -X gcov -X xcode      
       - run:
           name: Danger
           command: |

@@ -1,11 +1,11 @@
-fastlane_version "2.89.0"
+fastlane_version "2.90.0"
 
 default_platform :ios
 
 # Set by build environment
 # FL_HOCKEY_API_TOKEN
 # RZ_KEYCHAIN_PASSWORD
-#ENV['SLACK_URL'] = 'https://hooks.slack.com/services/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'
+# SLACK_URL - set the hook URL in the CircleCI environment
 
 ENV['RZ_ARTIFACTS'] ||= ENV['CIRCLE_ARTIFACTS'] || './build'
 ENV['RZ_TEST_REPORTS'] ||= ENV['CIRCLE_TEST_REPORTS'] || './build'
@@ -39,26 +39,45 @@ platform :ios do
       sh "mv #{ENV['RZ_TEST_REPORTS']}/report.junit #{ENV['RZ_TEST_REPORTS']}/report.xml"
     end
 
-    if ENV['COVERALLS_REPO_TOKEN'].nil?
-      xcov(
-        workspace: "PRODUCTNAME.xcworkspace",
-        scheme: "debug-PRODUCTNAME",
-        output_directory: "#{ENV['RZ_TEST_REPORTS']}",
-         # For some reason coverage is on the "develop-" app target instead of "debug-"
-        include_targets: "develop-PRODUCTNAME.app, Services.framework",
-      )
-    else
-      xcov(
-        workspace: "PRODUCTNAME.xcworkspace",
-        scheme: "debug-PRODUCTNAME",
-        output_directory: "#{ENV['RZ_TEST_REPORTS']}",
-         # For some reason coverage is on the "develop-" app target instead of "debug-"
-        include_targets: "develop-PRODUCTNAME.app, Services.framework",
-        coveralls_service_name: "circleci",
-        coveralls_service_job_id: "#{ENV['CIRCLE_BUILD_NUM']}"
-      )
+    slather_use_coveralls = "false"
+    slather_use_circleci = "false"
+
+    if !ENV['CIRCLE_BUILD_NUM'].nil?
+      slather_use_circleci = "true"
     end
 
+    xcov(
+      workspace: "PRODUCTNAME.xcworkspace",
+      scheme: "debug-PRODUCTNAME",
+      output_directory: "#{ENV['RZ_TEST_REPORTS']}/xcov",
+       # For some reason coverage is on the "develop-" app target instead of "debug-"
+      include_targets: "develop-PRODUCTNAME.app, Services.framework",
+    )
+
+    slather_proj = "PRODUCTNAME.xcodeproj"
+    slather_workspace = "PRODUCTNAME.xcworkspace"
+    # Only the Services scheme seems to work. It cannot find our app target schemes. 
+    slather_scheme = "Services"
+    slather_output_directory = "#{ENV['RZ_TEST_REPORTS']}/slather"
+
+    # html and cobertura_xml output must be run separately
+    slather(
+      proj: slather_proj,
+      workspace: slather_workspace,
+      scheme: slather_scheme,
+      output_directory: slather_output_directory,
+      html: "true",
+    )
+    # Using Cobertura XML allows us to upload to Codecov.io
+    slather(
+      proj: slather_proj,
+      workspace: slather_workspace,
+      scheme: slather_scheme,
+      output_directory: slather_output_directory,
+      circleci: slather_use_circleci,
+      coveralls: slather_use_coveralls,
+      cobertura_xml: "true",
+    )
 
   end
 
@@ -94,8 +113,8 @@ platform :ios do
   #    provisioningProfiles: { "" => "" }
   #  })    
   #  pilot(
-  #  	distribute_external: false,
-  #    	skip_waiting_for_build_processing: true,
+  #   distribute_external: false,
+  #     skip_waiting_for_build_processing: true,
   #  )
   #  upload_symbols_to_crashlytics(:api_token => 'ZZCRASHLYTICS_API_TOKEN_APPSTOREZZ')
   #  slack(message: "Successfully uploaded build #{build_number} to test flight", success: true)

@@ -1,6 +1,14 @@
 GIT
+  remote: https://github.com/Raizlabs/circleci_artifact.git
+  revision: bbbf364f084774d77ad37feb21254bbce6befc68
+  branch: master
+  specs:
+    circleci_artifact (0.1.0)
+      circleci (~> 2.0)
+
+GIT
   remote: https://github.com/Raizlabs/xcov.git
-  revision: ca6a6ea38fa445a24ed38e450266deacdd29ca23
+  revision: 41e7d39f97a1665b3048d9035547b025caf9ff91
   branch: 1.4.0-rz
   specs:
     xcov (1.4.0)
@@ -10,10 +18,16 @@ GIT
       terminal-table
       xcodeproj
 
+GIT
+  remote: https://github.com/arrouse/install_provisioning_profiles
+  revision: 4cd48378552db10f3872b5bb591cf219d30fb580
+  specs:
+    fastlane-plugin-install_provisioning_profiles (0.2.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
-    CFPropertyList (3.0.0)
+    CFPropertyList (2.3.6)
     activesupport (4.2.10)
       i18n (~> 0.7)
       minitest (~> 5.1)
@@ -23,11 +37,13 @@ GEM
       public_suffix (>= 2.0.2, < 4.0)
     atomos (0.1.2)
     babosa (1.0.2)
+    circleci (2.0.2)
     claide (1.0.2)
     claide-plugins (0.9.2)
       cork
       nap
       open4 (~> 1.3)
+    clamp (0.6.5)
     cocoapods (1.5.0)
       activesupport (>= 4.0.2, < 5)
       claide (>= 1.0.2, < 2.0)
@@ -63,12 +79,13 @@ GEM
     cocoapods-try (1.1.0)
     colored (1.2)
     colored2 (3.1.2)
+    colorize (0.8.1)
     commander-fastlane (4.4.6)
       highline (~> 1.7.2)
     concurrent-ruby (1.0.5)
     cork (0.3.0)
       colored2 (~> 3.1)
-    danger (5.5.11)
+    danger (5.5.12)
       claide (~> 1.0)
       claide-plugins (>= 0.9.2)
       colored2 (~> 3.1)
@@ -92,6 +109,7 @@ GEM
     domain_name (0.5.20170404)
       unf (>= 0.0.5, < 1.0.0)
     dotenv (2.2.2)
+    emoji_regex (0.1.1)
     escape (0.0.4)
     excon (0.62.0)
     faraday (0.14.0)
@@ -104,7 +122,7 @@ GEM
     faraday_middleware (0.12.2)
       faraday (>= 0.7.4, < 1.0)
     fastimage (2.1.1)
-    fastlane (2.89.0)
+    fastlane (2.92.1)
       CFPropertyList (>= 2.3, < 4.0.0)
       addressable (>= 2.3, < 3.0.0)
       babosa (>= 1.0.2, < 2.0.0)
@@ -112,6 +130,7 @@ GEM
       colored
       commander-fastlane (>= 4.4.6, < 5.0.0)
       dotenv (>= 2.1.1, < 3.0.0)
+      emoji_regex (~> 0.1)
       excon (>= 0.45.0, < 1.0.0)
       faraday (~> 0.9)
       faraday-cookie_jar (~> 0.0.6)
@@ -176,6 +195,7 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
     mini_magick (4.5.1)
+    mini_portile2 (2.3.0)
     minitest (5.11.3)
     molinillo (0.6.5)
     multi_json (1.13.1)
@@ -186,6 +206,8 @@ GEM
     naturally (2.1.0)
     netrc (0.11.0)
     no_proxy_fix (0.1.2)
+    nokogiri (1.8.2)
+      mini_portile2 (~> 2.3.0)
     octokit (4.8.0)
       sawyer (~> 0.8.0, >= 0.5.3)
     open4 (1.3.4)
@@ -210,10 +232,20 @@ GEM
       faraday (~> 0.9)
       jwt (>= 1.5, < 3.0)
       multi_json (~> 1.10)
-    simctl (1.6.3)
+    simctl (1.6.4)
       CFPropertyList
       naturally
     slack-notifier (2.3.2)
+    slather (2.4.5)
+      CFPropertyList (~> 2.2)
+      activesupport (>= 4.0.2)
+      clamp (~> 0.6)
+      nokogiri (~> 1.8.2)
+      xcodeproj (~> 1.4)
+    synx (0.2.1)
+      clamp (~> 0.6)
+      colorize (~> 0.7)
+      xcodeproj (~> 1.0)
     terminal-notifier (1.8.0)
     terminal-table (1.8.0)
       unicode-display_width (~> 1.1, >= 1.1.1)
@@ -246,10 +278,16 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  cocoapods (~> 1.5.0)
-  danger (~> 5.5.11)
-  danger-swiftlint (~> 0.16.0)
-  danger-xcov (~> 0.4.1)
+  circleci_artifact!
+  cocoapods
+  danger
+  danger-swiftlint
+  danger-xcov
+  fastlane
+  fastlane-plugin-install_provisioning_profiles!
+  nanaimo
+  slather
+  synx
   xcov!
 
 BUNDLED WITH

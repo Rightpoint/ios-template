@@ -1,5 +1,47 @@
 version: 2
 jobs:
+  code-coverage:
+    macos:
+      xcode: "9.3.0"
+    shell: /bin/bash --login -eo pipefail
+    working_directory: /Users/distiller/project
+    steps:
+      - checkout
+      # Setup Ruby dependencies
+      - restore_cache:
+          keys: 
+            - 1-danger-gems-{{ checksum "Gemfile.lock" }}
+            - 1-danger-gems-
+      - run:
+          name: Restore Ruby Gems
+          command: |
+            bundle check --gemfile Gemfile || bundle install --gemfile Gemfile
+      # Cache Gems
+      - save_cache:
+          key: 1-danger-gems-{{ checksum "Gemfile.lock" }}
+          # The path to the gems may change if .ruby-version file is changed or CircleCI image is updated.
+          paths:
+            - "/Users/distiller/.gem/ruby/2.4.4"
+      - run:
+          name: Code Coverage
+          command: |
+            cd PRODUCTNAME/app
+            bundle exec fastlane test
+      # Store xcov Code Coverage HTML report artifact 
+      - store_artifacts:
+          path: /Users/distiller/project/PRODUCTNAME/app/build/xcov
+          destination: xcov
+      - store_artifacts:
+          path: /Users/distiller/project/PRODUCTNAME/app/build/slather
+          destination: slather
+      - run:
+          name: Upload to Codecov
+          command: bash <(curl -s https://codecov.io/bash) -f PRODUCTNAME/app/build/slather/cobertura.xml -X coveragepy -X gcov -X xcode
+      - run:
+          name: Danger
+          command: |
+            bundle exec danger --dangerfile=PRODUCTNAME/Dangerfile
+
   test-xcode-9-3:
     macos:
       xcode: "9.3.0"
@@ -9,11 +51,12 @@ jobs:
       - checkout
       # Setup Ruby dependencies
       - restore_cache:
-          key: 5-gems-{{ checksum "./PRODUCTNAME/Gemfile.lock" }}-{{ checksum "Gemfile.lock" }}
+          keys: 
+            - 6-gems-{{ checksum "Gemfile.lock" }}
+            - 6-gems-
       - run:
           name: Restore Ruby Gems
           command: |
-            bundle check --gemfile ./PRODUCTNAME/Gemfile || bundle install --gemfile ./PRODUCTNAME/Gemfile
             bundle check --gemfile Gemfile || bundle install --gemfile Gemfile
       # Setup Python dependencies
       - restore_cache:
@@ -31,20 +74,7 @@ jobs:
       # Restore Pods cache
       - restore_cache:
           key: 3-pods-{{ checksum "./PRODUCTNAME/app/Podfile.lock" }}
-      - run:
-          name: Code Coverage
-          command: |
-            cd PRODUCTNAME/app
-            bundle exec fastlane test
-            rm build/develop-PRODUCTNAME-debug-PRODUCTNAME.log
-      # Store xcov Code Coverage HTML report artifact 
-      - store_artifacts:
-          path: /Users/distiller/project/PRODUCTNAME/app/build/
-          destination: code-coverage
-      - run:
-          name: Danger
-          command: |
-            bundle exec danger
+
       # Download CocoaPods specs via HTTPS (faster than Git)
       - run:
           name: Install CocoaPods
@@ -71,7 +101,7 @@ jobs:
           command: test `git status -s \{\{\ cookiecutter.project_name\ \|\ replace\(\'\ \'\,\ \'\'\)\ \}\}/ | wc -l` -eq 0
       # Cache Gems
       - save_cache:
-          key: 6-gems-{{ checksum "./PRODUCTNAME/Gemfile.lock" }}-{{ checksum "Gemfile.lock" }}
+          key: 6-gems-{{ checksum "Gemfile.lock" }}
           # The path to the gems may change if .ruby-version file is changed or CircleCI image is updated.
           paths:
             - "/Users/distiller/.gem/ruby/2.4.4"
@@ -103,4 +133,5 @@ workflows:
   version: 2
   test-all:
     jobs:
+      - code-coverage
       - test-xcode-9-3
