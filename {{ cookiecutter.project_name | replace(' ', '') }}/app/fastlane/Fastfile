@@ -15,6 +15,9 @@ ENV['GYM_OUTPUT_NAME'] = '{{ cookiecutter.project_name | replace(' ', '') }}'
 ENV['FL_HOCKEY_IPA'] = "#{ENV['RZ_ARTIFACTS']}/#{ENV['GYM_OUTPUT_NAME']}.ipa"
 ENV['FL_HOCKEY_NOTIFY'] = '0'
 
+DERIVED_DATA_PATH = "#{ENV['RZ_TEST_REPORTS']}/derived_data"
+TEST_SCHEME = "debug-{{ cookiecutter.project_name | replace(' ', '') }}"
+
 platform :ios do
 
   before_all do
@@ -26,23 +29,23 @@ platform :ios do
 
   desc "Runs tests"
   lane :test do
-    scan_scheme = "debug-{{ cookiecutter.project_name | replace(' ', '') }}"
-    derived_data_path = "#{ENV['RZ_TEST_REPORTS']}/derived_data"
-
     scan(
       output_types: 'junit,html',
-      scheme: scan_scheme,
+      scheme: TEST_SCHEME,
       output_directory: "#{ENV['RZ_TEST_REPORTS']}/scan",
       buildlog_path: "#{ENV['RZ_ARTIFACTS']}",
       code_coverage: true,
-      derived_data_path: derived_data_path
+      derived_data_path: DERIVED_DATA_PATH
     )
     if !ENV['CIRCLE_TEST_REPORTS'].nil?
       # CircleCI requires the "xml" extension for test reporting
       puts "Fixing JUnit report name"
       sh "cp #{ENV['RZ_TEST_REPORTS']}/scan/report.junit #{ENV['RZ_TEST_REPORTS']}/scan/report.xml"
     end
+  end
 
+  desc "Runs Code Coverage"
+  lane :coverage do
     slather_use_coveralls = "false"
     slather_use_circleci = "false"
 
@@ -50,7 +53,7 @@ platform :ios do
       slather_use_circleci = "true"
     end
 
-    xcov_scheme = scan_scheme
+    xcov_scheme = TEST_SCHEME
     xcov_workspace = "{{ cookiecutter.project_name | replace(' ', '') }}.xcworkspace"
 
     xcov(
@@ -59,7 +62,7 @@ platform :ios do
       output_directory: "#{ENV['RZ_TEST_REPORTS']}/xcov",
       # Add targets here as you create internal frameworks
       include_targets: "debug-{{ cookiecutter.project_name | replace(' ', '') }}.app, Services.framework",
-      derived_data_path: derived_data_path
+      derived_data_path: DERIVED_DATA_PATH
     )
 
     slather_proj = "{{ cookiecutter.project_name | replace(' ', '') }}.xcodeproj"
@@ -75,7 +78,7 @@ platform :ios do
       scheme: slather_scheme,
       output_directory: slather_output_directory,
       html: "true",
-      build_directory: derived_data_path
+      build_directory: DERIVED_DATA_PATH
     )
     # Using Cobertura XML allows us to upload to Codecov.io
     # Uploading to codecov is handled separately in the .circleci/config.yml
@@ -87,9 +90,8 @@ platform :ios do
       circleci: slather_use_circleci,
       coveralls: slather_use_coveralls,
       cobertura_xml: "true",
-      build_directory: derived_data_path
+      build_directory: DERIVED_DATA_PATH
     )
-
   end
 
   desc "Builds and submits a Develop release to Hockey"

@@ -27,9 +27,20 @@ jobs:
             - "/Users/distiller/.gem/ruby/2.4.4"
       # Make sure that the output directory exists
       - run: mkdir $FL_OUTPUT_DIR
-      - run: cd app && bundle exec fastlane test
+      - run:
+          name: Tests
+          command: |
+            cd app
+            bundle exec fastlane test
+      - run:
+          name: Code Coverage
+          when: always
+          command: |
+            cd app
+            bundle exec fastlane coverage
       - run:
           name: Screenshots
+          when: always
           command: |
             cd app
             bundle exec fastlane snapshot
@@ -48,9 +59,11 @@ jobs:
           destination: scan
       - run:
           name: Upload to Codecov
+          when: always
           command: bash <(curl -s https://codecov.io/bash) -f app/build/slather/cobertura.xml -X coveragepy -X gcov -X xcode      
       - run:
           name: Danger
+          when: always
           command: |
             bundle exec danger
             

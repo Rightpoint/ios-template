@@ -23,7 +23,7 @@ stop_after_first_error(true)
 
 # prevent rebuilds every time you run snapshot by putting derived data
 # in a deterministic place
-derived_data_path("fastlane/build/snapshot-derived-data")
+derived_data_path("build/snapshot_derived_data")
 
 # For more information about all available options run
 # fastlane action snapshot
