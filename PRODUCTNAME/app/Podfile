@@ -16,6 +16,8 @@ target 'PRODUCTNAME' do
   pod 'Crashlytics'
 
   pod 'GoogleAnalytics',   '~>3.0'
+  
+  pod 'SimulatorStatusMagic', :configurations => ['Debug']
 
   target 'PRODUCTNAMETests' do
     pod 'OHHTTPStubs/Swift'

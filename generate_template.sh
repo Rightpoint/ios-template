@@ -100,6 +100,9 @@ else
     rm -rf "${EXPANDED}/app/Podfile.lock"
     rm -rf "${EXPANDED}/app/Pods"
     rm -rf "${EXPANDED}/app/${EXPANDED}.xcworkspace"
+    rm -rf "${EXPANDED}/app/build"
+    rm -rf "${EXPANDED}/app/fastlane/build"
+    rm -rf "${EXPANDED}/app/fastlane/screenshots"
     echo "Template generation complete."
 fi
 

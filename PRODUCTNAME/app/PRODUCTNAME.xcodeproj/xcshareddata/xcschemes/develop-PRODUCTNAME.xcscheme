@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "ABC778741DC90B7A00815FB9"
-               BuildableName = "develop-PRODUCTNAME.app"
+               BuildableName = "debug-PRODUCTNAME.app"
                BlueprintName = "PRODUCTNAME"
                ReferencedContainer = "container:PRODUCTNAME.xcodeproj">
             </BuildableReference>
@@ -40,7 +40,6 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      language = ""
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
          <TestableReference
@@ -58,7 +57,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "ABC778741DC90B7A00815FB9"
-            BuildableName = "develop-PRODUCTNAME.app"
+            BuildableName = "debug-PRODUCTNAME.app"
             BlueprintName = "PRODUCTNAME"
             ReferencedContainer = "container:PRODUCTNAME.xcodeproj">
          </BuildableReference>
@@ -70,7 +69,6 @@
       buildConfiguration = "Develop"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      language = ""
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
@@ -82,7 +80,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "ABC778741DC90B7A00815FB9"
-            BuildableName = "develop-PRODUCTNAME.app"
+            BuildableName = "debug-PRODUCTNAME.app"
             BlueprintName = "PRODUCTNAME"
             ReferencedContainer = "container:PRODUCTNAME.xcodeproj">
          </BuildableReference>
@@ -101,7 +99,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "ABC778741DC90B7A00815FB9"
-            BuildableName = "develop-PRODUCTNAME.app"
+            BuildableName = "debug-PRODUCTNAME.app"
             BlueprintName = "PRODUCTNAME"
             ReferencedContainer = "container:PRODUCTNAME.xcodeproj">
          </BuildableReference>

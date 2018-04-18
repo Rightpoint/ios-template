@@ -1,9 +1,9 @@
 //
-//  UserDefaults+Utility.swift
-//  PRODUCTNAME
+//  UserDefaults+Utilities.swift
+//  {{ cookiecutter.project_name | replace(' ', '') }}
 //
-//  Created by LEADDEVELOPER on 3/27/17.
-//  Copyright © 2017 ORGANIZATION. All rights reserved.
+//  Created by {{ cookiecutter.lead_dev }} on 3/27/17.
+//  Copyright © 2017 {{ cookiecutter.company_name }}. All rights reserved.
 //
 
 import Foundation

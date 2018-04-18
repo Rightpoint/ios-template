@@ -137,7 +137,7 @@ extension OAuthClient: RequestRetrier {
             if statusCode != 401 {
                 info.append("Status code is not 401")
             }
-            NSLog("Fail request: \(info.flatMap { $0 }.joined(separator: ", "))")
+            NSLog("Fail request: \(info.compactMap { $0 }.joined(separator: ", "))")
         }
         guard shouldRetry else {
             completion(false, 0)

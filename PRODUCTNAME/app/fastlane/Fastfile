@@ -26,17 +26,21 @@ platform :ios do
 
   desc "Runs tests"
   lane :test do
+    scan_scheme = "debug-PRODUCTNAME"
+    derived_data_path = "#{ENV['RZ_TEST_REPORTS']}/derived_data"
+
     scan(
-      output_types: 'junit',
-      scheme: 'debug-PRODUCTNAME',
-      output_directory: "#{ENV['RZ_TEST_REPORTS']}",
+      output_types: 'junit,html',
+      scheme: scan_scheme,
+      output_directory: "#{ENV['RZ_TEST_REPORTS']}/scan",
       buildlog_path: "#{ENV['RZ_ARTIFACTS']}",
-      code_coverage: true
+      code_coverage: true,
+      derived_data_path: derived_data_path
     )
     if !ENV['CIRCLE_TEST_REPORTS'].nil?
       # CircleCI requires the "xml" extension for test reporting
       puts "Fixing JUnit report name"
-      sh "mv #{ENV['RZ_TEST_REPORTS']}/report.junit #{ENV['RZ_TEST_REPORTS']}/report.xml"
+      sh "cp #{ENV['RZ_TEST_REPORTS']}/scan/report.junit #{ENV['RZ_TEST_REPORTS']}/scan/report.xml"
     end
 
     slather_use_coveralls = "false"
@@ -46,16 +50,20 @@ platform :ios do
       slather_use_circleci = "true"
     end
 
+    xcov_scheme = scan_scheme
+    xcov_workspace = "PRODUCTNAME.xcworkspace"
+
     xcov(
-      workspace: "PRODUCTNAME.xcworkspace",
-      scheme: "debug-PRODUCTNAME",
+      workspace: xcov_workspace,
+      scheme: xcov_scheme,
       output_directory: "#{ENV['RZ_TEST_REPORTS']}/xcov",
-       # For some reason coverage is on the "develop-" app target instead of "debug-"
-      include_targets: "develop-PRODUCTNAME.app, Services.framework",
+      # Add targets here as you create internal frameworks
+      include_targets: "debug-PRODUCTNAME.app, Services.framework",
+      derived_data_path: derived_data_path
     )
 
     slather_proj = "PRODUCTNAME.xcodeproj"
-    slather_workspace = "PRODUCTNAME.xcworkspace"
+    slather_workspace = xcov_workspace
     # Only the Services scheme seems to work. It cannot find our app target schemes. 
     slather_scheme = "Services"
     slather_output_directory = "#{ENV['RZ_TEST_REPORTS']}/slather"
@@ -67,8 +75,10 @@ platform :ios do
       scheme: slather_scheme,
       output_directory: slather_output_directory,
       html: "true",
+      build_directory: derived_data_path
     )
     # Using Cobertura XML allows us to upload to Codecov.io
+    # Uploading to codecov is handled separately in the .circleci/config.yml
     slather(
       proj: slather_proj,
       workspace: slather_workspace,
@@ -77,6 +87,7 @@ platform :ios do
       circleci: slather_use_circleci,
       coveralls: slather_use_coveralls,
       cobertura_xml: "true",
+      build_directory: derived_data_path
     )
 
   end

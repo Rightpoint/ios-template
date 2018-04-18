@@ -38,3 +38,4 @@ custom_rules:
 excluded:
   - Pods
   - {{ cookiecutter.project_name | replace(' ', '') }}/Resources/Generated
+  - Screenshots/Helpers/SnapshotHelper.swift

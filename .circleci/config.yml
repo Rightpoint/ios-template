@@ -1,8 +1,11 @@
 version: 2
 jobs:
-  code-coverage:
+  danger:
     macos:
       xcode: "9.3.0"
+    environment:
+      LC_ALL: en_US.UTF-8
+      LANG: en_US.UTF-8
     shell: /bin/bash --login -eo pipefail
     working_directory: /Users/distiller/project
     steps:
@@ -27,6 +30,11 @@ jobs:
           command: |
             cd PRODUCTNAME/app
             bundle exec fastlane test
+      - run:
+          name: Screenshots
+          command: |
+            cd PRODUCTNAME/app
+            bundle exec fastlane snapshot
       # Store xcov Code Coverage HTML report artifact 
       - store_artifacts:
           path: /Users/distiller/project/PRODUCTNAME/app/build/xcov
@@ -34,6 +42,12 @@ jobs:
       - store_artifacts:
           path: /Users/distiller/project/PRODUCTNAME/app/build/slather
           destination: slather
+      - store_artifacts:
+          path: /Users/distiller/project/PRODUCTNAME/app/fastlane/screenshots
+          destination: screenshots
+      - store_artifacts:
+          path: /Users/distiller/project/PRODUCTNAME/app/build/scan
+          destination: scan
       - run:
           name: Upload to Codecov
           command: bash <(curl -s https://codecov.io/bash) -f PRODUCTNAME/app/build/slather/cobertura.xml -X coveragepy -X gcov -X xcode
@@ -45,6 +59,9 @@ jobs:
   test-xcode-9-3:
     macos:
       xcode: "9.3.0"
+    environment:
+      LC_ALL: en_US.UTF-8
+      LANG: en_US.UTF-8
     shell: /bin/bash --login -eo pipefail
     working_directory: /Users/distiller/project
     steps:
@@ -133,5 +150,5 @@ workflows:
   version: 2
   test-all:
     jobs:
-      - code-coverage
+      - danger
       - test-xcode-9-3

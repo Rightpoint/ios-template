@@ -22,10 +22,11 @@ xcov.report(
   workspace: "#{src_root}/{{ cookiecutter.project_name | replace(' ', '') }}.xcworkspace",
   scheme: "debug-{{ cookiecutter.project_name | replace(' ', '') }}",
   output_directory: "#{src_root}/build/xcov",
-   # For some reason coverage is on the "develop-" app target instead of "debug-"
-  include_targets: "develop-{{ cookiecutter.project_name | replace(' ', '') }}.app, Services.framework",
-  ignore_file_path: "#{src_root}/fastlane/.xcovignore"
-)  
+  # Add targets here as you add new internal products / frameworks
+  include_targets: "debug-{{ cookiecutter.project_name | replace(' ', '') }}.app, Services.framework",
+  ignore_file_path: "#{src_root}/fastlane/.xcovignore",
+  derived_data_path: "#{src_root}/build/derived_data"
+)
 
 ## ** SWIFT LINT ***
 # Use the SwiftLint included via CocoaPods
@@ -52,20 +53,26 @@ if !(token.nil? or username.nil? or reponame.nil? or build.nil?)
 
   xcov = CircleciArtifact::Query.new 'xcov/index.html'
   slather = CircleciArtifact::Query.new 'slather/index.html'
-  screenshots = CircleciArtifact::Query.new 'screenshots/index.html'
-  queries = [xcov, slather, screenshots]
+  screenshots = CircleciArtifact::Query.new 'screenshots/screenshots.html'
+  tests = CircleciArtifact::Query.new 'scan/report.html'
+  queries = [xcov, slather, screenshots, tests]
   results = fetcher.fetch(queries)
 
   xcov_url = results.url_for_query(xcov)
   slather_url = results.url_for_query(slather)
   screenshots_url = results.url_for_query(screenshots)
+  tests_url = results.url_for_query(tests)
+
+  if !tests_url.nil?
+      message "[Test Results](#{tests_url})"
+  end
 
   if !xcov_url.nil?
-      message "[xcov](#{xcov_url})"
+      message "[Code Coverage: xcov](#{xcov_url})"
   end
 
   if !slather_url.nil?
-      message "[Slather](#{slather_url})"
+      message "[Code Coverage: Slather](#{slather_url})"
   end
 
   if !screenshots_url.nil?
@@ -74,3 +81,8 @@ if !(token.nil? or username.nil? or reponame.nil? or build.nil?)
 else
   warn "Missing CircleCI artifacts. Most likely the [CIRCLE_API_TOKEN](https://github.com/Raizlabs/circleci_artifact#getting-started) is not set, or Danger is not running on CircleCI."
 end
+
+# Test Reporting
+
+junit.parse "#{src_root}/build/scan/report.junit"
+junit.report

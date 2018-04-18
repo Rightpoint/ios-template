@@ -6,6 +6,8 @@ jobs:
       xcode: "9.3.0"
     environment:
       FL_OUTPUT_DIR: /Users/distiller/project/output
+      LC_ALL: en_US.UTF-8
+      LANG: en_US.UTF-8
       # required to set the correct ruby version
       # see https://circleci.com/docs/2.0/testing-ios/#custom-ruby-versions
     shell: /bin/bash --login -eo pipefail
@@ -26,6 +28,11 @@ jobs:
       # Make sure that the output directory exists
       - run: mkdir $FL_OUTPUT_DIR
       - run: cd app && bundle exec fastlane test
+      - run:
+          name: Screenshots
+          command: |
+            cd app
+            bundle exec fastlane snapshot
       # Store xcov and slather Code Coverage HTML report artifacts
       - store_artifacts:
           path: /Users/distiller/project/app/build/xcov
@@ -33,6 +40,12 @@ jobs:
       - store_artifacts:
           path: /Users/distiller/project/app/build/slather
           destination: slather
+      - store_artifacts:
+          path: /Users/distiller/project/app/fastlane/screenshots
+          destination: screenshots
+      - store_artifacts:
+          path: /Users/distiller/project/app/build/scan
+          destination: scan
       - run:
           name: Upload to Codecov
           command: bash <(curl -s https://codecov.io/bash) -f app/build/slather/cobertura.xml -X coveragepy -X gcov -X xcode      
@@ -46,6 +59,8 @@ jobs:
       xcode: "9.3.0"
     environment:
       FL_OUTPUT_DIR: /Users/distiller/project/output
+      LC_ALL: en_US.UTF-8
+      LANG: en_US.UTF-8
     shell: /bin/bash --login -eo pipefail
     working_directory: /Users/distiller/project
     steps:
@@ -59,6 +74,8 @@ jobs:
       xcode: "9.3.0"
     environment:
       FL_OUTPUT_DIR: /Users/distiller/project/output
+      LC_ALL: en_US.UTF-8
+      LANG: en_US.UTF-8
     shell: /bin/bash --login -eo pipefail
     working_directory: /Users/distiller/project
     steps:
@@ -72,6 +89,8 @@ jobs:
       xcode: "9.3.0"
     environment:
       FL_OUTPUT_DIR: /Users/distiller/project/output
+      LC_ALL: en_US.UTF-8
+      LANG: en_US.UTF-8
     shell: /bin/bash --login -eo pipefail
     working_directory: /Users/distiller/project
     steps:

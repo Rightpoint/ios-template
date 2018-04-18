@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         CrashReportingConfiguration(),
         AnalyticsConfiguration(),
         DebugMenuConfiguration(),
+        StatusBarConfiguration(),
         ]
 
     // Anything that relies on the existence of a window and an initial viewcontroller should be in this postWindowConfigurations array

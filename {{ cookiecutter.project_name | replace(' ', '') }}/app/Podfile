@@ -16,6 +16,8 @@ target '{{ cookiecutter.project_name | replace(' ', '') }}' do
   pod 'Crashlytics'
 
   pod 'GoogleAnalytics',   '~>3.0'
+  
+  pod 'SimulatorStatusMagic', :configurations => ['Debug']
 
   target '{{ cookiecutter.project_name | replace(' ', '') }}Tests' do
     pod 'OHHTTPStubs/Swift'
