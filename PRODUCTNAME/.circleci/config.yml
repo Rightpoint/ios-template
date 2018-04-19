@@ -8,6 +8,9 @@ jobs:
       FL_OUTPUT_DIR: /Users/distiller/project/output
       LC_ALL: en_US.UTF-8
       LANG: en_US.UTF-8
+      BUNDLE_JOBS: 3
+      BUNDLE_RETRY: 3
+      BUNDLE_PATH: /Users/distiller/project/app/build/gems
       # required to set the correct ruby version
       # see https://circleci.com/docs/2.0/testing-ios/#custom-ruby-versions
     shell: /bin/bash --login -eo pipefail
@@ -15,16 +18,17 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: 3-gems-{{ "{{" }} checksum "Gemfile.lock" {{ "}}" }}
+          key: 4-gems-{{ "{{" }} checksum "Gemfile.lock" {{ "}}" }}
+          # Fall back to a previous cache if exact match cannot be found
+          key: 4-gems-
       - run:
           name: Restore Gems
           command: |
-           bundle check --gemfile Gemfile || bundle install --gemfile Gemfile
+           bundle check || bundle install
       - save_cache:
-          key: 3-gems-{{ "{{" }} checksum "Gemfile.lock" {{ "}}" }}
-          # The path to the gems may change if .ruby-version file is changed or CircleCI image is updated.
+          key: 4-gems-{{ "{{" }} checksum "Gemfile.lock" {{ "}}" }}
           paths:
-            - "/Users/distiller/.gem/ruby/2.4.4"
+            - "/Users/distiller/project/app/build/gems"
       # Make sure that the output directory exists
       - run: mkdir $FL_OUTPUT_DIR
       - run:
@@ -38,12 +42,6 @@ jobs:
           command: |
             cd app
             bundle exec fastlane coverage
-      - run:
-          name: Screenshots
-          when: always
-          command: |
-            cd app
-            bundle exec fastlane snapshot
       # Store xcov and slather Code Coverage HTML report artifacts
       - store_artifacts:
           path: /Users/distiller/project/app/build/xcov
@@ -52,20 +50,39 @@ jobs:
           path: /Users/distiller/project/app/build/slather
           destination: slather
       - store_artifacts:
-          path: /Users/distiller/project/app/fastlane/screenshots
-          destination: screenshots
-      - store_artifacts:
           path: /Users/distiller/project/app/build/scan
           destination: scan
-      - run:
-          name: Upload to Codecov
-          when: always
-          command: bash <(curl -s https://codecov.io/bash) -f app/build/slather/cobertura.xml -X coveragepy -X gcov -X xcode      
+      # Update Danger as soon as we have code coverage/tests, while waiting for screenshots to be generated
       - run:
           name: Danger
           when: always
           command: |
             bundle exec danger
+      - run:
+          name: Upload to Codecov
+          when: always
+          command: bash <(curl -s https://codecov.io/bash) -f app/build/slather/cobertura.xml -X coveragepy -X gcov -X xcode      
+      - run:
+          name: Screenshots
+          when: always
+          command: |
+            cd app
+            bundle exec fastlane snapshot
+      - store_artifacts:
+          path: /Users/distiller/project/app/fastlane/screenshots
+          destination: screenshots
+      # Run Danger again once screenshots are complete
+      - run:
+          name: Danger
+          when: always
+          command: |
+            bundle exec danger
+      - run:
+          name: Post Screenshots to Slack
+          when: always
+          command: |
+            cd app
+            bundle exec fastlane slackshots
             
   integration:
     macos:
@@ -74,11 +91,25 @@ jobs:
       FL_OUTPUT_DIR: /Users/distiller/project/output
       LC_ALL: en_US.UTF-8
       LANG: en_US.UTF-8
+      BUNDLE_JOBS: 3
+      BUNDLE_RETRY: 3
+      BUNDLE_PATH: /Users/distiller/project/app/build/gems
     shell: /bin/bash --login -eo pipefail
     working_directory: /Users/distiller/project
     steps:
       - checkout
-      - run: bundle install
+      - restore_cache:
+          key: 4-gems-{{ "{{" }} checksum "Gemfile.lock" {{ "}}" }}
+          # Fall back to a previous cache if exact match cannot be found
+          key: 4-gems-
+      - run:
+          name: Restore Gems
+          command: |
+           bundle check || bundle install
+      - save_cache:
+          key: 4-gems-{{ "{{" }} checksum "Gemfile.lock" {{ "}}" }}
+          paths:
+            - "/Users/distiller/project/app/build/gems"
       - run: cd app && bundle exec fastlane develop
       - store_artifacts:
           path: "${FL_OUTPUT_DIR}/{{ cookiecutter.project_name }}.ipa"
@@ -89,11 +120,25 @@ jobs:
       FL_OUTPUT_DIR: /Users/distiller/project/output
       LC_ALL: en_US.UTF-8
       LANG: en_US.UTF-8
+      BUNDLE_JOBS: 3
+      BUNDLE_RETRY: 3
+      BUNDLE_PATH: /Users/distiller/project/app/build/gems
     shell: /bin/bash --login -eo pipefail
     working_directory: /Users/distiller/project
     steps:
       - checkout
-      - run: bundle install
+      - restore_cache:
+          key: 4-gems-{{ "{{" }} checksum "Gemfile.lock" {{ "}}" }}
+          # Fall back to a previous cache if exact match cannot be found
+          key: 4-gems-
+      - run:
+          name: Restore Gems
+          command: |
+           bundle check || bundle install
+      - save_cache:
+          key: 4-gems-{{ "{{" }} checksum "Gemfile.lock" {{ "}}" }}
+          paths:
+            - "/Users/distiller/project/app/build/gems"
       - run: cd app && bundle exec fastlane sprint
       - store_artifacts:
           path: "${FL_OUTPUT_DIR}/{{ cookiecutter.project_name }}.ipa"
@@ -104,11 +149,25 @@ jobs:
       FL_OUTPUT_DIR: /Users/distiller/project/output
       LC_ALL: en_US.UTF-8
       LANG: en_US.UTF-8
+      BUNDLE_JOBS: 3
+      BUNDLE_RETRY: 3
+      BUNDLE_PATH: /Users/distiller/project/app/build/gems
     shell: /bin/bash --login -eo pipefail
     working_directory: /Users/distiller/project
     steps:
       - checkout
-      - run: bundle install
+      - restore_cache:
+          key: 4-gems-{{ "{{" }} checksum "Gemfile.lock" {{ "}}" }}
+          # Fall back to a previous cache if exact match cannot be found
+          key: 4-gems-
+      - run:
+          name: Restore Gems
+          command: |
+           bundle check || bundle install
+      - save_cache:
+          key: 4-gems-{{ "{{" }} checksum "Gemfile.lock" {{ "}}" }}
+          paths:
+            - "/Users/distiller/project/app/build/gems"
       - run: cd app && bundle exec fastlane beta
       - store_artifacts:
           path: "${FL_OUTPUT_DIR}/{{ cookiecutter.project_name }}.ipa"

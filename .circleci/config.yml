@@ -6,6 +6,9 @@ jobs:
     environment:
       LC_ALL: en_US.UTF-8
       LANG: en_US.UTF-8
+      BUNDLE_JOBS: 3
+      BUNDLE_RETRY: 3
+      BUNDLE_PATH: /Users/distiller/project/PRODUCTNAME/app/build/gems
     shell: /bin/bash --login -eo pipefail
     working_directory: /Users/distiller/project
     steps:
@@ -13,18 +16,18 @@ jobs:
       # Setup Ruby dependencies
       - restore_cache:
           keys: 
-            - 1-danger-gems-{{ checksum "Gemfile.lock" }}
-            - 1-danger-gems-
+            - 7-gems-{{ checksum "Gemfile.lock" }}
+            # Fall back to a previous cache if exact match cannot be found
+            - 7-gems-
       - run:
           name: Restore Ruby Gems
           command: |
-            bundle check --gemfile Gemfile || bundle install --gemfile Gemfile
+            bundle check || bundle install
       # Cache Gems
       - save_cache:
-          key: 1-danger-gems-{{ checksum "Gemfile.lock" }}
-          # The path to the gems may change if .ruby-version file is changed or CircleCI image is updated.
+          key: 7-gems-{{ checksum "Gemfile.lock" }}
           paths:
-            - "/Users/distiller/.gem/ruby/2.4.4"
+            - "/Users/distiller/project/PRODUCTNAME/app/build/gems"
       - run:
           name: Tests
           command: |
@@ -36,12 +39,6 @@ jobs:
           command: |
             cd PRODUCTNAME/app
             bundle exec fastlane coverage
-      - run:
-          name: Screenshots
-          when: always
-          command: |
-            cd PRODUCTNAME/app
-            bundle exec fastlane snapshot
       # Store xcov Code Coverage HTML report artifact 
       - store_artifacts:
           path: /Users/distiller/project/PRODUCTNAME/app/build/xcov
@@ -50,20 +47,39 @@ jobs:
           path: /Users/distiller/project/PRODUCTNAME/app/build/slather
           destination: slather
       - store_artifacts:
-          path: /Users/distiller/project/PRODUCTNAME/app/fastlane/screenshots
-          destination: screenshots
-      - store_artifacts:
           path: /Users/distiller/project/PRODUCTNAME/app/build/scan
           destination: scan
-      - run:
-          name: Upload to Codecov
-          when: always
-          command: bash <(curl -s https://codecov.io/bash) -f PRODUCTNAME/app/build/slather/cobertura.xml -X coveragepy -X gcov -X xcode
+      # Update Danger as soon as we have code coverage/tests, while waiting for screenshots to be generated
       - run:
           name: Danger
           when: always
           command: |
             bundle exec danger --dangerfile=PRODUCTNAME/Dangerfile
+      - run:
+          name: Upload to Codecov
+          when: always
+          command: bash <(curl -s https://codecov.io/bash) -f PRODUCTNAME/app/build/slather/cobertura.xml -X coveragepy -X gcov -X xcode
+      - run:
+          name: Screenshots
+          when: always
+          command: |
+            cd PRODUCTNAME/app
+            bundle exec fastlane snapshot
+      - store_artifacts:
+          path: /Users/distiller/project/PRODUCTNAME/app/fastlane/screenshots
+          destination: screenshots
+      # Run Danger again once screenshots are complete
+      - run:
+          name: Danger
+          when: always
+          command: |
+            bundle exec danger --dangerfile=PRODUCTNAME/Dangerfile
+      - run:
+          name: Post Screenshots to Slack
+          when: always
+          command: |
+            cd PRODUCTNAME/app
+            bundle exec fastlane slackshots
 
   test-xcode-9-3:
     macos:
@@ -71,6 +87,9 @@ jobs:
     environment:
       LC_ALL: en_US.UTF-8
       LANG: en_US.UTF-8
+      BUNDLE_JOBS: 3
+      BUNDLE_RETRY: 3
+      BUNDLE_PATH: /Users/distiller/project/PRODUCTNAME/app/build/gems
     shell: /bin/bash --login -eo pipefail
     working_directory: /Users/distiller/project
     steps:
@@ -78,8 +97,9 @@ jobs:
       # Setup Ruby dependencies
       - restore_cache:
           keys: 
-            - 6-gems-{{ checksum "Gemfile.lock" }}
-            - 6-gems-
+            - 7-gems-{{ checksum "Gemfile.lock" }}
+            # Fall back to a previous cache if exact match cannot be found
+            - 7-gems-
       - run:
           name: Restore Ruby Gems
           command: |
@@ -127,10 +147,9 @@ jobs:
           command: test `git status -s \{\{\ cookiecutter.project_name\ \|\ replace\(\'\ \'\,\ \'\'\)\ \}\}/ | wc -l` -eq 0
       # Cache Gems
       - save_cache:
-          key: 6-gems-{{ checksum "Gemfile.lock" }}
-          # The path to the gems may change if .ruby-version file is changed or CircleCI image is updated.
+          key: 7-gems-{{ checksum "Gemfile.lock" }}
           paths:
-            - "/Users/distiller/.gem/ruby/2.4.4"
+            - "/Users/distiller/project/PRODUCTNAME/app/build/gems"
       # Cache Pods
       - save_cache:
           key: 3-pods-{{ checksum "./PRODUCTNAME/app/Podfile.lock" }}

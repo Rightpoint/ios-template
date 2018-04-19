@@ -26,6 +26,11 @@ Runs tests
 fastlane ios coverage
 ```
 Runs Code Coverage
+### ios slackshots
+```
+fastlane ios slackshots
+```
+Posts screenshots to Slack
 ### ios develop
 ```
 fastlane ios develop
