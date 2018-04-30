@@ -9,6 +9,7 @@ jobs:
       BUNDLE_JOBS: 3
       BUNDLE_RETRY: 3
       BUNDLE_PATH: /Users/distiller/project/PRODUCTNAME/app/build/gems
+      DISABLE_COVERALLS: true
     shell: /bin/bash --login -eo pipefail
     working_directory: /Users/distiller/project
     steps:
