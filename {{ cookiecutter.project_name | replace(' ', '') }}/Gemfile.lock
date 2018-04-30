@@ -1,16 +1,4 @@
 GIT
-  remote: https://github.com/Raizlabs/xcov.git
-  revision: 0f474dd2f430c43632d1c7b9ae1e810578325621
-  branch: 1.4.0-rz
-  specs:
-    xcov (1.4.0)
-      fastlane (>= 2.82.0, < 3.0.0)
-      multipart-post
-      slack-notifier
-      terminal-table
-      xcodeproj
-
-GIT
   remote: https://github.com/arrouse/install_provisioning_profiles
   revision: 4cd48378552db10f3872b5bb591cf219d30fb580
   specs:
@@ -267,6 +255,12 @@ GEM
       claide (>= 1.0.2, < 2.0)
       colored2 (~> 3.1)
       nanaimo (~> 0.2.4)
+    xcov (1.4.2)
+      fastlane (>= 2.82.0, < 3.0.0)
+      multipart-post
+      slack-notifier
+      terminal-table
+      xcodeproj
     xcpretty (0.2.8)
       rouge (~> 2.0.7)
     xcpretty-travis-formatter (1.0.0)
@@ -287,7 +281,7 @@ DEPENDENCIES
   nanaimo
   slather
   synx
-  xcov!
+  xcov
 
 BUNDLED WITH
    1.16.1
