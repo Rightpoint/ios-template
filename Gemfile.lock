@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/Raizlabs/xcov.git
-  revision: 9d15417bae14d63cda37e37da6082102ef4c79fe
+  revision: 03095bbd81656eb9cea8f9a5405becc5de0981b1
   branch: 1.4.0-rz
   specs:
     xcov (1.4.0)
