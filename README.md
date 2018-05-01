@@ -10,6 +10,13 @@ Inspired by [thoughtbot]/[ios-template]
 [thoughtbot]: https://thoughtbot.com/
 [ios-template]: https://github.com/thoughtbot/ios-template
 
+### Quick Start
+
+```bash
+$ brew install cookiecutter
+$ cookiecutter https://github.com/Raizlabs/ios-template/archive/master.zip
+```
+
 ### Template Output
 
 [![CircleCI](https://img.shields.io/circleci/project/github/Raizlabs/ios-template-output/master.svg)](https://circleci.com/gh/Raizlabs/ios-template-output)
@@ -178,7 +185,7 @@ Now you're ready to generate the new project from the cookiecutter template.
 
 1. [Install cookiecutter][cookiecutter] (`brew install cookiecutter` on
    macOS).
-1. Run `cookiecutter gh:raizlabs/ios-template`.
+1. Run `cookiecutter https://github.com/Raizlabs/ios-template/archive/master.zip`.
 1. Answer the questions.
 1. Delete anything that is not of interest to your project.
 
