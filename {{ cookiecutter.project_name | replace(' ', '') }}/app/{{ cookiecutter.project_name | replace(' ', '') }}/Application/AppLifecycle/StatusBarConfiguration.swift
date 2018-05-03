@@ -6,7 +6,7 @@
 //  Copyright © 2018 {{ cookiecutter.company_name }}. All rights reserved.
 //
 
-#if targetEnvironment(simulator)
+#if targetEnvironment(simulator) && DEBUG
     import SimulatorStatusMagic
 #endif
 
@@ -17,7 +17,7 @@ struct StatusBarConfiguration: AppLifecycle {
     }
 
     func onDidLaunch(application: UIApplication, launchOptions: [UIApplicationLaunchOptionsKey: Any]?) {
-        #if targetEnvironment(simulator)
+        #if targetEnvironment(simulator) && DEBUG
             SDStatusBarManager.sharedInstance().enableOverrides()
         #endif
     }
