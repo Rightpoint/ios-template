@@ -13,7 +13,13 @@ Inspired by [thoughtbot]/[ios-template]
 ### Quick Start
 
 ```bash
-$ brew install cookiecutter
+# Set up Ruby
+$ brew install ruby
+$ gem install bundler
+# Set up Python
+$ brew install python3
+$ pip3 install cookiecutter
+# Run Cookiecutter
 $ cookiecutter https://github.com/Raizlabs/ios-template/archive/master.zip
 ```
 
