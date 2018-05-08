@@ -11,6 +11,7 @@ jobs:
       BUNDLE_JOBS: 3
       BUNDLE_RETRY: 3
       BUNDLE_PATH: /Users/distiller/project/app/build/gems
+      DISABLE_COVERALLS: true
       # required to set the correct ruby version
       # see https://circleci.com/docs/2.0/testing-ios/#custom-ruby-versions
     shell: /bin/bash --login -eo pipefail
