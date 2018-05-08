@@ -13,6 +13,9 @@ jobs:
     shell: /bin/bash --login -eo pipefail
     working_directory: /Users/distiller/project
     steps:
+      - run:
+          name: Set Ruby Version
+          command:  echo "ruby-2.4" > ~/.ruby-version
       - checkout
       # Setup Ruby dependencies
       - restore_cache:
@@ -94,6 +97,9 @@ jobs:
     shell: /bin/bash --login -eo pipefail
     working_directory: /Users/distiller/project
     steps:
+      - run:
+          name: Set Ruby Version
+          command:  echo "ruby-2.4" > ~/.ruby-version
       - checkout
       # Setup Ruby dependencies
       - restore_cache:
