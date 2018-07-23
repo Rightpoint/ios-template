@@ -760,13 +760,13 @@
 					};
 					ABC778741DC90B7A00815FB9 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 336S848KQ4;
+						DevelopmentTeam = xxxxxx;
 						ProvisioningStyle = Manual;
 					};
 					ABC778881DC90B7A00815FB9 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 89ULX63W6F;
-						ProvisioningStyle = Manual;
+						DevelopmentTeam = xxxxxx;
+						ProvisioningStyle = Automatic;
 						TestTargetID = ABC778741DC90B7A00815FB9;
 					};
 					CD09C93A20741945006D3501 = {
@@ -1236,14 +1236,11 @@
 			baseConfigurationReference = 36045522D92DD8ED3DFB7FC8 /* Pods-{{ cookiecutter.project_name | replace(' ', '') }}-{{ cookiecutter.project_name | replace(' ', '') }}Tests.appstore.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = {{ cookiecutter.project_name | replace(' ', '') }}Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.raizlabs.{{ cookiecutter.project_name | replace(' ', '') }}Tests;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/debug-{{ cookiecutter.project_name | replace(' ', '') }}.app/debug-{{ cookiecutter.project_name | replace(' ', '') }}";
 			};
@@ -1591,12 +1588,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 336S848KQ4;
 				INFOPLIST_FILE = {{ cookiecutter.project_name | replace(' ', '') }}/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ff6b745b-22a8-4663-bf76-30e2e21f0974";
-				PROVISIONING_PROFILE_SPECIFIER = "Raizlabs Dev Wildcard";
 				SWIFT_OBJC_BRIDGING_HEADER = "{{ cookiecutter.project_name | replace(' ', '') }}/Resources/{{ cookiecutter.project_name | replace(' ', '') }}-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 			};
@@ -1621,15 +1615,11 @@
 			baseConfigurationReference = C3A4171B7E64E228CC7A0DF7 /* Pods-{{ cookiecutter.project_name | replace(' ', '') }}-{{ cookiecutter.project_name | replace(' ', '') }}Tests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 89ULX63W6F;
 				INFOPLIST_FILE = {{ cookiecutter.project_name | replace(' ', '') }}Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.raizlabs.{{ cookiecutter.project_name | replace(' ', '') }}Tests;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/debug-{{ cookiecutter.project_name | replace(' ', '') }}.app/debug-{{ cookiecutter.project_name | replace(' ', '') }}";
 			};
@@ -1640,14 +1630,11 @@
 			baseConfigurationReference = 18117B6A27EAD54897E61F7E /* Pods-{{ cookiecutter.project_name | replace(' ', '') }}-{{ cookiecutter.project_name | replace(' ', '') }}Tests.develop.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = {{ cookiecutter.project_name | replace(' ', '') }}Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.raizlabs.{{ cookiecutter.project_name | replace(' ', '') }}Tests;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/debug-{{ cookiecutter.project_name | replace(' ', '') }}.app/debug-{{ cookiecutter.project_name | replace(' ', '') }}";
 			};
@@ -1725,14 +1712,11 @@
 			baseConfigurationReference = 17DC86D175CE0686878A3A82 /* Pods-{{ cookiecutter.project_name | replace(' ', '') }}-{{ cookiecutter.project_name | replace(' ', '') }}Tests.sprint.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = {{ cookiecutter.project_name | replace(' ', '') }}Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.raizlabs.{{ cookiecutter.project_name | replace(' ', '') }}Tests;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/debug-{{ cookiecutter.project_name | replace(' ', '') }}.app/debug-{{ cookiecutter.project_name | replace(' ', '') }}";
 			};

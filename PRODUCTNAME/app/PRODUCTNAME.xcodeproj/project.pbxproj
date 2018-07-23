@@ -760,13 +760,13 @@
 					};
 					ABC778741DC90B7A00815FB9 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 336S848KQ4;
+						DevelopmentTeam = xxxxxx;
 						ProvisioningStyle = Manual;
 					};
 					ABC778881DC90B7A00815FB9 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 89ULX63W6F;
-						ProvisioningStyle = Manual;
+						DevelopmentTeam = xxxxxx;
+						ProvisioningStyle = Automatic;
 						TestTargetID = ABC778741DC90B7A00815FB9;
 					};
 					CD09C93A20741945006D3501 = {
@@ -1236,14 +1236,11 @@
 			baseConfigurationReference = 36045522D92DD8ED3DFB7FC8 /* Pods-PRODUCTNAME-PRODUCTNAMETests.appstore.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = PRODUCTNAMETests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.raizlabs.PRODUCTNAMETests;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/debug-PRODUCTNAME.app/debug-PRODUCTNAME";
 			};
@@ -1591,12 +1588,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 336S848KQ4;
 				INFOPLIST_FILE = PRODUCTNAME/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ff6b745b-22a8-4663-bf76-30e2e21f0974";
-				PROVISIONING_PROFILE_SPECIFIER = "Raizlabs Dev Wildcard";
 				SWIFT_OBJC_BRIDGING_HEADER = "PRODUCTNAME/Resources/PRODUCTNAME-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 			};
@@ -1621,15 +1615,11 @@
 			baseConfigurationReference = C3A4171B7E64E228CC7A0DF7 /* Pods-PRODUCTNAME-PRODUCTNAMETests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 89ULX63W6F;
 				INFOPLIST_FILE = PRODUCTNAMETests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.raizlabs.PRODUCTNAMETests;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/debug-PRODUCTNAME.app/debug-PRODUCTNAME";
 			};
@@ -1640,14 +1630,11 @@
 			baseConfigurationReference = 18117B6A27EAD54897E61F7E /* Pods-PRODUCTNAME-PRODUCTNAMETests.develop.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = PRODUCTNAMETests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.raizlabs.PRODUCTNAMETests;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/debug-PRODUCTNAME.app/debug-PRODUCTNAME";
 			};
@@ -1725,14 +1712,11 @@
 			baseConfigurationReference = 17DC86D175CE0686878A3A82 /* Pods-PRODUCTNAME-PRODUCTNAMETests.sprint.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = PRODUCTNAMETests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.raizlabs.PRODUCTNAMETests;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/debug-PRODUCTNAME.app/debug-PRODUCTNAME";
 			};
