@@ -18,7 +18,7 @@ struct InstabugConfiguration: AppLifecycle {
         return BuildType.active == .internal
     }
 
-    func onDidLaunch(application: UIApplication, launchOptions: [UIApplicationLaunchOptionsKey: Any]?) {
+    func onDidLaunch(application: UIApplication, launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
         if let token = Bundle.main.object(forInfoDictionaryKey: InstabugConfiguration.instabugTokenKey) as? String, !token.isEmpty {
             Instabug.start(withToken: token, invocationEvent: .shake)
         }

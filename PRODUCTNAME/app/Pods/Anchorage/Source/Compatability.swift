@@ -32,16 +32,19 @@
     #if swift(>=4.0)
         public typealias LayoutPriority = NSLayoutConstraint.Priority
         public typealias EdgeInsets = NSEdgeInsets
-        public typealias ConstraintAttribute = NSLayoutConstraint.Attribute
     #else
         public typealias LayoutPriority = NSLayoutPriority
-        public typealias ConstraintAttribute = NSLayoutAttribute
     #endif
 #else
     import UIKit
 
     public typealias LayoutPriority = UILayoutPriority
     public typealias EdgeInsets = UIEdgeInsets
+#endif
+
+#if swift(>=4.2) || (os(macOS) && swift(>=4.0))
+    public typealias ConstraintAttribute = NSLayoutConstraint.Attribute
+#else
     public typealias ConstraintAttribute = NSLayoutAttribute
 #endif
 
@@ -56,6 +59,21 @@
         init(rawValue: Float) {
             self.init(rawValue)
         }
+    }
+#endif
+
+#if swift(>=4.2)
+#elseif !os(macOS)
+    extension UITableView {
+        public static let automaticDimension = UITableViewAutomaticDimension
+    }
+
+    extension UITableViewCell {
+        public typealias CellStyle = UITableViewCellStyle
+    }
+
+    extension UIApplication {
+        public typealias LaunchOptionsKey = UIApplicationLaunchOptionsKey
     }
 #endif
 

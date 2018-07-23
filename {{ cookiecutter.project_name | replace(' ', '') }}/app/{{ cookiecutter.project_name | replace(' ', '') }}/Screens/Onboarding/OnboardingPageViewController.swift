@@ -86,9 +86,9 @@ private extension OnboardingPageViewController {
         pageController.setViewControllers(
             [viewControllers[0]], direction: .forward, animated: false, completion: nil)
         pageController.dataSource = self
-        addChildViewController(pageController)
+        addChild(pageController)
         view.addSubview(pageController.view)
-        pageController.didMove(toParentViewController: self)
+        pageController.didMove(toParent: self)
 
         let pageControlAppearance = UIPageControl.appearance(
             whenContainedInInstancesOf: [OnboardingPageViewController.self])

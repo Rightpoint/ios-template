@@ -1,6 +1,6 @@
 PODS:
   - Alamofire (4.7.1)
-  - Anchorage (4.2.2)
+  - Anchorage (4.3)
   - BonMot (5.2)
   - Crashlytics (3.10.1):
     - Fabric (~> 1.7.5)
@@ -30,19 +30,21 @@ PODS:
   - SimulatorStatusMagic (2.1)
   - Sourcery (0.12.0)
   - SwiftGen (5.3.0)
-  - Swiftilities (0.17.0):
-    - Swiftilities/All (= 0.17.0)
-  - Swiftilities/AboutView (0.17.0)
-  - Swiftilities/AccessibilityHelpers (0.17.0)
-  - Swiftilities/Acknowledgements (0.17.0):
+  - Swiftilities (0.19.0):
+    - Swiftilities/All (= 0.19.0)
+  - Swiftilities/AboutView (0.19.0)
+  - Swiftilities/AccessibilityHelpers (0.19.0)
+  - Swiftilities/Acknowledgements (0.19.0):
+    - Swiftilities/Compatibility
     - Swiftilities/Deselection
     - Swiftilities/LicenseFormatter
-  - Swiftilities/All (0.17.0):
+  - Swiftilities/All (0.19.0):
     - Swiftilities/AboutView
     - Swiftilities/AccessibilityHelpers
     - Swiftilities/Acknowledgements
     - Swiftilities/BetterButton
     - Swiftilities/ColorHelpers
+    - Swiftilities/Compatibility
     - Swiftilities/CoreDataStack
     - Swiftilities/Deselection
     - Swiftilities/DeviceSize
@@ -61,38 +63,39 @@ PODS:
     - Swiftilities/TableViewHelpers
     - Swiftilities/TintedButton
     - Swiftilities/Views
-  - Swiftilities/BetterButton (0.17.0):
+  - Swiftilities/BetterButton (0.19.0):
     - Swiftilities/ColorHelpers
     - Swiftilities/ImageHelpers
     - Swiftilities/Math
     - Swiftilities/Shapes
-  - Swiftilities/ColorHelpers (0.17.0)
-  - Swiftilities/CoreDataStack (0.17.0)
-  - Swiftilities/Deselection (0.17.0)
-  - Swiftilities/DeviceSize (0.17.0)
-  - Swiftilities/FormattedTextField (0.17.0)
-  - Swiftilities/Forms (0.17.0)
-  - Swiftilities/HairlineView (0.17.0)
-  - Swiftilities/ImageHelpers (0.17.0)
-  - Swiftilities/Keyboard (0.17.0)
-  - Swiftilities/LicenseFormatter (0.17.0)
-  - Swiftilities/Lifecycle (0.17.0):
+  - Swiftilities/ColorHelpers (0.19.0)
+  - Swiftilities/Compatibility (0.19.0)
+  - Swiftilities/CoreDataStack (0.19.0)
+  - Swiftilities/Deselection (0.19.0)
+  - Swiftilities/DeviceSize (0.19.0)
+  - Swiftilities/FormattedTextField (0.19.0)
+  - Swiftilities/Forms (0.19.0)
+  - Swiftilities/HairlineView (0.19.0)
+  - Swiftilities/ImageHelpers (0.19.0)
+  - Swiftilities/Keyboard (0.19.0)
+  - Swiftilities/LicenseFormatter (0.19.0)
+  - Swiftilities/Lifecycle (0.19.0):
     - Swiftilities/HairlineView
     - Swiftilities/Math
-  - Swiftilities/Logging (0.17.0)
-  - Swiftilities/Math (0.17.0)
-  - Swiftilities/RootViewController (0.17.0)
-  - Swiftilities/Shapes (0.17.0)
-  - Swiftilities/StackViewHelpers (0.17.0)
-  - Swiftilities/TableViewHelpers (0.17.0)
-  - Swiftilities/TintedButton (0.17.0)
-  - Swiftilities/Views (0.17.0)
+  - Swiftilities/Logging (0.19.0)
+  - Swiftilities/Math (0.19.0)
+  - Swiftilities/RootViewController (0.19.0)
+  - Swiftilities/Shapes (0.19.0)
+  - Swiftilities/StackViewHelpers (0.19.0)
+  - Swiftilities/TableViewHelpers (0.19.0)
+  - Swiftilities/TintedButton (0.19.0)
+  - Swiftilities/Views (0.19.0)
   - SwiftLint (0.25.0)
 
 DEPENDENCIES:
   - Alamofire
-  - Anchorage
-  - BonMot
+  - Anchorage (from `https://github.com/Raizlabs/Anchorage`, branch `feature/heyltsjay/swift4.2`)
+  - BonMot (from `https://github.com/Raizlabs/BonMot`, branch `feature/zeveisenberg/xcode-10-swift-4.2`)
   - Crashlytics
   - GoogleAnalytics (~> 3.0)
   - Instabug
@@ -102,14 +105,12 @@ DEPENDENCIES:
   - SimulatorStatusMagic
   - Sourcery (~> 0.12.0)
   - SwiftGen
-  - Swiftilities
+  - Swiftilities (from `https://github.com/Raizlabs/Swiftilities`, branch `feature/heyltsjay/swift4_2`)
   - SwiftLint
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - Alamofire
-    - Anchorage
-    - BonMot
     - Crashlytics
     - Fabric
     - GoogleAnalytics
@@ -120,13 +121,34 @@ SPEC REPOS:
     - SimulatorStatusMagic
     - Sourcery
     - SwiftGen
-    - Swiftilities
     - SwiftLint
+
+EXTERNAL SOURCES:
+  Anchorage:
+    :branch: feature/heyltsjay/swift4.2
+    :git: https://github.com/Raizlabs/Anchorage
+  BonMot:
+    :branch: feature/zeveisenberg/xcode-10-swift-4.2
+    :git: https://github.com/Raizlabs/BonMot
+  Swiftilities:
+    :branch: feature/heyltsjay/swift4_2
+    :git: https://github.com/Raizlabs/Swiftilities
+
+CHECKOUT OPTIONS:
+  Anchorage:
+    :commit: 25e0407d97fc790cb95021ba924c6ed22294fa3e
+    :git: https://github.com/Raizlabs/Anchorage
+  BonMot:
+    :commit: 414092215fbe345edfb6207b6c8fb1a6618d2996
+    :git: https://github.com/Raizlabs/BonMot
+  Swiftilities:
+    :commit: f2321b479a103cffaed10ad7ec3906426247c138
+    :git: https://github.com/Raizlabs/Swiftilities
 
 SPEC CHECKSUMS:
   Alamofire: 68d7d521118d49c615a8d2214d87cdf525599d30
-  Anchorage: cba8707ea6475f604e04047882ba47c07e4b2ac1
-  BonMot: 68da0bd7c2f602aca85511bedabd211eb0fae666
+  Anchorage: 21a98675245188427f0bcea21404d42a824a766f
+  BonMot: ccd446c202edafd526310c49990c17b9eaddf044
   Crashlytics: aee1a064cbbf99b32efa3f056a5f458d846bc8ff
   Fabric: f8d42c893bb187326a7968b62abe55c36a987a46
   GoogleAnalytics: f42cc53a87a51fe94334821868d9c8481ff47a7b
@@ -137,9 +159,9 @@ SPEC CHECKSUMS:
   SimulatorStatusMagic: 481558caf2b9ccb2ceba2cc193728d4db3dcac07
   Sourcery: 10fa92cd8890864856ee3657ca460d597ebc064b
   SwiftGen: 4379bd3640b0a212a0f6ea3c494adba385513d10
-  Swiftilities: 38a1e58d290e1a70f3ad345ccb2e2e0556375540
+  Swiftilities: 2605a1906a0bb2be21d3bc9658587065a887d821
   SwiftLint: e14651157288e9e01d6e1a71db7014fb5744a8ea
 
-PODFILE CHECKSUM: 575f8d011131dc7a1e7a95dc9005ab3705198362
+PODFILE CHECKSUM: 15486a95323a0d3543985e59db1be184195a8dae
 
 COCOAPODS: 1.5.0

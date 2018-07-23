@@ -5,10 +5,10 @@ inhibit_all_warnings!
 def shared
     pod 'Marshal'
     pod 'KeychainAccess'
-    pod 'BonMot'
+    pod 'BonMot', :git => 'https://github.com/Raizlabs/BonMot', :branch => 'feature/zeveisenberg/xcode-10-swift-4.2'
     pod 'Alamofire'
-    pod 'Anchorage'
-    pod 'Swiftilities'
+    pod 'Anchorage', :git => 'https://github.com/Raizlabs/Anchorage', :branch => 'feature/heyltsjay/swift4.2'
+    pod 'Swiftilities', :git => 'https://github.com/Raizlabs/Swiftilities', :branch => 'feature/heyltsjay/swift4_2'
 end
 
 target 'PRODUCTNAME' do

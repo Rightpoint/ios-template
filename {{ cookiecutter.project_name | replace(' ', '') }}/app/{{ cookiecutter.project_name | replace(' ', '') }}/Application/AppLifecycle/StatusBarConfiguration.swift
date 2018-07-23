@@ -16,7 +16,7 @@ struct StatusBarConfiguration: AppLifecycle {
         return ProcessInfo.isRunningUITests
     }
 
-    func onDidLaunch(application: UIApplication, launchOptions: [UIApplicationLaunchOptionsKey: Any]?) {
+    func onDidLaunch(application: UIApplication, launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
         #if targetEnvironment(simulator) && DEBUG
             SDStatusBarManager.sharedInstance().enableOverrides()
         #endif

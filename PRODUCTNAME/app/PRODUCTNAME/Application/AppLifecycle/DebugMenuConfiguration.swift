@@ -16,7 +16,7 @@ class DebugMenuConfiguration: AppLifecycle {
         return BuildType.active == .internal || BuildType.active == .debug
     }
 
-    func onDidLaunch(application: UIApplication, launchOptions: [UIApplicationLaunchOptionsKey: Any]?) {
+    func onDidLaunch(application: UIApplication, launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
         DefaultBehaviors(behaviors: [DebugMenuBehavior()]).inject()
     }
 
