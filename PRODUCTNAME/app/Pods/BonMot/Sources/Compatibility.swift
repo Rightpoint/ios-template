@@ -1,5 +1,5 @@
 //
-//  Compatibility.swift
+//  _Compatibility.swift
 //  BonMot
 //
 //  Created by Brian King on 8/24/16.
@@ -96,11 +96,18 @@
 
             }
 
-            extension UIControl {
+            extension UIApplication {
 
-                typealias State = UIControlState
+                public typealias LaunchOptionsKey = UIApplicationLaunchOptionsKey
 
             }
+
+            extension UITableView {
+
+                public static let automaticDimension = UITableViewAutomaticDimension
+
+            }
+
         #endif
     #endif
 #endif
@@ -111,15 +118,5 @@
         func compactMap<ElementOfResult>(_ transform: (Element) throws -> ElementOfResult?) rethrows -> [ElementOfResult] {
             return try flatMap(transform)
         }
-    }
-#endif
-
-#if swift(>=4.2)
-#else
-    extension UIApplication {
-        public typealias LaunchOptionsKey = UIApplicationLaunchOptionsKey
-    }
-    extension UITableView {
-        public static let automaticDimension = UITableViewAutomaticDimension
     }
 #endif

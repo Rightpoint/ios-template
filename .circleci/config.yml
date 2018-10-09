@@ -2,7 +2,7 @@ version: 2
 jobs:
   danger:
     macos:
-      xcode: "9.3.0"
+      xcode: "10.0.0"
     environment:
       LC_ALL: en_US.UTF-8
       LANG: en_US.UTF-8
@@ -85,9 +85,9 @@ jobs:
             cd PRODUCTNAME/app
             bundle exec fastlane slackshots
 
-  test-xcode-9-3:
+  test-xcode-10:
     macos:
-      xcode: "9.3.0"
+      xcode: "10.0.0"
     environment:
       LC_ALL: en_US.UTF-8
       LANG: en_US.UTF-8
@@ -186,4 +186,4 @@ workflows:
   test-all:
     jobs:
       - danger
-      - test-xcode-9-3
+      - test-xcode-10

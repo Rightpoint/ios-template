@@ -15,6 +15,7 @@
 #import "SDStatusBarOverriderPost10_0.h"
 #import "SDStatusBarOverriderPost10_3.h"
 #import "SDStatusBarOverriderPost11_0.h"
+#import "SDStatusBarOverriderPost12_0.h"
 #import "SDStatusBarOverriderPost8_3.h"
 #import "SDStatusBarOverriderPost9_0.h"
 #import "SDStatusBarOverriderPost9_3.h"

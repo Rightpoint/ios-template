@@ -9,7 +9,7 @@
 
 **Sourcery** is a code generator for Swift language, built on top of Apple's own SourceKit. It extends the language abstractions to allow you to generate boilerplate code automatically.
 
-It's used in over 8,000 projects on both iOS and macOS and it powers some of the most popular and critically-acclaimed apps you have used. Its massive community adoption was one of the factors that pushed Apple to implement derived Equality and automatic Codable conformance. Sourcery is maintained by a growing community of [contributors](https://github.com/krzysztofzablocki/Sourcery/graphs/contributors).
+It's used in over 30,000 projects on both iOS and macOS and it powers some of the most popular and critically-acclaimed apps you have used. Its massive community adoption was one of the factors that pushed Apple to implement derived Equality and automatic Codable conformance. Sourcery is maintained by a growing community of [contributors](https://github.com/krzysztofzablocki/Sourcery/graphs/contributors).
 
 Try **Sourcery** for your next project or add it to an existing one -- you'll save a lot of time and be happy you did!
 
@@ -45,7 +45,7 @@ Sourcery automation can be applied to many more domains, e.g.
 It's trivial to write new templates to remove boilerplate that is specific to your projects.
 
 ## How To Get Started
-There are plenty of tutorials for different uses of Sourcery:
+There are plenty of tutorials for different uses of Sourcery, and you can always ask for help in our [Swift Forum Category](https://forums.swift.org/c/related-projects/sourcery).
 
 - [The Magic of Sourcery](https://www.caseyliss.com/2017/3/31/the-magic-of-sourcery) is a great starting tutorial
 - [Generating Swift Code for iOS](https://www.raywenderlich.com/158803/sourcery-tutorial-generating-swift-code-ios) deals with JSON handling code
@@ -53,6 +53,7 @@ There are plenty of tutorials for different uses of Sourcery:
 - [Codable Enums](https://littlebitesofcocoa.com/318-codable-enums) implements Codable support for Enumerations
 - [Building an API client with Sourcery](https://littlebitesofcocoa.com/295-building-an-api-client-with-sourcery-key-value-annotations) builds API client leveraging Sourcery annotations
 - [Metaprogramming in Swift](https://www.youtube.com/watch?v=Ukm70Ibk_bY) is a video from CocoaHeads where Krzysztof introduces Sourcery
+
 
 ## Installation
 

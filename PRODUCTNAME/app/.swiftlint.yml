@@ -39,3 +39,4 @@ excluded:
   - Pods
   - PRODUCTNAME/Resources/Generated
   - Screenshots/Helpers/SnapshotHelper.swift
+  - build
