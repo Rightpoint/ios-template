@@ -5,9 +5,9 @@ inhibit_all_warnings!
 def shared
     pod 'Marshal'
     pod 'KeychainAccess'
-    pod 'BonMot', :git => 'https://github.com/Raizlabs/BonMot', :branch => 'feature/zeveisenberg/xcode-10-swift-4.2'
+    pod 'BonMot'
     pod 'Alamofire'
-    pod 'Anchorage', :git => 'https://github.com/Raizlabs/Anchorage', :branch => 'feature/heyltsjay/swift4.2'
+    pod 'Anchorage'
     pod 'Swiftilities', :git => 'https://github.com/Raizlabs/Swiftilities', :branch => 'feature/heyltsjay/swift4_2'
 end
 
@@ -31,5 +31,5 @@ target 'Services' do
 end
 
 pod 'SwiftGen'
-pod 'Sourcery', '~> 0.12.0'
+pod 'Sourcery', '~> 0.15.0'
 pod 'SwiftLint'

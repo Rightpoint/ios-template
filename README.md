@@ -1,6 +1,6 @@
 # iOS Template
 
-[![Swift 4.1](https://img.shields.io/badge/Swift-4.1-orange.svg?style=flat)](https://swift.org)
+[![Swift 4.2](https://img.shields.io/badge/Swift-4.2-orange.svg?style=flat)](https://swift.org)
 [![CircleCI](https://img.shields.io/circleci/project/github/Raizlabs/ios-template/master.svg)](https://circleci.com/gh/Raizlabs/ios-template) [![codecov](https://codecov.io/gh/Raizlabs/ios-template/branch/master/graph/badge.svg)](https://codecov.io/gh/Raizlabs/ios-template)
 
 A template for new iOS projects at Raizlabs.
