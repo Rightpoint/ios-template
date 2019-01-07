@@ -153,7 +153,10 @@ platform :ios do
       signingCertificate: "iPhone Distribution",
       provisioningProfiles: { "com.raizlabs.{{ cookiecutter.project_name | replace(' ', '') }}.sprint" => "Raizlabs Generic Enterprise Profile" }
     })
-    hockey(public_identifier: 'ZZHOCKEY_SPRINT_IDZZ')
+    hockey(
+      public_identifier: 'ZZHOCKEY_SPRINT_IDZZ',
+      notes: build_change_log_for_tag("sprint")
+    )
     # upload_symbols_to_crashlytics(:api_token => 'ZZCRASHLYTICS_API_TOKEN_SPRINTZZ')
     slack(message: "Successfully uploaded build #{build_number} to sprint", success: true)
   end
@@ -166,8 +169,9 @@ platform :ios do
   #    provisioningProfiles: { "" => "" }
   #  })
   #  pilot(
-  #   distribute_external: false,
-  #     skip_waiting_for_build_processing: true,
+  #    distribute_external: false,
+  #    skip_waiting_for_build_processing: true,
+  #    changelog: build_change_log_for_tag("beta")
   #  )
   #  upload_symbols_to_crashlytics(:api_token => 'ZZCRASHLYTICS_API_TOKEN_APPSTOREZZ')
   #  slack(message: "Successfully uploaded build #{build_number} to test flight", success: true)
@@ -200,11 +204,20 @@ platform :ios do
 
   def build_change_log_from_between(older, newer)
     # http://git-scm.com/docs/pretty-formats
-    return changelog_from_git_commits(
-      between: [older, newer],
-      pretty: "- %s",
-      merge_commit_filtering: "exclude_merges"
-    )
+    unless older.nil? || newer.nil?
+      return changelog_from_git_commits(
+        between: [older, newer],
+        pretty: "- %s",
+        merge_commit_filtering: "exclude_merges"
+      )
+    end
+  end
+
+  def build_change_log_for_tag(tag)
+    tagArray = `git rev-list --tags=#{tag}* --oneline --no-walk`.lines
+    newer = tagArray[0].split
+    older = tagArray[1].split
+    return build_change_log_from_between(older[0], newer[0])
   end
 
 end
