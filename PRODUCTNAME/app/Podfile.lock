@@ -25,15 +25,15 @@ PODS:
   - SimulatorStatusMagic (2.3)
   - Sourcery (0.15.0)
   - SwiftGen (6.0.2)
-  - Swiftilities (0.19.0):
-    - Swiftilities/All (= 0.19.0)
-  - Swiftilities/AboutView (0.19.0)
-  - Swiftilities/AccessibilityHelpers (0.19.0)
-  - Swiftilities/Acknowledgements (0.19.0):
+  - Swiftilities (0.20.0):
+    - Swiftilities/All (= 0.20.0)
+  - Swiftilities/AboutView (0.20.0)
+  - Swiftilities/AccessibilityHelpers (0.20.0)
+  - Swiftilities/Acknowledgements (0.20.0):
     - Swiftilities/Compatibility
     - Swiftilities/Deselection
     - Swiftilities/LicenseFormatter
-  - Swiftilities/All (0.19.0):
+  - Swiftilities/All (0.20.0):
     - Swiftilities/AboutView
     - Swiftilities/AccessibilityHelpers
     - Swiftilities/Acknowledgements
@@ -58,33 +58,33 @@ PODS:
     - Swiftilities/TableViewHelpers
     - Swiftilities/TintedButton
     - Swiftilities/Views
-  - Swiftilities/BetterButton (0.19.0):
+  - Swiftilities/BetterButton (0.20.0):
     - Swiftilities/ColorHelpers
     - Swiftilities/ImageHelpers
     - Swiftilities/Math
     - Swiftilities/Shapes
-  - Swiftilities/ColorHelpers (0.19.0)
-  - Swiftilities/Compatibility (0.19.0)
-  - Swiftilities/CoreDataStack (0.19.0)
-  - Swiftilities/Deselection (0.19.0)
-  - Swiftilities/DeviceSize (0.19.0)
-  - Swiftilities/FormattedTextField (0.19.0)
-  - Swiftilities/Forms (0.19.0)
-  - Swiftilities/HairlineView (0.19.0)
-  - Swiftilities/ImageHelpers (0.19.0)
-  - Swiftilities/Keyboard (0.19.0)
-  - Swiftilities/LicenseFormatter (0.19.0)
-  - Swiftilities/Lifecycle (0.19.0):
+  - Swiftilities/ColorHelpers (0.20.0)
+  - Swiftilities/Compatibility (0.20.0)
+  - Swiftilities/CoreDataStack (0.20.0)
+  - Swiftilities/Deselection (0.20.0)
+  - Swiftilities/DeviceSize (0.20.0)
+  - Swiftilities/FormattedTextField (0.20.0)
+  - Swiftilities/Forms (0.20.0)
+  - Swiftilities/HairlineView (0.20.0)
+  - Swiftilities/ImageHelpers (0.20.0)
+  - Swiftilities/Keyboard (0.20.0)
+  - Swiftilities/LicenseFormatter (0.20.0)
+  - Swiftilities/Lifecycle (0.20.0):
     - Swiftilities/HairlineView
     - Swiftilities/Math
-  - Swiftilities/Logging (0.19.0)
-  - Swiftilities/Math (0.19.0)
-  - Swiftilities/RootViewController (0.19.0)
-  - Swiftilities/Shapes (0.19.0)
-  - Swiftilities/StackViewHelpers (0.19.0)
-  - Swiftilities/TableViewHelpers (0.19.0)
-  - Swiftilities/TintedButton (0.19.0)
-  - Swiftilities/Views (0.19.0)
+  - Swiftilities/Logging (0.20.0)
+  - Swiftilities/Math (0.20.0)
+  - Swiftilities/RootViewController (0.20.0)
+  - Swiftilities/Shapes (0.20.0)
+  - Swiftilities/StackViewHelpers (0.20.0)
+  - Swiftilities/TableViewHelpers (0.20.0)
+  - Swiftilities/TintedButton (0.20.0)
+  - Swiftilities/Views (0.20.0)
   - SwiftLint (0.27.0)
 
 DEPENDENCIES:
@@ -100,7 +100,7 @@ DEPENDENCIES:
   - SimulatorStatusMagic
   - Sourcery (~> 0.15.0)
   - SwiftGen
-  - Swiftilities (from `https://github.com/Raizlabs/Swiftilities`, branch `feature/heyltsjay/swift4_2`)
+  - Swiftilities
   - SwiftLint
 
 SPEC REPOS:
@@ -118,17 +118,8 @@ SPEC REPOS:
     - SimulatorStatusMagic
     - Sourcery
     - SwiftGen
+    - Swiftilities
     - SwiftLint
-
-EXTERNAL SOURCES:
-  Swiftilities:
-    :branch: feature/heyltsjay/swift4_2
-    :git: https://github.com/Raizlabs/Swiftilities
-
-CHECKOUT OPTIONS:
-  Swiftilities:
-    :commit: 996ac0988e263bbf028c3f35cd481a96d7ef7ed2
-    :git: https://github.com/Raizlabs/Swiftilities
 
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
@@ -144,9 +135,9 @@ SPEC CHECKSUMS:
   SimulatorStatusMagic: 631fe6e4195a8a8d587ad8744af9015126526cc2
   Sourcery: 5895672cae353cdbfa95f3f4aaeb75a664d76f6a
   SwiftGen: e5b047067aa84082826a0c4f1c4c2ddc95bcf74c
-  Swiftilities: 2605a1906a0bb2be21d3bc9658587065a887d821
+  Swiftilities: 03f8267eef129cbea588364a8ee4cd786ebe9de4
   SwiftLint: 3207c1faa2240bf8973b191820a116113cd11073
 
-PODFILE CHECKSUM: 62726eb1661afab3dee3f10a2eda5d0742277411
+PODFILE CHECKSUM: b41b08dd08855d355d5efcddddf69712c8ddbce4
 
 COCOAPODS: 1.6.0.beta.1

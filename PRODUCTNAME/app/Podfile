@@ -8,7 +8,7 @@ def shared
     pod 'BonMot'
     pod 'Alamofire'
     pod 'Anchorage'
-    pod 'Swiftilities', :git => 'https://github.com/Raizlabs/Swiftilities', :branch => 'feature/heyltsjay/swift4_2'
+    pod 'Swiftilities'
 end
 
 target 'PRODUCTNAME' do
