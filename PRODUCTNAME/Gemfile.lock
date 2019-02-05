@@ -1,9 +1,3 @@
-GIT
-  remote: https://github.com/arrouse/install_provisioning_profiles
-  revision: 4cd48378552db10f3872b5bb591cf219d30fb580
-  specs:
-    fastlane-plugin-install_provisioning_profiles (0.2.1)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -145,6 +139,7 @@ GEM
       xcodeproj (>= 1.6.0, < 2.0.0)
       xcpretty (~> 0.3.0)
       xcpretty-travis-formatter (>= 0.0.3)
+    fastlane-plugin-install_provisioning_profiles (0.2.2)
     fourflusher (2.0.1)
     fuzzy_match (2.0.4)
     gh_inspector (1.1.3)
@@ -284,7 +279,7 @@ DEPENDENCIES
   danger-swiftlint
   danger-xcov
   fastlane
-  fastlane-plugin-install_provisioning_profiles!
+  fastlane-plugin-install_provisioning_profiles
   nanaimo
   slather
   synx
