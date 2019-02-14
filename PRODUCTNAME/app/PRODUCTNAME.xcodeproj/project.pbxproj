@@ -10,8 +10,6 @@
 		00551422206144E300E4CF68 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 00551421206144E200E4CF68 /* InfoPlist.strings */; };
 		0055142620615F9D00E4CF68 /* Storyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0055142520615F9C00E4CF68 /* Storyboards.swift */; };
 		006EFEF61F264204004A95DE /* TestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006EFEF51F264204004A95DE /* TestClient.swift */; };
-		209BE2512051C768004CF0FF /* Actionable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209BE2502051C768004CF0FF /* Actionable.swift */; };
-		209BE2562051C90C004CF0FF /* actionable.swifttemplate in Resources */ = {isa = PBXBuildFile; fileRef = 209BE2552051C90C004CF0FF /* actionable.swifttemplate */; };
 		209BE2592051CB4B004CF0FF /* Actionable+AutoConformance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209BE2582051CB4B004CF0FF /* Actionable+AutoConformance.swift */; };
 		2D4FA8F51E8574F9006C38ED /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4FA8F41E8574F9006C38ED /* AppCoordinator.swift */; };
 		2D4FA8F71E85752B006C38ED /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4FA8F61E85752B006C38ED /* Coordinator.swift */; };
@@ -139,8 +137,6 @@
 		17DC86D175CE0686878A3A82 /* Pods-PRODUCTNAME-PRODUCTNAMETests.sprint.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PRODUCTNAME-PRODUCTNAMETests.sprint.xcconfig"; path = "Pods/Target Support Files/Pods-PRODUCTNAME-PRODUCTNAMETests/Pods-PRODUCTNAME-PRODUCTNAMETests.sprint.xcconfig"; sourceTree = "<group>"; };
 		18117B6A27EAD54897E61F7E /* Pods-PRODUCTNAME-PRODUCTNAMETests.develop.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PRODUCTNAME-PRODUCTNAMETests.develop.xcconfig"; path = "Pods/Target Support Files/Pods-PRODUCTNAME-PRODUCTNAMETests/Pods-PRODUCTNAME-PRODUCTNAMETests.develop.xcconfig"; sourceTree = "<group>"; };
 		1FE712F80AD5930EEAA24325 /* Pods-Services.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Services.appstore.xcconfig"; path = "Pods/Target Support Files/Pods-Services/Pods-Services.appstore.xcconfig"; sourceTree = "<group>"; };
-		209BE2502051C768004CF0FF /* Actionable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actionable.swift; sourceTree = "<group>"; };
-		209BE2552051C90C004CF0FF /* actionable.swifttemplate */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = actionable.swifttemplate; sourceTree = "<group>"; };
 		209BE2582051CB4B004CF0FF /* Actionable+AutoConformance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Actionable+AutoConformance.swift"; sourceTree = "<group>"; };
 		2D4FA8F41E8574F9006C38ED /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		2D4FA8F61E85752B006C38ED /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -276,22 +272,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		209BE24F2051C758004CF0FF /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				209BE2502051C768004CF0FF /* Actionable.swift */,
-			);
-			path = Protocols;
-			sourceTree = "<group>";
-		};
-		209BE2522051C7BB004CF0FF /* Sourcery */ = {
-			isa = PBXGroup;
-			children = (
-				209BE2552051C90C004CF0FF /* actionable.swifttemplate */,
-			);
-			path = Sourcery;
-			sourceTree = "<group>";
-		};
 		2D4FA8F31E8574D2006C38ED /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
@@ -358,7 +338,6 @@
 			isa = PBXGroup;
 			children = (
 				861732D11FA28DB600C14354 /* Behaviors */,
-				209BE24F2051C758004CF0FF /* Protocols */,
 				861732EE1FA2984600C14354 /* Representable */,
 				861732D61FA290F400C14354 /* Views */,
 			);
@@ -529,7 +508,6 @@
 			isa = PBXGroup;
 			children = (
 				ABF84F8E1DC99D33002DB24D /* Generated */,
-				209BE2522051C7BB004CF0FF /* Sourcery */,
 				ABC778CD1DC92BC200815FB9 /* xcconfig */,
 				ABC778DC1DC94EE500815FB9 /* Acknowledgements.plist */,
 				ABC7787F1DC90B7A00815FB9 /* Assets.xcassets */,
@@ -812,7 +790,6 @@
 			files = (
 				ABC778DD1DC94EE500815FB9 /* Acknowledgements.plist in Resources */,
 				00551422206144E300E4CF68 /* InfoPlist.strings in Resources */,
-				209BE2562051C90C004CF0FF /* actionable.swifttemplate in Resources */,
 				ABF84F811DC97653002DB24D /* Localizable.strings in Resources */,
 				ABC778831DC90B7A00815FB9 /* LaunchScreen.storyboard in Resources */,
 				ABC778801DC90B7A00815FB9 /* Assets.xcassets in Resources */,
@@ -1089,7 +1066,6 @@
 				ABF84F911DC99D33002DB24D /* Localized.swift in Sources */,
 				861732D41FA28DB600C14354 /* HideBackButtonTextBehavior.swift in Sources */,
 				ABC778E81DC9503600815FB9 /* InstabugConfiguration.swift in Sources */,
-				209BE2512051C768004CF0FF /* Actionable.swift in Sources */,
 				BE28092B1E802893006E50D5 /* AnalyticsPageNames.swift in Sources */,
 				ABC778E61DC94FFC00815FB9 /* CrashlyticsConfiguration.swift in Sources */,
 				0055142620615F9D00E4CF68 /* Storyboards.swift in Sources */,
