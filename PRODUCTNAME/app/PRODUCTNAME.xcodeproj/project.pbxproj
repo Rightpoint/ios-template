@@ -234,7 +234,7 @@
 		CD09C93B20741945006D3501 /* Screenshots.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Screenshots.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD09C93D20741945006D3501 /* Screenshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screenshots.swift; sourceTree = "<group>"; };
 		CD09C93F20741945006D3501 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CD09C94920741B24006D3501 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
+		CD09C94920741B24006D3501 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
 		CD09C94C207428AE006D3501 /* StatusBarConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarConfiguration.swift; sourceTree = "<group>"; };
 		D7F90A3B2F8D15AE9564FF78 /* Pods-Services.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Services.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Services/Pods-Services.debug.xcconfig"; sourceTree = "<group>"; };
 		DCD1E696B5452D855D78934E /* Pods-PRODUCTNAME.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PRODUCTNAME.release.xcconfig"; path = "Pods/Target Support Files/Pods-PRODUCTNAME/Pods-PRODUCTNAME.release.xcconfig"; sourceTree = "<group>"; };
@@ -643,7 +643,6 @@
 			children = (
 				CD09C94920741B24006D3501 /* SnapshotHelper.swift */,
 			);
-			name = Helpers;
 			path = Helpers;
 			sourceTree = "<group>";
 		};
@@ -877,7 +876,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ -x \"$PODS_ROOT/Sourcery/bin/sourcery\" ]; then\n\"$PODS_ROOT/Sourcery/bin/sourcery\" --sources \"PRODUCTNAME\" --templates \"PRODUCTNAME/Resources/Sourcery/actionable.swifttemplate\" --output \"PRODUCTNAME/Resources/Generated/Actionable+AutoConformance.swift\"\nfi";
+			shellScript = "\"/Users/connorneville/Documents/Projects/Actionable/actionable\" -i \"PRODUCTNAME\" -o \"PRODUCTNAME/Resources/Generated/Actionable+AutoConformance.swift\"";
 		};
 		2DFF1D1F1E8C56C700B1AD70 /* SwiftGen */ = {
 			isa = PBXShellScriptBuildPhase;
