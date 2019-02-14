@@ -1,0 +1,6 @@
+framework module Actionable {
+  umbrella header "Actionable-umbrella.h"
+
+  export *
+  module * { export * }
+}
