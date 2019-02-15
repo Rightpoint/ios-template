@@ -12,7 +12,7 @@ def shared
 end
 
 target 'PRODUCTNAME' do
-  pod 'Actionable', :path => '/Users/connorneville/Documents/Projects/Actionable/'
+  pod 'Actionable'
   pod 'Instabug'
   pod 'Crashlytics'
 
