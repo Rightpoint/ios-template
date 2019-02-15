@@ -1,5 +1,5 @@
 PODS:
-  - Actionable (0.0.1):
+  - Actionable (0.0.3):
     - Sourcery
   - Alamofire (4.7.1)
   - Anchorage (4.2.2)
@@ -92,7 +92,7 @@ PODS:
   - SwiftLint (0.25.0)
 
 DEPENDENCIES:
-  - Actionable (from `/Users/connorneville/Documents/Projects/Actionable/`)
+  - Actionable
   - Alamofire
   - Anchorage
   - BonMot
@@ -110,6 +110,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
+    - Actionable
     - Alamofire
     - Anchorage
     - BonMot
@@ -126,12 +127,8 @@ SPEC REPOS:
     - Swiftilities
     - SwiftLint
 
-EXTERNAL SOURCES:
-  Actionable:
-    :path: "/Users/connorneville/Documents/Projects/Actionable/"
-
 SPEC CHECKSUMS:
-  Actionable: a105a8c62be2189f1c2b5ced5b9e957e9bd5e495
+  Actionable: e31bde7957f2488774a55f2bcc1c091f66bc38ca
   Alamofire: 68d7d521118d49c615a8d2214d87cdf525599d30
   Anchorage: cba8707ea6475f604e04047882ba47c07e4b2ac1
   BonMot: 68da0bd7c2f602aca85511bedabd211eb0fae666
@@ -148,6 +145,6 @@ SPEC CHECKSUMS:
   Swiftilities: 38a1e58d290e1a70f3ad345ccb2e2e0556375540
   SwiftLint: e14651157288e9e01d6e1a71db7014fb5744a8ea
 
-PODFILE CHECKSUM: 154b689ce7452f0b4825b3e7033481dd1baa60f9
+PODFILE CHECKSUM: eaf24044a1d7e6504fc8c253c1e5e8b246e5f526
 
 COCOAPODS: 1.5.0

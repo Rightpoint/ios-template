@@ -1,0 +1,61 @@
+<%_
+func variableName(for type: Type) -> String {
+    let lookups = ["ViewController": "vc", "View": "view", "Cell": "cell", "Service": "service"]
+    for (suffix, specialName) in lookups {
+        if type.name.hasSuffix(suffix) {
+            return specialName
+        }
+    }
+    return "component"
+}
+
+func delegateName(for type: Type) -> String {
+    var delegateName = "\(type.localName)Delegate"
+    var currentType = type
+    while let parent = currentType.parent {
+        let parentName = strippingParentSuffixes(from: parent)
+        delegateName = "\(parentName)\(delegateName)"
+        currentType = parent
+    }
+    return delegateName
+}
+
+func strippingParentSuffixes(from parentType: Type) -> String {
+    let parentName = parentType.localName
+    let suffixes = ["View", "ViewController"]
+    for suffix in suffixes {
+        if let suffixIndex = parentName.range(of: suffix)?.lowerBound {
+            let slice = parentName[parentName.startIndex..<suffixIndex]
+            return String(slice)
+        }
+    }
+    return parentName
+}
+
+func lowerFirstCamelCaseGroup(_ input: String) -> String {
+    guard !input.isEmpty else { return "" }
+    let firstCapitals = input.prefix { character in
+        return character.unicodeScalars.contains { unicodeScalar in
+            CharacterSet.uppercaseLetters.contains(unicodeScalar)
+        }
+    }
+
+    guard !firstCapitals.isEmpty else {
+        return input
+    }
+
+    let newPrefix: String
+
+    if firstCapitals.count == 1 {
+        newPrefix = firstCapitals.lowercased()
+    }
+    else {
+        newPrefix = "\(firstCapitals.dropLast().lowercased())\(firstCapitals.last!)"
+    }
+
+    var updated = input
+    let range = updated.range(of: firstCapitals)!
+    updated.replaceSubrange(range, with: newPrefix)
+    return updated
+}
+_%>

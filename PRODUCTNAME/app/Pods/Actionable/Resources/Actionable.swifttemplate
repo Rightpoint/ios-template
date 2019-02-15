@@ -1,0 +1,25 @@
+<%- include("Actionable+Helpers") %>
+<%_ let allTypes = types.implementing["Actionable"]
+for type in allTypes {
+let lowerFirstTypeName = lowerFirstCamelCaseGroup(type.localName)
+let delegate = delegateName(for: type) _%>
+// MARK: - <%= type.name %>
+<%= type.accessLevel %> protocol <%= delegate %>: class {
+
+    func <%= lowerFirstTypeName %>(_ <%= variableName(for: type) %>: <%= type.name %>, didNotify action: <%= type.name %>.Action)
+
+}
+
+<%= type.accessLevel %> extension <%= type.name %> {
+
+    typealias ActionType = Action
+    typealias Delegate = <%= delegate %>
+
+    func notify(_ action: ActionType) {
+        delegate?.<%= lowerFirstTypeName %>(self, didNotify: action)
+    }
+
+}
+<%_
+}
+_%>
