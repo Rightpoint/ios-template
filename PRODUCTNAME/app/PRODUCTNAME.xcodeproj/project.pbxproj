@@ -664,7 +664,7 @@
 				5BD18785D9BC5E2781EBCD52 /* [CP] Check Pods Manifest.lock */,
 				2DFF1D1F1E8C56C700B1AD70 /* SwiftGen */,
 				ABC778DB1DC9405700815FB9 /* SwiftLint */,
-				209BE2572051C936004CF0FF /* Sourcery */,
+				209BE2572051C936004CF0FF /* Actionable */,
 				0052FE8220605B3A0058A4BC /* Generate xcconfig warnings */,
 				ABC778711DC90B7A00815FB9 /* Sources */,
 				ABC778721DC90B7A00815FB9 /* Frameworks */,
@@ -841,19 +841,19 @@
 			shellPath = /bin/sh;
 			shellScript = "if [ ${FABRIC_API_KEY} != \"xxxxxx\" ]; then\nif [ \"${CONFIGURATION}\" != \"Debug\" ]; then\n\"${PODS_ROOT}/Fabric/run\" ${FABRIC_API_KEY} ${FABRIC_BUILD_SECRET}\nfi\nfi";
 		};
-		209BE2572051C936004CF0FF /* Sourcery */ = {
+		209BE2572051C936004CF0FF /* Actionable */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = Sourcery;
+			name = Actionable;
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"/Users/connorneville/Documents/Projects/Actionable/actionable\" -i \"PRODUCTNAME\" -o \"PRODUCTNAME/Resources/Generated/Actionable+AutoConformance.swift\"";
+			shellScript = "\"$PODS_ROOT/Actionable/actionable.sh\" -i \"PRODUCTNAME\" -o \"PRODUCTNAME/Resources/Generated/Actionable+AutoConformance.swift\"";
 		};
 		2DFF1D1F1E8C56C700B1AD70 /* SwiftGen */ = {
 			isa = PBXShellScriptBuildPhase;
