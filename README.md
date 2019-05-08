@@ -1,7 +1,7 @@
 # iOS Template
 
 [![Swift 4.2](https://img.shields.io/badge/Swift-4.2-orange.svg?style=flat)](https://swift.org)
-[![CircleCI](https://img.shields.io/circleci/project/github/Raizlabs/ios-template/master.svg)](https://circleci.com/gh/Raizlabs/ios-template) [![codecov](https://codecov.io/gh/Raizlabs/ios-template/branch/master/graph/badge.svg)](https://codecov.io/gh/Raizlabs/ios-template)
+[![CircleCI](https://img.shields.io/circleci/project/github/Rightpoint/ios-template/master.svg)](https://circleci.com/gh/Rightpoint/ios-template) [![codecov](https://codecov.io/gh/Rightpoint/ios-template/branch/master/graph/badge.svg)](https://codecov.io/gh/Rightpoint/ios-template)
 
 A template for new iOS projects at Raizlabs.
 
@@ -25,7 +25,7 @@ $ cookiecutter https://github.com/Raizlabs/ios-template/archive/master.zip
 
 ### Template Output
 
-[![CircleCI](https://img.shields.io/circleci/project/github/Raizlabs/ios-template-output/master.svg)](https://circleci.com/gh/Raizlabs/ios-template-output)
+[![CircleCI](https://img.shields.io/circleci/project/github/Rightpoint/ios-template-output/master.svg)](https://circleci.com/gh/Rightpoint/ios-template-output)
 
 Pushing updates to this repository triggers CircleCI to build a blank template and push the result to the [ios-template-output](https://github.com/Raizlabs/ios-template-output) repository. If the badge above is failing, most likely there is a problem with the inner CircleCI script located in `PRODUCTNAME/.circleci/config.yml`.
 
