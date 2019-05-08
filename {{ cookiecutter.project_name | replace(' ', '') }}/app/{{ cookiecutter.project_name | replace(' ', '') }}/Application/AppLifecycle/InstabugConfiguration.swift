@@ -22,7 +22,7 @@ struct InstabugConfiguration: AppLifecycle {
         if let token = Bundle.main.object(forInfoDictionaryKey: InstabugConfiguration.instabugTokenKey) as? String, !token.isEmpty {
             Instabug.start(withToken: token, invocationEvents: [.shake])
         }
-        BugReporting.invocationOptions = .emailFieldOptional
+        BugReporting.bugReportingOptions = .emailFieldOptional
         CrashReporting.enabled = false
     }
 
