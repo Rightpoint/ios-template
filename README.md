@@ -1,6 +1,6 @@
 # iOS Template
 
-[![Swift 4.2](https://img.shields.io/badge/Swift-4.2-orange.svg?style=flat)](https://swift.org)
+[![Swift 5.0](https://img.shields.io/badge/Swift-5.0-orange.svg?style=flat)](https://swift.org)
 [![CircleCI](https://img.shields.io/circleci/project/github/Rightpoint/ios-template/master.svg)](https://circleci.com/gh/Rightpoint/ios-template) [![codecov](https://codecov.io/gh/Rightpoint/ios-template/branch/master/graph/badge.svg)](https://codecov.io/gh/Rightpoint/ios-template)
 
 A template for new iOS projects at Rightpoint.

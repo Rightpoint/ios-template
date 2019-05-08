@@ -2,12 +2,12 @@
 
 [![Develop](https://img.shields.io/badge/Hockey-Develop-green.svg)][develop-hockey]
 [![Sprint](https://img.shields.io/badge/Hockey-Sprint-green.svg)][sprint-hockey]
-[![CircleCI](https://circleci.com/gh/Raizlabs/{{ cookiecutter.company_name | replace(' ', '-') | lower }}-ios/tree/develop.svg?style=shield&circle-token=ZZCIRCLE_PROJECT_STATUS_KEYZZ)][circle-ci] [![codecov](https://codecov.io/gh/Raizlabs/{{ cookiecutter.company_name | replace(' ', '-') | lower }}-ios/branch/master/graph/badge.svg)](https://codecov.io/gh/Raizlabs/{{ cookiecutter.company_name | replace(' ', '-') | lower }}-ios)
+[![CircleCI](https://circleci.com/gh/Rightpoint/{{ cookiecutter.company_name | replace(' ', '-') | lower }}-ios/tree/develop.svg?style=shield&circle-token=ZZCIRCLE_PROJECT_STATUS_KEYZZ)][circle-ci] [![codecov](https://codecov.io/gh/Rightpoint/{{ cookiecutter.company_name | replace(' ', '-') | lower }}-ios/branch/master/graph/badge.svg)](https://codecov.io/gh/Rightpoint/{{ cookiecutter.company_name | replace(' ', '-') | lower }}-ios)
 
 ## Development Process
 All stories and bugs are tracked in [JIRA][]. Development occurs on branches that are tested with the `test` fastlane task once a PR is created. The PR is reviewed and then merged into the `develop` branch. This triggers the `develop` fastlane task which distributes a build to the [develop][develop-hockey] hockey app for testing and PO approval. At the end of a sprint, a `sprint-X` tag is manually created which triggers the `sprint` fastlane task which distributes a build to the [sprint][sprint-hockey] hockey app.
 
-[circle-ci]: https://circleci.com/gh/Raizlabs/{{ cookiecutter.project_name }}-ios
+[circle-ci]: https://circleci.com/gh/Rightpoint/{{ cookiecutter.project_name }}-ios
 [JIRA]: https://raizlabs.atlassian.net/secure/RapidBoard.jspa?projectKey={{ cookiecutter.jira_key }}
 [sprint-hockey]: https://rink.hockeyapp.net/apps/ZZHOCKEY_SPRINT_IDZZ
 [develop-hockey]: https://rink.hockeyapp.net/apps/ZZHOCKEY_DEVELOP_IDZZ
@@ -22,7 +22,7 @@ You can use [Codecov](https://codecov.io) automatically as long as the repositor
 
 #### Danger
 
-To [set up Danger](http://danger.systems/guides/getting_started.html) on CircleCI you'll need to add a `DANGER_GITHUB_API_TOKEN` to the CI test environment. There are two bots already available for Raizlabs: for open source projects use our "OSS" bot, and for closed source projects use the "Private" bot. You'll find these tokens in our shared credential storage if you search for "GitHub Bot".
+To [set up Danger](http://danger.systems/guides/getting_started.html) on CircleCI you'll need to add a `DANGER_GITHUB_API_TOKEN` to the CI test environment. There are two bots already available for Rightpoint: for open source projects use our "OSS" bot, and for closed source projects use the "Private" bot. You'll find these tokens in our shared credential storage if you search for "GitHub Bot".
 
 Similarly, you'll also need to set up the `CIRCLE_API_TOKEN` for build artifacts like screenshots and code coverage reports to show up in Danger.
 
@@ -76,7 +76,7 @@ To view dependencies, view the [Podfile](app/Podfile).
 
 ### Setup
 ```bash
-git clone git@github.com:Raizlabs/{{ cookiecutter.project_name }}-ios.git
+git clone git@github.com:Rightpoint/{{ cookiecutter.project_name }}-ios.git
 cd {{ cookiecutter.project_name }}-ios
 bundle install
 cd app
