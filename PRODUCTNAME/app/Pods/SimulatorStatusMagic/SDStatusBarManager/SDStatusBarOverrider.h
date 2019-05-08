@@ -29,12 +29,15 @@
 @protocol SDStatusBarOverrider <NSObject>
 
 @property (copy, nonatomic) NSString *timeString;
+@property (copy, nonatomic) NSString *dateString;
 @property (copy, nonatomic) NSString* carrierName;
 
 @property (assign, nonatomic) BOOL bluetoothEnabled;
 @property (assign, nonatomic) BOOL bluetoothConnected;
 @property (assign, nonatomic) BOOL batteryDetailEnabled;
 @property (assign, nonatomic) SDStatusBarManagerNetworkType networkType;
+@property (assign, nonatomic) BOOL iPadDateEnabled;
+@property (assign, nonatomic) BOOL iPadGsmSignalEnabled;
 
 - (void)enableOverrides;
 - (void)disableOverrides;

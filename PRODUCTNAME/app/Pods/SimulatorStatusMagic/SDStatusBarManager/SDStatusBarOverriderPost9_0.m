@@ -118,11 +118,14 @@ typedef struct {
 @implementation SDStatusBarOverriderPost9_0
 
 @synthesize timeString;
+@synthesize dateString;
 @synthesize carrierName;
 @synthesize bluetoothConnected;
 @synthesize bluetoothEnabled;
 @synthesize batteryDetailEnabled;
 @synthesize networkType;
+@synthesize iPadDateEnabled;
+@synthesize iPadGsmSignalEnabled;
 
 - (void)enableOverrides
 {

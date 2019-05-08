@@ -4,8 +4,8 @@ Modify the iOS Simulator so that it has a perfect status bar, then run your app 
 
 * 9:41 AM is displayed for the time.
 * The battery is full and shows 100%.
-* On iPhone: The carrier text is removed, 5 bars of cellular signal and full WiFi bars are displayed.
-* On iPad: The carrier text is set to "iPad" and full WiFi bars are displayed.
+* 5 bars of cellular signal and full WiFi bars are displayed.
+* Tue Jan 9 is displayed for the date (iPad only)
 
 ### How do I use it?
 
@@ -21,9 +21,9 @@ Run the app again and click "Restore Default Status Bar". Resetting the iOS Simu
 
 ### I have a script to take my screenshots, can I automate this?
 
-Yes! SimulatorStatusMagic is available via [CocoaPods](http://cocoapods.org), [Carthage](https://github.com/Carthage/Carthage) and as a standalone source release. [Installation instructions](https://github.com/shinydevelopment/SimulatorStatusMagic/blob/master/INSTALLATION.md) are available for each method.
+Yes! SimulatorStatusMagic is available via [CocoaPods](http://cocoapods.org), [Carthage](https://github.com/Carthage/Carthage) and as a standalone source release. [Installation instructions](https://github.com/shinydevelopment/SimulatorStatusMagic/blob/master/INSTALLATION.md) are available.
 
-It is recommended to only include `SDStatusBarManager` in your debug configuration so that the code is never included in release builds. Then, when you want to apply a perfect status bar, call `[[SDStatusBarManager sharedInstance] enableOverrides]`. To restore the standard status bar, call `[[SDStatusBarManager sharedInstance] disableOverrides]`.
+It is recommended to **only** include `SDStatusBarManager` in your debug configuration so that the code is **never** included in release builds. When you want to apply a perfect status bar, call `[[SDStatusBarManager sharedInstance] enableOverrides]`. To restore the standard status bar, call `[[SDStatusBarManager sharedInstance] disableOverrides]`.
 
 ### What about automation of the sample app?
 

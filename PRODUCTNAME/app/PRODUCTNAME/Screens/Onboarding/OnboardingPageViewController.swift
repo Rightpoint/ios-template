@@ -154,14 +154,14 @@ private extension OnboardingPageViewController {
 extension OnboardingPageViewController: UIPageViewControllerDataSource {
 
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        guard let index = viewControllers.index(of: viewController), index > 0 else {
+        guard let index = viewControllers.firstIndex(of: viewController), index > 0 else {
             return nil
         }
         return viewControllers[index - 1]
     }
 
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        guard let index = viewControllers.index(of: viewController),
+        guard let index = viewControllers.firstIndex(of: viewController),
             index < viewControllers.count - 1 else {
             return nil
         }
@@ -176,7 +176,7 @@ extension OnboardingPageViewController: UIPageViewControllerDataSource {
         guard let current = pageViewController.viewControllers?.first else {
             return 0
         }
-        return viewControllers.index(of: current) ?? 0
+        return viewControllers.firstIndex(of: current) ?? 0
     }
 
 }
