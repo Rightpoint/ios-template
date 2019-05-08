@@ -136,6 +136,7 @@ executors:
       LANG: en_US.UTF-8
       FL_OUTPUT_DIR: /Users/distiller/project/output
       DISABLE_COVERALLS: true
+      BUNDLE_PATH: /Users/distiller/project/vendor/bundle
     shell: /bin/bash --login -eo pipefail
 
 commands:
