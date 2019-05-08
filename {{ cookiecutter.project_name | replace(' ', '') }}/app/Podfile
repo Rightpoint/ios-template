@@ -31,5 +31,5 @@ target 'Services' do
 end
 
 pod 'SwiftGen'
-pod 'Sourcery', '~> 0.15.0'
+pod 'Sourcery', '~> 0.16.1'
 pod 'SwiftLint'

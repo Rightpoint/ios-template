@@ -23,7 +23,7 @@ PODS:
   - OHHTTPStubs/Swift (8.0.0):
     - OHHTTPStubs/Default
   - SimulatorStatusMagic (2.4.1)
-  - Sourcery (0.15.0)
+  - Sourcery (0.16.1)
   - SwiftGen (6.1.0)
   - Swiftilities (0.22.1):
     - Swiftilities/All (= 0.22.1)
@@ -98,7 +98,7 @@ DEPENDENCIES:
   - Marshal
   - OHHTTPStubs/Swift
   - SimulatorStatusMagic
-  - Sourcery (~> 0.15.0)
+  - Sourcery (~> 0.16.1)
   - SwiftGen
   - Swiftilities
   - SwiftLint
@@ -133,11 +133,11 @@ SPEC CHECKSUMS:
   Marshal: ef480864a6af10a63f67be7e55bb5d8fe67a16d9
   OHHTTPStubs: 9cbce6364bec557cc3439aa6bb7514670d780881
   SimulatorStatusMagic: 28d4a9d1a500ac7cea0b2b5a43c1c6ddb40ba56c
-  Sourcery: 5895672cae353cdbfa95f3f4aaeb75a664d76f6a
+  Sourcery: 16779170d35ee204666843b09031f36721a84bcc
   SwiftGen: f872ca75cbd17bf7103c17f13dcfa0d9a15667b0
   Swiftilities: 7b57b06b46df20236a1cd9faf64ab3fd7554f4ed
   SwiftLint: 009a898ef2a1c851f45e1b59349bf6ff2ddc990d
 
-PODFILE CHECKSUM: b41b08dd08855d355d5efcddddf69712c8ddbce4
+PODFILE CHECKSUM: 98dbefd596b5a6c86a1a97787e05790a70227eb4
 
 COCOAPODS: 1.6.1
