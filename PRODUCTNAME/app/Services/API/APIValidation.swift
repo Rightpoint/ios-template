@@ -19,7 +19,7 @@ func APIResponseValidator(request: URLRequest?, response: HTTPURLResponse, data:
     case 400..<500:
         return .failure(APIError.invalidResponse)
     case 500..<Int.max:
-        return .failure(APIError.server)
+        return .failure(APIError.server(statusCode: response.statusCode))
     default:
         break
     }

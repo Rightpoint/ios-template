@@ -6,8 +6,6 @@
 //  Copyright © 2017 ORGANIZATION. All rights reserved.
 //
 
-import Marshal
-
 /// APIConstants that are used in multiple places
 enum APIConstants {
     // Headers

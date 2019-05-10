@@ -6,7 +6,6 @@
 //
 //
 
-import Marshal
 import Swiftilities
 import Alamofire
 
@@ -27,14 +26,6 @@ extension NetworkLoggable {
 }
 
 extension APIEndpoint {
-
-    func log(_ jsonArray: [JSONObject]) {
-        log(jsonArray.debugDescription)
-    }
-
-    func log(_ json: JSONObject) {
-        log(json.debugDescription)
-    }
 
     func log(_ request: DataRequest) {
         log(request.debugDescription)

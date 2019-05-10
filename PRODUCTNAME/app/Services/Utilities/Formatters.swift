@@ -6,11 +6,9 @@
 //  Copyright © 2017 ORGANIZATION. All rights reserved.
 //
 
-import Marshal
-
 public enum Formatters {
 
-    public static var ISODateFormatter: ISO8601DateFormatter = {
+    public static let ISODateFormatter: ISO8601DateFormatter = {
         return ISO8601DateFormatter()
     }()
 

@@ -13,9 +13,9 @@ import Services
 enum Payloads {
     static let oauth: Data = {
         let json = [
-            "refreshToken": "FAKE_REFRESH_TOKEN",
-            "token": "FAKE_TOKEN",
-            "expirationDate": Formatters.ISODateFormatter.string(from: Date.distantFuture),
+            "refresh_token": "FAKE_REFRESH_TOKEN",
+            "access_token": "FAKE_TOKEN",
+            "expires_in": "3600",
         ]
         do {
             return try JSONSerialization.data(withJSONObject: json)

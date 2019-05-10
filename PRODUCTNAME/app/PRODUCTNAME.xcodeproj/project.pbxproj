@@ -54,7 +54,7 @@
 		86A65B121FA0EB0600705C14 /* OAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A65B071FA0EB0600705C14 /* OAuth.swift */; };
 		86A65B181FA0F22B00705C14 /* Closures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A65B141FA0F22B00705C14 /* Closures.swift */; };
 		86A65B191FA0F22B00705C14 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A65B151FA0F22B00705C14 /* Formatters.swift */; };
-		86A65B1A1FA0F22B00705C14 /* Marshal+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A65B161FA0F22B00705C14 /* Marshal+Utility.swift */; };
+		86A65B1A1FA0F22B00705C14 /* Keychain+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A65B161FA0F22B00705C14 /* Keychain+Codable.swift */; };
 		86A65B1D1FA0F2C900705C14 /* BuildType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A65B1C1FA0F2C900705C14 /* BuildType.swift */; };
 		86A65B201FA0F6DB00705C14 /* UserDefaults+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86A65B1F1FA0F6DB00705C14 /* UserDefaults+Utilities.swift */; };
 		959F487642A61EF85C170AF9 /* Pods_PRODUCTNAME_PRODUCTNAMETests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 845339F96003195CE76EA042 /* Pods_PRODUCTNAME_PRODUCTNAMETests.framework */; };
@@ -90,6 +90,8 @@
 		CD09C94D207428AE006D3501 /* StatusBarConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD09C94C207428AE006D3501 /* StatusBarConfiguration.swift */; };
 		D9186D85216D397C0049FD3E /* StoryboardScenes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9186D83216D397C0049FD3E /* StoryboardScenes.swift */; };
 		D9186D86216D397C0049FD3E /* StoryboardSegues.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9186D84216D397C0049FD3E /* StoryboardSegues.swift */; };
+		D963BBC52286284500FE0DD5 /* RequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D963BBC42286284500FE0DD5 /* RequestProtocol.swift */; };
+		D963BBC722862E7000FE0DD5 /* APIEndpoint+Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D963BBC622862E7000FE0DD5 /* APIEndpoint+Codable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -187,7 +189,7 @@
 		86A65B071FA0EB0600705C14 /* OAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuth.swift; sourceTree = "<group>"; };
 		86A65B141FA0F22B00705C14 /* Closures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Closures.swift; sourceTree = "<group>"; };
 		86A65B151FA0F22B00705C14 /* Formatters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
-		86A65B161FA0F22B00705C14 /* Marshal+Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Marshal+Utility.swift"; sourceTree = "<group>"; };
+		86A65B161FA0F22B00705C14 /* Keychain+Codable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Keychain+Codable.swift"; sourceTree = "<group>"; };
 		86A65B1C1FA0F2C900705C14 /* BuildType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildType.swift; sourceTree = "<group>"; };
 		86A65B1F1FA0F6DB00705C14 /* UserDefaults+Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Utilities.swift"; sourceTree = "<group>"; };
 		8CD9F2E21AB27A0230007885 /* Pods_PRODUCTNAME.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PRODUCTNAME.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -239,6 +241,8 @@
 		D7F90A3B2F8D15AE9564FF78 /* Pods-Services.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Services.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Services/Pods-Services.debug.xcconfig"; sourceTree = "<group>"; };
 		D9186D83216D397C0049FD3E /* StoryboardScenes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardScenes.swift; sourceTree = "<group>"; };
 		D9186D84216D397C0049FD3E /* StoryboardSegues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardSegues.swift; sourceTree = "<group>"; };
+		D963BBC42286284500FE0DD5 /* RequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestProtocol.swift; sourceTree = "<group>"; };
+		D963BBC622862E7000FE0DD5 /* APIEndpoint+Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIEndpoint+Codable.swift"; sourceTree = "<group>"; };
 		DCD1E696B5452D855D78934E /* Pods-PRODUCTNAME.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PRODUCTNAME.release.xcconfig"; path = "Pods/Target Support Files/Pods-PRODUCTNAME/Pods-PRODUCTNAME.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -423,6 +427,7 @@
 		86A65AFC1FA0EB0600705C14 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				D963BBC622862E7000FE0DD5 /* APIEndpoint+Codable.swift */,
 				86A65AFE1FA0EB0600705C14 /* APIClient+PRODUCTNAME.swift */,
 				86A65AFF1FA0EB0600705C14 /* APIClient.swift */,
 				86A65B001FA0EB0600705C14 /* APIConstants.swift */,
@@ -441,9 +446,10 @@
 		86A65B131FA0F22B00705C14 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				D963BBC42286284500FE0DD5 /* RequestProtocol.swift */,
 				86A65B141FA0F22B00705C14 /* Closures.swift */,
 				86A65B151FA0F22B00705C14 /* Formatters.swift */,
-				86A65B161FA0F22B00705C14 /* Marshal+Utility.swift */,
+				86A65B161FA0F22B00705C14 /* Keychain+Codable.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -912,7 +918,6 @@
 				"${PODS_ROOT}/Instabug/Instabug.framework",
 				"${PODS_ROOT}/Instabug/Instabug.framework.dSYM",
 				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
-				"${BUILT_PRODUCTS_DIR}/Marshal/Marshal.framework",
 				"${BUILT_PRODUCTS_DIR}/SimulatorStatusMagic/SimulatorStatusMagic.framework",
 				"${BUILT_PRODUCTS_DIR}/Swiftilities/Swiftilities.framework",
 			);
@@ -924,7 +929,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Instabug.framework",
 				"${DWARF_DSYM_FOLDER_PATH}/Instabug.framework.dSYM",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Marshal.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SimulatorStatusMagic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swiftilities.framework",
 			);
@@ -946,7 +950,6 @@
 				"${PODS_ROOT}/Instabug/Instabug.framework",
 				"${PODS_ROOT}/Instabug/Instabug.framework.dSYM",
 				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
-				"${BUILT_PRODUCTS_DIR}/Marshal/Marshal.framework",
 				"${BUILT_PRODUCTS_DIR}/SimulatorStatusMagic/SimulatorStatusMagic.framework",
 				"${BUILT_PRODUCTS_DIR}/Swiftilities/Swiftilities.framework",
 				"${BUILT_PRODUCTS_DIR}/OHHTTPStubs/OHHTTPStubs.framework",
@@ -959,7 +962,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Instabug.framework",
 				"${DWARF_DSYM_FOLDER_PATH}/Instabug.framework.dSYM",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Marshal.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SimulatorStatusMagic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swiftilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OHHTTPStubs.framework",
@@ -1051,10 +1053,12 @@
 				86A65B0E1FA0EB0600705C14 /* APIEnvironment.swift in Sources */,
 				86A65B0B1FA0EB0600705C14 /* APIConstants.swift in Sources */,
 				86A65B181FA0F22B00705C14 /* Closures.swift in Sources */,
-				86A65B1A1FA0F22B00705C14 /* Marshal+Utility.swift in Sources */,
+				86A65B1A1FA0F22B00705C14 /* Keychain+Codable.swift in Sources */,
 				86A65B091FA0EB0600705C14 /* APIClient+PRODUCTNAME.swift in Sources */,
+				D963BBC722862E7000FE0DD5 /* APIEndpoint+Codable.swift in Sources */,
 				86A65B121FA0EB0600705C14 /* OAuth.swift in Sources */,
 				86A65B0F1FA0EB0600705C14 /* APIError.swift in Sources */,
+				D963BBC52286284500FE0DD5 /* RequestProtocol.swift in Sources */,
 				86A65B081FA0EB0600705C14 /* Alamofire+PRODUCTNAME.swift in Sources */,
 				86A65B1D1FA0F2C900705C14 /* BuildType.swift in Sources */,
 				86A65B0A1FA0EB0600705C14 /* APIClient.swift in Sources */,
