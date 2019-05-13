@@ -4,8 +4,8 @@ Modify the iOS Simulator so that it has a perfect status bar, then run your app 
 
 * 9:41 AM is displayed for the time.
 * The battery is full and shows 100%.
-* On iPhone: The carrier text is removed, 5 bars of cellular signal and full WiFi bars are displayed.
-* On iPad: The carrier text is set to "iPad" and full WiFi bars are displayed.
+* 5 bars of cellular signal and full WiFi bars are displayed.
+* Tue Jan 9 is displayed for the date (iPad only)
 
 ### How do I use it?
 
@@ -21,9 +21,9 @@ Run the app again and click "Restore Default Status Bar". Resetting the iOS Simu
 
 ### I have a script to take my screenshots, can I automate this?
 
-Yes! SimulatorStatusMagic is available via [CocoaPods](http://cocoapods.org), [Carthage](https://github.com/Carthage/Carthage) and as a standalone source release. [Installation instructions](https://github.com/shinydevelopment/SimulatorStatusMagic/blob/master/INSTALLATION.md) are available for each method.
+Yes! SimulatorStatusMagic is available via [CocoaPods](http://cocoapods.org), [Carthage](https://github.com/Carthage/Carthage) and as a standalone source release. [Installation instructions](https://github.com/shinydevelopment/SimulatorStatusMagic/blob/master/INSTALLATION.md) are available.
 
-It is recommended to only include `SDStatusBarManager` in your debug configuration so that the code is never included in release builds. Then, when you want to apply a perfect status bar, call `[[SDStatusBarManager sharedInstance] enableOverrides]`. To restore the standard status bar, call `[[SDStatusBarManager sharedInstance] disableOverrides]`.
+It is recommended to **only** include `SDStatusBarManager` in your debug configuration so that the code is **never** included in release builds. When you want to apply a perfect status bar, call `[[SDStatusBarManager sharedInstance] enableOverrides]`. To restore the standard status bar, call `[[SDStatusBarManager sharedInstance] disableOverrides]`.
 
 ### What about automation of the sample app?
 
@@ -45,7 +45,7 @@ The overrides will be automatically enabled or disabled on launch.
 
 ### Does this work on device?
 
-No. The status bar server is blocked on devices. However, [this post contains more information on taking perfect screenshots on real devices](http://shinydevelopment.com/blog/status-magic-and-iphone6-screen-sizes/).
+No. The status bar server is blocked on devices. However, macOS includes the facility to include a perfect status bar when recording your device screen with QuickTime ([Read more](https://appadvice.com/appnn/2014/08/quicktime-in-os-x-yosemite-reveals-that-apple-cares-about-status-bars)).
 
 ### How does this work?
 

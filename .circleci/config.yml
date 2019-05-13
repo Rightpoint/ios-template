@@ -1,37 +1,10 @@
-version: 2
+version: 2.1
+
 jobs:
   danger:
-    macos:
-      xcode: "9.3.0"
-    environment:
-      LC_ALL: en_US.UTF-8
-      LANG: en_US.UTF-8
-      BUNDLE_JOBS: 3
-      BUNDLE_RETRY: 3
-      BUNDLE_PATH: /Users/distiller/project/PRODUCTNAME/app/build/gems
-      DISABLE_COVERALLS: true
-    shell: /bin/bash --login -eo pipefail
-    working_directory: /Users/distiller/project
+    executor: xcode-10
     steps:
-      - run:
-          name: Set Ruby Version
-          command:  echo "ruby-2.4" > ~/.ruby-version
-      - checkout
-      # Setup Ruby dependencies
-      - restore_cache:
-          keys: 
-            - 7-gems-{{ checksum "Gemfile.lock" }}
-            # Fall back to a previous cache if exact match cannot be found
-            - 7-gems-
-      - run:
-          name: Restore Ruby Gems
-          command: |
-            bundle check || bundle install
-      # Cache Gems
-      - save_cache:
-          key: 7-gems-{{ checksum "Gemfile.lock" }}
-          paths:
-            - "/Users/distiller/project/PRODUCTNAME/app/build/gems"
+      - setup
       - run:
           name: Tests
           command: |
@@ -85,32 +58,10 @@ jobs:
             cd PRODUCTNAME/app
             bundle exec fastlane slackshots
 
-  test-xcode-9-3:
-    macos:
-      xcode: "9.3.0"
-    environment:
-      LC_ALL: en_US.UTF-8
-      LANG: en_US.UTF-8
-      BUNDLE_JOBS: 3
-      BUNDLE_RETRY: 3
-      BUNDLE_PATH: /Users/distiller/project/PRODUCTNAME/app/build/gems
-    shell: /bin/bash --login -eo pipefail
-    working_directory: /Users/distiller/project
+  test-xcode-10-2:
+    executor: xcode-10
     steps:
-      - run:
-          name: Set Ruby Version
-          command:  echo "ruby-2.4" > ~/.ruby-version
-      - checkout
-      # Setup Ruby dependencies
-      - restore_cache:
-          keys: 
-            - 7-gems-{{ checksum "Gemfile.lock" }}
-            # Fall back to a previous cache if exact match cannot be found
-            - 7-gems-
-      - run:
-          name: Restore Ruby Gems
-          command: |
-            bundle check --gemfile Gemfile || bundle install --gemfile Gemfile
+      - setup
       # Setup Python dependencies
       - restore_cache:
           key: 5-python-requirements-{{ checksum "requirements.txt" }}
@@ -127,7 +78,6 @@ jobs:
       # Restore Pods cache
       - restore_cache:
           key: 3-pods-{{ checksum "./PRODUCTNAME/app/Podfile.lock" }}
-
       # Download CocoaPods specs via HTTPS (faster than Git)
       - run:
           name: Install CocoaPods
@@ -152,11 +102,6 @@ jobs:
       - run:
           name: Verify cookiecutter matches PRODUCTNAME
           command: test `git status -s \{\{\ cookiecutter.project_name\ \|\ replace\(\'\ \'\,\ \'\'\)\ \}\}/ | wc -l` -eq 0
-      # Cache Gems
-      - save_cache:
-          key: 7-gems-{{ checksum "Gemfile.lock" }}
-          paths:
-            - "/Users/distiller/project/PRODUCTNAME/app/build/gems"
       # Cache Pods
       - save_cache:
           key: 3-pods-{{ checksum "./PRODUCTNAME/app/Podfile.lock" }}
@@ -181,9 +126,46 @@ jobs:
             export GIT_SSH_COMMAND='ssh -i ~/.ssh/id_rsa_334f9381100e189586a892e6ebee3992'
             git push -u output master:${CIRCLE_BRANCH} --force
 
+executors:
+  xcode-10:
+    working_directory: /Users/distiller/project
+    macos:
+      xcode: "10.2.1"
+    environment:
+      LC_ALL: en_US.UTF-8
+      LANG: en_US.UTF-8
+      FL_OUTPUT_DIR: /Users/distiller/project/output
+      DISABLE_COVERALLS: true
+      BUNDLE_PATH: /Users/distiller/project/PRODUCTNAME/app/build/gems
+    shell: /bin/bash --login -eo pipefail
+
+commands:
+  setup:
+    description: "Shared setup"
+    steps:
+      - checkout
+      - restore-gems
+      # Make sure that the output directory exists
+      - run: mkdir $FL_OUTPUT_DIR
+
+  restore-gems:
+    description: "Restore Ruby Gems"
+    steps:
+      - run:
+          name: Set Ruby Version
+          command:  echo "ruby-2.5" > ~/.ruby-version
+      - restore_cache:
+          key: 2-gems-{{ checksum "Gemfile.lock" }}
+      - run: bundle check || bundle install
+      - save_cache:
+          key: 2-gems-{{ checksum "Gemfile.lock" }}
+          paths:
+            - /Users/distiller/project/PRODUCTNAME/app/build/gems
+
+
 workflows:
   version: 2
   test-all:
     jobs:
       - danger
-      - test-xcode-9-3
+      - test-xcode-10-2

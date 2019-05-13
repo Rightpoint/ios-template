@@ -54,7 +54,7 @@ typedef NS_ENUM(unsigned int, BatteryState) {
 typedef struct {
   bool itemIsEnabled[35];
   char timeString[64];
-  char x3[64];
+  char shortTimeString[64];
   int gsmSignalStrengthRaw;
   int gsmSignalStrengthBars;
   char serviceString[100];
@@ -86,11 +86,11 @@ typedef struct {
   char breadcrumbTitle[256];
   char breadcrumbSecondaryTitle[256];
   char personName[100];
-  // or returnToAppBundleIdentifier
   unsigned int electronicTollCollectionAvailable : 1;
   unsigned int wifiLinkWarning : 1;
-  unsigned int x38 : 1;
-  double x39;
+  unsigned int wifiSearching : 1;
+  double backgroundActivityDisplayStartDate;
+  unsigned int shouldShowEmergencyOnlyStatus : 1;
 } StatusBarRawData;
 
 typedef struct {
@@ -150,11 +150,14 @@ typedef struct {
 @implementation SDStatusBarOverriderPost11_0
 
 @synthesize timeString;
+@synthesize dateString;
 @synthesize carrierName;
 @synthesize bluetoothConnected;
 @synthesize bluetoothEnabled;
 @synthesize batteryDetailEnabled;
 @synthesize networkType;
+@synthesize iPadDateEnabled;
+@synthesize iPadGsmSignalEnabled;
 
 - (void)enableOverrides {
   StatusBarOverrideData *overrides = [UIStatusBarServer getStatusBarOverrideData];

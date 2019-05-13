@@ -18,12 +18,12 @@ struct InstabugConfiguration: AppLifecycle {
         return BuildType.active == .internal
     }
 
-    func onDidLaunch(application: UIApplication, launchOptions: [UIApplicationLaunchOptionsKey: Any]?) {
+    func onDidLaunch(application: UIApplication, launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
         if let token = Bundle.main.object(forInfoDictionaryKey: InstabugConfiguration.instabugTokenKey) as? String, !token.isEmpty {
-            Instabug.start(withToken: token, invocationEvent: .shake)
+            Instabug.start(withToken: token, invocationEvents: [.shake])
         }
-        Instabug.setEmailFieldRequired(false)
-        Instabug.setCrashReportingEnabled(false)
+        BugReporting.bugReportingOptions = .emailFieldOptional
+        CrashReporting.enabled = false
     }
 
 }

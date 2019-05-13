@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		00551422206144E300E4CF68 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 00551421206144E200E4CF68 /* InfoPlist.strings */; };
-		0055142620615F9D00E4CF68 /* Storyboards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0055142520615F9C00E4CF68 /* Storyboards.swift */; };
 		006EFEF61F264204004A95DE /* TestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006EFEF51F264204004A95DE /* TestClient.swift */; };
 		209BE2512051C768004CF0FF /* Actionable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 209BE2502051C768004CF0FF /* Actionable.swift */; };
 		209BE2562051C90C004CF0FF /* actionable.swifttemplate in Resources */ = {isa = PBXBuildFile; fileRef = 209BE2552051C90C004CF0FF /* actionable.swifttemplate */; };
@@ -89,6 +88,8 @@
 		CD09C94A20741B24006D3501 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD09C94920741B24006D3501 /* SnapshotHelper.swift */; };
 		CD09C94B20741B88006D3501 /* ProcessInfo+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD09C935207403B0006D3501 /* ProcessInfo+Utilities.swift */; };
 		CD09C94D207428AE006D3501 /* StatusBarConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD09C94C207428AE006D3501 /* StatusBarConfiguration.swift */; };
+		D9186D85216D397C0049FD3E /* StoryboardScenes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9186D83216D397C0049FD3E /* StoryboardScenes.swift */; };
+		D9186D86216D397C0049FD3E /* StoryboardSegues.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9186D84216D397C0049FD3E /* StoryboardSegues.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -131,7 +132,6 @@
 
 /* Begin PBXFileReference section */
 		00551421206144E200E4CF68 /* InfoPlist.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = InfoPlist.strings; sourceTree = "<group>"; };
-		0055142520615F9C00E4CF68 /* Storyboards.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Storyboards.swift; sourceTree = "<group>"; };
 		006EFEF51F264204004A95DE /* TestClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestClient.swift; sourceTree = "<group>"; };
 		00C3A8FB1F20FDAA00A1E7D0 /* AppStore.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = AppStore.xcconfig; sourceTree = "<group>"; };
 		0330DECEE659B71035D46AD5 /* Pods-Services.sprint.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Services.sprint.xcconfig"; path = "Pods/Target Support Files/Pods-Services/Pods-Services.sprint.xcconfig"; sourceTree = "<group>"; };
@@ -234,9 +234,11 @@
 		CD09C93B20741945006D3501 /* Screenshots.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Screenshots.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD09C93D20741945006D3501 /* Screenshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Screenshots.swift; sourceTree = "<group>"; };
 		CD09C93F20741945006D3501 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CD09C94920741B24006D3501 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
+		CD09C94920741B24006D3501 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
 		CD09C94C207428AE006D3501 /* StatusBarConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarConfiguration.swift; sourceTree = "<group>"; };
 		D7F90A3B2F8D15AE9564FF78 /* Pods-Services.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Services.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Services/Pods-Services.debug.xcconfig"; sourceTree = "<group>"; };
+		D9186D83216D397C0049FD3E /* StoryboardScenes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardScenes.swift; sourceTree = "<group>"; };
+		D9186D84216D397C0049FD3E /* StoryboardSegues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardSegues.swift; sourceTree = "<group>"; };
 		DCD1E696B5452D855D78934E /* Pods-{{ cookiecutter.project_name | replace(' ', '') }}.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-{{ cookiecutter.project_name | replace(' ', '') }}.release.xcconfig"; path = "Pods/Target Support Files/Pods-{{ cookiecutter.project_name | replace(' ', '') }}/Pods-{{ cookiecutter.project_name | replace(' ', '') }}.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -591,8 +593,9 @@
 			isa = PBXGroup;
 			children = (
 				209BE2582051CB4B004CF0FF /* Actionable+AutoConformance.swift */,
+				D9186D83216D397C0049FD3E /* StoryboardScenes.swift */,
+				D9186D84216D397C0049FD3E /* StoryboardSegues.swift */,
 				ABF84F8F1DC99D33002DB24D /* Localized.swift */,
-				0055142520615F9C00E4CF68 /* Storyboards.swift */,
 				ABF84F901DC99D33002DB24D /* UIImage+Asset.swift */,
 			);
 			path = Generated;
@@ -643,7 +646,6 @@
 			children = (
 				CD09C94920741B24006D3501 /* SnapshotHelper.swift */,
 			);
-			name = Helpers;
 			path = Helpers;
 			sourceTree = "<group>";
 		};
@@ -751,22 +753,25 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1020;
 				{{ cookiecutter.company_name }}NAME = {{ cookiecutter.company_name }};
 				TargetAttributes = {
 					86A65AED1FA0EA2400705C14 = {
 						CreatedOnToolsVersion = 9.0.1;
 						DevelopmentTeam = xxxxxx;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 					};
 					ABC778741DC90B7A00815FB9 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = xxxxxx;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Manual;
 					};
 					ABC778881DC90B7A00815FB9 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = xxxxxx;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 						TestTargetID = ABC778741DC90B7A00815FB9;
 					};
@@ -783,6 +788,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -877,7 +883,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ -x \"$PODS_ROOT/Sourcery/bin/sourcery\" ]; then\n\"$PODS_ROOT/Sourcery/bin/sourcery\" --sources \"{{ cookiecutter.project_name | replace(' ', '') }}\" --templates \"{{ cookiecutter.project_name | replace(' ', '') }}/Resources/Sourcery/actionable.swifttemplate\" --output \"{{ cookiecutter.project_name | replace(' ', '') }}/Resources/Generated/Actionable+AutoConformance.swift\"\nfi";
+			shellScript = ": `\nif [ -x \"$PODS_ROOT/Sourcery/bin/sourcery\" ]; then\n\"$PODS_ROOT/Sourcery/bin/sourcery\" --sources \"{{ cookiecutter.project_name | replace(' ', '') }}\" --templates \"{{ cookiecutter.project_name | replace(' ', '') }}/Resources/Sourcery/actionable.swifttemplate\" --output \"{{ cookiecutter.project_name | replace(' ', '') }}/Resources/Generated/Actionable+AutoConformance.swift\"\nfi\n`\n";
 		};
 		2DFF1D1F1E8C56C700B1AD70 /* SwiftGen */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -891,7 +897,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ -x \"$PODS_ROOT/SwiftGen/bin/swiftgen\" ]; then\n  $PODS_ROOT/SwiftGen/bin/swiftgen xcassets --template swift4 --output {{ cookiecutter.project_name | replace(' ', '') }}/Resources/Generated/UIImage+Asset.swift {{ cookiecutter.project_name | replace(' ', '') }}/Resources/Assets.xcassets\n  $PODS_ROOT/SwiftGen/bin/swiftgen strings --template structured-swift4 --output {{ cookiecutter.project_name | replace(' ', '') }}/Resources/Generated/Localized.swift {{ cookiecutter.project_name | replace(' ', '') }}/Resources/Localizable.strings\n  $PODS_ROOT/SwiftGen/bin/swiftgen storyboards -t swift4 {{ cookiecutter.project_name | replace(' ', '') }}/ --output {{ cookiecutter.project_name | replace(' ', '') }}/Resources/Generated/Storyboards.swift\nfi\n";
+			shellScript = "if [ -x \"$PODS_ROOT/SwiftGen/bin/swiftgen\" ]; then\n  $PODS_ROOT/SwiftGen/bin/swiftgen xcassets --template swift4 --output {{ cookiecutter.project_name | replace(' ', '') }}/Resources/Generated/UIImage+Asset.swift {{ cookiecutter.project_name | replace(' ', '') }}/Resources/Assets.xcassets\n  $PODS_ROOT/SwiftGen/bin/swiftgen strings --template structured-swift4 --output {{ cookiecutter.project_name | replace(' ', '') }}/Resources/Generated/Localized.swift {{ cookiecutter.project_name | replace(' ', '') }}/Resources/Localizable.strings\n  $PODS_ROOT/SwiftGen/bin/swiftgen storyboards -t scenes-swift4 {{ cookiecutter.project_name | replace(' ', '') }}/ --output {{ cookiecutter.project_name | replace(' ', '') }}/Resources/Generated/StoryboardScenes.swift\n  $PODS_ROOT/SwiftGen/bin/swiftgen storyboards -t segues-swift4 {{ cookiecutter.project_name | replace(' ', '') }}/ --output {{ cookiecutter.project_name | replace(' ', '') }}/Resources/Generated/StoryboardSegues.swift\nfi\n";
 		};
 		4B79AD4EE86D9527DA2201EB /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -899,12 +905,12 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-{{ cookiecutter.project_name | replace(' ', '') }}/Pods-{{ cookiecutter.project_name | replace(' ', '') }}-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-{{ cookiecutter.project_name | replace(' ', '') }}/Pods-{{ cookiecutter.project_name | replace(' ', '') }}-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Anchorage/Anchorage.framework",
 				"${BUILT_PRODUCTS_DIR}/BonMot/BonMot.framework",
 				"${PODS_ROOT}/Instabug/Instabug.framework",
-				"${PODS_ROOT}/Instabug/InstabugCore.framework",
+				"${PODS_ROOT}/Instabug/Instabug.framework.dSYM",
 				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
 				"${BUILT_PRODUCTS_DIR}/Marshal/Marshal.framework",
 				"${BUILT_PRODUCTS_DIR}/SimulatorStatusMagic/SimulatorStatusMagic.framework",
@@ -916,7 +922,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Anchorage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BonMot.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Instabug.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/InstabugCore.framework",
+				"${DWARF_DSYM_FOLDER_PATH}/Instabug.framework.dSYM",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Marshal.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SimulatorStatusMagic.framework",
@@ -924,7 +930,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-{{ cookiecutter.project_name | replace(' ', '') }}/Pods-{{ cookiecutter.project_name | replace(' ', '') }}-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-{{ cookiecutter.project_name | replace(' ', '') }}/Pods-{{ cookiecutter.project_name | replace(' ', '') }}-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		4E662DA2F7DDCC9B41361541 /* [CP] Embed Pods Frameworks */ = {
@@ -933,12 +939,12 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-{{ cookiecutter.project_name | replace(' ', '') }}-{{ cookiecutter.project_name | replace(' ', '') }}Tests/Pods-{{ cookiecutter.project_name | replace(' ', '') }}-{{ cookiecutter.project_name | replace(' ', '') }}Tests-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-{{ cookiecutter.project_name | replace(' ', '') }}-{{ cookiecutter.project_name | replace(' ', '') }}Tests/Pods-{{ cookiecutter.project_name | replace(' ', '') }}-{{ cookiecutter.project_name | replace(' ', '') }}Tests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Anchorage/Anchorage.framework",
 				"${BUILT_PRODUCTS_DIR}/BonMot/BonMot.framework",
 				"${PODS_ROOT}/Instabug/Instabug.framework",
-				"${PODS_ROOT}/Instabug/InstabugCore.framework",
+				"${PODS_ROOT}/Instabug/Instabug.framework.dSYM",
 				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
 				"${BUILT_PRODUCTS_DIR}/Marshal/Marshal.framework",
 				"${BUILT_PRODUCTS_DIR}/SimulatorStatusMagic/SimulatorStatusMagic.framework",
@@ -951,7 +957,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Anchorage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BonMot.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Instabug.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/InstabugCore.framework",
+				"${DWARF_DSYM_FOLDER_PATH}/Instabug.framework.dSYM",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Marshal.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SimulatorStatusMagic.framework",
@@ -960,7 +966,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-{{ cookiecutter.project_name | replace(' ', '') }}-{{ cookiecutter.project_name | replace(' ', '') }}Tests/Pods-{{ cookiecutter.project_name | replace(' ', '') }}-{{ cookiecutter.project_name | replace(' ', '') }}Tests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-{{ cookiecutter.project_name | replace(' ', '') }}-{{ cookiecutter.project_name | replace(' ', '') }}Tests/Pods-{{ cookiecutter.project_name | replace(' ', '') }}-{{ cookiecutter.project_name | replace(' ', '') }}Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		5BD18785D9BC5E2781EBCD52 /* [CP] Check Pods Manifest.lock */ = {
@@ -1011,7 +1017,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n${PODS_ROOT}/SwiftLint/swiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "${PODS_ROOT}/SwiftLint/swiftlint\n";
 		};
 		E170C8E4C57A8FB937004E8C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1089,7 +1095,8 @@
 				209BE2512051C768004CF0FF /* Actionable.swift in Sources */,
 				BE28092B1E802893006E50D5 /* AnalyticsPageNames.swift in Sources */,
 				ABC778E61DC94FFC00815FB9 /* CrashlyticsConfiguration.swift in Sources */,
-				0055142620615F9D00E4CF68 /* Storyboards.swift in Sources */,
+				D9186D85216D397C0049FD3E /* StoryboardScenes.swift in Sources */,
+				D9186D86216D397C0049FD3E /* StoryboardSegues.swift in Sources */,
 				861732D81FA290F400C14354 /* ControlContainable.swift in Sources */,
 				861732FA1FA29B5E00C14354 /* TableDataSource.swift in Sources */,
 				861732FC1FA29B7300C14354 /* TableSection.swift in Sources */,
@@ -1170,6 +1177,7 @@
 			baseConfigurationReference = 00C3A8FB1F20FDAA00A1E7D0 /* AppStore.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -1208,11 +1216,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.2;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = AppStore;
@@ -1227,7 +1236,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "{{ cookiecutter.project_name | replace(' ', '') }}/Resources/{{ cookiecutter.project_name | replace(' ', '') }}-Bridging-Header.h";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = AppStore;
 		};
@@ -1241,7 +1250,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.raizlabs.{{ cookiecutter.project_name | replace(' ', '') }}Tests;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/debug-{{ cookiecutter.project_name | replace(' ', '') }}.app/debug-{{ cookiecutter.project_name | replace(' ', '') }}";
 			};
 			name = AppStore;
@@ -1266,7 +1275,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.raizlabs.{{ cookiecutter.project_name | replace(' ', '') }}.Services;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1330,7 +1339,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1395,7 +1404,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1460,7 +1469,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1473,6 +1482,7 @@
 			baseConfigurationReference = ABC778CE1DC92BDF00815FB9 /* Debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -1517,7 +1527,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_SWIFT_FLAGS = "-Xfrontend -warn-long-expression-type-checking=100";
@@ -1525,6 +1535,7 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -1533,6 +1544,7 @@
 			baseConfigurationReference = ABC778CF1DC92BEC00815FB9 /* Develop.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -1571,11 +1583,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.2;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Develop;
@@ -1590,7 +1603,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "{{ cookiecutter.project_name | replace(' ', '') }}/Resources/{{ cookiecutter.project_name | replace(' ', '') }}-Bridging-Header.h";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -1604,7 +1617,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "{{ cookiecutter.project_name | replace(' ', '') }}/Resources/{{ cookiecutter.project_name | replace(' ', '') }}-Bridging-Header.h";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Develop;
 		};
@@ -1618,7 +1631,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.raizlabs.{{ cookiecutter.project_name | replace(' ', '') }}Tests;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/debug-{{ cookiecutter.project_name | replace(' ', '') }}.app/debug-{{ cookiecutter.project_name | replace(' ', '') }}";
 			};
 			name = Debug;
@@ -1633,7 +1646,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.raizlabs.{{ cookiecutter.project_name | replace(' ', '') }}Tests;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/debug-{{ cookiecutter.project_name | replace(' ', '') }}.app/debug-{{ cookiecutter.project_name | replace(' ', '') }}";
 			};
 			name = Develop;
@@ -1643,6 +1656,7 @@
 			baseConfigurationReference = ABC778D01DC92BF800815FB9 /* Sprint.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -1681,11 +1695,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.2;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Sprint;
@@ -1700,7 +1715,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "{{ cookiecutter.project_name | replace(' ', '') }}/Resources/{{ cookiecutter.project_name | replace(' ', '') }}-Bridging-Header.h";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Sprint;
 		};
@@ -1714,7 +1729,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.raizlabs.{{ cookiecutter.project_name | replace(' ', '') }}Tests;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/debug-{{ cookiecutter.project_name | replace(' ', '') }}.app/debug-{{ cookiecutter.project_name | replace(' ', '') }}";
 			};
 			name = Sprint;
@@ -1735,7 +1750,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.raizlabs.{{ cookiecutter.project_name | replace(' ', '') }}.screenshots;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = xxxxxx;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = {{ cookiecutter.project_name | replace(' ', '') }};
 			};
@@ -1794,7 +1809,7 @@
 				PROVISIONING_PROFILE = xxxxxx;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = {{ cookiecutter.project_name | replace(' ', '') }};
 				VALIDATE_PRODUCT = YES;
@@ -1854,7 +1869,7 @@
 				PROVISIONING_PROFILE = xxxxxx;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = {{ cookiecutter.project_name | replace(' ', '') }};
 				VALIDATE_PRODUCT = YES;
@@ -1914,7 +1929,7 @@
 				PROVISIONING_PROFILE = xxxxxx;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = {{ cookiecutter.project_name | replace(' ', '') }};
 				VALIDATE_PRODUCT = YES;

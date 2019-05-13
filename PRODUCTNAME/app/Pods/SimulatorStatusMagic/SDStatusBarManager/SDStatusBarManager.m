@@ -31,12 +31,14 @@
 #import "SDStatusBarOverriderPost10_0.h"
 #import "SDStatusBarOverriderPost10_3.h"
 #import "SDStatusBarOverriderPost11_0.h"
+#import "SDStatusBarOverriderPost12_0.h"
 
 static NSString * const SDStatusBarManagerUsingOverridesKey = @"using_overrides";
 static NSString * const SDStatusBarManagerBluetoothStateKey = @"bluetooth_state";
 static NSString * const SDStatusBarManagerNetworkTypeKey = @"network_type";
 static NSString * const SDStatusBarManagerCarrierNameKey = @"carrier_name";
 static NSString * const SDStatusBarManagerTimeStringKey = @"time_string";
+static NSString * const SDStatusBarManagerDateStringKey = @"date_string";
 
 @interface SDStatusBarManager ()
 
@@ -53,6 +55,8 @@ static NSString * const SDStatusBarManagerTimeStringKey = @"time_string";
   if (self) {
     // Set any defaults for the status bar
     self.batteryDetailEnabled = YES;
+    self.iPadDateEnabled = YES;
+    self.iPadGsmSignalEnabled = NO;
   }
   return self;
 }
@@ -62,11 +66,14 @@ static NSString * const SDStatusBarManagerTimeStringKey = @"time_string";
   self.usingOverrides = YES;
 
   self.overrider.timeString = [self localizedTimeString];
+  self.overrider.dateString = [self localizedDateString];
   self.overrider.carrierName = self.carrierName;
   self.overrider.bluetoothEnabled = self.bluetoothState != SDStatusBarManagerBluetoothHidden;
   self.overrider.bluetoothConnected = self.bluetoothState == SDStatusBarManagerBluetoothVisibleConnected;
   self.overrider.batteryDetailEnabled = self.batteryDetailEnabled;
   self.overrider.networkType = self.networkType;
+  self.overrider.iPadDateEnabled = self.iPadDateEnabled;
+  self.overrider.iPadGsmSignalEnabled = self.iPadGsmSignalEnabled;
 
   [self.overrider enableOverrides];
 }
@@ -153,6 +160,21 @@ static NSString * const SDStatusBarManagerTimeStringKey = @"time_string";
   return [self.userDefaults valueForKey:SDStatusBarManagerTimeStringKey];
 }
 
+- (void)setDateString:(NSString *)dateString {
+  if ([self.dateString isEqualToString:dateString]) return;
+  
+  [self.userDefaults setObject:dateString forKey:SDStatusBarManagerDateStringKey];
+  
+  if (self.usingOverrides) {
+    [self enableOverrides];
+  }
+}
+
+- (NSString *)dateString
+{
+  return [self.userDefaults valueForKey:SDStatusBarManagerDateStringKey];
+}
+
 - (NSUserDefaults *)userDefaults
 {
   if (!_userDefaults) {
@@ -165,7 +187,9 @@ static NSString * const SDStatusBarManagerTimeStringKey = @"time_string";
 {
   id<SDStatusBarOverrider> overrider = nil;
   NSProcessInfo *pi = [NSProcessInfo processInfo];
-  if ([pi isOperatingSystemAtLeastVersion:(NSOperatingSystemVersion){ 11, 0, 0 }]) {
+  if ([pi isOperatingSystemAtLeastVersion:(NSOperatingSystemVersion){ 12, 0, 0 }]) {
+    overrider = [SDStatusBarOverriderPost12_0 new];
+  } else if ([pi isOperatingSystemAtLeastVersion:(NSOperatingSystemVersion){ 11, 0, 0 }]) {
     overrider = [SDStatusBarOverriderPost11_0 new];
   } else if ([pi isOperatingSystemAtLeastVersion:(NSOperatingSystemVersion){ 10, 3, 0 }]) {
     overrider = [SDStatusBarOverriderPost10_3 new];
@@ -207,6 +231,23 @@ static NSString * const SDStatusBarManagerTimeStringKey = @"time_string";
   components.hour = 9;
   components.minute = 41;
 
+  return [formatter stringFromDate:[[NSCalendar currentCalendar] dateFromComponents:components]];
+}
+
+- (NSString *)localizedDateString
+{
+  if (self.dateString.length > 0) {
+    return self.dateString;
+  }
+  
+  NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+  formatter.dateFormat = [[NSDateFormatter dateFormatFromTemplate:@"EEE MMM d" options:0 locale:NSLocale.currentLocale] stringByReplacingOccurrencesOfString:@"," withString:@""];
+  
+  NSDateComponents *components = [[NSCalendar currentCalendar] components:  NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond fromDate:[NSDate date]];
+  components.day = 9;
+  components.month = 1;
+  components.year = 2007;
+  
   return [formatter stringFromDate:[[NSCalendar currentCalendar] dateFromComponents:components]];
 }
 

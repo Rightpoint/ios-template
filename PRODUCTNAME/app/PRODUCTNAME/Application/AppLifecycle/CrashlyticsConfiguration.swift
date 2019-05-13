@@ -17,7 +17,7 @@ struct CrashReportingConfiguration: AppLifecycle {
         return BuildType.active != .debug
     }
 
-    func onDidLaunch(application: UIApplication, launchOptions: [UIApplicationLaunchOptionsKey: Any]?) {
+    func onDidLaunch(application: UIApplication, launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
         Fabric.with([Crashlytics.self])
     }
 

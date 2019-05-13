@@ -88,7 +88,7 @@ public final class OAuthClient {
         configuration.httpAdditionalHeaders?[APIConstants.accept] = APIConstants.applicationJSON
         self.manager = SessionManager(configuration: configuration)
 
-        if let credentials: Credentials? = try? keychain.getObject(OAuthClient.credentialKey) {
+        if let credentials: Credentials = try? keychain.getObject(OAuthClient.credentialKey) {
             if OAuthClient.validKeychain {
                 self.credentials = credentials
             }

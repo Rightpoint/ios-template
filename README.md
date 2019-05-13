@@ -1,9 +1,9 @@
 # iOS Template
 
-[![Swift 4.1](https://img.shields.io/badge/Swift-4.1-orange.svg?style=flat)](https://swift.org)
-[![CircleCI](https://img.shields.io/circleci/project/github/Raizlabs/ios-template/master.svg)](https://circleci.com/gh/Raizlabs/ios-template) [![codecov](https://codecov.io/gh/Raizlabs/ios-template/branch/master/graph/badge.svg)](https://codecov.io/gh/Raizlabs/ios-template)
+[![Swift 5.0](https://img.shields.io/badge/Swift-5.0-orange.svg?style=flat)](https://swift.org)
+[![CircleCI](https://img.shields.io/circleci/project/github/Rightpoint/ios-template/master.svg)](https://circleci.com/gh/Rightpoint/ios-template) [![codecov](https://codecov.io/gh/Rightpoint/ios-template/branch/master/graph/badge.svg)](https://codecov.io/gh/Rightpoint/ios-template)
 
-A template for new iOS projects at Raizlabs.
+A template for new iOS projects at Rightpoint.
 
 Inspired by [thoughtbot]/[ios-template]
 
@@ -20,14 +20,14 @@ $ gem install bundler
 $ brew install python3
 $ pip3 install cookiecutter
 # Run Cookiecutter
-$ cookiecutter https://github.com/Raizlabs/ios-template/archive/master.zip
+$ cookiecutter https://github.com/Rightpoint/ios-template/archive/master.zip
 ```
 
 ### Template Output
 
-[![CircleCI](https://img.shields.io/circleci/project/github/Raizlabs/ios-template-output/master.svg)](https://circleci.com/gh/Raizlabs/ios-template-output)
+[![CircleCI](https://img.shields.io/circleci/project/github/Rightpoint/ios-template-output/master.svg)](https://circleci.com/gh/Rightpoint/ios-template-output)
 
-Pushing updates to this repository triggers CircleCI to build a blank template and push the result to the [ios-template-output](https://github.com/Raizlabs/ios-template-output) repository. If the badge above is failing, most likely there is a problem with the inner CircleCI script located in `PRODUCTNAME/.circleci/config.yml`.
+Pushing updates to this repository triggers CircleCI to build a blank template and push the result to the [ios-template-output](https://github.com/Rightpoint/ios-template-output) repository. If the badge above is failing, most likely there is a problem with the inner CircleCI script located in `PRODUCTNAME/.circleci/config.yml`.
 
 ## What's in the template?
 
@@ -47,9 +47,9 @@ Pushing updates to this repository triggers CircleCI to build a blank template a
    - [OHHTTPStubs][ohhttpstubs] - Stub API requests with edge case datasets for unit tests or to fake an endpoint while it is in development.
 
 [pods]: PRODUCTNAME/app/Podfile
-[anchorage]: https://github.com/Raizlabs/Anchorage
-[swiftilities]: https://github.com/Raizlabs/Swiftilities
-[bonmot]: httpss://github.com/Raizlabs/BonMot
+[anchorage]: https://github.com/Rightpoint/Anchorage
+[swiftilities]: https://github.com/Rightpoint/Swiftilities
+[bonmot]: httpss://github.com/Rightpoint/BonMot
 [keychainaccess]: https://github.com/kishikawakatsumi/KeychainAccess
 [ohhttpstubs]: https://github.com/AliSoftware/OHHTTPStubs
 [fastfile]: PRODUCTNAME/app/fastlane/Fastfile
@@ -114,7 +114,7 @@ You can use [Codecov](https://codecov.io) automatically as long as the repositor
 
 ### Danger
 
-To [set up Danger](http://danger.systems/guides/getting_started.html) on CircleCI you'll need to add a `DANGER_GITHUB_API_TOKEN` to the test environment. There are two bots already available for Raizlabs: for open source projects use our "OSS" bot, and for closed source projects use the "Private" bot.
+To [set up Danger](http://danger.systems/guides/getting_started.html) on CircleCI you'll need to add a `DANGER_GITHUB_API_TOKEN` to the test environment. There are two bots already available for Rightpoint: for open source projects use our "OSS" bot, and for closed source projects use the "Private" bot.
 
 ## Cookie Cutter
 Cookie Cutter is a python project for templating files and directories. Cookie cutter will ask a series of questions as defined in `cookiecutter.json` and then run the expansion on the contained files and directory names, and file contents. Anything with `{{ cookiecutter.variable }}` is expanded when the template is expanded. This is a powerful primitive but has some complications with Xcode

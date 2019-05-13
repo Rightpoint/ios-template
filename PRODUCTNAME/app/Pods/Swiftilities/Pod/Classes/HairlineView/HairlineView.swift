@@ -13,7 +13,7 @@ open class HairlineView: UIView {
     #if TARGET_INTERFACE_BUILDER
     @IBInspectable open var axis: Int = 0
     #else
-    @objc open var axis: UILayoutConstraintAxis = .horizontal {
+    @objc open var axis: NSLayoutConstraint.Axis = .horizontal {
         didSet {
             invalidateIntrinsicContentSize()
             setNeedsUpdateConstraints()
@@ -30,32 +30,27 @@ open class HairlineView: UIView {
 
     @IBInspectable open var hairlineColor: UIColor = UIColor.darkGray {
         willSet {
-            var red: CGFloat = 0, green: CGFloat = 0, blue: CGFloat = 0, alpha: CGFloat = 0
-            newValue.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
-            if alpha != 1.0 {
-                self.alpha = alpha
-                let solid = newValue.withAlphaComponent(1.0)
-                self.hairlineColor = solid
-            }
+            update(hairlineColor: newValue)
         }
         didSet {
             setNeedsDisplay()
         }
     }
 
-    public init(axis: UILayoutConstraintAxis, thickness: CGFloat = CGFloat(1.0 / UIScreen.main.scale),
+    public init(axis: NSLayoutConstraint.Axis = .horizontal, thickness: CGFloat = CGFloat(1.0 / UIScreen.main.scale),
                 hairlineColor: UIColor = UIColor.darkGray) {
         self.axis = axis
         self.thickness = thickness
         self.hairlineColor = hairlineColor
         super.init(frame: .zero)
+        update(hairlineColor: hairlineColor)
 
         setNeedsUpdateConstraints()
     }
 
     public required init?(coder aDecoder: NSCoder) {
         if aDecoder.containsValue(forKey: #keyPath(axis)) {
-            guard let decodedAxis = UILayoutConstraintAxis(rawValue: aDecoder.decodeInteger(forKey: #keyPath(axis))) else {
+            guard let decodedAxis = NSLayoutConstraint.Axis(rawValue: aDecoder.decodeInteger(forKey: #keyPath(axis))) else {
                 return nil
             }
             axis = decodedAxis
@@ -94,7 +89,7 @@ open class HairlineView: UIView {
     }
 
     open override var intrinsicContentSize: CGSize {
-        var size = CGSize(width: UIViewNoIntrinsicMetric, height: UIViewNoIntrinsicMetric)
+        var size = CGSize(width: UIView.noIntrinsicMetric, height: UIView.noIntrinsicMetric)
 
         switch axis {
         case .horizontal: size.height = thickness
@@ -104,12 +99,22 @@ open class HairlineView: UIView {
         return size
     }
 
-    open override func contentHuggingPriority(for axis: UILayoutConstraintAxis) -> UILayoutPriority {
+    open override func contentHuggingPriority(for axis: NSLayoutConstraint.Axis) -> UILayoutPriority {
         return (self.axis == axis ? UILayoutPriority.required : UILayoutPriority.defaultLow)
     }
 
-    open override func contentCompressionResistancePriority(for axis: UILayoutConstraintAxis) -> UILayoutPriority {
+    open override func contentCompressionResistancePriority(for axis: NSLayoutConstraint.Axis) -> UILayoutPriority {
         return contentHuggingPriority(for: axis)
+    }
+
+    private func update(hairlineColor: UIColor) {
+        var red: CGFloat = 0, green: CGFloat = 0, blue: CGFloat = 0, alpha: CGFloat = 0
+        hairlineColor.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+        if alpha != 1.0 {
+            self.alpha = alpha
+            let solid = hairlineColor.withAlphaComponent(1.0)
+            self.hairlineColor = solid
+        }
     }
 
 }

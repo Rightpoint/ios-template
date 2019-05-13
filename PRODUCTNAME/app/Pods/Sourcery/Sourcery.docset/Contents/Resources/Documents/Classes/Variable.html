@@ -61,6 +61,9 @@
                 <a href="../mocks.html">Mocks</a>
               </li>
               <li class="nav-group-task">
+                <a href="../codable.html">Codable</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../diffable.html">Diffable</a>
               </li>
               <li class="nav-group-task">
@@ -238,7 +241,8 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Variable type, if known</p>
+                        <p>Variable type, if known, i.e. if the type is declared in the scanned sources.
+For explanation, see <a href="https://cdn.rawgit.com/krzysztofzablocki/Sourcery/master/docs/writing-templates.html#what-are-em-known-em-and-em-unknown-em-types">https://cdn.rawgit.com/krzysztofzablocki/Sourcery/master/docs/writing-templates.html#what-are-em-known-em-and-em-unknown-em-types</a></p>
 
                       </div>
                       <div class="declaration">
@@ -265,7 +269,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Whether variable is computed</p>
+                        <p>Whether variable is computed and not stored</p>
 
                       </div>
                       <div class="declaration">
@@ -490,6 +494,33 @@ For immutable variables this value is empty string</p>
                         <div class="language">
                           <p class="aside-title">Swift</p>
                           <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">isFinal</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@SourceryRuntime@objc(cs)Variable(py)isLazy"></a>
+                    <a name="//apple_ref/swift/Property/isLazy" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@SourceryRuntime@objc(cs)Variable(py)isLazy">isLazy</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Whether variable is lazy or not</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">isLazy</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
 
                         </div>
                       </div>

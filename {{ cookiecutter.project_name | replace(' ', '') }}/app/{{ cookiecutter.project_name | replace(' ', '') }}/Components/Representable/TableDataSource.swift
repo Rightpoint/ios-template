@@ -25,9 +25,7 @@ public class TableDataSource: NSObject {
         }
     }
     public subscript(indexPath: IndexPath) -> TableViewCellRepresentable {
-        get {
-            return sections[indexPath.section].rows[indexPath.row]
-        }
+        return sections[indexPath.section].rows[indexPath.row]
     }
 
     public func append(rows: [TableViewCellRepresentable]) {
