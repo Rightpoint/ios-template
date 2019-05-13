@@ -59,7 +59,7 @@ public class RequestBatch {
 extension RequestBatch: RequestProtocol {
 
     public var isFinished: Bool {
-        return requests.containsOnly { $0.isFinished }
+        return requests.allSatisfy { $0.isFinished }
     }
 
     public func cancel() {
@@ -71,11 +71,4 @@ extension RequestBatch: RequestProtocol {
         return self
     }
 
-}
-
-extension Collection {
-
-    func containsOnly(where predicate: (Element) throws -> Bool) rethrows -> Bool {
-        return try !contains { try !predicate($0) }
-    }
 }
