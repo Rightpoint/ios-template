@@ -12,11 +12,7 @@ import Swiftilities
 private func ResponseSerializer<T>(_ serializer: @escaping (Data) throws -> T) -> DataResponseSerializer<T> {
     return DataResponseSerializer { _, _, data, error in
         guard let data = data else {
-            if let error = error {
-                return .failure(error)
-            } else {
-                return .failure(APIError.noData)
-            }
+            return .failure(error ?? APIError.noData)
         }
         if let error = error {
             do {
