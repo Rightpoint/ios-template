@@ -51,12 +51,10 @@ public final class OAuthClient {
             if let credentials = credentials {
                 do {
                     try keychain.set(credentials, key: OAuthClient.credentialKey)
-                }
-                catch let error {
+                } catch let error {
                     Log.error("Error setting auth credentials to keychain: \(error.localizedDescription)")
                 }
-            }
-            else {
+            } else {
                 clearKeychain()
             }
             // If there were credentials, and there no longer are, post a notification
@@ -70,8 +68,7 @@ public final class OAuthClient {
     fileprivate func clearKeychain() {
         do {
             try keychain.remove(OAuthClient.credentialKey)
-        }
-        catch {
+        } catch {
             Log.error("Error removing auth credentials from keychain: \(error.localizedDescription)")
         }
     }
@@ -96,8 +93,7 @@ public final class OAuthClient {
         if let credentials: Credentials = try? keychain.getObject(OAuthClient.credentialKey) {
             if OAuthClient.validKeychain {
                 self.credentials = credentials
-            }
-            else {
+            } else {
                 clearKeychain()
             }
         }
@@ -133,8 +129,7 @@ extension OAuthClient: RequestRetrier {
         let shouldRetry = statusCode == 401 && isAuthenticated
         if shouldRetry {
             NSLog("Retrying failed request")
-        }
-        else {
+        } else {
             var info: [String] = []
             if !isAuthenticated {
                 info.append("Client not authenticated")
