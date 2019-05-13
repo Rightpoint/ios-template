@@ -7,7 +7,6 @@
 //
 
 import Alamofire
-import Marshal
 
 public class APIClient {
     let manager: Alamofire.SessionManager
@@ -26,99 +25,44 @@ public class APIClient {
 }
 
 // MARK: - JSON
-public extension APIClient {
-    /**
-     *For ResponseType: JSONObject*
+extension APIClient {
 
-     Perform request and execute completion block leveraging a `JSONObject`. Use this when an API response doesn't map directly to your object graph.
+    /**
+     *For ResponseType: Empty Payload*
+
+     Perform request and optionally unwrap an error
 
      - Parameters:
-        - endpoint: An `APIEndpoint` with an associated `ResponseType` of `JSONObject`
-        - completion: A closure to process the API response
-        - responseObject: the response JSON as a `JSONObject`
-        - error: a server or serialization error
+     - endpoint: An `APIEndpoint` with an associated `ResponseType` conforming to `Decodable`
+     - completion: A closure to process the API response
+     - error: a server or serialization error
 
      - Returns: a `DataRequest`
      */
     @discardableResult
-    func requestJSON<Endpoint: APIEndpoint>(_ endpoint: Endpoint, completion: @escaping (_ responseObject: Endpoint.ResponseType?, _ error: Error?) -> Void) -> DataRequest where Endpoint.ResponseType == JSONObject {
-        return manager.requestJSON(baseURL, endpoint: endpoint, completion: completion)
+    func request<Endpoint: APIEndpoint>(_ endpoint: Endpoint, completion: @escaping (_ error: Error?) -> Void) -> RequestProtocol where Endpoint.ResponseType == Payload.Empty {
+        return manager.request(baseURL, endpoint: endpoint) { error in
+            completion(error)
+        }
     }
 
-// MARK: - Unmarshaling
-
     /**
-     *For ResponseType: Unmarshaling*
+     *For ResponseType: Decodable*
 
-     Perform request and serialize the response automatically according to your Response Type's `Unmarshaling` conformance
+     Perform request and serialize the response automatically according to your Response Type's `Decodable` conformance
 
      - Parameters:
-        - endpoint: An `APIEndpoint` with an associated `ResponseType` conforming to `Unmarshaling`
-        - completion: A closure to process the API response
-        - object: the unmarhsaled response object
-        - error: a server or serialization error
+     - endpoint: An `APIEndpoint` with an associated `ResponseType` conforming to `Decodable`
+     - completion: A closure to process the API response
+     - object: the decoded response object
+     - error: a server or serialization error
 
      - Returns: a `DataRequest`
      */
     @discardableResult
-    func request<Endpoint: APIEndpoint>(_ endpoint: Endpoint, completion: @escaping (_ object: Endpoint.ResponseType?, _ error: Error?) -> Void) -> DataRequest where Endpoint.ResponseType: Unmarshaling {
-        return manager.request(baseURL, endpoint: endpoint, completion: completion)
+    func request<Endpoint: APIEndpoint>(_ endpoint: Endpoint, completion: @escaping (_ object: Endpoint.ResponseType?, _ error: Error?) -> Void) -> RequestProtocol where Endpoint.ResponseType: Decodable {
+        return manager.request(baseURL, endpoint: endpoint) { (obj, error) in
+            completion(obj, error)
+        }
     }
-
-    /**
-     *For ResponseType: [Unmarshaling]*
-
-     Perform request and serialize the returned collection automatically according to your Response Type's `Unmarshaling` conformance
-
-     - Parameters:
-        - endpoint: An `APIEndpoint` with an associated `ResponseType` which is a collection of bojects conforming to `Unmarshaling`
-        - completion: A closure to process the API response
-        - objects: the unmarhsaled response collection
-        - error: a server or serialization error
-
-     - Returns: a `DataRequest`
-     */
-    @discardableResult
-    func request<Endpoint: APIEndpoint>(_ endpoint: Endpoint, completion: @escaping (_ objects: Endpoint.ResponseType?, _ error: Error?) -> Void) -> DataRequest where Endpoint.ResponseType: Collection, Endpoint.ResponseType.Iterator.Element: Unmarshaling {
-        return manager.request(baseURL, endpoint: endpoint, completion: completion)
-    }
-
-// MARK: - UnmarshalingWithContext
-
-    /**
-     *For ResponseType: UnmarshalingWithContext*
-
-     Perform request and serialize the response automatically according to your Response Type's `UnmarshalingWithContext` conformance
-
-     - Parameters:
-        - endpoint: An `APIEndpoint` with an associated `ResponseType` conforming to `UnmarshalingWithContext`
-        - completion: A closure to process the API response
-        - object: the unmarhsaled response object
-        - error: a server or serialization error
-
-     - Returns: a `DataRequest`
-     */
-    @discardableResult
-    func request<Endpoint: APIEndpoint>(_ endpoint: Endpoint, context: Endpoint.ResponseType.ContextType, completion: @escaping (_ object: Endpoint.ResponseType?, _ error: Error?) -> Void) -> DataRequest where Endpoint.ResponseType: UnmarshalingWithContext {
-        return manager.request(baseURL, endpoint: endpoint, context: context, completion: completion)
-    }
-
-    /**
-     *For ResponseType: [UnmarshalingWithContext]*
-
-     Perform request and serialize the returned collection automatically according to your Response Type's `UnmarshalingWithContext` conformance
-
-     - Parameters:
-        - endpoint: An `APIEndpoint` with an associated `ResponseType` which is a collection of bojects conforming to `Unmarshaling`
-        - completion: A closure to process the API response
-        - objects: the unmarhsaled response collection
-        - error: a server or serialization error
-
-     - Returns: a `DataRequest`
-     */
-    @discardableResult
-    func request<Endpoint: APIEndpoint>(_ endpoint: Endpoint, context: Endpoint.ResponseType.Iterator.Element.ContextType, completion: @escaping (_ objects: Endpoint.ResponseType?, _ error: Error?) -> Void) -> DataRequest where Endpoint.ResponseType: Collection, Endpoint.ResponseType.Iterator.Element: UnmarshalingWithContext {
-        return manager.request(baseURL, endpoint: endpoint, context: context, completion: completion)
-    }
-
 }

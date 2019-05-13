@@ -39,8 +39,7 @@ class GoogleAnalytics {
             // Uncomment to manually verify analytic events.
             // gai.logger.logLevel = GAILogLevel.verbose
             gai.dryRun = true
-        }
-        else {
+        } else {
             preconditionFailure("Google Analytics configuration issue. Please ensure info.plist contains [\"GoogleAnalytics\":\"[\"Environment\":\"$(GA_ENVIRONMENT)\",\"TrackingID\":\"$(GA_TRACKING_ID)\"]] and either add GA_ENVIRONMENT and GA_TRACKING_ID to your xcconfig or hardcode them instead of the $() vars.")
         }
     }

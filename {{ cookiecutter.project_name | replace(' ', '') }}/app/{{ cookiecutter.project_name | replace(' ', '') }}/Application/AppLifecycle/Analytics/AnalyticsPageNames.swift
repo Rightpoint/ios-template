@@ -42,13 +42,11 @@ private enum AnalyticsPageName {
 
         if let pageName = AnalyticsConfiguration.nameOverrides[identifier] {
             return pageName
-        }
-        else if !AnalyticsConfiguration.ignoreList.contains(identifier),
+        } else if !AnalyticsConfiguration.ignoreList.contains(identifier),
             !viewController.isSystemClass {
             let className = String(describing: type(of: viewController))
             return AnalyticsPageName.for(className)
-        }
-        else {
+        } else {
             return nil
         }
     }

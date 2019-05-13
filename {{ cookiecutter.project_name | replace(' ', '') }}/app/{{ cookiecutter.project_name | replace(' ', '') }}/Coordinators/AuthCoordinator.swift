@@ -27,11 +27,9 @@ class AuthCoordinator: Coordinator {
     private var state: State {
         if client.oauthClient.isAuthenticated {
             return .authenticated
-        }
-        else if UserDefaults.hasOnboarded {
+        } else if UserDefaults.hasOnboarded {
             return .onboarded
-        }
-        else {
+        } else {
             return .needsOnboarding
         }
     }

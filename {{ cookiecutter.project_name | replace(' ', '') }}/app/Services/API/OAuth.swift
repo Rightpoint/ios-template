@@ -8,7 +8,6 @@
 
 import Alamofire
 import KeychainAccess
-import Marshal
 import Swiftilities
 
 /// OAuthClient manages the OAuth requests. It is responsible for:
@@ -35,10 +34,16 @@ public final class OAuthClient {
     var clientID = APIEnvironment.active.oathClientID
     let keychain: Keychain
 
-    public struct Credentials {
+    public struct Credentials: Codable {
         public var refreshToken: String
         public var accessToken: String
         public var expirationDate: Date
+
+        public enum CodingKeys: String, CodingKey {
+            case refreshToken
+            case accessToken = "token"
+            case expirationDate
+        }
     }
 
     public var credentials: Credentials? {
@@ -46,12 +51,10 @@ public final class OAuthClient {
             if let credentials = credentials {
                 do {
                     try keychain.set(credentials, key: OAuthClient.credentialKey)
-                }
-                catch let error {
+                } catch let error {
                     Log.error("Error setting auth credentials to keychain: \(error.localizedDescription)")
                 }
-            }
-            else {
+            } else {
                 clearKeychain()
             }
             // If there were credentials, and there no longer are, post a notification
@@ -65,8 +68,7 @@ public final class OAuthClient {
     fileprivate func clearKeychain() {
         do {
             try keychain.remove(OAuthClient.credentialKey)
-        }
-        catch {
+        } catch {
             Log.error("Error removing auth credentials from keychain: \(error.localizedDescription)")
         }
     }
@@ -91,8 +93,7 @@ public final class OAuthClient {
         if let credentials: Credentials = try? keychain.getObject(OAuthClient.credentialKey) {
             if OAuthClient.validKeychain {
                 self.credentials = credentials
-            }
-            else {
+            } else {
                 clearKeychain()
             }
         }
@@ -128,8 +129,7 @@ extension OAuthClient: RequestRetrier {
         let shouldRetry = statusCode == 401 && isAuthenticated
         if shouldRetry {
             NSLog("Retrying failed request")
-        }
-        else {
+        } else {
             var info: [String] = []
             if !isAuthenticated {
                 info.append("Client not authenticated")
@@ -231,7 +231,7 @@ extension OAuthClient.TokenRequest: APIEndpoint {
     var method: HTTPMethod { return .post }
     var encoding: ParameterEncoding { return URLEncoding.default }
 
-    var parameters: JSONObject? {
+    var parameters: Parameters? {
         return [
             "username": username,
             "password": password,
@@ -255,7 +255,7 @@ extension OAuthClient.LogoutRequest: APIEndpoint {
     var method: HTTPMethod { return .post }
     var encoding: ParameterEncoding { return URLEncoding.default }
 
-    var parameters: JSONObject? {
+    var parameters: Parameters? {
         return [
             "token": token,
         ]
@@ -273,7 +273,7 @@ extension OAuthClient.RefreshRequest: APIEndpoint {
     var method: HTTPMethod { return .post }
     var encoding: ParameterEncoding { return URLEncoding.default }
 
-    var parameters: JSONObject? {
+    var parameters: Parameters? {
         return [
             "refreshToken": refreshToken,
             APIConstants.grantType: "refresh_token",
@@ -284,24 +284,6 @@ extension OAuthClient.RefreshRequest: APIEndpoint {
 
     var headers: HTTPHeaders {
         return [APIConstants.contentType: APIConstants.formEncoded]
-    }
-}
-
-extension OAuthClient.Credentials: Unmarshaling {
-    public init(object json: MarshaledObject) throws {
-        refreshToken = try json.value(for: "refreshToken")
-        accessToken = try json.value(for: "token")
-        expirationDate = try json.value(for: "expirationDate")
-    }
-}
-
-extension OAuthClient.Credentials: Marshaling {
-    public func marshaled() -> [String: Any] {
-        return [
-            "refreshToken": refreshToken,
-            "token": accessToken,
-            "expirationDate": Formatters.ISODateFormatter.string(from: expirationDate),
-        ]
     }
 }
 

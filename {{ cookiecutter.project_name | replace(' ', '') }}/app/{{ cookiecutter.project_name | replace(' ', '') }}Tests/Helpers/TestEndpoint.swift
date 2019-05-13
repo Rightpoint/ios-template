@@ -7,7 +7,6 @@
 //
 
 import Alamofire
-import Marshal
 @testable import {{ cookiecutter.project_name | replace(' ', '') }}
 import Services
 
@@ -16,16 +15,13 @@ struct TestEndpoint: APIEndpoint {
     var path: String { return "test" }
     var method: HTTPMethod { return .get }
     var encoding: ParameterEncoding { return URLEncoding.default }
-    var parameters: JSONObject? { return [:] }
+    var parameters: Parameters? { return [:] }
     var headers: HTTPHeaders { return [:] }
 
 }
 
-struct TestEndpointResult: Unmarshaling {
+struct TestEndpointResult: Codable {
 
     let value: String
 
-    init(object: MarshaledObject) throws {
-        value = try object.value(for: "value")
-    }
 }

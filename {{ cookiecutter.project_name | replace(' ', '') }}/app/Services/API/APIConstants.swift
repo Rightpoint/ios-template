@@ -6,8 +6,6 @@
 //  Copyright © 2017 {{ cookiecutter.company_name }}. All rights reserved.
 //
 
-import Marshal
-
 /// APIConstants that are used in multiple places
 enum APIConstants {
     // Headers
