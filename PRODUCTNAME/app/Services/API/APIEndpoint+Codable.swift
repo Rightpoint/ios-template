@@ -10,7 +10,7 @@ import Foundation
 
 extension JSONDecoder {
 
-    static var `default`: JSONDecoder = {
+    static let `default`: JSONDecoder = {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .iso8601
         return decoder
@@ -19,7 +19,7 @@ extension JSONDecoder {
 
 extension JSONEncoder {
 
-    static var `default`: JSONEncoder = {
+    static let `default`: JSONEncoder = {
         let encoder = JSONEncoder()
         encoder.dateEncodingStrategy = .iso8601
         return encoder

@@ -40,9 +40,9 @@ public final class OAuthClient {
         public var expirationDate: Date
 
         public enum CodingKeys: String, CodingKey {
-            case refreshToken = "refresh_token"
-            case accessToken = "access_token"
-            case expirationDate = "expiration_date"
+            case refreshToken
+            case accessToken = "token"
+            case expirationDate
         }
     }
 
