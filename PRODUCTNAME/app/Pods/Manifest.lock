@@ -8,7 +8,6 @@ PODS:
   - GoogleAnalytics (3.17.0)
   - Instabug (8.3)
   - KeychainAccess (3.2.0)
-  - Marshal (1.2.7)
   - OHHTTPStubs/Core (8.0.0)
   - OHHTTPStubs/Default (8.0.0):
     - OHHTTPStubs/Core
@@ -95,7 +94,6 @@ DEPENDENCIES:
   - GoogleAnalytics (~> 3.0)
   - Instabug
   - KeychainAccess
-  - Marshal
   - OHHTTPStubs/Swift
   - SimulatorStatusMagic
   - Sourcery (~> 0.16.1)
@@ -113,7 +111,6 @@ SPEC REPOS:
     - GoogleAnalytics
     - Instabug
     - KeychainAccess
-    - Marshal
     - OHHTTPStubs
     - SimulatorStatusMagic
     - Sourcery
@@ -130,7 +127,6 @@ SPEC CHECKSUMS:
   GoogleAnalytics: f42cc53a87a51fe94334821868d9c8481ff47a7b
   Instabug: c61ac1b653b64596c1bd00cf5ba039f05aecb930
   KeychainAccess: 3b1bf8a77eb4c6ea1ce9404c292e48f948954c6b
-  Marshal: ef480864a6af10a63f67be7e55bb5d8fe67a16d9
   OHHTTPStubs: 9cbce6364bec557cc3439aa6bb7514670d780881
   SimulatorStatusMagic: 28d4a9d1a500ac7cea0b2b5a43c1c6ddb40ba56c
   Sourcery: 16779170d35ee204666843b09031f36721a84bcc
@@ -138,6 +134,6 @@ SPEC CHECKSUMS:
   Swiftilities: 7b57b06b46df20236a1cd9faf64ab3fd7554f4ed
   SwiftLint: 009a898ef2a1c851f45e1b59349bf6ff2ddc990d
 
-PODFILE CHECKSUM: 98dbefd596b5a6c86a1a97787e05790a70227eb4
+PODFILE CHECKSUM: f3cf654d6eed8a1c230b93a6ffde151bbf9179a5
 
 COCOAPODS: 1.6.1

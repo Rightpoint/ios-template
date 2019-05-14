@@ -22,9 +22,6 @@ variable_name:
 trailing_comma:
   mandatory_comma: true
 
-statement_position:
-  statement_mode: uncuddled_else
-
 custom_rules:
   straight_quotes:
     included: "Localized.swift"

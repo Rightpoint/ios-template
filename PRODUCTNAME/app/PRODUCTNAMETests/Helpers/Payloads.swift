@@ -19,8 +19,7 @@ enum Payloads {
         ]
         do {
             return try JSONSerialization.data(withJSONObject: json)
-        }
-        catch {
+        } catch {
             return Data()
         }
     }()
@@ -33,8 +32,7 @@ enum Payloads {
         ]
         do {
             return try JSONSerialization.data(withJSONObject: json)
-        }
-        catch {
+        } catch {
             return Data()
         }
     }()

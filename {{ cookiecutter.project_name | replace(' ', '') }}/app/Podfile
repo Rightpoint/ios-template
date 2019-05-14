@@ -3,7 +3,6 @@ use_frameworks!
 inhibit_all_warnings!
 
 def shared
-    pod 'Marshal'
     pod 'KeychainAccess'
     pod 'BonMot'
     pod 'Alamofire'

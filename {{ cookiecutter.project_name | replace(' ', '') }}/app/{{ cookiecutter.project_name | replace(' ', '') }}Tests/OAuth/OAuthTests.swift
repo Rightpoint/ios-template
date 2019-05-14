@@ -74,8 +74,7 @@ class OAuthTests: XCTestCase {
                 expirationDate: Date.distantPast
             )
             _ = try oauthClient.adapt(request)
-        }
-        catch {
+        } catch {
             XCTFail("Adapt should not throw")
         }
     }

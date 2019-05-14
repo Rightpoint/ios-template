@@ -16,8 +16,7 @@ extension UIColor {
         var currentAlpha = CGFloat(0)
         if self.getWhite(nil, alpha: &currentAlpha) {
             return self.withAlphaComponent(currentAlpha / 2)
-        }
-        else {
+        } else {
             // Fallback to 50% alpha
             return self.withAlphaComponent(0.5)
         }
