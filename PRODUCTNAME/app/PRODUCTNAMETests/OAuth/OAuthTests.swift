@@ -11,7 +11,7 @@ import XCTest
 @testable import Services
 
 class OAuthTests: XCTestCase {
-    override class func setUp() {
+    override func setUp() {
         super.setUp()
         OHHTTPStubs.setEnabled(true)
     }
