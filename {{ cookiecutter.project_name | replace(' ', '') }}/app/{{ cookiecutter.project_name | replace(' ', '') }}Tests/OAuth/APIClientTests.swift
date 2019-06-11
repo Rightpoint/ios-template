@@ -11,14 +11,13 @@ import XCTest
 @testable import Services
 
 class APIClientTests: XCTestCase {
-    let client: APIClient = {
+    var client: APIClient!
+
+    override func setUp() {
+        super.setUp()
         let configuration = URLSessionConfiguration.default
         OHHTTPStubs.setEnabled(true, for: configuration)
-        let client = APIClient(baseURL: TestClient.baseURL, configuration: configuration)
-        return client
-    }()
-    override class func setUp() {
-        super.setUp()
+        client = APIClient(baseURL: TestClient.baseURL, configuration: configuration)
     }
 
     override func tearDown() {
