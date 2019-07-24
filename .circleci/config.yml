@@ -16,7 +16,7 @@ jobs:
           command: |
             cd PRODUCTNAME/app
             bundle exec fastlane coverage
-      # Store xcov Code Coverage HTML report artifact 
+      # Store xcov Code Coverage HTML report artifact
       - store_artifacts:
           path: /Users/distiller/project/PRODUCTNAME/app/build/xcov
           destination: xcov
@@ -157,6 +157,11 @@ commands:
       - restore_cache:
           key: 2-gems-{{ checksum "Gemfile.lock" }}
       - run: bundle check || bundle install
+      - run:
+          name: Update Gemfile
+          command: |
+            cd PRODUCTNAME
+            bundle check || bundle install
       - save_cache:
           key: 2-gems-{{ checksum "Gemfile.lock" }}
           paths:
