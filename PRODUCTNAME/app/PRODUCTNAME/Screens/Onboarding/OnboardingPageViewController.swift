@@ -112,24 +112,24 @@ private extension OnboardingPageViewController {
     }
 
     func configureLayout() {
-        skipButton.topAnchor == view.topAnchor + Layout.skipButtonTopInset
-        skipButton.trailingAnchor == view.trailingAnchor - Layout.skipButtonTrailingInset
+        skipButton.topAnchor == view.safeAreaLayoutGuide.topAnchor + Layout.skipButtonTopInset
+        skipButton.trailingAnchor == view.safeAreaLayoutGuide.trailingAnchor - Layout.skipButtonTrailingInset
 
         pageController.view.topAnchor == skipButton.bottomAnchor + Layout.pageViewTopSpace
-        pageController.view.horizontalAnchors == view.horizontalAnchors
+        pageController.view.horizontalAnchors == view.safeAreaLayoutGuide.horizontalAnchors
 
         firstHairline.topAnchor == pageController.view.bottomAnchor
-        firstHairline.horizontalAnchors == view.horizontalAnchors
+        firstHairline.horizontalAnchors == view.safeAreaLayoutGuide.horizontalAnchors
 
-        joinButton.horizontalAnchors == view.horizontalAnchors
+        joinButton.horizontalAnchors == view.safeAreaLayoutGuide.horizontalAnchors
         joinButton.topAnchor == firstHairline.bottomAnchor + Layout.joinVerticalSpace
         joinButton.bottomAnchor == secondHairline.topAnchor - Layout.joinVerticalSpace
 
-        secondHairline.horizontalAnchors == view.horizontalAnchors
+        secondHairline.horizontalAnchors == view.safeAreaLayoutGuide.horizontalAnchors
 
-        signInButton.horizontalAnchors == view.horizontalAnchors
+        signInButton.horizontalAnchors == view.safeAreaLayoutGuide.horizontalAnchors
         signInButton.topAnchor == secondHairline.bottomAnchor + Layout.signInVerticalSpace
-        signInButton.bottomAnchor == view.bottomAnchor - Layout.signInVerticalSpace
+        signInButton.bottomAnchor == view.safeAreaLayoutGuide.bottomAnchor - Layout.signInVerticalSpace
     }
 
 }
