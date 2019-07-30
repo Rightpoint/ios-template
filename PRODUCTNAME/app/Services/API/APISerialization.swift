@@ -2,8 +2,8 @@
 //  APISerialization.swift
 //  PRODUCTNAME
 //
-//  Created by LEADDEVELOPER on 4/16/17.
-//
+//  Created by LEADDEVELOPER on TODAYSDATE.
+//  Copyright © THISYEAR ORGANIZATION. All rights reserved.
 //
 
 import Alamofire

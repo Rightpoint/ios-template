@@ -2,8 +2,8 @@
 //  OnboardingSamplePageViewModel.swift
 //  PRODUCTNAME
 //
-//  Created by Connor Neville on 4/5/17.
-//  Copyright © 2017 ORGANIZATION. All rights reserved.
+//  Created by LEADDEVELOPER on TODAYSDATE.
+//  Copyright © THISYEAR ORGANIZATION. All rights reserved.
 //
 
 struct OnboardingSamplePageViewModel {

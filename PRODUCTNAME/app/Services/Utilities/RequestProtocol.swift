@@ -2,8 +2,8 @@
 //  RequestProtocol.swift
 //  Services
 //
-//  Created by LEADDEVELOPER on 5/10/19.
-//  Copyright © 2019 ORGANIZATION. All rights reserved.
+//  Created by LEADDEVELOPER on TODAYSDATE.
+//  Copyright © THISYEAR ORGANIZATION. All rights reserved.
 //
 
 import Alamofire

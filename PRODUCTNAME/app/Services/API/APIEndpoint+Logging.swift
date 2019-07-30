@@ -2,8 +2,8 @@
 //  APIEndpoint+Logging.swift
 //  PRODUCTNAME
 //
-//  Created by LEADDEVELOPER on 7/24/17.
-//
+//  Created by LEADDEVELOPER on TODAYSDATE.
+//  Copyright © THISYEAR ORGANIZATION. All rights reserved.
 //
 
 import Swiftilities
