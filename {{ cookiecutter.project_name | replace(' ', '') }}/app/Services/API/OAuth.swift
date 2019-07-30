@@ -2,8 +2,8 @@
 //  OauthEndpoint.swift
 //  {{ cookiecutter.project_name | replace(' ', '') }}
 //
-//  Created by {{ cookiecutter.lead_dev }} on 11/2/16.
-//  Copyright © 2017 {{ cookiecutter.company_name }}. All rights reserved.
+//  Created by {{ cookiecutter.lead_dev }} on {% now 'utc', '%D' %}.
+//  Copyright © {% now 'utc', '%Y' %} {{ cookiecutter.company_name }}. All rights reserved.
 //
 
 import Alamofire
