@@ -92,10 +92,8 @@ replace "ORGANIZATION" "{{ cookiecutter.company_name }}"
 replace "LEADDEVELOPER" "{{ cookiecutter.lead_dev }}"
 replace "LEADEMAIL" "{{ cookiecutter.lead_email }}"
 replace "com.raizlabs.PRODUCTNAME" "{{ cookiecutter.bundle_identifier }}"
-CURRENTYEAR="date +"%Y""
-replace "THISYEAR" "${CURRENTYEAR}"
-CURRENTDAY="date +"%Y""
-replace "TODAYSDATE" "${CURRENTDAY}"
+replace "THISYEAR" "{% now 'utc', '%Y' %}"
+replace "TODAYSDATE" "{% now 'utc', '%D' %}"
 
 if [ "${SKIP_REGENERATION}" == "true" ] ; then
     echo "Dry run complete."
