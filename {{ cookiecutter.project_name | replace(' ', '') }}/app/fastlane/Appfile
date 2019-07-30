@@ -1,4 +1,4 @@
 app_identifier "com.{{ cookiecutter.company_name }}.{{ cookiecutter.project_name | replace(' ', '') }}" # The bundle identifier of your app
-apple_id "{{ cookiecutter.lead_email }}"
+apple_id "{{ cookiecutter.apple_id }}"
 
 team_id "TEAMID"  # Developer Portal Team ID
