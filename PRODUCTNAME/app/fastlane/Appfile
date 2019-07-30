@@ -1,4 +1,4 @@
 app_identifier "com.ORGANIZATION.PRODUCTNAME" # The bundle identifier of your app
-apple_id "LEADEMAIL"
+apple_id "APPLEID"
 
 team_id "TEAMID"  # Developer Portal Team ID
