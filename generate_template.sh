@@ -30,7 +30,7 @@ if [ ! -z "$OUTPUT_DIR" ] ; then
     cp -rf "$LOOKUP" "$OUTPUT_DIR/$LOOKUP"
     cp cookiecutter.json "$OUTPUT_DIR/"
     if [ "${SKIP_REGENERATION}" == "true" ] ; then
-        cp -rf "$EXPANDED" "$OUTPUT_DIR/$EXPANDED" 
+        cp -rf "$EXPANDED" "$OUTPUT_DIR/$EXPANDED"
     fi
     cd $OUTPUT_DIR
 fi
@@ -73,7 +73,7 @@ done
 # Do replacements
 function replace {
     grep -rl $1 ./PRODUCTNAME | while read FILE
-    do 
+    do
     NEWFILE=`echo $FILE | sed -e "s/${LOOKUP}/${EXPANDED}/g"`
         SED_CMD="LC_ALL=C sed -e \"s/$1/$2/g\" \"$NEWFILE\" > t1 && mv t1 \"$NEWFILE\""
         # Copy over incase the sed fails due to encoding
@@ -83,7 +83,7 @@ function replace {
         fi
         if [ "${SKIP_REGENERATION}" != "true" ] ; then
             eval $SED_CMD
-        fi        
+        fi
     done
 }
 
@@ -92,6 +92,10 @@ replace "ORGANIZATION" "{{ cookiecutter.company_name }}"
 replace "LEADDEVELOPER" "{{ cookiecutter.lead_dev }}"
 replace "LEADEMAIL" "{{ cookiecutter.lead_email }}"
 replace "com.raizlabs.PRODUCTNAME" "{{ cookiecutter.bundle_identifier }}"
+CURRENTYEAR="date +"%Y""
+replace "THISYEAR" "${CURRENTYEAR}"
+CURRENTDAY="date +"%Y""
+replace "TODAYSDATE" "${CURRENTDAY}"
 
 if [ "${SKIP_REGENERATION}" == "true" ] ; then
     echo "Dry run complete."
@@ -114,7 +118,7 @@ cookiecutter --no-input --overwrite-if-exists ./
 
 if [ "${SKIP_TESTS}" == "true" ] ; then
     echo "Skipping tests..."
-else    
+else
     echo "Running tests..."
 
     pushd "$TEST_OUTPUT_DIR/app"
