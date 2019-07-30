@@ -8,7 +8,6 @@
 
 #include "PRODUCTNAME/Resources/xcconfig/Raizlabs-Account.xcconfig"
 
-BUILD_NUMBER=1
 PRODUCT_BUNDLE_IDENTIFIER = com.raizlabs.PRODUCTNAME.debug
 PRODUCT_NAME = debug-$(TARGET_NAME)
 DEVELOPMENT_TEAM = xxxxxx // FIXME: Insert debug TEAM ID here
