@@ -10,7 +10,7 @@ import Foundation
 
 extension ProcessInfo {
 
-    static let uiTestsKey = "com.raizlabs.uiTests"
+    static let uiTestsKey = "com.rightpoint.uiTests"
 
     static var isRunningUITests: Bool {
         // If you want to run the app in Debug mode, but have it pretend that it

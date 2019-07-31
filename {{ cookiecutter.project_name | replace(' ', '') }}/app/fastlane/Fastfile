@@ -105,7 +105,7 @@ platform :ios do
     # Getting artifact URLs from CircleCI
 
     # You must set up the CIRCLE_API_TOKEN manually using these instructions
-    # https://github.com/Raizlabs/ios-template/tree/master/{{ cookiecutter.project_name | replace(' ', '') }}#danger
+    # https://github.com/Rightpoint/ios-template#danger
     token = ENV['CIRCLE_API_TOKEN']
     # These are already in the Circle environment
     # https://circleci.com/docs/2.0/env-vars/#build-specific-environment-variables
@@ -125,7 +125,7 @@ platform :ios do
         slack(message: "Screenshots are missing!", success: false)
       end
     else
-      slack(message: "Missing CircleCI artifacts. Most likely the [CIRCLE_API_TOKEN](https://github.com/Raizlabs/circleci_artifact#getting-started) is not set, or not running on CircleCI.", success: false)
+      slack(message: "Missing CircleCI artifacts. Most likely the [CIRCLE_API_TOKEN](https://github.com/Rightpoint/circleci_artifact#getting-started) is not set, or not running on CircleCI.", success: false)
     end
   end
 
@@ -135,7 +135,7 @@ platform :ios do
       teamID: "XRTVVR644Y",
       signingCertificate: "iPhone Distribution",
       provisioningProfiles: { "com.raizlabs.{{ cookiecutter.project_name | replace(' ', '') }}.develop" => "Raizlabs Generic Enterprise Profile" }
-    })    
+    })
     hockey(public_identifier: 'ZZHOCKEY_DEVELOP_IDZZ')
     # upload_symbols_to_crashlytics(:api_token => 'ZZCRASHLYTICS_API_TOKEN_DEVELOPZZ')
     slack(message: "Successfully uploaded build #{build_number} to develop", success: true)
@@ -147,7 +147,7 @@ platform :ios do
       teamID: "XRTVVR644Y",
       signingCertificate: "iPhone Distribution",
       provisioningProfiles: { "com.raizlabs.{{ cookiecutter.project_name | replace(' ', '') }}.sprint" => "Raizlabs Generic Enterprise Profile" }
-    })  
+    })
     hockey(public_identifier: 'ZZHOCKEY_SPRINT_IDZZ')
     # upload_symbols_to_crashlytics(:api_token => 'ZZCRASHLYTICS_API_TOKEN_SPRINTZZ')
     slack(message: "Successfully uploaded build #{build_number} to sprint", success: true)
@@ -159,7 +159,7 @@ platform :ios do
   #    teamID: "",
   #    signingCertificate: "iPhone Distribution",
   #    provisioningProfiles: { "" => "" }
-  #  })    
+  #  })
   #  pilot(
   #   distribute_external: false,
   #     skip_waiting_for_build_processing: true,
