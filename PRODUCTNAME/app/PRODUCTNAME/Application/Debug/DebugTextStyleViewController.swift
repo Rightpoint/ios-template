@@ -40,7 +40,7 @@ final class DebugTextStyleViewController: UIViewController {
 
         title = "Text Styles"
 
-        view.backgroundColor = .white
+        view.backgroundColor = Asset.Colors.backgroundPrimary.color
 
         view.addSubview(scrollView)
         scrollView.addSubview(stackView)

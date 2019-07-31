@@ -17,8 +17,8 @@ class OnboardingPageViewController: UIViewController {
     fileprivate let skipButton: UIButton = {
         let button = UIButton()
         button.bonMotStyle = .body
-        button.bonMotStyle?.color = Color.darkGray
-        button.setTitleColor(Color.darkGray.highlighted, for: .highlighted)
+        button.bonMotStyle?.color = Asset.Colors.enabled.color
+        button.setTitleColor(Asset.Colors.enabled.color.highlighted, for: .highlighted)
         button.styledText = L10n.Onboarding.Buttons.skip
         return button
     }()
@@ -28,8 +28,8 @@ class OnboardingPageViewController: UIViewController {
     fileprivate let joinButton: UIButton = {
         let button = UIButton()
         button.bonMotStyle = .body
-        button.bonMotStyle?.color = Color.green
-        button.setTitleColor(Color.green.highlighted, for: .highlighted)
+        button.bonMotStyle?.color = Asset.Colors.accentPrimary.color
+        button.setTitleColor(Asset.Colors.accentPrimary.color.highlighted, for: .highlighted)
         button.styledText = L10n.Onboarding.Buttons.join
         return button
     }()
@@ -37,9 +37,9 @@ class OnboardingPageViewController: UIViewController {
     fileprivate let signInButton: UIButton = {
         let button = UIButton()
         button.bonMotStyle = .body
-        button.bonMotStyle?.color = Color.darkGray
+        button.bonMotStyle?.color = Asset.Colors.enabled.color
         button.styledText = L10n.Onboarding.Buttons.signIn
-        button.setTitleColor(Color.darkGray.highlighted, for: .highlighted)
+        button.setTitleColor(Asset.Colors.enabled.color.highlighted, for: .highlighted)
         return button
     }()
     weak var delegate: Delegate?
@@ -79,7 +79,7 @@ extension OnboardingPageViewController: Actionable {
 private extension OnboardingPageViewController {
 
     func configureView() {
-        view.backgroundColor = .white
+        view.backgroundColor = Asset.Colors.backgroundPrimary.color
         view.addSubview(skipButton)
         skipButton.addTarget(self, action: #selector(skipTapped), for: .touchUpInside)
 
@@ -92,8 +92,8 @@ private extension OnboardingPageViewController {
 
         let pageControlAppearance = UIPageControl.appearance(
             whenContainedInInstancesOf: [OnboardingPageViewController.self])
-        pageControlAppearance.pageIndicatorTintColor = Color.lightGray
-        pageControlAppearance.currentPageIndicatorTintColor = Color.darkGray
+        pageControlAppearance.pageIndicatorTintColor = Asset.Colors.disabled.color
+        pageControlAppearance.currentPageIndicatorTintColor = Asset.Colors.enabled.color
 
         view.addSubview(firstHairline)
         joinButton.addTarget(self, action: #selector(joinTapped), for: .touchUpInside)

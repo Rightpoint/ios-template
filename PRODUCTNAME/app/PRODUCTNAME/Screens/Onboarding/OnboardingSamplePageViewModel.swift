@@ -10,6 +10,6 @@ struct OnboardingSamplePageViewModel {
 
     let header: String
     let body: String?
-    let asset: ImageAsset?
+    let asset: UIImage?
 
 }
