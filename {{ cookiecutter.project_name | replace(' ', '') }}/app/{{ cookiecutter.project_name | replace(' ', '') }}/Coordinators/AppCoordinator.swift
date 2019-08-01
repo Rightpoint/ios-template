@@ -18,7 +18,7 @@ class AppCoordinator: Coordinator {
     init(window: UIWindow) {
         self.window = window
         let rootController = UIViewController()
-        rootController.view.backgroundColor = .white
+        rootController.view.backgroundColor = Asset.Colors.backgroundPrimary.color
         self.rootController = rootController
     }
 
