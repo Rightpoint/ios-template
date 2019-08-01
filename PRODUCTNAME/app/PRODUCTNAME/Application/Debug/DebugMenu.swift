@@ -2,8 +2,8 @@
 //  DebugMenu.swift
 //  PRODUCTNAME
 //
-//  Created by LEADDEVELOPER on 10/25/17.
-//  Copyright © 2017 ORGANIZATION. All rights reserved.
+//  Created by LEADDEVELOPER on TODAYSDATE.
+//  Copyright © THISYEAR ORGANIZATION. All rights reserved.
 //
 
 import Swiftilities

@@ -1,9 +1,9 @@
 {
     "project_name": "Project Name",
-    "company_name": "Raizlabs",
+    "company_name": "Rightpoint",
     "bundle_identifier": "com.{{ cookiecutter.company_name | replace(' ', '-') | lower }}.{{ cookiecutter.project_name | replace(' ', '-') | lower }}",
     "lead_dev": "Your Name",
-    "lead_email": "{{ cookiecutter.lead_dev | replace(' ', '.') | lower }}@raizlabs.com",
+    "apple_id": "apple_id@rightpoint.com",
     "hockey_key": "Ask a tech lead for the Hockey Key or enter NO",
     "jira_key": "Specify the JIRA projectKey"
 }

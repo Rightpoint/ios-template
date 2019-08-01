@@ -2,8 +2,8 @@
 //  Actionable.swift
 //  PRODUCTNAME
 //
-//  Created by LEADDEVELOPER on 3/8/18.
-//  Copyright © 2018 ORGANIZATION. All rights reserved.
+//  Created by LEADDEVELOPER on TODAYSDATE.
+//  Copyright © THISYEAR ORGANIZATION. All rights reserved.
 //
 
 protocol Actionable: class {

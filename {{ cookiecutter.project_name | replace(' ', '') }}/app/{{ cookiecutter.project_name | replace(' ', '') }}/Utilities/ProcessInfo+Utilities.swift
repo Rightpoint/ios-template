@@ -2,15 +2,15 @@
 //  ProcessInfo+Utilities.swift
 //  {{ cookiecutter.project_name | replace(' ', '') }}
 //
-//  Created by Zev Eisenberg on 4/3/18.
-//  Copyright © 2018 {{ cookiecutter.company_name }}. All rights reserved.
+//  Created by {{ cookiecutter.lead_dev }} on {% now 'utc', '%D' %}.
+//  Copyright © {% now 'utc', '%Y' %} {{ cookiecutter.company_name }}. All rights reserved.
 //
 
 import Foundation
 
 extension ProcessInfo {
 
-    static let uiTestsKey = "com.raizlabs.uiTests"
+    static let uiTestsKey = "com.rightpoint.uiTests"
 
     static var isRunningUITests: Bool {
         // If you want to run the app in Debug mode, but have it pretend that it

@@ -2,8 +2,8 @@
 //  Services.h
 //  Services
 //
-//  Created by Brian King on 10/25/17.
-//  Copyright © 2017 ORGANIZATION. All rights reserved.
+//  Created by LEADDEVELOPER on TODAYSDATE.
+//  Copyright © THISYEAR ORGANIZATION. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

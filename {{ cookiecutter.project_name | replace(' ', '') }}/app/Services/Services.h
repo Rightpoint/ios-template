@@ -2,8 +2,8 @@
 //  Services.h
 //  Services
 //
-//  Created by Brian King on 10/25/17.
-//  Copyright © 2017 {{ cookiecutter.company_name }}. All rights reserved.
+//  Created by {{ cookiecutter.lead_dev }} on {% now 'utc', '%D' %}.
+//  Copyright © {% now 'utc', '%Y' %} {{ cookiecutter.company_name }}. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

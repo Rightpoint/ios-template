@@ -2,15 +2,15 @@
 //  ProcessInfo+Utilities.swift
 //  PRODUCTNAME
 //
-//  Created by Zev Eisenberg on 4/3/18.
-//  Copyright © 2018 ORGANIZATION. All rights reserved.
+//  Created by LEADDEVELOPER on TODAYSDATE.
+//  Copyright © THISYEAR ORGANIZATION. All rights reserved.
 //
 
 import Foundation
 
 extension ProcessInfo {
 
-    static let uiTestsKey = "com.raizlabs.uiTests"
+    static let uiTestsKey = "com.rightpoint.uiTests"
 
     static var isRunningUITests: Bool {
         // If you want to run the app in Debug mode, but have it pretend that it

@@ -2,8 +2,8 @@
 //  Screenshots.swift
 //  Screenshots
 //
-//  Created by Zev Eisenberg on 4/3/18.
-//  Copyright © 2018 ORGANIZATION. All rights reserved.
+//  Created by LEADDEVELOPER on TODAYSDATE.
+//  Copyright © THISYEAR ORGANIZATION. All rights reserved.
 //
 
 import XCTest

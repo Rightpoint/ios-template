@@ -2,8 +2,8 @@
 //  Coordinator.swift
 //  PRODUCTNAME
 //
-//  Created by LEADDEVELOPER on 3/24/17.
-//  Copyright © 2017 ORGANIZATION. All rights reserved.
+//  Created by LEADDEVELOPER on TODAYSDATE.
+//  Copyright © THISYEAR ORGANIZATION. All rights reserved.
 //
 
 import UIKit

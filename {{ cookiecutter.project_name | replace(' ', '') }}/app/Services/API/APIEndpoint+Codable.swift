@@ -2,8 +2,8 @@
 //  APIEndpoint+Codable.swift
 //  Services
 //
-//  Created by {{ cookiecutter.lead_dev }} on 5/10/19.
-//  Copyright © 2019 {{ cookiecutter.company_name }}. All rights reserved.
+//  Created by {{ cookiecutter.lead_dev }} on {% now 'utc', '%D' %}.
+//  Copyright © {% now 'utc', '%Y' %} {{ cookiecutter.company_name }}. All rights reserved.
 //
 
 import Foundation

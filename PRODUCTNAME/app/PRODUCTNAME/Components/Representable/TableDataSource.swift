@@ -2,8 +2,8 @@
 //  TableDataSource.swift
 //  PRODUCTNAME
 //
-//  Created by LEADDEVELOPER on 6/6/17.
-//
+//  Created by LEADDEVELOPER on TODAYSDATE.
+//  Copyright © THISYEAR ORGANIZATION. All rights reserved.
 //
 
 import Anchorage
