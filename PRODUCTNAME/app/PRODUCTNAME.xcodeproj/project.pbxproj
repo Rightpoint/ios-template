@@ -24,6 +24,7 @@
 		2DFF1D181E8BF82A00B1AD70 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFF1D171E8BF82A00B1AD70 /* Color.swift */; };
 		2DFF1D1C1E8C424800B1AD70 /* OnboardingSamplePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFF1D1B1E8C424800B1AD70 /* OnboardingSamplePageViewController.swift */; };
 		63E19DA1AE4BD0875DF235F8 /* Pods_Services.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D465E6ECC8509BBB6035678 /* Pods_Services.framework */; };
+		63F384E622FB548B00AAA796 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F384E522FB548B00AAA796 /* SignInViewController.swift */; };
 		85083D4AEA7B5B726A79F450 /* Pods_PRODUCTNAME.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CD9F2E21AB27A0230007885 /* Pods_PRODUCTNAME.framework */; };
 		861732D41FA28DB600C14354 /* HideBackButtonTextBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861732D21FA28DB600C14354 /* HideBackButtonTextBehavior.swift */; };
 		861732D51FA28DB600C14354 /* ModalDismissBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861732D31FA28DB600C14354 /* ModalDismissBehavior.swift */; };
@@ -156,6 +157,8 @@
 		2DFF1D171E8BF82A00B1AD70 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		2DFF1D1B1E8C424800B1AD70 /* OnboardingSamplePageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingSamplePageViewController.swift; sourceTree = "<group>"; };
 		36045522D92DD8ED3DFB7FC8 /* Pods-PRODUCTNAME-PRODUCTNAMETests.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PRODUCTNAME-PRODUCTNAMETests.appstore.xcconfig"; path = "Pods/Target Support Files/Pods-PRODUCTNAME-PRODUCTNAMETests/Pods-PRODUCTNAME-PRODUCTNAMETests.appstore.xcconfig"; sourceTree = "<group>"; };
+		63F384E422FB541200AAA796 /* debug-PRODUCTNAME.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "debug-PRODUCTNAME.entitlements"; sourceTree = "<group>"; };
+		63F384E522FB548B00AAA796 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		6D465E6ECC8509BBB6035678 /* Pods_Services.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Services.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DA6085A924797A53A836C85 /* Pods-PRODUCTNAME.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PRODUCTNAME.appstore.xcconfig"; path = "Pods/Target Support Files/Pods-PRODUCTNAME/Pods-PRODUCTNAME.appstore.xcconfig"; sourceTree = "<group>"; };
 		7F2C2A97F21BF37CEB2498E0 /* Pods_PRODUCTNAMETests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PRODUCTNAMETests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -468,6 +471,7 @@
 			children = (
 				2DFF1D131E8BE3D400B1AD70 /* Onboarding */,
 				BE28092F1E8038BE006E50D5 /* ContentTabBarViewController.swift */,
+				63F384E522FB548B00AAA796 /* SignInViewController.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -499,6 +503,7 @@
 		ABC778771DC90B7A00815FB9 /* PRODUCTNAME */ = {
 			isa = PBXGroup;
 			children = (
+				63F384E422FB541200AAA796 /* debug-PRODUCTNAME.entitlements */,
 				ABC778981DC91DFB00815FB9 /* Application */,
 				861732D01FA28DB600C14354 /* Components */,
 				2D4FA8F31E8574D2006C38ED /* Coordinators */,
@@ -791,10 +796,9 @@
 			};
 			buildConfigurationList = ABC778701DC90B7A00815FB9 /* Build configuration list for PBXProject "PRODUCTNAME" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 				Base,
 			);
@@ -1105,6 +1109,7 @@
 				861732FA1FA29B5E00C14354 /* TableDataSource.swift in Sources */,
 				861732FC1FA29B7300C14354 /* TableSection.swift in Sources */,
 				BE28092E1E8029D8006E50D5 /* AnalyticsConfiguration.swift in Sources */,
+				63F384E622FB548B00AAA796 /* SignInViewController.swift in Sources */,
 				ABF84F8C1DC99CFD002DB24D /* Appearance.swift in Sources */,
 				ABC778791DC90B7A00815FB9 /* AppDelegate.swift in Sources */,
 				862B204C1FA11315007D33BC /* DebugMenu.swift in Sources */,
@@ -1235,6 +1240,7 @@
 			baseConfigurationReference = 7DA6085A924797A53A836C85 /* Pods-PRODUCTNAME.appstore.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "PRODUCTNAME/debug-PRODUCTNAME.entitlements";
 				CODE_SIGN_STYLE = Manual;
 				INFOPLIST_FILE = PRODUCTNAME/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1602,6 +1608,7 @@
 			baseConfigurationReference = 0B68FC2C40AE35C100C8E0A5 /* Pods-PRODUCTNAME.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "PRODUCTNAME/debug-PRODUCTNAME.entitlements";
 				CODE_SIGN_STYLE = Manual;
 				INFOPLIST_FILE = PRODUCTNAME/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1616,6 +1623,7 @@
 			baseConfigurationReference = C7DBD1236E57FBDDF10B2FB0 /* Pods-PRODUCTNAME.develop.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "PRODUCTNAME/debug-PRODUCTNAME.entitlements";
 				CODE_SIGN_STYLE = Manual;
 				INFOPLIST_FILE = PRODUCTNAME/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1714,6 +1722,7 @@
 			baseConfigurationReference = 9E61F9E4F9A440040EE8DCF0 /* Pods-PRODUCTNAME.sprint.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "PRODUCTNAME/debug-PRODUCTNAME.entitlements";
 				CODE_SIGN_STYLE = Manual;
 				INFOPLIST_FILE = PRODUCTNAME/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

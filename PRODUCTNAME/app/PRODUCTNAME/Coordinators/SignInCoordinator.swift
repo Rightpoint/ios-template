@@ -21,8 +21,7 @@ class SignInCoordinator: Coordinator {
 
     func start(animated: Bool, completion: VoidClosure?) {
         // TODO - create and use SignInViewController
-        let vc = UIViewController()
-        vc.view.backgroundColor = .red
+        let vc = SignInViewController()
         self.baseController.present(vc, animated: animated, completion: completion)
     }
 
