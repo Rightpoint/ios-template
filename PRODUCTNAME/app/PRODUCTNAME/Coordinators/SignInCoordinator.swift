@@ -9,25 +9,28 @@
 import UIKit
 import Services
 
-class SignInCoordinator: Coordinator {
+class SignInCoordinator: NSObject, Coordinator {
 
-    let baseController: UIViewController
+    let baseController: UINavigationController
     var childCoordinator: Coordinator?
     weak var delegate: Delegate?
 
-    init(_ baseController: UIViewController) {
+    init(_ baseController: UINavigationController) {
         self.baseController = baseController
+        super.init()
     }
 
-    func start(animated: Bool, completion: VoidClosure?) {
+    func start(animated: Bool) {
         // TODO - create and use SignInViewController
         let vc = UIViewController()
         vc.view.backgroundColor = .red
-        self.baseController.present(vc, animated: animated, completion: completion)
+//        self.baseController.present(vc, animated: animated, completion: completion)
+        self.baseController.pushViewController(vc, animated: animated)
     }
 
-    func cleanup(animated: Bool, completion: VoidClosure?) {
-        baseController.dismiss(animated: animated, completion: completion)
+    func cleanup(animated: Bool) {
+//        baseController.dismiss(animated: animated)
+        baseController.popViewController(animated: animated)
     }
 
 }

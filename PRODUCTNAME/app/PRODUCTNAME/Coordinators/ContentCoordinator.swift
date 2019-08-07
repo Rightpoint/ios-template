@@ -9,23 +9,27 @@
 import UIKit
 import Services
 
-class ContentCoordinator: Coordinator {
+class ContentCoordinator: NSObject, Coordinator {
 
-    let baseController: UIViewController
+    let baseController: UINavigationController
     var childCoordinator: Coordinator?
 
-    init(_ baseController: UIViewController) {
+    init(_ baseController: UINavigationController) {
         self.baseController = baseController
+        super.init()
     }
 
-    func start(animated: Bool, completion: VoidClosure?) {
+    func start(animated: Bool) {
         let vc = ContentTabBarViewController()
-        vc.modalTransitionStyle = .crossDissolve
-        baseController.present(vc, animated: animated, completion: completion)
+//        vc.modalTransitionStyle = .crossDissolve
+        vc.view.backgroundColor = .blue
+//        baseController.present(vc, animated: animated)
+        baseController.pushViewController(vc, animated: animated)
     }
 
-    func cleanup(animated: Bool, completion: VoidClosure?) {
-        baseController.dismiss(animated: animated, completion: completion)
+    func cleanup(animated: Bool) {
+//        baseController.dismiss(animated: animated)
+        baseController.popViewController(animated: animated)
     }
 
 }

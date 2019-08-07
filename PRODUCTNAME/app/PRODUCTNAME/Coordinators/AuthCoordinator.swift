@@ -17,10 +17,10 @@ private enum State {
 
 }
 
-class AuthCoordinator: Coordinator {
+class AuthCoordinator: NSObject, Coordinator {
 
     var childCoordinator: Coordinator?
-    let baseController: UIViewController
+    let baseController: UINavigationController
     weak var delegate: Delegate?
 
     private let client = APIClient.shared
@@ -34,29 +34,44 @@ class AuthCoordinator: Coordinator {
         }
     }
 
-    init(_ baseController: UIViewController) {
+    init(_ baseController: UINavigationController) {
         self.baseController = baseController
+        super.init()
     }
 
-    func start(animated: Bool, completion: VoidClosure?) {
+    func start(animated: Bool) {
         switch state {
         case .authenticated:
             notify(.didSignIn)
         case .onboarded:
             let signInCoordinator = SignInCoordinator(baseController)
             signInCoordinator.delegate = self
-            signInCoordinator.start(animated: animated, completion: completion)
+            signInCoordinator.start(animated: animated)
             childCoordinator = signInCoordinator
         case .needsOnboarding:
             let onboardCoordinator = OnboardingCoordinator(baseController)
             onboardCoordinator.delegate = self
-            onboardCoordinator.start(animated: animated, completion: completion)
+            onboardCoordinator.start(animated: animated)
             childCoordinator = onboardCoordinator
         }
     }
 
-    func cleanup(animated: Bool, completion: VoidClosure?) {
-        childCoordinator?.cleanup(animated: animated, completion: completion)
+    func cleanup(animated: Bool) {
+        childCoordinator?.cleanup(animated: animated)
+    }
+
+    func replaceChild(with newChild: Coordinator) {
+        var navControllers = baseController.viewControllers
+        
+        let signInCoordinator = SignInCoordinator(self.baseController)
+        signInCoordinator.delegate = self
+
+
+
+        onboardCoordinator.cleanup(animated: false)
+
+        self.childCoordinator = signInCoordinator
+        signInCoordinator.start(animated: true)
     }
 
 }
@@ -92,24 +107,23 @@ extension AuthCoordinator: OnboardingCoordinatorDelegate {
                 preconditionFailure("Upon signing in, AppCoordinator should have an AuthCoordinator as a child.")
             }
             childCoordinator = nil
-            onboardCoordinator.cleanup(animated: true) {
-                let signInCoordinator = SignInCoordinator(self.baseController)
-                signInCoordinator.delegate = self
-                self.childCoordinator = signInCoordinator
-                // TODO - signInCoordinator move from signIn to register here
-                signInCoordinator.start(animated: true, completion: nil)
-            }
+            onboardCoordinator.cleanup(animated: false)
+            let signInCoordinator = SignInCoordinator(self.baseController)
+            signInCoordinator.delegate = self
+            self.childCoordinator = signInCoordinator
+            // TODO - signInCoordinator move from signIn to register here
+            signInCoordinator.start(animated: true)
+
         case .didRequestSignIn:
             guard let onboardCoordinator = childCoordinator as? OnboardingCoordinator else {
                 preconditionFailure("Upon signing in, AppCoordinator should have an AuthCoordinator as a child.")
             }
             childCoordinator = nil
-            onboardCoordinator.cleanup(animated: true) {
-                let signInCoordinator = SignInCoordinator(self.baseController)
-                signInCoordinator.delegate = self
-                self.childCoordinator = signInCoordinator
-                signInCoordinator.start(animated: true, completion: nil)
-            }
+            onboardCoordinator.cleanup(animated: false)
+            let signInCoordinator = SignInCoordinator(self.baseController)
+            signInCoordinator.delegate = self
+            self.childCoordinator = signInCoordinator
+            signInCoordinator.start(animated: true)
         }
     }
 
