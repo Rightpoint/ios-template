@@ -34,6 +34,19 @@ protocol Coordinator: class, NSObjectProtocol {
 
 }
 
+/// Parent Coordinator should hold a reference to each child coordinator
+protocol NewCoordinator: class, NSObjectProtocol {
+    /// The entry point for this UX flow.
+    var rootViewController: UIViewController { get }
+    var parentCoordinator: CoordinatorDelegate { get set }
+
+    init(with parentCoord: NewCoordinator)
+}
+
+protocol CoordinatorDelegate {
+    func coordinatorShouldDismiss(_ childCoord: NewCoordinator)
+}
+
 //protocol NavCoordinator: Coordinator {
 //    var baseController: UINavigationController { get }
 //
