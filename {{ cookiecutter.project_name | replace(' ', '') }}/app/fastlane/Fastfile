@@ -134,7 +134,7 @@ platform :ios do
     build("develop-{{ cookiecutter.project_name | replace(' ', '') }}", 'enterprise', {
       teamID: "XRTVVR644Y",
       signingCertificate: "iPhone Distribution",
-      provisioningProfiles: { "com.raizlabs.{{ cookiecutter.project_name | replace(' ', '') }}.develop" => "Raizlabs Generic Enterprise Profile" }
+      provisioningProfiles: { "{{ cookiecutter.bundle_identifier }}.develop" => "Raizlabs Generic Enterprise Profile" }
     })
     hockey(public_identifier: 'ZZHOCKEY_DEVELOP_IDZZ')
     # upload_symbols_to_crashlytics(:api_token => 'ZZCRASHLYTICS_API_TOKEN_DEVELOPZZ')
@@ -146,7 +146,7 @@ platform :ios do
     build("sprint-{{ cookiecutter.project_name | replace(' ', '') }}", 'enterprise', {
       teamID: "XRTVVR644Y",
       signingCertificate: "iPhone Distribution",
-      provisioningProfiles: { "com.raizlabs.{{ cookiecutter.project_name | replace(' ', '') }}.sprint" => "Raizlabs Generic Enterprise Profile" }
+      provisioningProfiles: { "{{ cookiecutter.bundle_identifier }}.sprint" => "Raizlabs Generic Enterprise Profile" }
     })
     hockey(public_identifier: 'ZZHOCKEY_SPRINT_IDZZ')
     # upload_symbols_to_crashlytics(:api_token => 'ZZCRASHLYTICS_API_TOKEN_SPRINTZZ')
