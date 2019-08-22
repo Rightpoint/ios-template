@@ -87,11 +87,11 @@ function replace {
     done
 }
 
+replace "com.raizlabs.PRODUCTNAME" "{{ cookiecutter.bundle_identifier }}"
 replace "PRODUCTNAME" "{{ cookiecutter.project_name | replace(' ', '') }}"
 replace "ORGANIZATION" "{{ cookiecutter.company_name }}"
 replace "LEADDEVELOPER" "{{ cookiecutter.lead_dev }}"
 replace "APPLEID" "{{ cookiecutter.apple_id }}"
-replace "com.raizlabs.PRODUCTNAME" "{{ cookiecutter.bundle_identifier }}"
 replace "THISYEAR" "{% now 'utc', '%Y' %}"
 replace "TODAYSDATE" "{% now 'utc', '%D' %}"
 
