@@ -41,19 +41,7 @@ class APIClientTests: XCTestCase {
             XCTAssertNotNil(error)
             expectation.fulfill()
         }
-//        waitForExpectations(timeout: timeout, handler: nil)
-        waitForExpectations(timeout: timeout) { error in
-            if let error = error as? XCTestError {
-                switch error.code {
-                case .failureWhileWaiting:
-                    XCTFail("Test failure occurred while waiting for refresh request.")
-                case .timeoutWhileWaiting:
-                    XCTFail("Timed out waiting for refresh request.")
-                default:
-                    XCTFail("Unknown error during refresh request.")
-                }
-            } // else no error, no timeout; nothing more to do here.
-        }
+        waitForExpectations(timeout: timeout, handler: nil)
         XCTAssert(authorized == false, "client made a refresh request")
     }
 
@@ -80,20 +68,8 @@ class APIClientTests: XCTestCase {
             XCTAssert(response?.count == 1)
             expectation.fulfill()
         }
-//        waitForExpectations(timeout: timeout, handler: nil)
-        waitForExpectations(timeout: timeout) { error in
-            if let error = error as? XCTestError {
-                switch error.code {
-                case .failureWhileWaiting:
-                    XCTFail("Test failure occurred while waiting for refresh request.")
-                case .timeoutWhileWaiting:
-                    XCTFail("Timed out waiting for refresh request.")
-                default:
-                    XCTFail("Unknown error during refresh request.")
-                }
-            } // else no error, no timeout; nothing more to do here.
-        }
-        XCTAssert(authorized, "client refresh request failed.")
+        waitForExpectations(timeout: timeout, handler: nil)
+        XCTAssert(authorized, "client did not make a refresh request")
     }
 
     func testManyAuthenticatedRequestWithCredentials() {
