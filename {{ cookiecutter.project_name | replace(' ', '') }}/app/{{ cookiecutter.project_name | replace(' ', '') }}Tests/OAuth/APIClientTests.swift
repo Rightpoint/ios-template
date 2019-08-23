@@ -41,8 +41,24 @@ class APIClientTests: XCTestCase {
             XCTAssertNotNil(error)
             expectation.fulfill()
         }
-        waitForExpectations(timeout: timeout, handler: nil)
-        XCTAssert(authorized == false, "client made a refresh request")
+
+        // Technique modified from that shown here:
+        // https://github.com/AliSoftware/OHHTTPStubs/wiki/OHHTTPStubs-and-asynchronous-tests
+        waitForExpectations(timeout: timeout) { error in
+            if let error = error as? XCTestError {
+                switch error.code {
+                case .failureWhileWaiting:
+                    XCTFail("Test failure occurred while waiting for refresh request.")
+                case .timeoutWhileWaiting:
+                    XCTFail("Timed out waiting for refresh request.")
+                default:
+                    XCTFail("Unknown error during refresh request.")
+                }
+            } else {
+                // request completed and did not time out; carry on with tests.
+                XCTAssertFalse(authorized, "refresh requested, authorized should be false.")
+            }
+        }
     }
 
     func testAuthenticatedRequestWithCredentials() {
@@ -62,14 +78,30 @@ class APIClientTests: XCTestCase {
         }
 
         let expectation = self.expectation(description: "Test Endpoint")
-        client.request(TestEndpoint()) { (response, error) in
+        client.request(TestEndpoint()) { response, error in
             XCTAssertNil(error)
             XCTAssertNotNil(response)
             XCTAssert(response?.count == 1)
             expectation.fulfill()
         }
-        waitForExpectations(timeout: timeout, handler: nil)
-        XCTAssert(authorized, "client did not make a refresh request")
+
+        // Technique modified from that shown here:
+        // https://github.com/AliSoftware/OHHTTPStubs/wiki/OHHTTPStubs-and-asynchronous-tests
+        waitForExpectations(timeout: timeout) { error in
+            if let error = error as? XCTestError {
+                switch error.code {
+                case .failureWhileWaiting:
+                    XCTFail("Test failure occurred while waiting for refresh request.")
+                case .timeoutWhileWaiting:
+                    XCTFail("Timed out waiting for refresh request.")
+                default:
+                    XCTFail("Unknown error during refresh request.")
+                }
+            } else {
+                // request completed and did not time out; carry on with tests.
+                XCTAssertTrue(authorized, "refresh request, authorized should be true.")
+            }
+        }
     }
 
     func testManyAuthenticatedRequestWithCredentials() {
@@ -102,13 +134,29 @@ class APIClientTests: XCTestCase {
                 expectation.fulfill()
             }
         }
-        waitForExpectations(timeout: timeout, handler: nil)
-        // Due to timing issues, we can't verify exact counts. The oauth request can be hit before the 10 test requests are sent,
-        // causing some portion of the test requests to not need a retry.
-        XCTAssert(testCount > 10)
-        // I don't have a good explaination of why more than 1 refresh request is made. There's probably a bug to be fixed here, but I don't think
-        // it's severe.
-        XCTAssert(oauthCount >= 1)
-    }
 
+        // Technique modified from that shown here:
+        // https://github.com/AliSoftware/OHHTTPStubs/wiki/OHHTTPStubs-and-asynchronous-tests
+        waitForExpectations(timeout: timeout) { error in
+            if let error = error as? XCTestError {
+                switch error.code {
+                case .failureWhileWaiting:
+                    XCTFail("Test failure occurred while waiting for refresh request.")
+                case .timeoutWhileWaiting:
+                    XCTFail("Timed out waiting for refresh request.")
+                default:
+                    XCTFail("Unknown error during refresh request.")
+                }
+            } else {
+                // request completed and did not time out; carry on with tests.
+
+                // Due to timing issues, we can't verify exact counts. The oauth request can be hit before the 10 test requests are sent,
+                // causing some portion of the test requests to not need a retry.
+                XCTAssert(testCount > 10)
+                // I don't have a good explaination of why more than 1 refresh request is made. There's probably a bug to be fixed here, but I don't think
+                // it's severe.
+                XCTAssert(oauthCount >= 1)
+            }
+        }
+    }
 }
