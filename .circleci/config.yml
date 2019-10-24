@@ -83,7 +83,6 @@ jobs:
           name: Install CocoaPods
           command: |
             curl https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf
-            bundle exec pod repo update
       # Run tests
       - run:
           name: Test Pre-generated Cookiecutter Template
