@@ -96,6 +96,11 @@ After running the `generate_template.sh` script, you can manually run `cookiecut
 ## Configuring the generated project
 ### Fastlane
 
+#### Match
+This project is configured by default to sign your develop and sprint builds with the Rightpoint Enterprise TeamID and wildcard profile UUID. You may need to configure this signing to support certain entitlements, or to add app store release credentials. You can accomplish these tasks by updating the appropriate xcconfig files, and by configuring your fastlane and match files using the guides below:
+For more information about match, check out the [docs on fastlane.](https://docs.fastlane.tools/actions/match/).
+For more information about using the RP signing system, checkout the guide [here.](https://github.com/Rightpoint/Signing-FastlaneMatch/wiki/Rightpoint-iOS-Enterprise-Code-Signing-Guide)
+
 ### Crashlytics
 
 ### Instabug
