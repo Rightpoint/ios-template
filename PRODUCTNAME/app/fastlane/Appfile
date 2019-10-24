@@ -1,4 +1,6 @@
 app_identifier "com.ORGANIZATION.PRODUCTNAME" # The bundle identifier of your app
 apple_id "APPLEID"
 
-team_id "TEAMID"  # Developer Portal Team ID
+# The Rightpoint Product Enterprise Team Identifier. You can override globally
+# here or, in most fastlane functions, at the call site.
+team_id "XRTVVR644Y"

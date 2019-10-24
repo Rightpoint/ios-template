@@ -51,6 +51,11 @@ fastlane ios beta
 fastlane ios synx
 ```
 Sync Project and Directory Structure
+### ios sync_match
+```
+fastlane ios sync_match
+```
+Syncs all match credentials with the developer portal, generating any required credentials
 
 ----
 
