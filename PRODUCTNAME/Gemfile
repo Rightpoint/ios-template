@@ -9,6 +9,6 @@ gem 'slather'
 gem 'circleci_artifact'
 
 gem 'fastlane'
-gem 'cocoapods'
+gem 'cocoapods', '>=1.7.2'
 gem 'synx'
 gem 'nanaimo'
