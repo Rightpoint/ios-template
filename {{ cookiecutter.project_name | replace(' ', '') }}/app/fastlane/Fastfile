@@ -174,10 +174,46 @@ platform :ios do
 
   desc "Syncs all match credentials with the developer portal, generating any required credentials"
   lane :sync_match do
+    # Wildcard App ID by default.
     match(
       readonly: false,
       type: "enterprise",
     )
+
+    # NOTE: ! Don't comment any of these in without this without specifying a git_branch
+    # in your Matchfile. These should be scoped per project using git branches.
+
+    # Comment this in if you would like to store a shared debug profile in match
+    # match(
+    #   readonly: false,
+    #   type: "development",
+    #   app_identifier: FIXME: Your Debug App ID,
+    # )
+
+    # Comment these in if you have custom entitlements and need to generate credentials
+    # for them. Ensure you've configured your app ids in the developer portal and
+    # specify them here:
+    # match(
+    #   readonly: false,
+    #   type: "enterprise",
+    #   app_identifier: FIXME: Your Develop App ID,
+    # )
+    #
+    # match(
+    #   readonly: false,
+    #   type: "enterprise",
+    #   app_identifier: FIXME: Your Sprint App ID,
+    # )
+
+    # Comment this in and configure these parameters to support signing app store releases.
+    # you can also see the match docs regarding match import instead of syncing them.
+    # match(
+    #   username: ci@raizlabs.com, # ensure this account has access to the developer portal
+    #   readonly: false,
+    #   type: "appstore",
+    #   app_identifier: FIXME: Your Appstore App ID,
+    #   team_id: FIXME: Your Appstore Team ID
+    # )
   end
 
   def build(scheme, export_method, export_options)
