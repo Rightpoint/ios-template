@@ -1,0 +1,18 @@
+storage_mode("git")
+type("enterprise") # The default type, can be: appstore, adhoc, enterprise or development.
+
+# The github url to use for storing generated credentials:
+git_url("git@github.com:Rightpoint/Signing-FastlaneMatch.git")
+
+# Comment this line in to configure signing credentials specific for your application's 
+# bundle id, ie. in the case of custom entitlements:
+# git_branch("{{ cookiecutter.jira_key }}")
+
+app_identifier(["*"]) # Comment this out if a wild card app id is insufficent for signing.
+
+# By default, only run match in readonly mode. This can be overridden by callsite:
+readonly(true)
+
+# Comment these in after you've performed the initial configuration to optimize git perf.:
+# clone_branch_directly(true)
+# shallow_clone(true)

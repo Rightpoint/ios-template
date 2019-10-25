@@ -10,10 +10,14 @@
 
 PRODUCT_BUNDLE_IDENTIFIER = com.raizlabs.{{ cookiecutter.project_name | replace(' ', '') }}.sprint
 PRODUCT_NAME = sprint-$(TARGET_NAME)
-DEVELOPMENT_TEAM = xxxxxx //FIXME: Insert sprint TEAM ID here
 
 CODE_SIGN_IDENTITY_{{ cookiecutter.project_name | replace(' ', '') }} = iPhone Distribution
-PROVISIONING_PROFILE_{{ cookiecutter.project_name | replace(' ', '') }} = xxxxxx //FIXME: Insert sprint provisioning profile ID
+
+// FIXME: These values are the Rightpoint Enterprise Team ID and wild card provisioning profile UUID by default.
+// Use these, or correct to your own sprint team ID and provisioning profile ID:
+DEVELOPMENT_TEAM = XRTVVR644Y
+PROVISIONING_PROFILE_{{ cookiecutter.project_name | replace(' ', '') }} = 8876e481-f80e-42c0-bb05-762de956a67c
+
 // CODE_SIGN_ENTITLEMENTS = {{ cookiecutter.project_name | replace(' ', '') }}/sprint-{{ cookiecutter.project_name | replace(' ', '') }}.entitlements // Enable to allow custom debug entitlements
 
 FABRIC_API_KEY = $(INTERNAL_FABRIC_API_KEY)
