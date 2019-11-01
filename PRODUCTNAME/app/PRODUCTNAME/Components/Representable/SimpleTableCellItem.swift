@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 public struct SimpleTableCellItem {
     public typealias VoidBlock = () -> Void

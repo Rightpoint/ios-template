@@ -5,7 +5,6 @@ fastlane_require 'circleci_artifact'
 default_platform :ios
 
 # Set by build environment
-# FL_HOCKEY_API_TOKEN
 # MATCH_PASSWORD
 # SLACK_URL - set the hook URL in the CircleCI environment
 
@@ -14,7 +13,7 @@ ENV['RZ_TEST_REPORTS'] ||= ENV['CIRCLE_TEST_REPORTS'] || './build'
 ENV['FASTLANE_XCODE_LIST_TIMEOUT'] = '120'
 ENV['CI_BUILD'] = 'yes'
 ENV['GYM_OUTPUT_NAME'] = '{{ cookiecutter.project_name | replace(' ', '') }}'
-ENV['FL_HOCKEY_IPA'] = "#{ENV['RZ_ARTIFACTS']}/#{ENV['GYM_OUTPUT_NAME']}.ipa"
+ENV['FL_APPCENTER_IPA'] = "#{ENV['RZ_ARTIFACTS']}/#{ENV['GYM_OUTPUT_NAME']}.ipa"
 ENV['FL_HOCKEY_NOTIFY'] = '0'
 
 DERIVED_DATA_PATH = "#{ENV['RZ_TEST_REPORTS']}/derived_data"
@@ -128,26 +127,40 @@ platform :ios do
     end
   end
 
-  desc "Builds and submits a Develop release to Hockey"
+  desc "Builds and submits a Develop release to AppCenter"
   lane :develop do
 
     match
 
     build("develop-{{ cookiecutter.project_name | replace(' ', '') }}", 'enterprise', {})
 
-    hockey(public_identifier: 'ZZHOCKEY_DEVELOP_IDZZ')
+    appcenter_upload(
+      api_token: ENV["APPCENTER_API_TOKEN"],
+      owner_name: ENV["APPCENTER_OWNER_NAME"],
+      app_name: "{{ cookiecutter.project_name | replace(' ', '') }}-Develop",
+      ipa: ENV['FL_APPCENTER_IPA'],
+      destinations: "Internal",
+      destination_type: "group",
+    )
     # upload_symbols_to_crashlytics(:api_token => 'ZZCRASHLYTICS_API_TOKEN_DEVELOPZZ')
     slack(message: "Successfully uploaded build #{build_number} to develop", success: true)
   end
 
-  desc "Builds and submits a Sprint release to Hockey"
+  desc "Builds and submits a Sprint release to AppCenter"
   lane :sprint do
 
     match
 
     build("sprint-{{ cookiecutter.project_name | replace(' ', '') }}", 'enterprise', {})
 
-    hockey(public_identifier: 'ZZHOCKEY_SPRINT_IDZZ')
+    appcenter_upload(
+      api_token: ENV["APPCENTER_API_TOKEN"],
+      owner_name: ENV["APPCENTER_OWNER_NAME"],
+      app_name: "{{ cookiecutter.project_name | replace(' ', '') }}-Sprint",
+      ipa: ENV['FL_APPCENTER_IPA'],
+      destinations: "Internal",
+      destination_type: "group",
+    )
     # upload_symbols_to_crashlytics(:api_token => 'ZZCRASHLYTICS_API_TOKEN_SPRINTZZ')
     slack(message: "Successfully uploaded build #{build_number} to sprint", success: true)
   end

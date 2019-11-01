@@ -6,6 +6,8 @@
 //  Copyright © THISYEAR ORGANIZATION. All rights reserved.
 //
 
+import UIKit
+
 public protocol ViewRepresentable: AnyViewRepresentable {
     associatedtype View: UIView
     func makeView() -> View

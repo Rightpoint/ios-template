@@ -7,6 +7,10 @@
 //
 
 import UIKit
+#if canImport(AppCenter)
+import AppCenter
+import AppCenterDistribute
+#endif
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         AnalyticsConfiguration(),
         DebugMenuConfiguration(),
         StatusBarConfiguration(),
+        AppCenterConfiguration(),
         ]
 
     // Anything that relies on the existence of a window and an initial viewcontroller should be in this postWindowConfigurations array
@@ -53,4 +58,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        #if canImport(AppCenter)
+        return MSDistribute.open(url)
+        #else
+        return false
+        #endif
+    }
 }

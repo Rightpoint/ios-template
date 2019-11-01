@@ -11,16 +11,23 @@ def shared
     pod 'Swiftilities'
 end
 
+def firebase
+  pod 'Firebase/Core', :modular_headers => true
+  pod 'Firebase/Messaging', :modular_headers => true
+end
+
 target '{{ cookiecutter.project_name | replace(' ', '') }}' do
   pod 'Instabug'
   pod 'Crashlytics'
 
-  pod 'GoogleAnalytics',   '~>3.0'
+  pod 'AppCenter/Distribute', :configurations => ['Sprint', 'Develop']
+  firebase()
   
   pod 'SimulatorStatusMagic', :configurations => ['Debug']
 
   target '{{ cookiecutter.project_name | replace(' ', '') }}Tests' do
     pod 'OHHTTPStubs/Swift'
+    firebase()
   end
 
   shared()

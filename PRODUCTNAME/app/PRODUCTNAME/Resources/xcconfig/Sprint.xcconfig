@@ -24,5 +24,8 @@ FABRIC_API_KEY = $(INTERNAL_FABRIC_API_KEY)
 FABRIC_BUILD_SECRET = $(INTERNAL_BUILD_SECRET)
 SWIFT_ACTIVE_COMPILATION_CONDITIONS = RZINTERNAL
 
+//FIXME: Insert AppCenter Secret
+// APPCENTER_APP_SECRET = xxxxxx
+
 // This file must be included last to properly resolve the offical Xcode variables.
 #include "PRODUCTNAME/Resources/xcconfig/Global.xcconfig"

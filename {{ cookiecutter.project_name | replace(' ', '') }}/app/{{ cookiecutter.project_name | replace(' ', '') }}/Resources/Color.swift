@@ -6,6 +6,8 @@
 //  Copyright © {% now 'utc', '%Y' %} {{ cookiecutter.company_name }}. All rights reserved.
 //
 
+import UIKit
+
 enum Color {
 
     static let lightGray = UIColor.with(red: 170, green: 170, blue: 170)

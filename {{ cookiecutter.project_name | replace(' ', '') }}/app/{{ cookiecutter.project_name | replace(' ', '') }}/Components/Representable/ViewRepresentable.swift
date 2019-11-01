@@ -6,6 +6,8 @@
 //  Copyright © {% now 'utc', '%Y' %} {{ cookiecutter.company_name }}. All rights reserved.
 //
 
+import UIKit
+
 public protocol ViewRepresentable: AnyViewRepresentable {
     associatedtype View: UIView
     func makeView() -> View

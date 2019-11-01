@@ -6,6 +6,8 @@
 //  Copyright © THISYEAR ORGANIZATION. All rights reserved.
 //
 
+import UIKit
+
 protocol Actionable: class {
     associatedtype ActionType
     associatedtype Delegate

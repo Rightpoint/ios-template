@@ -1,13 +1,78 @@
 PODS:
   - Alamofire (4.8.2)
   - Anchorage (4.3)
+  - AppCenter/Core (2.0.1)
+  - AppCenter/Distribute (2.0.1):
+    - AppCenter/Core
   - BonMot (5.3)
   - Crashlytics (3.12.0):
     - Fabric (~> 1.9.0)
   - Fabric (1.9.0)
-  - GoogleAnalytics (3.17.0)
+  - Firebase/Core (6.0.0):
+    - Firebase/CoreOnly
+    - FirebaseAnalytics (= 6.0.0)
+  - Firebase/CoreOnly (6.0.0):
+    - FirebaseCore (= 6.0.0)
+  - Firebase/Messaging (6.0.0):
+    - Firebase/CoreOnly
+    - FirebaseMessaging (~> 4.0.0)
+  - FirebaseAnalytics (6.0.0):
+    - FirebaseCore (~> 6.0)
+    - FirebaseInstanceID (~> 4.0)
+    - GoogleAppMeasurement (= 6.0.0)
+    - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
+    - GoogleUtilities/MethodSwizzler (~> 6.0)
+    - GoogleUtilities/Network (~> 6.0)
+    - "GoogleUtilities/NSData+zlib (~> 6.0)"
+    - nanopb (~> 0.3)
+  - FirebaseAnalyticsInterop (1.2.0)
+  - FirebaseCore (6.0.0):
+    - GoogleUtilities/Environment (~> 6.0)
+    - GoogleUtilities/Logger (~> 6.0)
+  - FirebaseInstanceID (4.0.0):
+    - FirebaseCore (~> 6.0)
+    - GoogleUtilities/Environment (~> 6.0)
+    - GoogleUtilities/UserDefaults (~> 6.0)
+  - FirebaseMessaging (4.0.0):
+    - FirebaseAnalyticsInterop (~> 1.1)
+    - FirebaseCore (~> 6.0)
+    - FirebaseInstanceID (~> 4.0)
+    - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
+    - GoogleUtilities/Environment (~> 6.0)
+    - GoogleUtilities/Reachability (~> 6.0)
+    - GoogleUtilities/UserDefaults (~> 6.0)
+    - Protobuf (~> 3.1)
+  - GoogleAppMeasurement (6.0.0):
+    - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
+    - GoogleUtilities/MethodSwizzler (~> 6.0)
+    - GoogleUtilities/Network (~> 6.0)
+    - "GoogleUtilities/NSData+zlib (~> 6.0)"
+    - nanopb (~> 0.3)
+  - GoogleUtilities/AppDelegateSwizzler (6.0.0):
+    - GoogleUtilities/Environment
+    - GoogleUtilities/Logger
+    - GoogleUtilities/Network
+  - GoogleUtilities/Environment (6.0.0)
+  - GoogleUtilities/Logger (6.0.0):
+    - GoogleUtilities/Environment
+  - GoogleUtilities/MethodSwizzler (6.0.0):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/Network (6.0.0):
+    - GoogleUtilities/Logger
+    - "GoogleUtilities/NSData+zlib"
+    - GoogleUtilities/Reachability
+  - "GoogleUtilities/NSData+zlib (6.0.0)"
+  - GoogleUtilities/Reachability (6.0.0):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/UserDefaults (6.0.0):
+    - GoogleUtilities/Logger
   - Instabug (8.3)
   - KeychainAccess (3.2.0)
+  - nanopb (0.3.901):
+    - nanopb/decode (= 0.3.901)
+    - nanopb/encode (= 0.3.901)
+  - nanopb/decode (0.3.901)
+  - nanopb/encode (0.3.901)
   - OHHTTPStubs/Core (8.0.0)
   - OHHTTPStubs/Default (8.0.0):
     - OHHTTPStubs/Core
@@ -21,6 +86,7 @@ PODS:
   - OHHTTPStubs/OHPathHelpers (8.0.0)
   - OHHTTPStubs/Swift (8.0.0):
     - OHHTTPStubs/Default
+  - Protobuf (3.7.0)
   - SimulatorStatusMagic (2.4.1)
   - Sourcery (0.16.1)
   - SwiftGen (6.1.0)
@@ -89,9 +155,11 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - Anchorage
+  - AppCenter/Distribute
   - BonMot
   - Crashlytics
-  - GoogleAnalytics (~> 3.0)
+  - Firebase/Core
+  - Firebase/Messaging
   - Instabug
   - KeychainAccess
   - OHHTTPStubs/Swift
@@ -105,13 +173,23 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - Anchorage
+    - AppCenter
     - BonMot
     - Crashlytics
     - Fabric
-    - GoogleAnalytics
+    - Firebase
+    - FirebaseAnalytics
+    - FirebaseAnalyticsInterop
+    - FirebaseCore
+    - FirebaseInstanceID
+    - FirebaseMessaging
+    - GoogleAppMeasurement
+    - GoogleUtilities
     - Instabug
     - KeychainAccess
+    - nanopb
     - OHHTTPStubs
+    - Protobuf
     - SimulatorStatusMagic
     - Sourcery
     - SwiftGen
@@ -121,19 +199,29 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   Anchorage: 21a98675245188427f0bcea21404d42a824a766f
+  AppCenter: 6a5ff2fd007b53431259fdd74f91eb3d0dfea3d1
   BonMot: 0104d1b4eda54f4a4b7393d6559539ef25498fbd
   Crashlytics: 07fb167b1694128c1c9a5a5cc319b0e9c3ca0933
   Fabric: f988e33c97f08930a413e08123064d2e5f68d655
-  GoogleAnalytics: f42cc53a87a51fe94334821868d9c8481ff47a7b
+  Firebase: fa80b9d987ca014a1ba9357496ef2a0178b28b12
+  FirebaseAnalytics: 1743c5f4de3687d0745709dfdc4b1dea1484f44c
+  FirebaseAnalyticsInterop: efbe45c8385ec626e29f9525e5ebd38520dfb6c1
+  FirebaseCore: e38f025287b413255a53acc1945d048a112047f7
+  FirebaseInstanceID: 0e0348a3c00a734fa376a070f5ad4533ad975cb5
+  FirebaseMessaging: c796d50864dc822a3c06c9c1c1444b37732b795b
+  GoogleAppMeasurement: 7f028ea162b72c8f326daec74afc95d94f7a47d6
+  GoogleUtilities: f1faafc033ea203adf1783ce00af455bb99d0e5b
   Instabug: c61ac1b653b64596c1bd00cf5ba039f05aecb930
   KeychainAccess: 3b1bf8a77eb4c6ea1ce9404c292e48f948954c6b
+  nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   OHHTTPStubs: 9cbce6364bec557cc3439aa6bb7514670d780881
+  Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
   SimulatorStatusMagic: 28d4a9d1a500ac7cea0b2b5a43c1c6ddb40ba56c
   Sourcery: 16779170d35ee204666843b09031f36721a84bcc
   SwiftGen: f872ca75cbd17bf7103c17f13dcfa0d9a15667b0
   Swiftilities: 7b57b06b46df20236a1cd9faf64ab3fd7554f4ed
   SwiftLint: 009a898ef2a1c851f45e1b59349bf6ff2ddc990d
 
-PODFILE CHECKSUM: f3cf654d6eed8a1c230b93a6ffde151bbf9179a5
+PODFILE CHECKSUM: f4deff92cb777959f68cae8d4fd0677ec3f2443f
 
-COCOAPODS: 1.6.1
+COCOAPODS: 1.7.5
