@@ -78,11 +78,6 @@ jobs:
       # Restore Pods cache
       - restore_cache:
           key: 3-pods-{{ checksum "./PRODUCTNAME/app/Podfile.lock" }}
-      # Download CocoaPods specs via HTTPS (faster than Git)
-      - run:
-          name: Install CocoaPods
-          command: |
-            curl https://cocoapods-specs.circleci.com/fetch-cocoapods-repo-from-s3.sh | bash -s cf
       # Run tests
       - run:
           name: Test Pre-generated Cookiecutter Template
