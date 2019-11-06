@@ -6,6 +6,8 @@
 //  Copyright © {% now 'utc', '%Y' %} {{ cookiecutter.company_name }}. All rights reserved.
 //
 
+import UIKit
+
 #if targetEnvironment(simulator) && DEBUG
     import SimulatorStatusMagic
 #endif
