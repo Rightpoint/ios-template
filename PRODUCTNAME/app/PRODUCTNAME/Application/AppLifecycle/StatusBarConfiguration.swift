@@ -6,6 +6,8 @@
 //  Copyright © THISYEAR ORGANIZATION. All rights reserved.
 //
 
+import UIKit
+
 #if targetEnvironment(simulator) && DEBUG
     import SimulatorStatusMagic
 #endif
