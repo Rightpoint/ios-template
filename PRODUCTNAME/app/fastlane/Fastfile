@@ -12,12 +12,12 @@ ENV['RZ_ARTIFACTS'] ||= ENV['CIRCLE_ARTIFACTS'] || './build'
 ENV['RZ_TEST_REPORTS'] ||= ENV['CIRCLE_TEST_REPORTS'] || './build'
 ENV['FASTLANE_XCODE_LIST_TIMEOUT'] = '120'
 ENV['CI_BUILD'] = 'yes'
-ENV['GYM_OUTPUT_NAME'] = '{{ cookiecutter.project_name | replace(' ', '') }}'
+ENV['GYM_OUTPUT_NAME'] = 'PRODUCTNAME'
 ENV['FL_APPCENTER_IPA'] = "#{ENV['RZ_ARTIFACTS']}/#{ENV['GYM_OUTPUT_NAME']}.ipa"
 ENV['FL_HOCKEY_NOTIFY'] = '0'
 
 DERIVED_DATA_PATH = "#{ENV['RZ_TEST_REPORTS']}/derived_data"
-TEST_SCHEME = "debug-{{ cookiecutter.project_name | replace(' ', '') }}"
+TEST_SCHEME = "debug-PRODUCTNAME"
 
 platform :ios do
 
@@ -54,9 +54,9 @@ platform :ios do
     end
 
     # Add targets here as you create internal frameworks
-    xcov_targets = "debug-{{ cookiecutter.project_name | replace(' ', '') }}.app, Services.framework"
+    xcov_targets = "debug-PRODUCTNAME.app, Services.framework"
     xcov_scheme = TEST_SCHEME
-    xcov_workspace = "{{ cookiecutter.project_name | replace(' ', '') }}.xcworkspace"
+    xcov_workspace = "PRODUCTNAME.xcworkspace"
 
     xcov(
       workspace: xcov_workspace,
@@ -66,11 +66,11 @@ platform :ios do
       derived_data_path: DERIVED_DATA_PATH
     )
 
-    slather_proj = "{{ cookiecutter.project_name | replace(' ', '') }}.xcodeproj"
+    slather_proj = "PRODUCTNAME.xcodeproj"
     slather_workspace = xcov_workspace
     slather_scheme = TEST_SCHEME
     # Add binaries here as you create internal frameworks
-    slather_binaries = ['debug-{{ cookiecutter.project_name | replace(' ', '') }}', 'Services']
+    slather_binaries = ['debug-PRODUCTNAME', 'Services']
     slather_output_directory = "#{ENV['RZ_TEST_REPORTS']}/slather"
 
     # html and cobertura_xml output must be run separately
@@ -132,12 +132,12 @@ platform :ios do
 
     match
 
-    build("develop-{{ cookiecutter.project_name | replace(' ', '') }}", 'enterprise', {})
+    build("develop-PRODUCTNAME", 'enterprise', {})
 
     appcenter_upload(
       api_token: ENV["APPCENTER_API_TOKEN"],
       owner_name: ENV["APPCENTER_OWNER_NAME"],
-      app_name: "{{ cookiecutter.project_name | replace(' ', '') }}-Develop",
+      app_name: "PRODUCTNAME-Develop",
       ipa: ENV['FL_APPCENTER_IPA'],
       destinations: "Internal",
       destination_type: "group",
@@ -151,12 +151,12 @@ platform :ios do
 
     match
 
-    build("sprint-{{ cookiecutter.project_name | replace(' ', '') }}", 'enterprise', {})
+    build("sprint-PRODUCTNAME", 'enterprise', {})
 
     appcenter_upload(
       api_token: ENV["APPCENTER_API_TOKEN"],
       owner_name: ENV["APPCENTER_OWNER_NAME"],
-      app_name: "{{ cookiecutter.project_name | replace(' ', '') }}-Sprint",
+      app_name: "PRODUCTNAME-Sprint",
       ipa: ENV['FL_APPCENTER_IPA'],
       destinations: "Internal",
       destination_type: "group",
@@ -169,7 +169,7 @@ platform :ios do
   lane :beta do
   #  match(type: "appstore")
   # 
-  #  build("appStore-{{ cookiecutter.project_name | replace(' ', '') }}", 'app-store', {})
+  #  build("appStore-PRODUCTNAME", 'app-store', {})
   #  pilot(
   #   distribute_external: false,
   #     skip_waiting_for_build_processing: true,
@@ -182,7 +182,7 @@ platform :ios do
 
   desc "Sync Project and Directory Structure"
   lane :synx do
-    sh "cd .. && synx {{ cookiecutter.project_name | replace(' ', '') }}.xcodeproj"
+    sh "cd .. && synx PRODUCTNAME.xcodeproj"
   end
 
   desc "Syncs all match credentials with the developer portal, generating any required credentials"
@@ -232,7 +232,7 @@ platform :ios do
   def build(scheme, export_method, export_options)
     gym(
       output_directory: "#{ENV['RZ_ARTIFACTS']}",
-      output_name: "{{ cookiecutter.project_name | replace(' ', '') }}",
+      output_name: "PRODUCTNAME",
       export_method: export_method,
       scheme: scheme,
       include_bitcode: true,
