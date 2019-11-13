@@ -4,5 +4,7 @@
     "bundle_identifier": "com.{{ cookiecutter.company_name | replace(' ', '-') | lower }}.{{ cookiecutter.project_name | replace(' ', '-') | lower }}",
     "lead_dev": "Your Name",
     "apple_id": "apple_id@rightpoint.com",
-    "jira_key": "Specify the JIRA projectKey"
+    "jira_key": "Specify the JIRA projectKey",
+    "appcenter_org": "{{ cookiecutter.company_name | replace(' ', '-') }}",
+    "appcenter_app_name": "The name for the appcenter application"
 }

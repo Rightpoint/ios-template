@@ -26,6 +26,28 @@ class FirebaseAnalytics {
     }
 }
 
+extension FirebaseAnalytics {
+    func configureApplication(_ application: UIApplication, launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+
+        var filePath: String?
+        switch BuildType.active {
+        case .debug:
+            filePath = Bundle.main.path(forResource: "GoogleService-Info-Debug", ofType: "plist")
+        case .internal:
+            filePath = Bundle.main.path(forResource: "GoogleService-Info-Develop", ofType: "plist")
+        case .release:
+            filePath = Bundle.main.path(forResource: "GoogleService-Info-AppStore", ofType: "plist")
+        }
+        guard let path = filePath,
+            let options = FirebaseOptions(contentsOfFile: path) else {
+                Log.error("Firebase configuration not found!")
+                return false
+        }
+        FirebaseApp.configure(options: options)
+        return true
+    }
+}
+
 extension FirebaseAnalytics: AnalyticsService {
 
     func trackPageView(page: String) {

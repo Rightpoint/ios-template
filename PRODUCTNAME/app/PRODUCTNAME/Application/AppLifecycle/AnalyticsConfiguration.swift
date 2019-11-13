@@ -6,7 +6,6 @@
 //  Copyright © THISYEAR ORGANIZATION. All rights reserved.
 //
 
-import Firebase
 import Swiftilities
 import Services
 import UIKit
@@ -27,21 +26,7 @@ struct AnalyticsConfiguration: AppLifecycle, PageNameConfiguration {
 
     func onDidLaunch(application: UIApplication, launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
 
-        var filePath: String?
-        switch BuildType.active {
-        case .debug:
-            filePath = Bundle.main.path(forResource: "GoogleService-Info-Debug", ofType: "plist")
-        case .internal:
-            filePath = Bundle.main.path(forResource: "GoogleService-Info-Develop", ofType: "plist")
-        case .release:
-            filePath = Bundle.main.path(forResource: "GoogleService-Info-AppStore", ofType: "plist")
-        }
-        guard let path = filePath,
-            let options = FirebaseOptions(contentsOfFile: path) else {
-                Log.error("Firebase configuration not found!")
-                return
-        }
-        FirebaseApp.configure(options: options)
+        guard FirebaseAnalytics.shared.configureApplication(application, launchOptions: launchOptions) else { return }
 
         var behaviors: [ViewControllerLifecycleBehavior] = []
         switch BuildType.active {

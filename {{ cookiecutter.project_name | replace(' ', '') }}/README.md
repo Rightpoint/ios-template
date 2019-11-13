@@ -1,16 +1,14 @@
 # {{ cookiecutter.project_name }}
 
-[![Develop](https://img.shields.io/badge/Hockey-Develop-green.svg)][develop-appcenter]
-[![Sprint](https://img.shields.io/badge/Hockey-Sprint-green.svg)][sprint-appcenter]
+[![AppCenter](https://img.shields.io/badge/AppCenter-Yes-blue)](https://appcenter.ms/orgs/APPCENTERORG/apps/APPCENTERAPP)
 [![CircleCI](https://circleci.com/gh/Rightpoint/{{ cookiecutter.company_name | replace(' ', '-') | lower }}-ios/tree/develop.svg?style=shield&circle-token=ZZCIRCLE_PROJECT_STATUS_KEYZZ)][circle-ci] [![codecov](https://codecov.io/gh/Rightpoint/{{ cookiecutter.company_name | replace(' ', '-') | lower }}-ios/branch/master/graph/badge.svg)](https://codecov.io/gh/Rightpoint/{{ cookiecutter.company_name | replace(' ', '-') | lower }}-ios)
 
 ## Development Process
-All stories and bugs are tracked in [JIRA][]. Development occurs on branches that are tested with the `test` fastlane task once a PR is created. The PR is reviewed and then merged into the `develop` branch. This triggers the `develop` fastlane task which distributes a build to the [develop][develop-appcenter] hockey app for testing and PO approval. At the end of a sprint, a `sprint-X` tag is manually created which triggers the `sprint` fastlane task which distributes a build to the [sprint][sprint-appcenter] hockey app.
+All stories and bugs are tracked in [JIRA][]. Development occurs on branches that are tested with the `test` fastlane task once a PR is created. The PR is reviewed and then merged into the `develop` branch. This triggers the `develop` fastlane task which distributes a build to the [develop][develop-appcenter] Appcenter app for testing and PO approval. At the end of a sprint, a `sprint-X` tag is manually created which triggers the `sprint` fastlane task which distributes a build to the [sprint][sprint-appcenter] Appcenter app.
 
-[circle-ci]: https://circleci.com/gh/Rightpoint/{{ cookiecutter.project_name }}-ios
+[circle-ci]: https://circleci.com/gh/Rightpoint/{{ cookiecutter.project_name | replace(' ', '') }}-ios
 [JIRA]: https://raizlabs.atlassian.net/secure/RapidBoard.jspa?projectKey={{ cookiecutter.jira_key }}
-[sprint-appcenter]: https://rink.hockeyapp.net/apps/ZZAPPCENTER_SPRINT_IDZZ
-[develop-appcenter]: https://rink.hockeyapp.net/apps/ZZAPPCENTER_DEVELOP_IDZZ
+[AppCenter]: https://appcenter.ms/orgs/APPCENTERORG/apps/APPCENTERAPP
 
 To get started, see [Contributing](#contributing)
 

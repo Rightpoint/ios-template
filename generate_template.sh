@@ -91,9 +91,11 @@ replace "PRODUCTNAME" "{{ cookiecutter.project_name | replace(' ', '') }}"
 replace "ORGANIZATION" "{{ cookiecutter.company_name }}"
 replace "LEADDEVELOPER" "{{ cookiecutter.lead_dev }}"
 replace "APPLEID" "{{ cookiecutter.apple_id }}"
-replace "com.raizlabs.PRODUCTNAME" "{{ cookiecutter.bundle_identifier }}"
+replace "com.rightpoint.PRODUCTNAME" "{{ cookiecutter.bundle_identifier }}"
 replace "THISYEAR" "{% now 'utc', '%Y' %}"
 replace "TODAYSDATE" "{% now 'utc', '%D' %}"
+replace "APPCENTERORG" "{{ cookiecutter.appcenter_org }}"
+replace "APPCENTERAPP" "{{ cookiecutter.appcenter_app_name | replace(' ', '-') }}"
 
 if [ "${SKIP_REGENERATION}" == "true" ] ; then
     echo "Dry run complete."

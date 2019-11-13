@@ -35,12 +35,12 @@ Posts screenshots to Slack
 ```
 fastlane ios develop
 ```
-Builds and submits a Develop release to Hockey
+Builds and submits a Develop release to AppCenter
 ### ios sprint
 ```
 fastlane ios sprint
 ```
-Builds and submits a Sprint release to Hockey
+Builds and submits a Sprint release to AppCenter
 ### ios beta
 ```
 fastlane ios beta

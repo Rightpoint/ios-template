@@ -2,8 +2,8 @@
 //  FirebaseAnalytics.swift
 //  {{ cookiecutter.project_name | replace(' ', '') }}
 //
-//  Created by {{ cookiecutter.lead_dev }} on {% now 'utc', '%D' %}.
-//  Copyright © {% now 'utc', '%Y' %} {{ cookiecutter.company_name }}. All rights reserved.
+//  Created by {{ cookiecutter.lead_dev }} on TODAYSDATE.
+//  Copyright © THISYEAR {{ cookiecutter.company_name }}. All rights reserved.
 //
 
 import Foundation
@@ -23,6 +23,28 @@ class FirebaseAnalytics {
         if FirebaseApp.app() == nil {
             FirebaseApp.configure()
         }
+    }
+}
+
+extension FirebaseAnalytics {
+    func configureApplication(_ application: UIApplication, launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+
+        var filePath: String?
+        switch BuildType.active {
+        case .debug:
+            filePath = Bundle.main.path(forResource: "GoogleService-Info-Debug", ofType: "plist")
+        case .internal:
+            filePath = Bundle.main.path(forResource: "GoogleService-Info-Develop", ofType: "plist")
+        case .release:
+            filePath = Bundle.main.path(forResource: "GoogleService-Info-AppStore", ofType: "plist")
+        }
+        guard let path = filePath,
+            let options = FirebaseOptions(contentsOfFile: path) else {
+                Log.error("Firebase configuration not found!")
+                return false
+        }
+        FirebaseApp.configure(options: options)
+        return true
     }
 }
 

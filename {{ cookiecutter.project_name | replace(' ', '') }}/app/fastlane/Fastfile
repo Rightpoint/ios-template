@@ -14,7 +14,7 @@ ENV['FASTLANE_XCODE_LIST_TIMEOUT'] = '120'
 ENV['CI_BUILD'] = 'yes'
 ENV['GYM_OUTPUT_NAME'] = '{{ cookiecutter.project_name | replace(' ', '') }}'
 ENV['FL_APPCENTER_IPA'] = "#{ENV['RZ_ARTIFACTS']}/#{ENV['GYM_OUTPUT_NAME']}.ipa"
-ENV['FL_HOCKEY_NOTIFY'] = '0'
+ENV['FL_APPCENTER_NOTIFY'] = '0'
 
 DERIVED_DATA_PATH = "#{ENV['RZ_TEST_REPORTS']}/derived_data"
 TEST_SCHEME = "debug-{{ cookiecutter.project_name | replace(' ', '') }}"

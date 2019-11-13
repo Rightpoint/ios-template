@@ -1,0 +1,13 @@
+ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES
+FRAMEWORK_SEARCH_PATHS = $(inherited) "$(PODS_ROOT)/Instabug/" "${PODS_CONFIGURATION_BUILD_DIR}/Alamofire" "${PODS_CONFIGURATION_BUILD_DIR}/Anchorage" "${PODS_CONFIGURATION_BUILD_DIR}/BonMot" "${PODS_CONFIGURATION_BUILD_DIR}/KeychainAccess" "${PODS_CONFIGURATION_BUILD_DIR}/Marshal" "${PODS_CONFIGURATION_BUILD_DIR}/OHHTTPStubs" "${PODS_CONFIGURATION_BUILD_DIR}/Swiftilities" "${PODS_ROOT}/Crashlytics/iOS" "${PODS_ROOT}/Fabric/iOS" "${PODS_ROOT}/Instabug"
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/GoogleAnalytics"
+LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
+LIBRARY_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/GoogleAnalytics/Libraries"
+OTHER_CFLAGS = $(inherited) -iquote "${PODS_CONFIGURATION_BUILD_DIR}/Alamofire/Alamofire.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/Anchorage/Anchorage.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/BonMot/BonMot.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/KeychainAccess/KeychainAccess.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/Marshal/Marshal.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/OHHTTPStubs/OHHTTPStubs.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/Swiftilities/Swiftilities.framework/Headers" -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/GoogleAnalytics"
+OTHER_LDFLAGS = $(inherited) -ObjC -l"GoogleAnalytics" -l"c++" -l"sqlite3" -l"z" -framework "AVFoundation" -framework "Alamofire" -framework "Anchorage" -framework "BonMot" -framework "CoreData" -framework "CoreGraphics" -framework "CoreMedia" -framework "CoreMotion" -framework "CoreTelephony" -framework "CoreVideo" -framework "Crashlytics" -framework "Fabric" -framework "Instabug" -framework "InstabugCore" -framework "KeychainAccess" -framework "Marshal" -framework "OHHTTPStubs" -framework "Security" -framework "Swiftilities" -framework "SystemConfiguration" -framework "UIKit"
+OTHER_SWIFT_FLAGS = $(inherited) "-D" "COCOAPODS"
+PODS_BUILD_DIR = ${BUILD_DIR}
+PODS_CONFIGURATION_BUILD_DIR = ${PODS_BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
+PODS_PODFILE_DIR_PATH = ${SRCROOT}/.
+PODS_ROOT = ${SRCROOT}/Pods

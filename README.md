@@ -31,8 +31,6 @@ Pushing updates to this repository triggers CircleCI to build a blank template a
 
 ## What's in the template?
 
- - Configures the project name, company name, lead name, an initial local repo, gitignore, and synx.
- - Option to configure [Hockey][hockey] apps automatically.
  - [Default Fastfile][fastfile] with test, develop, sprint, beta and release lanes and slack notifications.
  - Configuration for [CircleCI][CircleCI] with auto-triggered builds for merges to develop or tags prefixed with sprint, beta or release.
  - [Danger](https://danger.systems) to automatically enforce conventions on every pull request.
@@ -56,7 +54,6 @@ Pushing updates to this repository triggers CircleCI to build a blank template a
 [apiclient]: PRODUCTNAME/app/PRODUCTNAME/API 
 [CircleCI]: PRODUCTNAME/circle.yml
 [swiftlint]: PRODUCTNAME/app/.swiftlint.yml
-[hockey]: hooks/post_gen_project.sh
 [swiftgen]: https://github.com/SwiftGen/SwiftGen
 
 ## Contributing
@@ -125,4 +122,4 @@ To [set up Danger](http://danger.systems/guides/getting_started.html) on CircleC
 Cookie Cutter is a python project for templating files and directories. Cookie cutter will ask a series of questions as defined in `cookiecutter.json` and then run the expansion on the contained files and directory names, and file contents. Anything with `{{ cookiecutter.variable }}` is expanded when the template is expanded. This is a powerful primitive but has some complications with Xcode
 
 ## Post processing
-Cookie cutter follows a pattern of expand and prune, where the superset of the template is expanded, and then any specific functionality is pruned in a post in shell script `post_gen_project.sh`. You can also run shell scripts to integrate with web services. The included `post_gen_project.sh` is a good example of this, and it will create 2 apps on hockey and configure the `Fastfile`.
+Cookie cutter follows a pattern of expand and prune, where the superset of the template is expanded, and then any specific functionality is pruned in a post in shell script `post_gen_project.sh`. You can also run shell scripts to integrate with web services.

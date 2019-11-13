@@ -1,0 +1,6 @@
+framework module Pods_{{ cookiecutter.project_name | replace(' ', '') }}_{{ cookiecutter.project_name | replace(' ', '') }}Tests {
+  umbrella header "Pods-{{ cookiecutter.project_name | replace(' ', '') }}-{{ cookiecutter.project_name | replace(' ', '') }}Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}
