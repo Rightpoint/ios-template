@@ -26,52 +26,6 @@ class APIClientTests: XCTestCase {
         OHHTTPStubs.removeAllStubs()
     }
 
-    func testAuthenticatedRequestWithNoCredentials() {
-        var authorized: Bool = false
-        stub(condition: pathStartsWith("/oauth/refresh")) { _ in
-            authorized = false
-            return OHHTTPStubsResponse(data: Payloads.oauth, statusCode: 400, headers: nil)
-        }
-        stub(condition: pathStartsWith("/test")) { _ in
-            return OHHTTPStubsResponse(data: Payloads.test, statusCode: authorized ? 200 : 401, headers: nil)
-        }
-
-        let expectation = self.expectation(description: "Test Endpoint")
-        client.request(TestEndpoint()) { _, error in
-            XCTAssertNotNil(error)
-            expectation.fulfill()
-        }
-        waitForExpectations(timeout: timeout, handler: nil)
-        XCTAssert(authorized == false, "client made a refresh request")
-    }
-
-    func testAuthenticatedRequestWithCredentials() {
-        client.oauthClient.credentials = OAuthClient.Credentials(
-            refreshToken: "INITIAL_REFRESH_TOKEN",
-            accessToken: "INVALID_TOKEN",
-            expirationDate: Date.distantFuture
-        )
-
-        var authorized: Bool = false
-        stub(condition: pathStartsWith("/oauth/refresh")) { _ in
-            authorized = true
-            return OHHTTPStubsResponse(data: Payloads.oauth, statusCode: 200, headers: nil)
-        }
-        stub(condition: pathStartsWith("/test")) { _ in
-            return OHHTTPStubsResponse(data: Payloads.test, statusCode: authorized ? 200 : 401, headers: nil)
-        }
-
-        let expectation = self.expectation(description: "Test Endpoint")
-        client.request(TestEndpoint()) { (response, error) in
-            XCTAssertNil(error)
-            XCTAssertNotNil(response)
-            XCTAssert(response?.count == 1)
-            expectation.fulfill()
-        }
-        waitForExpectations(timeout: timeout, handler: nil)
-        XCTAssert(authorized, "client did not make a refresh request")
-    }
-
     func testManyAuthenticatedRequestWithCredentials() {
         client.oauthClient.credentials = OAuthClient.Credentials(
             refreshToken: "INITIAL_REFRESH_TOKEN",
